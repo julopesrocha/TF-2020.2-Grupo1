@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Http\Requests\UserRequest;
+
 
 class User extends Authenticatable
 {
@@ -36,4 +38,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function createUser(UserRequest $request){
+        $this->name = $request->name;
+        $this->email = $request->email;
+        $this->password = $request->password;
+        $this->photo = $request->photo;
+        $this->gender = $request->gender;
+        $this->dateOfBirth = $request->dateOfBirth;
+        $this->save();
+    }
 }
