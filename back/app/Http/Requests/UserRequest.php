@@ -28,23 +28,23 @@ class UserRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
-    {
+    public function rules(){
         return [
             'name' => 'required|string',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required',
-            'gender' => 'required',
-            'dateOfBirthday' => 'required',
+            'password' => 'required|min:9|max:15',
+            'gender' => 'required|max:1',
+            'date_of_birth' => 'required',
         ];
 
     }
 
-    public function messages()
-    {
+    public function messages(){
         return [
             // Mensagens personalizadas
             'name.string' => 'Você precisa digitar um nome',
+            'password.min' => 'A senha deve conter no mínimo 9 digitos',
+            'password.max' => 'A senha deve conter no máximo 15 digitos',
             'email.email' => 'Insira um email válido',
             'email.unique' => 'Este e-mail já existe',
         ];
