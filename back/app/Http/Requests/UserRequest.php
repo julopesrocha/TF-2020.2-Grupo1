@@ -33,9 +33,9 @@ class UserRequest extends FormRequest
             'name' => 'required|string',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:9|max:15',
-            'gender' => 'required|max:1',
+            'gender' => 'required|max:6',
             'date_of_birth' => 'required',
-        ];
+        ];  
 
     }
 
