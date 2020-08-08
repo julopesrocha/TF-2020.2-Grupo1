@@ -8,6 +8,10 @@ const routes: Routes = [
   },  {
     path: 'cadastro-usuario',
     loadChildren: () => import('./pages/cadastro-usuario/cadastro-usuario.module').then( m => m.CadastroUsuarioPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   }
 
 ];

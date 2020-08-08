@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-row class="ion-justify-content-start transparencia">
+      <ion-icon size="large" name="chevron-back-outline" ></ion-icon>
+    </ion-row>
+  </ion-toolbar>
+  
+</ion-header>
+
+<ion-content >
+
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="5">
+        
+          <img src="/assets/logo.png" alt="">
+        
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="5">
+        
+          <img src="/assets/motivate.png" alt="">
+        
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+ 
+    <div class="divForm">
+      <form [formGroup]="registerForm" (ngSubmit)="submitForm(registerForm)" class="background">
+
+          
+              <ion-label >Email</ion-label>
+              <ion-input  class="bordaInferior" type="email" formControlName="email"></ion-input>
+
+              <ion-label >Senha</ion-label>
+              <ion-input  class="bordaInferior" type="password" formControlName="password"></ion-input>
+
+
+            <ion-row class=ion-justify-content-center>
+              <ion-button type="submit" color="dark" class="botao" shape="round" [disabled]="registerForm.invalid">Entrar</ion-button>
+            </ion-row>
+     
+    </form>
+  </div>
+    
+
+</ion-content>

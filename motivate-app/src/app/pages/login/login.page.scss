@@ -1,0 +1,66 @@
+ion-content{
+    --background:linear-gradient(#10A7A1, #123C62);
+    font-family: 'Montserrat', sans-serif;
+}
+
+ion-icon{
+    color: #123C62;
+}
+
+ion-label{ 
+    display:inline-block;
+    padding-top:5%;
+    color: #FFFFFF;
+    font-size: 1.1em;  
+}
+
+ion-item ion-label{
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+}
+
+ion-radio{
+    --color-checked: black;
+    --color:black;
+    border: none;
+}
+
+.divForm{
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 10%;
+}
+
+.divLogo{
+    width: 20vw;
+}
+.divMotivate{
+    width: 30vw;
+}
+
+.divRadio{
+    margin-top:5%;
+    width: 70vw;
+    border-radius: 8px;
+    border: 2px solid white;
+    margin-left: 15%;
+  
+}
+
+.bordaInferior{    
+    border-bottom: 0.095em solid #FFFFFF;
+}
+
+
+.transparencia{
+    --background: #ffffff00;
+}
+
+.tamanhoTexto{
+    font-size: 1em;
+}
+
+.botao{
+    margin-top: 10%;
+}
+
