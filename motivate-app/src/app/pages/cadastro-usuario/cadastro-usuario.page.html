@@ -1,63 +1,78 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Cadastro</ion-title>
-  </ion-toolbar>
+  
 </ion-header>
 
-<ion-content>
+<ion-content >
 
-  
-    <div>
-      <form [formGroup]="registerForm" (ngSubmit)="submitForm(registerForm)">
-      <ion-list>
-        <ion-item>
-          <ion-input placeholder="Nome" type="text" formControlName="name"></ion-input>
-        </ion-item>
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="5">
+        
+          <img src="/assets/logo.png" alt="">
+        
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="5">
+        
+          <img src="/assets/motivate.png" alt="">
+        
+      </ion-col>
+    </ion-row>
 
-        <ion-item>
-          <ion-input placeholder="Data de nascimento" type="text" formControlName="dateOfBirth"></ion-input>
-        </ion-item>
+  </ion-grid>
 
-        <ion-item>
-          <ion-input placeholder="Email" type="email" formControlName="email"></ion-input>
-        </ion-item>
+ 
+    <div class="divForm">
+      <form [formGroup]="registerForm" (ngSubmit)="submitForm(registerForm)" class="background">
 
-        <ion-item>
-          <ion-input placeholder="Confirmação de email" type="text" formControlName="email"></ion-input>
-        </ion-item>
+              <ion-label >Nome</ion-label>
+              <ion-input type="text" formControlName="name" class="bordaInferior"></ion-input>
 
-        <ion-item>
-          <ion-input placeholder="Senha" type="password" formControlName="password"></ion-input>
-        </ion-item>
+              <ion-label>Data de nascimento</ion-label>
+              <ion-datetime class="bordaInferior" placeholder="Ex: DD/MM/AAAA"displayFormat="DD/MM/YYYY" min="1950-12-31" max="2020-12-31"  formControlName="dateOfBirth"></ion-datetime>
+              
+              <ion-label >Email</ion-label>
+              <ion-input  class="bordaInferior" type="email" formControlName="email"></ion-input>
+            
+              <ion-label >Confirmação de email</ion-label>
+              <ion-input  class="bordaInferior" type="text" formControlName="emailConfirmation"></ion-input>
 
-        <ion-item>
-          <ion-input placeholder="Confirmação de senha" type="password" formControlName="password"></ion-input>
-        </ion-item>
+              <ion-label >Senha</ion-label>
+              <ion-input  class="bordaInferior" type="password" formControlName="password"></ion-input>
 
-        <ion-radio-group formControlName="status">
-          <ion-list-header>Gênero</ion-list-header>
-          <ion-item>
-            <ion-label>Feminino</ion-label>
-            <ion-radio slot="start" value="female"></ion-radio>
-          </ion-item>
+              <ion-label >Confirmação de senha</ion-label>
+              <ion-input  class="bordaInferior" type="password" formControlName="passwordConfirmation"></ion-input>
 
-          <ion-item>
-            <ion-label>Masculino</ion-label>
-            <ion-radio slot="start" value="male"></ion-radio>
-          </ion-item>
+              <ion-radio-group value="status">  
+                
+                  <ion-label >Gênero</ion-label>
+                
+                  <div class="divRadio">
+                    <ion-item class="transparencia">
+                      <ion-label >Feminino</ion-label>
+                      <ion-radio slot="start" value="female"></ion-radio>
+                    </ion-item>
+    
+                    <ion-item class="transparencia">
+                      <ion-label >Masculino</ion-label>
+                      <ion-radio slot="start" value="male"></ion-radio>
+                    </ion-item>
+    
+                    <ion-item class="transparencia">
+                      <ion-label >Outros</ion-label>
+                      <ion-radio slot="start" value="others"></ion-radio>
+                    </ion-item>
+                  </div>
+                  
+              </ion-radio-group>
 
-          <ion-item>
-            <ion-label>Outros</ion-label>
-            <ion-radio slot="start" value="others"></ion-radio>
-          </ion-item>
-        </ion-radio-group>
-
-  
-        <ion-row class=ion-justify-content-center>
-          <ion-button type="submit" color="danger" shape="round" [disabled]="registerForm.invalid">Cadastrar</ion-button>
-        </ion-row>
-     
-      </ion-list>
+            <ion-row class=ion-justify-content-center>
+              <ion-button type="submit" color="dark" class="botao" shape="round" [disabled]="registerForm.invalid">Cadastrar</ion-button>
+            </ion-row>
+         
+        
+      
     </form>
   </div>
     

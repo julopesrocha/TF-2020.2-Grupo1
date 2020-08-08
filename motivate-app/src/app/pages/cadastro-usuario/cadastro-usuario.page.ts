@@ -8,6 +8,12 @@ import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 })
 export class CadastroUsuarioPage implements OnInit {
 
+  /*import * as moment from 'moment';
+
+doSomething(date) {
+   console.log('date', moment(date).format('YYYY-MM-DD')); // 2019-04-22
+}*/
+
   registerForm: FormGroup;
 
   submitForm(form){
@@ -19,7 +25,9 @@ export class CadastroUsuarioPage implements OnInit {
     this.registerForm = this.formbuilder.group({
       name:[null, [Validators.required, Validators.maxLength(20)]],
       password:[null, [Validators.required, Validators.minLength(8), Validators.maxLength(30)]],
+      passwordConfirmation:[null, [Validators.required, Validators.minLength(8), Validators.maxLength(30)]],
       email:[null, [Validators.email, Validators.required]],
+      emailConfirmation: [null, [Validators.email, Validators.required]],
       dateOfBirth:[null, [Validators.required]],
       status:[null, [Validators.required]],
     })
