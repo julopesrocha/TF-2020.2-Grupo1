@@ -1,4 +1,10 @@
+
 <ion-header>
+  <ion-toolbar>
+    <ion-row class="ion-justify-content-start transparencia">
+      <ion-icon size="large" name="chevron-back-outline" ></ion-icon>
+    </ion-row>
+  </ion-toolbar>
   
 </ion-header>
 
@@ -44,7 +50,7 @@
               <ion-label >Confirmação de senha</ion-label>
               <ion-input  class="bordaInferior" type="password" formControlName="passwordConfirmation"></ion-input>
 
-              <ion-radio-group value="status">  
+              <ion-radio-group formControlName="status">  
                 
                   <ion-label >Gênero</ion-label>
                 
