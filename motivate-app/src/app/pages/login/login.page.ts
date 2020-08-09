@@ -9,6 +9,7 @@ import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 export class LoginPage implements OnInit {
 
   registerForm: FormGroup;
+  submitted=true;
 
   submitForm(form){
     console.log(form);
@@ -23,6 +24,8 @@ export class LoginPage implements OnInit {
       
     })
    }
+
+   get f(){return this.registerForm.controls;}
 
   ngOnInit() {
   }

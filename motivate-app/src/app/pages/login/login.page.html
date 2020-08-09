@@ -40,8 +40,16 @@
       <form [formGroup]="registerForm" (ngSubmit)="submitForm(registerForm)" class="background">
 
           
-              <ion-label >Email</ion-label>
-              <ion-input  class="bordaInferior" type="email" formControlName="email"></ion-input>
+              <div class="form-group">
+                <ion-label>Email</ion-label>
+                <ion-input type="email" formControlName="email" class="bordaInferior" [ngClass]="{ 'is-invalid': submitted && f.email.errors }"></ion-input>
+                <div  *ngIf="submitted && f.email.errors" class="invalid-feedback aviso">
+                    <div *ngIf="f.email.errors.required">Esse campo é obrigatório!</div>
+                    <div *ngIf="f.email.errors.email">Este email não é valido.</div>
+                </div>
+              </div>
+              <!-- <ion-label >Email</ion-label>
+              <ion-input  class="bordaInferior" type="email" formControlName="email"></ion-input> -->
 
               
               <ion-label >Senha</ion-label>

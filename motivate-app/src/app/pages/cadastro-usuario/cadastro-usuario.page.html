@@ -26,29 +26,74 @@
       </ion-col>
     </ion-row>
 
+    <ion-row >
+      <ion-col>
+        <div class="ion-text-center">
+          <h3 color="dark">Cadastro</h3>
+        </div>
+      </ion-col>
+    </ion-row>
+
   </ion-grid>
 
  
     <div class="divForm">
-      <form [formGroup]="registerForm" (ngSubmit)="submitForm(registerForm)" class="background">
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm) " class="background">
 
+            <div class="form-group">
               <ion-label >Nome</ion-label>
-              <ion-input type="text" formControlName="name" class="bordaInferior"></ion-input>
+              <ion-input type="text" formControlName="name" class="bordaInferior" [ngClass]="{ 'is-invalid': submitted && f.name.errors }"></ion-input>
 
-              <ion-label>Data de nascimento</ion-label>
-              <ion-datetime class="bordaInferior" placeholder="Ex: DD/MM/AAAA"displayFormat="DD/MM/YYYY" min="1950-12-31" max="2020-12-31"  formControlName="dateOfBirth"></ion-datetime>
-              
-              <ion-label >Email</ion-label>
-              <ion-input  class="bordaInferior" type="email" formControlName="email"></ion-input>
+              <div  *ngIf="submitted && f.name.errors" class="invalid-feedback aviso">
+                <div  *ngIf="f.name.errors.required"> Esse campo é obrigatório.</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <ion-label >Data de nascimento</ion-label>
+              <ion-input type="text" formControlName="dateOfBirth" class="bordaInferior" [brmasker]="{mask:'00/00/0000', len:10} " [ngClass]="{ 'is-invalid': submitted && f.dateOfBirth.errors }" ></ion-input>
+              <div  *ngIf="submitted && f.dateOfBirth.errors" class="invalid-feedback aviso">
+                <div  *ngIf="f.dateOfBirth.errors.required"> Esse campo é obrigatório.</div>
+              </div>
+            </div>
+
+              <!-- <ion-label>Data de nascimento</ion-label>
+              <ion-datetime class="bordaInferior" placeholder="Ex: DD/MM/AAAA"displayFormat="DD/MM/YYYY" min="1950-12-31" max="2020-12-31"  formControlName="dateOfBirth"></ion-datetime> -->
+
+              <div class="form-group">
+                <ion-label>Email</ion-label>
+                <ion-input type="email" formControlName="email" class="bordaInferior" [ngClass]="{ 'is-invalid': submitted && f.email.errors }"></ion-input>
+                <div  *ngIf="submitted && f.email.errors" class="invalid-feedback aviso">
+                    <div *ngIf="f.email.errors.required">Esse campo é obrigatório!</div>
+                    <div *ngIf="f.email.errors.email">Este email não é valido.</div>
+                </div>
+              </div>
+
+            <div class="form-group">
+              <ion-label>Password</ion-label>
+              <ion-input type="password" formControlName="password" class="bordaInferior" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"></ion-input>
+              <div  *ngIf="submitted && f.password.errors" class="invalid-feedback aviso">
+                  <div *ngIf="f.password.errors.required">Esse campo é obrigatório</div>
+                  <div *ngIf="f.password.errors.minlength">Mínimo de 8 caracters.</div>
+              </div>
+            </div>
+          <div class="form-group">
+              <ion-label>Confirm Password</ion-label>
+              <ion-input type="password" formControlName="passwordConfirmation" class="bordaInferior" [ngClass]="{ 'is-invalid': submitted && f.passwordConfirmation.errors }" ></ion-input>
+              <div  *ngIf="submitted && f.passwordConfirmation.errors" class="invalid-feedback aviso">
+                  <div *ngIf="f.passwordConfirmation.errors.required">Esse campo é obrigatório</div>
+                  <div *ngIf="f.passwordConfirmation.errors.mustMatch">As senhas estão diferentes</div>
+              </div>
+          </div>
             
-              <ion-label >Confirmação de email</ion-label>
+              <!-- <ion-label >Confirmação de email</ion-label>
               <ion-input  class="bordaInferior" type="text" formControlName="emailConfirmation"></ion-input>
 
               <ion-label >Senha</ion-label>
               <ion-input  class="bordaInferior" type="password" formControlName="password"></ion-input>
 
               <ion-label >Confirmação de senha</ion-label>
-              <ion-input  class="bordaInferior" type="password" formControlName="passwordConfirmation"></ion-input>
+              <ion-input  class="bordaInferior" type="password" formControlName="passwordConfirmation"></ion-input> -->
 
               <ion-radio-group formControlName="status">  
                 
@@ -74,7 +119,7 @@
               </ion-radio-group>
 
             <ion-row class=ion-justify-content-center>
-              <ion-button type="submit" color="dark" class="botao" shape="round" [disabled]="registerForm.invalid">Cadastrar</ion-button>
+              <ion-button type="submit" color="dark" class="botao" shape="round" [disabled]="registerForm.invalid" >Cadastrar</ion-button>
             </ion-row>
          
         

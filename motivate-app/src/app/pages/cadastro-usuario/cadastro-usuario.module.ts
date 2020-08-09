@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrMaskerModule} from 'br-mask';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -14,8 +15,10 @@ import { CadastroUsuarioPage } from './cadastro-usuario.page';
     FormsModule,
     IonicModule,
     ReactiveFormsModule,
+    BrMaskerModule,
     CadastroUsuarioPageRoutingModule
   ],
-  declarations: [CadastroUsuarioPage]
+  declarations: [CadastroUsuarioPage],
+  bootstrap: [CadastroUsuarioPage]
 })
 export class CadastroUsuarioPageModule {}
