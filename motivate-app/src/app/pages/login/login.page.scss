@@ -24,19 +24,18 @@ ion-radio{
     --color:black;
     border: none;
 }
+a{
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: underline;
+}
 
 .divForm{
     width: 80%;
     margin-left: 10%;
-    margin-top: 10%;
+    margin-top: 0%;
 }
 
-.divLogo{
-    width: 20vw;
-}
-.divMotivate{
-    width: 30vw;
-}
 
 .divRadio{
     margin-top:5%;
@@ -51,7 +50,6 @@ ion-radio{
     border-bottom: 0.095em solid #FFFFFF;
 }
 
-
 .transparencia{
     --background: #ffffff00;
 }
@@ -62,5 +60,11 @@ ion-radio{
 
 .botao{
     margin-top: 10%;
+    margin-bottom: 10%;
+    width: 70vw;
+    font-family: 'Montserrat', sans-serif;
+
 }
+
+
 
