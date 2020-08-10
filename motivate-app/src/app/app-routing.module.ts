@@ -5,7 +5,11 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+  },  {
+    path: 'home-deslog',
+    loadChildren: () => import('./pages/home-deslog/home-deslog.module').then( m => m.HomeDeslogPageModule)
   }
+
 ];
 @NgModule({
   imports: [
