@@ -6,11 +6,12 @@ use Illuminate\Http\Request;
 use App\Recipe;
 use App\User;
 use Auth;
+use App\Http\Requests\RecipeRequest;
 
 class RecipeController extends Controller
 {
     //Create
-    public function postRecipe(Request $request) {
+    public function postRecipe(RecipeRequest $request) {
         if (($user = Auth::user()) == null) {
             return response()->json(['error'=>'Unauthorized'], 401);
         }
@@ -28,7 +29,7 @@ class RecipeController extends Controller
     }
 
     //Update
-    public function updateRecipe(Request $request, $id) {
+    public function updateRecipe(RecipeRequest $request, $id) {
         $user = Auth::user();
         $recipe = Recipe::findOrFail($id);
 

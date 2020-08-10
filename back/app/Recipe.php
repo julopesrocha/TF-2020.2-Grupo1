@@ -4,11 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use App\Http\Requests\RecipeRequest;
 
 class Recipe extends Model
 {
     // Create
-    public function createRecipe(Request $request) {
+    public function createRecipe(RecipeRequest $request) {
         $this->name = $request->name;
         $this->ingredients = $request->ingredients;
         $this->preparation = $request->preparation;
@@ -17,7 +18,7 @@ class Recipe extends Model
     }
 
     // Update
-    public function updateRecipe(Request $request) {
+    public function updateRecipe(RecipeRequest $request) {
         if ($request->name) {
             $this->name = $request->name;
         }
