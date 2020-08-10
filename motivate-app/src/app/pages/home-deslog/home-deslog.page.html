@@ -1,19 +1,20 @@
-
-
-<!--Conteúdo da page com botoes e posts | Deslogado-->
-<ion-content>
-    <ion-grid class="button" >
-        <ion-row>
-            <ion-col>
-                <ion-button shape="round" class="login" size="medium"> Login </ion-button>
-            </ion-col>
-            <ion-col>
-                <ion-button shape="round" class="register" size="medium"> Cadastrar </ion-button>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
+<ion-header>
+  <ion-toolbar>
+      <div class="toolbar">
+        <img src="../assets/logo.png" class="logo" alt="logo do motivate" >
+            <img src="../assets/motivatemotivate.png" class="motivate" alt="motivate com fonte poppins">
+        </div>
+  </ion-toolbar>
+</ion-header>
 
 <!-- Postagens -->
+<ion-content>
+    <ion-grid>
+        <ion-row class="button ion-justify-content-between" >
+                <ion-button shape="round" class="login" size="medium"> Login </ion-button>
+                <ion-button shape="round" class="register" size="medium"> Cadastrar </ion-button>
+        </ion-row>
+    </ion-grid>
 
          <app-posts > </app-posts>
          <app-posts > </app-posts>

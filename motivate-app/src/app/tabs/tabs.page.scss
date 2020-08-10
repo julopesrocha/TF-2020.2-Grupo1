@@ -1,31 +1,4 @@
-//CSS da Toolbar //
 
-ion-toolbar{
-  --background: linear-gradient(#10A7A1, #123C62);
-}
-
-.toolbar{
-   margin-top: 1%;
-   margin-bottom: 2%;
-   margin-left: 17%;
-   margin-right: 10%;
-}
-
-.logo {
-    width: 20%;
-    height: 5vh;
-    margin: 10px 5px 10px;
-
-    text-align: center;
-}
-.motivate{
-    width: 50%;
-    height: 3vh;
-    margin: 5px 5px;
-    margin-bottom: 10px;
-    text-align: center;
-
-}
 
 //CSS da Tab bar //
 
@@ -39,7 +12,7 @@ font {
 }
 
 ion-tab-bar{
-  --background: linear-gradient(#10A7A1, #123C62);
+  --background:#2B577E;
 }
 
 ion-label{
