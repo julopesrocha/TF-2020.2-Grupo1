@@ -70,7 +70,7 @@
               </div>
 
             <div class="form-group">
-              <ion-label>Password</ion-label>
+              <ion-label>Senha</ion-label>
               <ion-input type="password" formControlName="password" class="bordaInferior" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"></ion-input>
               <div  *ngIf="submitted && f.password.errors" class="invalid-feedback aviso">
                   <div *ngIf="f.password.errors.required">Esse campo é obrigatório</div>
@@ -78,22 +78,14 @@
               </div>
             </div>
           <div class="form-group">
-              <ion-label>Confirm Password</ion-label>
+              <ion-label>Confirmação de senha</ion-label>
               <ion-input type="password" formControlName="passwordConfirmation" class="bordaInferior" [ngClass]="{ 'is-invalid': submitted && f.passwordConfirmation.errors }" ></ion-input>
               <div  *ngIf="submitted && f.passwordConfirmation.errors" class="invalid-feedback aviso">
                   <div *ngIf="f.passwordConfirmation.errors.required">Esse campo é obrigatório</div>
                   <div *ngIf="f.passwordConfirmation.errors.mustMatch">As senhas estão diferentes</div>
               </div>
           </div>
-            
-              <!-- <ion-label >Confirmação de email</ion-label>
-              <ion-input  class="bordaInferior" type="text" formControlName="emailConfirmation"></ion-input>
-
-              <ion-label >Senha</ion-label>
-              <ion-input  class="bordaInferior" type="password" formControlName="password"></ion-input>
-
-              <ion-label >Confirmação de senha</ion-label>
-              <ion-input  class="bordaInferior" type="password" formControlName="passwordConfirmation"></ion-input> -->
+        
 
               <ion-radio-group formControlName="status">  
                 

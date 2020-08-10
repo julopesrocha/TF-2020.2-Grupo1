@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginPage implements OnInit {
     console.log(form.value);
   }
 
-  constructor(public formbuilder: FormBuilder) {
+  constructor(public formbuilder: FormBuilder, private router: Router) {
     this.registerForm = this.formbuilder.group({
       
       email:[null, [Validators.email, Validators.required]],
@@ -26,6 +27,11 @@ export class LoginPage implements OnInit {
    }
 
    get f(){return this.registerForm.controls;}
+
+   
+  VaiproCadastro(){
+    this.router.navigate(['/cadastro-usuario']);
+  }
 
   ngOnInit() {
   }
