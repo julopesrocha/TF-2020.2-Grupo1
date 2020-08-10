@@ -49,4 +49,8 @@ class User extends Authenticatable
         $this->date_of_birth = $request->date_of_birth;
         $this->save();
     }
+
+    public function recipes() {
+        $this->hasMany('App/Recipe');
+    }
 }
