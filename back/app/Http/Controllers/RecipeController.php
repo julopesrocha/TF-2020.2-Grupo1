@@ -11,12 +11,12 @@ use App\Http\Requests\RecipeRequest;
 class RecipeController extends Controller
 {
     //Create
-    public function postRecipe(RecipeRequest $request, $chalange_id) {
+    public function postRecipe(RecipeRequest $request, $challange_id) {
         $user = Auth::user();
         $newRecipe = new Recipe;
         $newRecipe->createRecipe($request);
         $newRecipe->setUser($user->id);
-        $newRecipe->setChallenge($chalange_id);
+        $newRecipe->setChallenge($challange_id);
         return response()->json([$newRecipe], 200);
     }
 
