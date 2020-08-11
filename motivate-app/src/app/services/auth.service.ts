@@ -13,10 +13,11 @@ export class AuthService {
 
   constructor(public http: HttpClient) { }
 
-  httpHeaders: object ={
+  httpHeaders: any ={
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json'
+      
     }
   }
 
@@ -30,11 +31,9 @@ export class AuthService {
 
   public logout(): Observable<any> {
 
-    console.log('Você saiu!!');
-
-        this.httpHeaders.headers['Authorization'] = 'Bearer ' + localStorage.getItem('userToken');
+        this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('userToken');
         console.log(this.httpHeaders);
-        return this.http.get(this.apiURL + 'logout', this.httpHeaders);
+        return this.http.get(this.apiUrl + 'logout', this.httpHeaders);
 
     }
 
@@ -43,5 +42,6 @@ export class AuthService {
   //   console.log(this.httpHeaders);
 
   //   return this.http.post(this.apiUrl + 'createRecipe', form, this.httpHeaders);
-  }
+  //}
+}
 

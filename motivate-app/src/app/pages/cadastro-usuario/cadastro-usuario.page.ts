@@ -3,6 +3,7 @@ import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {AuthService } from '../../services/auth.service';
 import {Router} from '@angular/router';
 import { MustMatch } from '../../_helpers/must-match.validator';
+import { ToastController } from '@ionic/angular';
 
 import { HttpClient } from '@angular/common/http';
 
@@ -19,16 +20,17 @@ doSomething(date) {
    console.log('date', moment(date).format('YYYY-MM-DD')); // 2019-04-22
 }*/
 
+
+
   registerForm: FormGroup;
   submitted=true;
 
 
-  constructor(public http: HttpClient, private router: Router, public formbuilder: FormBuilder, public authservice: AuthService, ) {
+  constructor(public toastController: ToastController, public http: HttpClient, private router: Router, public formbuilder: FormBuilder, public authservice: AuthService, ) {
     this.registerForm = this.formbuilder.group({
       name:[null, [Validators.required, Validators.maxLength(20), Validators.minLength(2)]],
       date_of_birth:[null, [Validators.required]],
-      email:[null, [Validators.email, Validators.required, Validators.maxLength(50)]],
-      confirm_email:[null, [Validators.email, Validators.required, Validators.maxLength(50)]],
+      email:[null, [Validators.email, Validators.required]],
       gender:[null, [Validators.required]],
       password:[null, [Validators.required, Validators.minLength(6), Validators.maxLength(15)]],
       confirm_password:[null, [Validators.required]]
@@ -41,6 +43,14 @@ doSomething(date) {
    get f(){return this.registerForm.controls;}
 
   ngOnInit() {
+  }
+
+  async presentToast(){
+    const toast = await this.toastController.create({
+      message: 'Esse email ja existe!',
+      duration: 6000
+    });
+    toast.present();
   }
 
   VaipraHomeDeslog(){
@@ -61,6 +71,11 @@ doSomething(date) {
 
       (err)=> {
         console.log(err);
+
+        if(err.error.email[0]=="Este e-mail já existe"){
+
+          this.presentToast();          
+        }
       }
     );
 
