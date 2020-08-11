@@ -22,7 +22,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::GET('getRecipe/{recipe_id}', 'RecipeController@getRecipe');
 Route::GET('getComment/{comment_id}', 'CommentController@getComment');
 
-// Somente autenticado
+//Desafio
+Route::GET('getChallenge/{challenge_id}', 'ChallengeController@getChallenge');
+Route::GET('listChallenges', 'ChallengeController@listChallenges');
+
+//Somente autenticado
 Route::POST('register', 'API\PassportController@register');
 route::POST('login', 'API\PassportController@login');
 
