@@ -18,12 +18,21 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+//Receita
+Route::GET('getRecipe/{recipe_id}', 'RecipeController@getRecipe');
 
-//Passport
+//Somente autenticado
 Route::POST('register', 'API\PassportController@register');
 route::POST('login', 'API\PassportController@login');
 
 Route::group(['middleware' =>'auth:api'], function(){
+    
+    // Usuário
     Route::GET('logout', 'API\PassportController@logout');
     Route::POST('getDetails', 'API\PassportController@getDetails');
+
+    //Receita
+    Route::POST('postRecipe', 'RecipeController@postRecipe');
+    Route::PUT('updateRecipe/{recipe_id}', 'RecipeController@updateRecipe');
+    Route::DELETE('deleteRecipe/{recipe_id}', 'RecipeController@deleteRecipe');
 });
