@@ -34,14 +34,25 @@ class Recipe extends Model
         $this->save();
     }
 
+    // Relação com usuário (que publicou a receita)
     public function setUser($user_id) {
         $user = User::findOrFail($user_id);
         $this->user_id = $user_id;
         $this->save();
     }
 
-    // Relação com usuário (que publicou a receita)
-    public function users() {
+    public function user() {
         return $this->belongsTo('App/User');
+    }
+
+    // Relação com desafio que pertence
+    public function setChallenge($challenge_id) {
+        $challenge = Challenge::findOrFail($challenge_id);
+        $this->chalange_id = $challenge_id;
+        $this->save();
+    }
+
+    public function challenge() {
+        return $this->belongsTo('App/Challenge');
     }
 }

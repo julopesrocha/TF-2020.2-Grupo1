@@ -19,8 +19,8 @@ class CreateRecipesTable extends Migration
             $table->string('ingredients');
             $table->string('preparation');
             $table->string('caption');
-            $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
+            $table->unsignedBigInteger('user_id')->nullable();
         });
 
         Schema::table('recipes', function (Blueprint $table) {

@@ -11,7 +11,7 @@ use App\Http\Requests\RecipeRequest;
 class RecipeController extends Controller
 {
     //Create
-    public function postRecipe(RecipeRequest $request) {
+    public function postRecipe(RecipeRequest $request, $chalange_id) {
         if (($user = Auth::user()) == null) {
             return response()->json(['error'=>'Unauthorized'], 401);
         }
@@ -19,6 +19,7 @@ class RecipeController extends Controller
         $newRecipe = new Recipe;
         $newRecipe->createRecipe($request);
         $newRecipe->setUser($user->id);
+        $newRecipe->setChallenge($chalange_id);
         return response()->json([$newRecipe], 200);
     }
 
