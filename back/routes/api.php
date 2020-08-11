@@ -22,7 +22,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::GET('getRecipe/{recipe_id}', 'RecipeController@getRecipe');
 Route::GET('getComment/{comment_id}', 'CommentController@getComment');
 
-// Somente autenticado
+//Desafio
+Route::GET('getChallenge/{challenge_id}', 'ChallengeController@getChallenge');
+Route::GET('listChallenges', 'ChallengeController@listChallenges');
+
+//Somente autenticado
 Route::POST('register', 'API\PassportController@register');
 route::POST('login', 'API\PassportController@login');
 
@@ -41,4 +45,9 @@ Route::group(['middleware' =>'auth:api'], function(){
     Route::POST('postComment/{recipe_id}', 'CommentController@postComment');
     Route::PUT('updateComment/{comment_id}', 'CommentController@updateComment');
     Route::DELETE('deleteComment/{comment_id}', 'CommentController@deleteComment');
+    
+    //Desafio
+    Route::POST('postChallenge', 'ChallengeController@postChallenge');
+    Route::PUT('updateChallenge/{challenge_id}', 'ChallengeController@updateChallenge');
+    Route::DELETE('deleteChallenge/{challenge_id}', 'ChallengeController@deleteChallenge');
 });
