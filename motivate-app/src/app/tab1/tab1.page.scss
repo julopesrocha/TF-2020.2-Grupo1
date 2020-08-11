@@ -1,0 +1,28 @@
+//CSS da Toolbar //
+
+ion-toolbar{
+  --background: #123C62;
+}
+
+.toolbar{
+   margin-top: 1%;
+   margin-bottom: 2%;
+   margin-left: 17%;
+   margin-right: 10%;
+}
+
+.logo {
+    width: 20%;
+    height: 5vh;
+    margin: 10px 5px 10px;
+
+    text-align: center;
+}
+.motivate{
+    width: 50%;
+    height: 3vh;
+    margin: 5px 5px;
+    margin-bottom: 10px;
+    text-align: center;
+
+}

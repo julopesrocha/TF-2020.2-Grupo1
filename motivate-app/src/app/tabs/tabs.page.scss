@@ -1,1 +1,26 @@
 
+
+//CSS da Tab bar //
+
+ion-icon{
+    color: white;
+}
+
+font {
+    font-family: sans-serif;
+
+}
+
+ion-tab-bar{
+  --background:#2B577E;
+}
+
+ion-label{
+    color: white;
+}
+.buttonActive:hover{
+ --background:#123C62;
+}
+.buttonActive:focus {
+  --background: #123C62;
+}

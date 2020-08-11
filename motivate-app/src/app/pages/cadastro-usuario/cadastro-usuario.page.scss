@@ -8,11 +8,11 @@ ion-icon{
     color: #123C62;
 }
 
-ion-label{ 
+ion-label{
     display:inline-block;
     padding-top:5%;
     color: #FFFFFF;
-    font-size: 1.1em;  
+    font-size: 1.1em;
 }
 
 ion-item ion-label{
@@ -20,6 +20,7 @@ ion-item ion-label{
     color: white;
 }
 
+ 
 ion-radio{
     --color-checked: black;
     --color:black;
@@ -33,7 +34,7 @@ ion-radio{
 }
 
 .aviso{
-   
+
     font-family: 'Montserrat', sans-serif;
 
 }
@@ -51,10 +52,10 @@ ion-radio{
     border-radius: 8px;
     border: 2px solid white;
     margin-left: 15%;
-  
+
 }
 
-.bordaInferior{    
+.bordaInferior{
     border-bottom: 0.095em solid #FFFFFF;
 }
 
@@ -72,4 +73,3 @@ ion-radio{
     width: 70vw;
     font-family: 'Montserrat', sans-serif;
 }
-
