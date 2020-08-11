@@ -40,5 +40,5 @@ Route::group(['middleware' =>'auth:api'], function(){
     // Comentário
     Route::POST('postComment/{recipe_id}', 'CommentController@postComment');
     Route::PUT('updateComment/{comment_id}', 'CommentController@updateComment');
-    Route::DELETE('deleteComment/{comment_id}', 'CommentController@deleteComment');
+    Route::DELETE('deleteComment/{comment_id}', 'CommentController@deleteComment')->middleware('deleteComment');
 });
