@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('photo')->nullable();
             $table->string('gender');
-            $table->string('dateOfBirth');
+            $table->string('date_of_birth');
             $table->boolean('privileged')->default(0);
             $table->rememberToken();
             $table->timestamps();
