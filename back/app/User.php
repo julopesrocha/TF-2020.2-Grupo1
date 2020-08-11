@@ -53,4 +53,10 @@ class User extends Authenticatable
     public function recipes() {
         $this->hasMany('App/Recipe');
     }
+
+    // Relação da postagem de comentários com a comments
+    public function commentsMadeByUser(){
+        $this->hasMany('App\Comment');    
+    }
+
 }

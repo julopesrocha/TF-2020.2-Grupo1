@@ -8,6 +8,7 @@ use App\User;
 use App\Http\Requests\UserRequest;
 use Auth;
 use DB;
+use App\Notifications\UserNotification;
 
 class PassportController extends Controller
 {
@@ -15,12 +16,13 @@ class PassportController extends Controller
         $newUser = new User;
         $newUser->createUser($request);
         $success['token']=$newUser->createToken('MyApp')->accessToken;
+        $newUser->notify(new UserNotification($newUser));
         return response()->json(['success'=> $success, 'user'=>$newUser], 200);
     }
 
     public function login() {
         if (Auth::attempt(['email'=>request('email'), 'password'=>request('password')])) {
-            $user=Auth::user();
+            $user = Auth::user();
             $success['token']=$user->createToken('MyApp')->accessToken;
             return response()->json(['success'=>$success, 'user'=>$user], 200);
         }

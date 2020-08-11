@@ -12,9 +12,6 @@ class RecipeController extends Controller
 {
     //Create
     public function postRecipe(RecipeRequest $request) {
-        if (($user = Auth::user()) == null) {
-            return response()->json(['error'=>'Unauthorized'], 401);
-        }
         $user = Auth::user();
         $newRecipe = new Recipe;
         $newRecipe->createRecipe($request);
@@ -32,27 +29,14 @@ class RecipeController extends Controller
     public function updateRecipe(RecipeRequest $request, $id) {
         $user = Auth::user();
         $recipe = Recipe::findOrFail($id);
-
-        if (($recipe->user_id == $user->id) || ($user->privileged)) {
-            $recipe->updateRecipe($request);
-            return response()->json([$recipe], 200);
-        }
-        else {
-            return response()->json(['error'=>'Unauthorized'], 401);
-        }
+        $recipe->updateRecipe($request);
+        return response()->json([$recipe], 200);
     }
 
     //Delete
     public function deleteRecipe($id) {
         $user = Auth::user();
-        $recipe = Recipe::findOrFail($id);  
-
-        if (($recipe->user_id == $user->id) || ($user->privileged)) {
-            Recipe::destroy($id);
-            return response()->json(['Receita deletada'], 200);
-        }
-        else {
-            return response()->json(['error'=>'Unauthorized'], 401);
-        }
+        Recipe::destroy($id);
+        return response()->json(['Receita deletada'], 200);
     }
 }

@@ -44,4 +44,9 @@ class Recipe extends Model
     public function users() {
         return $this->belongsTo('App/User');
     }
+
+    // Relação da receita com o comentário
+    public function commentsInRecipe(){
+        return $this->hasMany('App\Comment');
+    }
 }
