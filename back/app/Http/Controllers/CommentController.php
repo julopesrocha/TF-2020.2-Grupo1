@@ -35,7 +35,6 @@ class CommentController extends Controller
     public function deleteComment($comment_id){
         $user = Auth::user();
         Comment::destroy($comment_id);
-        if ($comment_id->user_id )
         return response()->json(['O seu comentário foi deletado com sucesso.']);
     }
 }
