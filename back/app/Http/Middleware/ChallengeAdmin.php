@@ -18,8 +18,7 @@ class ChallengeAdmin
     public function handle($request, Closure $next)
     {
         $user = Auth::user();
-        $challenge = Challenge::with('user')->where('user_id'-> $user->id)->where('id', $request->id)->first();
-        if ($user->privileged == 1){
+        if ($user->privileged){
             return $next($request);
         }
         else{

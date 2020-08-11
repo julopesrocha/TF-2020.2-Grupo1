@@ -53,10 +53,10 @@ class Recipe extends Model
     // Relação com desafio que pertence
     public function setChallenge($challenge_id) {
         $challenge = Challenge::findOrFail($challenge_id);
-        $this->chalange_id = $challenge_id;
+        $this->challenge_id = $challenge_id;
         $this->save();
     }
-    
+
     public function challenge() {
         return $this->belongsTo('App/Challenge');
     }
