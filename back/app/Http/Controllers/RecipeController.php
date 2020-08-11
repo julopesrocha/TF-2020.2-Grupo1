@@ -12,9 +12,6 @@ class RecipeController extends Controller
 {
     //Create
     public function postRecipe(RecipeRequest $request) {
-        if (($user = Auth::user()) == null) {
-            return response()->json(['error'=>'Unauthorized'], 401);
-        }
         $user = Auth::user();
         $newRecipe = new Recipe;
         $newRecipe->createRecipe($request);

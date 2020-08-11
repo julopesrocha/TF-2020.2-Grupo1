@@ -3,9 +3,16 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use App\Comment;
 
 class CommentRequest extends FormRequest
 {
+    protected function failedValidation(Validator $validator){
+        throw new HttpResponseException(response()->json($validator->errors(), 422));
+    }
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -13,7 +20,7 @@ class CommentRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +31,14 @@ class CommentRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'comment' => 'required|string|max:200',
+        ];
+    }
+    
+    public function messages()
+    {
+        return [
+            'comment.max' => 'Esse comentário só pode ter 200 letras',
         ];
     }
 }
