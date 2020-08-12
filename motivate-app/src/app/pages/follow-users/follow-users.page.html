@@ -1,0 +1,35 @@
+
+    <!-- Default Segment -->
+<ion-header>
+    <ion-toolbar>
+        <div class="toolbar"> </div>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-segment [(ngModel)]="follow" class="segmentColor">
+        <ion-segment-button value="following">
+            <ion-label>Seguindo</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="followers">
+            <ion-label>Seguidores</ion-label>
+        </ion-segment-button>
+    </ion-segment>
+        <div [ngSwitch]= "follow" >
+            <ion-list *ngSwitchCase="'following'">
+                <ion-item>
+                    <div>
+                        <ion-avatar> </ion-avatar>
+                    </div>
+                    <div class="following">
+                        <h5> Luciana Vitória </h5>
+                        <ion-button style="round"> seguindo </ion-button>
+                    </div>
+                 </ion-item>
+            </ion-list>
+            <ion-list *ngSwitchCase="'followers'">
+                <ion-item> Oi </ion-item>
+            </ion-list>
+        </div>
+</ion-content>
