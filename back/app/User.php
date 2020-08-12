@@ -51,12 +51,19 @@ class User extends Authenticatable
     }
 
     public function recipes() {
-        $this->hasMany('App/Recipe');
+        return $this->hasMany('App/Recipe');
     }
 
     // Relação da postagem de comentários com a comments
     public function commentsMadeByUser(){
-        $this->hasMany('App\Comment');    
+        return $this->hasMany('App\Comment');    
     }
 
+    public function follower(){
+        return $this->belongsToMany('App\User', 'follows', 'follower_id',  'following_id');    
+    }
+
+    public function following(){
+        return $this->belongsToMany('App\User', 'follows', 'following_id', 'follower_id');
+    }
 }

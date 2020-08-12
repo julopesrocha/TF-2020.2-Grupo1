@@ -46,8 +46,12 @@ Route::group(['middleware' =>'auth:api'], function(){
     Route::PUT('updateComment/{comment_id}', 'CommentController@updateComment');
     Route::DELETE('deleteComment/{comment_id}', 'CommentController@deleteComment')->middleware('deleteComment');
     
-    //Desafio
+    // Desafio
     Route::POST('postChallenge', 'ChallengeController@postChallenge')->middleware('challengeAdmin');
     Route::PUT('updateChallenge/{challenge_id}', 'ChallengeController@updateChallenge')->middleware('challengeAdmin');
     Route::DELETE('deleteChallenge/{challenge_id}', 'ChallengeController@deleteChallenge')->middleware('challengeAdmin');
+
+    // Follow
+    Route::POST('followUser/{user_id}', 'UserController@followUser');
+
 });
