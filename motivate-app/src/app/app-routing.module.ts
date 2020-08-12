@@ -9,7 +9,11 @@ const routes: Routes = [
   {
     path: 'home-deslog',
     loadChildren: () => import('./pages/home-deslog/home-deslog.module').then( m => m.HomeDeslogPageModule)
+<<<<<<< HEAD
   },
+=======
+   },
+>>>>>>> 0f8dc1eb29d56b102ef76b70a742576b97f47d19
   {
     path: 'cadastro-usuario',
     loadChildren: () => import('./pages/cadastro-usuario/cadastro-usuario.module').then( m => m.CadastroUsuarioPageModule)

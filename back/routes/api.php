@@ -18,12 +18,40 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+// Receita
+Route::GET('getRecipe/{recipe_id}', 'RecipeController@getRecipe');
+Route::GET('getComment/{comment_id}', 'CommentController@getComment');
 
-//Passport
+//Desafio
+Route::GET('getChallenge/{challenge_id}', 'ChallengeController@getChallenge');
+Route::GET('listChallenges', 'ChallengeController@listChallenges');
+
+//Somente autenticado
 Route::POST('register', 'API\PassportController@register');
 route::POST('login', 'API\PassportController@login');
 
 Route::group(['middleware' =>'auth:api'], function(){
-    Route::GET('logout', 'API\PassportController@logout');
+    
+    // Usuário
     Route::POST('getDetails', 'API\PassportController@getDetails');
+    Route::GET('logout', 'API\PassportController@logout');
+
+    // Receita
+    Route::POST('postRecipe/{challenge_id}', 'RecipeController@postRecipe');
+    Route::PUT('updateRecipe/{recipe_id}', 'RecipeController@updateRecipe');
+    Route::DELETE('deleteRecipe/{recipe_id}', 'RecipeController@deleteRecipe');
+
+    // Comentário
+    Route::POST('postComment/{recipe_id}', 'CommentController@postComment');
+    Route::PUT('updateComment/{comment_id}', 'CommentController@updateComment');
+    Route::DELETE('deleteComment/{comment_id}', 'CommentController@deleteComment')->middleware('deleteComment');
+    
+    // Desafio
+    Route::POST('postChallenge', 'ChallengeController@postChallenge')->middleware('challengeAdmin');
+    Route::PUT('updateChallenge/{challenge_id}', 'ChallengeController@updateChallenge')->middleware('challengeAdmin');
+    Route::DELETE('deleteChallenge/{challenge_id}', 'ChallengeController@deleteChallenge')->middleware('challengeAdmin');
+
+    // Follow
+    Route::POST('followUser/{user_id}', 'UserController@followUser');
+
 });

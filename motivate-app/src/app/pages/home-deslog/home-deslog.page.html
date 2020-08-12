@@ -9,10 +9,10 @@
 
 <ion-content>
 <!-- Postagens -->
-    <ion-grid>
+    <ion-grid *ngIf="!username">
         <ion-row class="button ion-justify-content-between" >
-                <ion-button shape="round" class="login" size="medium"> Login </ion-button>
-                <ion-button shape="round" class="register" size="medium"> Cadastrar </ion-button>
+            <ion-button (click)="VaiproLogin()" shape="round" class="login" size="medium"> Login </ion-button>
+            <ion-button (click)="VaiproCadastro()" shape="round" class="register" size="medium"> Cadastrar </ion-button>
         </ion-row>
     </ion-grid>
 

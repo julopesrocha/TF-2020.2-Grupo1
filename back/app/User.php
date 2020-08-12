@@ -49,4 +49,21 @@ class User extends Authenticatable
         $this->date_of_birth = $request->date_of_birth;
         $this->save();
     }
+
+    public function recipes() {
+        return $this->hasMany('App/Recipe');
+    }
+
+    // Relação da postagem de comentários com a comments
+    public function commentsMadeByUser(){
+        return $this->hasMany('App\Comment');    
+    }
+
+    public function follower(){
+        return $this->belongsToMany('App\User', 'follows', 'follower_id',  'following_id');    
+    }
+
+    public function following(){
+        return $this->belongsToMany('App\User', 'follows', 'following_id', 'follower_id');
+    }
 }
