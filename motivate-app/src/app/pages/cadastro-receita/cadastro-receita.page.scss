@@ -29,6 +29,7 @@ ion-radio{
 
 ion-input{
     --color: white;
+    font-family: 'Montserrat', sans-serif;
 }
 
 ion-textarea{
@@ -36,10 +37,22 @@ ion-textarea{
     --background: #C3EAE8;
     border: 1px solid white;
     height: 25vh;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+
+ion-select-option{
+    font-family: 'Montserrat', sans-serif;
+    --color: white;
 }
 
 ion-button{
     --background: #123C62;
+}
+
+.divOption{
+    color: white;
 }
 
 h3{
@@ -101,4 +114,13 @@ p{
     margin-top: 10%;
     width: 70vw;
     font-family: 'Montserrat', sans-serif;
+}
+
+.personalizar-select{
+    border: 1px solid white;
+  
+}
+.personalizar-option{
+    --background: #fff;
+    --color: white;
 }
