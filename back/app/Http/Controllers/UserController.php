@@ -17,11 +17,11 @@ class UserController extends Controller
             $status = DB::table('follows')->where('following_id',$user_id)->where('follower_id',$user->id)->count()>0;
             if ($status){
                 $user->follower()->detach($user_id);
-                return response()->json(['Você parou de seguir o '.$user->name]);
+                return response()->json(['Você parou de seguir '.$userFollowing->name]);
             } 
             else {
                 $user->follower()->attach($userFollowing->id);
-                return response()->json(['Você está seguindo '.$user->name]);
+                return response()->json(['Você está seguindo '.$userFollowing->name]);
             }
         }
         return response()->json(['ERRO: Você não pode seguir você mesmo']);
