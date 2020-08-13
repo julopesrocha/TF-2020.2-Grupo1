@@ -19,19 +19,24 @@
       </ion-col>
     </ion-row>
 
-    <ion-row class="colImagem" >
-      <ion-col class="colImagem">
-        <div class="divImagem">
-          <br>
-          <br>
-          <br>
+    <ion-row>
+      <ion-col>
+
+        <img [src]="photo" >
+        
+        <div class="ion-justify-content-center">
+          <ion-button (click)="takePicture()">
+            <ion-icon name="camera" ></ion-icon>
+          </ion-button>
+  
         </div>
+        
       </ion-col>
     </ion-row>
 
   </ion-grid>
+    
 
- 
     <div class="divForm">
       <form [formGroup]="recipeForm" (ngSubmit)="onSubmit(recipeForm) " class="background">
 
