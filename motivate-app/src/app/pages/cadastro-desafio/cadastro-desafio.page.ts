@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
+import { Plugins, CameraResultType, CameraSource } from '@capacitor/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-cadastro-desafio',
@@ -10,8 +12,9 @@ import {Router} from '@angular/router';
 export class CadastroDesafioPage implements OnInit {
 
   challengeForm: FormGroup;
+  photo: SafeResourceUrl;
 
-  constructor(private router: Router, public formbuilder: FormBuilder) { 
+  constructor(private router: Router, public formbuilder: FormBuilder, private sanitizer: DomSanitizer) { 
 
     this.challengeForm = this.formbuilder.group({
       title:[null, [Validators.required, Validators.minLength(2), Validators.maxLength(20)]],
@@ -31,5 +34,20 @@ export class CadastroDesafioPage implements OnInit {
 
   ngOnInit() {
   }
+
+  async takePicture(){
+    const image = await
+    Plugins.Camera.getPhoto({
+      quality: 100,
+      allowEditing: true,
+      saveToGallery: true,
+      resultType: CameraResultType.DataUrl,
+      source: CameraSource.Camera
+    });
+    this.photo =
+    this.sanitizer.bypassSecurityTrustResourceUrl
+    (image && (image.dataUrl));
+  }
+
 
 }
