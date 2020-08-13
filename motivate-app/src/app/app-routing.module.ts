@@ -17,7 +17,16 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
-  },  {
+  },
+  {
+    path: 'perfil',
+    loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
+  },
+  {
+    path: 'cadastro-desafio',
+    loadChildren: () => import('./pages/cadastro-desafio/cadastro-desafio.module').then( m => m.CadastroDesafioPageModule)
+  },
+  {
     path: 'cadastro-receita',
     loadChildren: () => import('./pages/cadastro-receita/cadastro-receita.module').then( m => m.CadastroReceitaPageModule)
   }

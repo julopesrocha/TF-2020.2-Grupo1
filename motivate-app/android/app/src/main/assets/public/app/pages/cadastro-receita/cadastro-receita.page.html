@@ -1,0 +1,102 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-row class="ion-justify-content-start transparencia">
+      <ion-icon  size="large" name="chevron-back-outline" ></ion-icon>
+    </ion-row>
+  </ion-toolbar>
+  
+</ion-header>
+
+<ion-content >
+
+  <ion-grid>
+
+    <ion-row >
+      <ion-col>
+        <div class="ion-text-center">
+          <h3 >Poste sua receita</h3>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="colImagem" >
+      <ion-col class="colImagem">
+        <div class="divImagem">
+          <br>
+          <br>
+          <br>
+        </div>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+ 
+    <div class="divForm">
+      <form [formGroup]="recipeForm" (ngSubmit)="onSubmit(recipeForm) " class="background">
+
+            <div class="form-group">
+              <ion-label >Título</ion-label>
+              <ion-input type="text" formControlName="title" class="bordaInferior" ></ion-input>
+
+            </div>
+
+            <div class="form-group">
+              <ion-label>Desafio</ion-label>
+              <ion-select class="personalizar-select" id="status" formControlName="challenge">
+
+                <ion-select-option class="personalizar-option" value="sem_acucar">#SemAçucar</ion-select-option>
+                <ion-select-option class="personalizar-option" value="low_carb">#LowCarb</ion-select-option>
+                <ion-select-option class="personalizar-option" value="vegano">#Vegano</ion-select-option>
+                <ion-select-option class="personalizar-option" value="vegetariano">#Vegetariano</ion-select-option>
+                <ion-select-option class="personalizar-option" value="vegetariano">#Mind</ion-select-option>
+                <ion-select-option class="personalizar-option" value="vegetariano">#DASH</ion-select-option>
+              </ion-select>
+            </div>
+
+            <!-- <div class="form-group">
+              <ion-label >Desafio</ion-label>
+              <ion-input type="text" formControlName="challenge" class="bordaInferior" ></ion-input>
+              
+            </div> -->
+
+              <div class="form-group">
+                <ion-label>Adicione uma legenda</ion-label>
+                <ion-input type="text" formControlName="subtitle" class="bordaInferior" ></ion-input>
+                
+              </div>
+
+
+            <div class="form-group">
+              <ion-label>Ingredientes</ion-label>
+              <ion-textarea formControlName="ingredients" ></ion-textarea>
+              
+            </div>
+
+          <div class="form-group">
+              <ion-label>Modo de preparo</ion-label>
+              <ion-textarea formControlName="preparation_mode" ></ion-textarea>    
+              <ion-row>
+                <ion-col>
+                  <div class="ion-text-end">
+                    <p>máx. 600 caracteres</p>
+                  </div>
+                  
+                </ion-col>
+                
+            </ion-row> 
+          </div>
+        
+
+
+            <ion-row class=ion-justify-content-center>
+              <ion-button type="submit" class="botao" shape="round" [disabled]="recipeForm.invalid" >Cadastrar</ion-button>
+            </ion-row>
+         
+        
+      
+    </form>
+  </div>
+    
+
+</ion-content>
