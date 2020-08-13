@@ -11,20 +11,43 @@ ion-toolbar{
 
 .segmentColor{
     --background: white;
-    border-radius: 200px;
-    width: 90%;
-    margin: 6%;
 }
 .div {
     color:white;
 }
 
 ion-button{
-    margin: 6% 10% 6% 8%;
+    margin: 6% 6% 6% 6%;
+    display: inline-block;
+    border-radius: 100px;
+    width: 30%;
+    height: 30%;
+    --background: #208579;
+
 }
-.following{
-    margin-left: 20%;
+
+ion-card{
+    height: 1000%;
+    width: 1000%;
+}
+
+img {
+    border-radius: 50%;
+    width: 40%;
+}
+.avatar{
+    display: flex;
+    justify-content: inline-flex;
+    flex-direction: column;
+    width: 15%;
+    margin: 6% 6% 6% 6%;
+}
+
+.name {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
 }
 ion-item{
-    border-radius: 20px;
+    --background: white;
 }

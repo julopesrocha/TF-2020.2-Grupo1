@@ -7,12 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FollowUsersPage implements OnInit {
   follow: string;
+  clicarSeguir= true;
+  clicarSeguindo = true;
 
   constructor() { }
 
-  ionViewWillEnter(){
-      this.follow = "following"
-  }
 
   ngOnInit() {}
 }
