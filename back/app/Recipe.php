@@ -10,17 +10,17 @@ class Recipe extends Model
 {
     // Create
     public function createRecipe(RecipeRequest $request) {
-        $this->name = $request->name;
+        $this->title = $request->title;
         $this->ingredients = $request->ingredients;
         $this->preparation = $request->preparation;
-        $this->caption = $request->caption;
+        $this->subtitle = $request->subtitle;
         $this->save();
     }
 
     // Update
     public function updateRecipe(RecipeRequest $request) {
-        if ($request->name) {
-            $this->name = $request->name;
+        if ($request->title) {
+            $this->title = $request->title;
         }
         if ($request->ingredients) {
             $this->ingredients = $request->ingredients;
@@ -28,8 +28,8 @@ class Recipe extends Model
         if ($request->preparation) {
             $this->preparation = $request->preparation;
         }
-        if ($request->caption) {
-            $this->caption = $request->caption;
+        if ($request->subtitle) {
+            $this->subtitle = $request->subtitle;
         }
         $this->save();
     }
