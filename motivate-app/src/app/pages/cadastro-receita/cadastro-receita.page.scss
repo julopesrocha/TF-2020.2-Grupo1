@@ -15,17 +15,6 @@ ion-label{
     font-size: 1.1em;
 }
 
-ion-item ion-label{
-    font-family: 'Montserrat', sans-serif;
-    color: white;
-}
-
- 
-ion-radio{
-    --color-checked: black;
-    --color:black;
-    border: none;
-}
 
 ion-input{
     --color: white;
@@ -40,12 +29,6 @@ ion-textarea{
     font-family: 'Montserrat', sans-serif;
 }
 
-
-
-ion-select-option{
-    font-family: 'Montserrat', sans-serif;
-    --color: white;
-}
 
 ion-button{
     --background: #123C62;
@@ -88,14 +71,6 @@ p{
     width: 30vw;
 }
 
-.divRadio{
-    margin-top:5%;
-    width: 70vw;
-    border-radius: 8px;
-    border: 2px solid white;
-    margin-left: 15%;
-
-}
 
 .bordaInferior{
     border-bottom: 0.095em solid #FFFFFF;
@@ -120,7 +95,7 @@ p{
     border: 1px solid white;
   
 }
-.personalizar-option{
-    --background: #fff;
-    --color: white;
+
+.iconCamera{
+    color: white;
 }
