@@ -31,21 +31,23 @@ class ChallengeRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'min:2|max: 20',
+            'title' => 'min:2|max: 20',
             'description' => 'min:2|max:500',
-            'tag' => 'min:3|max:30',
+            'about' => 'min:2|max:300',
+            'recommendation' => 'max:500',
         ];
     }
 
     public function messages(){
         return [
             // Mensagens personalizadas
-            'name.min' => 'O nome deve conter no mínimo 3 digitos',
-            'name.max' => 'O nome deve conter no máximo 80 digitos',
-            'description.min' => 'A descrição deve conter no mínimo 3 digitos',
+            'title.min' => 'O título deve conter no mínimo 2 digitos',
+            'title.max' => 'O título deve conter no máximo 20 digitos',
+            'description.min' => 'A descrição deve conter no mínimo 2 digitos',
             'description.max' => 'A descrição conter no máximo 500 digitos',
-            'tag.min' => 'A tag deve conter no mínimo 3 digitos',
-            'tag.max' => 'A tag deve conter no máximo 30 digitos',
+            'about.min' => 'O \'sobre\' deve conter no mínimo 2 digitos',
+            'about.max' => 'O \'sobre\' conter no máximo 300 digitos',
+            'recommendation.max' => 'A Recomendação conter no máximo 500 digitos',
         ];
     }
 }
