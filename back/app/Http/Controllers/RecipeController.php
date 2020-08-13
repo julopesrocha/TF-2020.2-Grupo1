@@ -5,17 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Recipe;
 use App\User;
+use App\Challenge;
 use Auth;
 use App\Http\Requests\RecipeRequest;
 
 class RecipeController extends Controller
 {
     //Create
-    public function postRecipe(RecipeRequest $request, $challenge_id){
+    public function postRecipe(RecipeRequest $request){
         $user = Auth::user();
         $newRecipe = new Recipe;
         $newRecipe->createRecipe($request);
         $newRecipe->setUser($user->id);
+        $challenge_id = Challenge::where('name',$request->challenge)->get()[0]->id;
         $newRecipe->setChallenge($challenge_id);
         return response()->json([$newRecipe], 200);
     }
