@@ -6,6 +6,7 @@ ion-toolbar{
     justify-content:space-between;
     flex-direction: row;
     margin: 3%;
+    background-color:white;
 }
 .close{
     margin-right: 3%;
@@ -30,6 +31,9 @@ ion-toolbar{
     font-size: 30px;
     text-align: center;
     margin: 3%;
+    padding-top: 10%;
+    padding-left: 6%;
+    padding-right: 6%;
 }
 
 .subtitles{
