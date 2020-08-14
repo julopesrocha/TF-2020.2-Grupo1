@@ -40,7 +40,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function createUser(UserRequest $request){
+    public function createUser(UserRequest $request) {
         $this->name = $request->name;
         $this->email = $request->email;
         $this->password = bcrypt($request->password);
@@ -52,13 +52,42 @@ class User extends Authenticatable
         return $this;
     }
 
+    public function updateUser(userRequest $request) {
+        if ($request->name) {
+            $this->name = $request->name;
+        }
+        if ($request->email) {
+            $this->email = $request->email;
+        }
+        if ($request->password) {
+            $this->password = $request->password;
+        }
+        if ($request->photo) {
+            $this->photo = $request->photo;
+        }
+        if ($request->gender) {
+            $this->gender = $request->gender;
+        }
+        if ($request->date_of_birth) {
+            $this->date_of_birth = $request->date_of_birth;
+        }
+        $this->save();
+    }
+
     public function recipes() {
-        $this->hasMany('App/Recipe');
+        return $this->hasMany('App/Recipe');
     }
 
-    // Relação da postagem de comentários com a comments
+    // Relação da postagem de comentários com as comments
     public function commentsMadeByUser(){
-        $this->hasMany('App\Comment');    
+        return $this->hasMany('App\Comment');    
     }
 
+    public function follower(){
+        return $this->belongsToMany('App\User', 'follows', 'follower_id',  'following_id');    
+    }
+
+    public function following(){
+        return $this->belongsToMany('App\User', 'follows', 'following_id', 'follower_id');
+    }
 }

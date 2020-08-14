@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">motivate</string>
+    <string name="title_activity_main">motivate</string>
+    <string name="package_name">com.io.ionic.starter.motivate</string>
+    <string name="custom_url_scheme">com.io.ionic.starter.motivate</string>
+</resources>

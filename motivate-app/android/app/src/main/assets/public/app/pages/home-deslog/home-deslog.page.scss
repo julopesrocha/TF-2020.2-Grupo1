@@ -1,0 +1,66 @@
+//CSS da Toolbar //
+
+ion-toolbar{
+  --background: linear-gradient(#10A7A1, #123C62);
+}
+
+.toolbar{
+   margin-top: 1%;
+   margin-bottom: 2%;
+   margin-left: 17%;
+   margin-right: 10%;
+}
+
+.logo {
+    width: 20%;
+    height: 5vh;
+    margin: 10px 5px 10px;
+
+    text-align: center;
+}
+.motivate{
+    width: 50%;
+    height: 3vh;
+    margin: 5px 5px;
+    margin-bottom: 10px;
+    text-align: center;
+
+}
+
+//CSS do botao de login e cadastro//
+.button{
+   margin-top:2%;
+   
+}
+
+.login{
+    margin-left: 20px;
+    color: white;
+}
+.register{
+    color: white;
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+ion-button{
+    --background:#123C62;
+    --background-activated:
+}
+//Texto do home logado //
+h4 {
+    margin: 30px 10px 30px 35px;
+}
+
+
+//Mudançar de cores na tab bar//
+ion-label {
+    color: white;
+}
+ion-tab-bar{
+      --background: linear-gradient(#10A7A1, #123C62);
+}
+
+ion-icon {
+    color: white;
+}
