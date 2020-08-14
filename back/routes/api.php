@@ -26,10 +26,10 @@ Route::POST('register', 'API\PassportController@register');
 route::POST('login', 'API\PassportController@login');
 
 Route::group(['middleware' =>'auth:api'], function(){
-    
+
     // Usuário
     Route::GET('logout', 'API\PassportController@logout');
-    Route::POST('getDetails', 'API\PassportController@getDetails');
+    Route::GET('getDetails', 'API\PassportController@getDetails');
 
     //Receita
     Route::POST('postRecipe', 'RecipeController@postRecipe');
