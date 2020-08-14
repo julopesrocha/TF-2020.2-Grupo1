@@ -34,8 +34,14 @@ export class AuthService {
         this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('userToken');
         console.log(this.httpHeaders);
         return this.http.get(this.apiUrl + 'logout', this.httpHeaders);
+  }
 
-    }
+  public showMyDetails(): Observable <any>{
+    this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('userToken');
+    console.log(this.httpHeaders);
+
+    return this.http.get(this.apiUrl + 'getDetails', this.httpHeaders);
+  }  
 
   // public createRecipe(form): Observable<any> {
   //   this.httpHeaders.headers['Authorization'] = "Bearer" + localStorage.getItem('userToken');
