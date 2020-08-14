@@ -6,7 +6,6 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Http\Requests\UserRequest;
-
 use Laravel\Passport\HasApiTokens;
     
 class User extends Authenticatable
@@ -44,10 +43,14 @@ class User extends Authenticatable
     public function createUser(UserRequest $request){
         $this->name = $request->name;
         $this->email = $request->email;
-        $this->password = $request->password;
+        $this->password = bcrypt($request->password);
         $this->photo = $request->photo;
         $this->gender = $request->gender;
-        $this->dateOfBirth = $request->dateOfBirth;
+        $this->date_of_birth = $request->date_of_birth;
         $this->save();
+    }
+
+    public function recipes() {
+        $this->hasMany('App/Recipe');
     }
 }
