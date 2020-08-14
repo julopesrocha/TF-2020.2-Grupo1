@@ -26,4 +26,5 @@ class UserController extends Controller
         }
         return response()->json(['ERRO: Você não pode seguir você mesmo']);
     }
+    
 }
