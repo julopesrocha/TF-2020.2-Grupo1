@@ -1,14 +1,58 @@
-<ion-header>
-  <ion-toolbar>
-      <div class="toolbar">
-        </div>
-  </ion-toolbar>
-</ion-header>
-
+<div class="backgroundTop">
+    <div class="toolbar">
+        <ion-icon (click)="navigateTobackHome()" name="chevron-back-outline" size="large" style="float: left" class="back"></ion-icon>
+    </div>
+</div>
 <ion-content>
+    <div class="backgroundTop">
+        <div class="paddingTitle">
+            <p>Desafios</p>
+        </div>
 
- <ion-button (click)="logout()">
-   Deslogar
- </ion-button>
+        <div class="img">
+            <img style="float: center" src="../assets/desafio.png" class="challengeAlign">
+        </div>
+    </div>
+    <ion-card id="cardBackground1">
+        <div class="text">
+            <h6 style="300"> Desafio low carb </h6>
+            <ion-button (click)="navigateToLowCarb()" id="cardButton1"  shape="round"> Ver mais </ion-button>
+        </div>
+        <div class="image">
+            <img style="float: right" src="../../assets/lowcarb.jpg" alt="pirâmide alimentar">
+        </div>
+    </ion-card>
+
+    <!-- Desafio redução de açúcar -->
+    <ion-card id="cardBackground2">
+        <div class="text">
+            <h6 style="300"> Desafio redução de açúcar </h6>
+            <ion-button id="cardButton2"  shape="round"> Ver mais </ion-button>
+        </div>
+        <div class="image">
+            <img style="float: right" src="../../assets/sugarFree.jpg" alt="coração com escrita sugar free">
+        </div>
+    </ion-card>
+    <!-- Desafio veganismo -->
+    <ion-card id="cardBackground3">
+        <div class="text">
+            <h6 style="300"> Desafio Veganismo </h6>
+            <ion-button id="cardButton3" shape="round"> Ver mais </ion-button>
+        </div>
+        <div class="image">
+            <img style="float: right" id="cardButton3" src="../../assets/goVegan.jpg" alt="pirâmide alimentar">
+        </div>
+    </ion-card>
+    <!-- Desafio  -->
+    <ion-card id="cardBackground4">
+        <div class="text">
+            <h6 style="300"> Desafio Veganismo </h6>
+            <ion-button id="cardButton4" shape="round"> Ver mais </ion-button>
+        </div>
+        <div class="image">
+            <img style="float: right" src="../../assets/goVegan.jpg" alt="pirâmide alimentar">
+        </div>
+    </ion-card>
 
 </ion-content>
+>>>>>>> fcb0902407052305c82f9326aa6a95915278ba15

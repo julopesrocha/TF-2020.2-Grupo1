@@ -1,0 +1,46 @@
+ion-card{
+    font-size: 18px;
+    text-align: left;
+    border-radius: 15px;
+    margin: 0 8% 8% 8% ;
+    display: flex;
+}
+ion-button{
+    margin: 5%;
+    display: inline-block;
+    --background:#235685;
+}
+
+h5{
+    margin: 5%;
+    font-weight: bold;
+    color: black;
+
+}
+
+img{
+    border-radius: 15px;
+    height: 100%;
+    width: 100%;
+
+}
+
+.text{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    width: 45%;
+    margin-top: 3%;
+    margin-left: 3%;
+    margin-bottom: 3%;
+}
+.image {
+    display: flex;
+    justify-content:flex-end;
+    width: 50%;
+    margin-left: 4%;
+}
+
+#cardBackground {
+    --background: #C3EAE8;
+}

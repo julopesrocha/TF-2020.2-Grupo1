@@ -31,10 +31,10 @@ Route::POST('register', 'API\PassportController@register');
 route::POST('login', 'API\PassportController@login');
 
 Route::group(['middleware' =>'auth:api'], function(){
-    
+
     // Usuário
-    Route::POST('getDetails', 'API\PassportController@getDetails');
     Route::GET('logout', 'API\PassportController@logout');
+    Route::GET('getDetails', 'API\PassportController@getDetails');
 
     // Receita
     Route::POST('postRecipe', 'RecipeController@postRecipe');
@@ -45,7 +45,7 @@ Route::group(['middleware' =>'auth:api'], function(){
     Route::POST('postComment/{recipe_id}', 'CommentController@postComment');
     Route::PUT('updateComment/{comment_id}', 'CommentController@updateComment');
     Route::DELETE('deleteComment/{comment_id}', 'CommentController@deleteComment')->middleware('deleteComment');
-    
+
     // Desafio
     Route::POST('postChallenge', 'ChallengeController@postChallenge')->middleware('challengeAdmin');
     Route::PUT('updateChallenge/{challenge_id}', 'ChallengeController@updateChallenge')->middleware('challengeAdmin');
