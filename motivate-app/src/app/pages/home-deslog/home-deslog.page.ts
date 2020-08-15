@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-deslog',
@@ -8,10 +9,16 @@ import { Component, OnInit } from '@angular/core';
 export class HomeDeslogPage implements OnInit {
 
 
-
-  constructor() {}
-
+  constructor(private router: Router) {}
 
   ngOnInit() {}
+
+  GoToRegister(){
+    this.router.navigate(['/cadastro-usuario']);
+  }
+
+  GoToLogin(){
+    this.router.navigate(['/login']);
+  }
 
 }

@@ -21,7 +21,18 @@ const routes: Routes = [
   {
     path: 'follow-users',
     loadChildren: () => import('./pages/follow-users/follow-users.module').then( m => m.FollowUsersPageModule)
-  }
+  },
+  {
+    path: 'challenge-page',
+    loadChildren: () => import('./pages/challenge-page/challenge-page.module').then( m => m.ChallengePagePageModule)
+  },
+   {
+    path: 'cadastro-desafio',
+    loadChildren: () => import('./pages/cadastro-desafio/cadastro-desafio.module').then( m => m.CadastroDesafioPageModule)
+  },
+  {
+    path: 'cadastro-receita',
+    loadChildren: () => import('./pages/cadastro-receita/cadastro-receita.module').then( m => m.CadastroReceitaPageModule)
 
 
 ];

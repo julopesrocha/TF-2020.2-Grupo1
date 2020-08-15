@@ -1,28 +1,21 @@
-
-<ion-header>
-  <ion-toolbar>
-    <ion-row class="ion-justify-content-start transparencia">
-      <ion-icon size="large" name="chevron-back-outline" ></ion-icon>
-    </ion-row>
-  </ion-toolbar>
-  
-</ion-header>
-
 <ion-content >
+    <ion-row class="ion-justify-content-start transparencia" class="toolbar">
+      <ion-icon (click)="GoToHome()" size="large" name="chevron-back-outline" class="back"></ion-icon>
+    </ion-row>
 
   <ion-grid>
     <ion-row class="ion-justify-content-center">
       <ion-col size="5">
-        
+
           <img src="/assets/logo.png" alt="">
-        
+
       </ion-col>
     </ion-row>
     <ion-row class="ion-justify-content-center">
       <ion-col size="5">
-        
+
           <img src="/assets/motivate.png" alt="">
-        
+
       </ion-col>
     </ion-row>
 
@@ -36,7 +29,7 @@
 
   </ion-grid>
 
- 
+
     <div class="divForm">
       <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm) " class="background">
 
@@ -45,15 +38,15 @@
               <ion-input type="text" formControlName="name" class="bordaInferior" [ngClass]="{ 'is-invalid': submitted && f.name.errors }"></ion-input>
 
               <div  *ngIf="submitted && f.name.errors" class="invalid-feedback aviso">
-                <div  *ngIf="f.name.errors.required"> Esse campo é obrigatório.</div>
+                <div  *ngIf="f.name.errors.required" class="errorMargin"> Esse campo é obrigatório.</div>
               </div>
             </div>
 
             <div class="form-group">
               <ion-label >Data de nascimento</ion-label>
-              <ion-input type="text" formControlName="dateOfBirth" class="bordaInferior" [brmasker]="{mask:'00/00/0000', len:10} " [ngClass]="{ 'is-invalid': submitted && f.dateOfBirth.errors }" ></ion-input>
-              <div  *ngIf="submitted && f.dateOfBirth.errors" class="invalid-feedback aviso">
-                <div  *ngIf="f.dateOfBirth.errors.required"> Esse campo é obrigatório.</div>
+              <ion-input type="text" formControlName="date_of_birth" class="bordaInferior" [brmasker]="{mask:'00/00/0000', len:10} " [ngClass]="{ 'is-invalid': submitted && f.date_of_birth.errors }" ></ion-input>
+              <div  *ngIf="submitted && f.date_of_birth.errors" class="invalid-feedback aviso">
+                <div  *ngIf="f.date_of_birth.errors.required" class="errorMargin"> Esse campo é obrigatório.</div>
               </div>
             </div>
 
@@ -64,60 +57,63 @@
                 <ion-label>Email</ion-label>
                 <ion-input type="email" formControlName="email" class="bordaInferior" [ngClass]="{ 'is-invalid': submitted && f.email.errors }"></ion-input>
                 <div  *ngIf="submitted && f.email.errors" class="invalid-feedback aviso">
-                    <div *ngIf="f.email.errors.required">Esse campo é obrigatório!</div>
-                    <div *ngIf="f.email.errors.email">Este email não é valido.</div>
+                    <div *ngIf="f.email.errors.required" class="errorMargin" >Esse campo é obrigatório!</div>
+                    <div *ngIf="f.email.errors.email" class="errorMargin">Este email não é valido.</div>
                 </div>
               </div>
+
+
+
 
             <div class="form-group">
               <ion-label>Senha</ion-label>
               <ion-input type="password" formControlName="password" class="bordaInferior" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"></ion-input>
               <div  *ngIf="submitted && f.password.errors" class="invalid-feedback aviso">
-                  <div *ngIf="f.password.errors.required">Esse campo é obrigatório</div>
-                  <div *ngIf="f.password.errors.minlength">Mínimo de 8 caracters.</div>
+                  <div *ngIf="f.password.errors.required" class="errorMargin" >Esse campo é obrigatório</div>
+                  <div *ngIf="f.password.errors.minlength" class="errorMargin" >Mínimo de 6 caracters.</div>
               </div>
             </div>
           <div class="form-group">
               <ion-label>Confirmação de senha</ion-label>
-              <ion-input type="password" formControlName="passwordConfirmation" class="bordaInferior" [ngClass]="{ 'is-invalid': submitted && f.passwordConfirmation.errors }" ></ion-input>
-              <div  *ngIf="submitted && f.passwordConfirmation.errors" class="invalid-feedback aviso">
-                  <div *ngIf="f.passwordConfirmation.errors.required">Esse campo é obrigatório</div>
-                  <div *ngIf="f.passwordConfirmation.errors.mustMatch">As senhas estão diferentes</div>
+              <ion-input type="password" formControlName="confirm_password" class="bordaInferior" [ngClass]="{ 'is-invalid': submitted && f.confirm_password.errors }" ></ion-input>
+              <div  *ngIf="submitted && f.confirm_password.errors" class="invalid-feedback aviso">
+                  <div *ngIf="f.confirm_password.errors.required" class="errorMargin" >Esse campo é obrigatório</div>
+                  <div *ngIf="f.confirm_password.errors.mustMatch"class="errorMargin" >As senhas estão diferentes</div>
               </div>
           </div>
-        
 
-              <ion-radio-group formControlName="status">  
-                
+
+              <ion-radio-group formControlName="gender">
+
                   <ion-label >Gênero</ion-label>
-                
+
                   <div class="divRadio">
                     <ion-item class="transparencia">
                       <ion-label >Feminino</ion-label>
                       <ion-radio slot="start" value="female"></ion-radio>
                     </ion-item>
-    
+
                     <ion-item class="transparencia">
                       <ion-label >Masculino</ion-label>
                       <ion-radio slot="start" value="male"></ion-radio>
                     </ion-item>
-    
+
                     <ion-item class="transparencia">
                       <ion-label >Outros</ion-label>
                       <ion-radio slot="start" value="others"></ion-radio>
                     </ion-item>
                   </div>
-                  
+
               </ion-radio-group>
 
             <ion-row class=ion-justify-content-center>
               <ion-button type="submit" color="dark" class="botao" shape="round" [disabled]="registerForm.invalid" >Cadastrar</ion-button>
             </ion-row>
-         
-        
-      
+
+
+
     </form>
   </div>
-    
+
 
 </ion-content>
