@@ -12,7 +12,7 @@ export class ChallengePagePage implements OnInit {
   constructor(private router: Router) {}
 
   navigateTochallengeList() {
-      this.router.navigate(['/tabs/desafios']);
+      this.router.navigate(['/tabs/tabs1']);
   }
 
   navigateTobackHome(){

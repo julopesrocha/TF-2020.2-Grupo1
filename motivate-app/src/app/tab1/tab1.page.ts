@@ -11,20 +11,23 @@ import { ChallengeServiceService } from '../services/challenge-service.service';
 })
 export class Tab1Page {
 
-  constructor(public authservice: AuthService, private router: Router) {}
+    challenges = [];
 
-  logout() {
-    this.authservice.logout().subscribe(
-        (res) => {
-            console.log(res);
-            localStorage.removeItem('userToken');
-            localStorage.removeItem('Usuario');
+  constructor(public authservice: AuthService, private router: Router, public challengeServiceService: ChallengeServiceService,) {
+      this.listChallenges();
+  }
 
-            this.router.navigate(['/tabs/home']);
-            console.log("Você saiu!!");
-        }
-    );
-}
+  listChallenges(){
+     this.challengeServiceService.getListChallenges().subscribe(
+       (res)=>{
+         console.log(res);
+         this.challenges = res;
+       },
+       (err)=>{
+         console.log(err);
+       }
+     );
+   }
 
     navigateToLowCarb() {
         this.router.navigate(['/challenge-page']);
@@ -33,4 +36,7 @@ export class Tab1Page {
     navigateTobackHome(){
         this.router.navigate(['/tabs/home'])
     }
+
+    ngOnInit(){}
+
 }

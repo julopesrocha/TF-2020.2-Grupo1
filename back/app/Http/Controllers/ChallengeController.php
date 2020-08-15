@@ -23,7 +23,7 @@ class ChallengeController extends Controller
 
     public function listChallenges() {
         $challengeList = Challenge::all();
-        return response()->json([$challengeList], 200);
+        return response()->json($challengeList, 200);
     }
 
     //Update
