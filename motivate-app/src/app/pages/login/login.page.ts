@@ -59,7 +59,10 @@ export class LoginPage implements OnInit {
       }
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> gabriela_cadastroReceita_front
   GoToRegister(){
     this.router.navigate(['/cadastro-usuario']);
   }
