@@ -1,0 +1,43 @@
+<ion-content *ngIf="challenge">
+    <div class="toolbar">
+        <ion-icon (click)="navigateTobackHome()" name="chevron-back-outline" size="large" style="float: left" class="back"></ion-icon>
+        <ion-icon (click)="navigateTochallengeList()" name="close-outline" size="large" style="float: right" class="close"></ion-icon>
+    </div>
+    <div class="title">
+        <!--{{challenge.title}}-->
+    </div>
+    <div>
+        <img  class="img" src="../../assets/low-carb.png">
+    </div>
+    <div class="madeByUser">
+        oi
+    </div>
+    <div class="recipeOf">
+        Receita de <!--{{challenge.title}} --> Desafio low carb
+    </div>
+<!-- Legenda -->
+    <div class="subtitles"> Legenda: </div>
+        <div class="subtitle" class="spaceFormat">
+            <div class="text">
+                {{recipe.subtitle}}
+            </div>
+        </div>
+<!-- Ingredientes  -->
+    <div class="subtitles"> Ingredientes : </div>
+        <div class="ingredients" class="spaceFormat">
+            <div class="text">
+              <!--{{challenge.description}}--> oi
+             </div>
+        </div>
+<!-- Modo de preparo -->
+    <div class="subtitles"> Modo de preparo : </div>
+        <div class="preparation" class="spaceFormat">
+            <div class="text">
+                <!--{{recipe.preparation}} --> oi
+            </div>
+        </div>
+<!-- Comentários -->
+    <div class="subtitles"> Comentários </div>
+    <div class="commentstMergin">
+    </div>
+</ion-content>
