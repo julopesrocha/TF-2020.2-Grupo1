@@ -22,11 +22,11 @@ export class AuthService {
   }
 
   public register(form): Observable<any>{
-    return this.http.post(this.apiUrl + 'register', form, this.httpHeaders);
+    return this.http.post(this.apiUrl + 'register', form);
   }
 
   public login(form): Observable<any>{
-    return this.http.post(this.apiUrl + 'login', form, this.httpHeaders);
+    return this.http.post(this.apiUrl + 'login', form );
   }
 
   public logout(): Observable<any> {
@@ -38,7 +38,7 @@ export class AuthService {
 
   public showMyDetails(): Observable <any>{
     this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('userToken');
-    console.log(this.httpHeaders);
+    // console.log(this.httpHeaders);
 
     return this.http.get(this.apiUrl + 'getDetails', this.httpHeaders);
   }  

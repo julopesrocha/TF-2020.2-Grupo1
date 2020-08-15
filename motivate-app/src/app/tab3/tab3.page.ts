@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {AuthService } from '../services/auth.service';
 import {Router} from '@angular/router';
-import { DSAKeyPairKeyObjectOptions } from 'crypto';
+
 
 @Component({
   selector: 'app-tab3',
@@ -22,7 +22,7 @@ export class Tab3Page {
         (res) => {
             console.log(res);
             console.log("Esse é você");
-            this.usuario = res;
+            this.usuario = res[0];
         },
         (err) =>{
           console.log(err);
