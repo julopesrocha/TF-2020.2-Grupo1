@@ -46,5 +46,5 @@ class UserController extends Controller
         return response()->json($userFollowing);
 
     }
-
+    
 }
