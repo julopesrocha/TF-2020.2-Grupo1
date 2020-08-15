@@ -12,37 +12,7 @@
             <img style="float: center" src="../assets/desafio.png" class="challengeAlign">
         </div>
     </div>
-     <app-challange-card [challenge]="challenge" (clickSeeMore)="navigateToLowCarb($event)" *ngFor="let challenge of challenges"> </app-challange-card>
-
-    <!-- Desafio redução de açúcar
-    <ion-card id="cardBackground2">
-        <div class="text">
-            <h6 style="300"> {{challenge.name}} </h6>
-            <ion-button id="cardButton2"  shape="round"> Ver mais </ion-button>
-        </div>
-        <div class="image">
-            <img style="float: right" src="../../assets/sugarFree.jpg" alt="coração com escrita sugar free">
-        </div>
-    </ion-card>
-    <!-- Desafio veganismo
-    <ion-card id="cardBackground3">
-        <div class="text">
-            <h6 style="300"> {{challenge.name}}</h6>
-            <ion-button id="cardButton3" shape="round"> Ver mais </ion-button>
-        </div>
-        <div class="image">
-            <img style="float: right" id="cardButton3" src="../../assets/goVegan.jpg" alt="pirâmide alimentar">
-        </div>
-    </ion-card>
-    <!-- Desafio
-    <ion-card id="cardBackground4">
-        <div class="text">
-            <h6 style="300"> {{challenge.name}} </h6>
-            <ion-button id="cardButton4" shape="round"> Ver mais </ion-button>
-        </div>
-        <div class="image">
-            <img style="float: right" src="../../assets/goVegan.jpg" alt="pirâmide alimentar">
-        </div>
-    </ion-card> -->
-
+    <div class="challengeCard">
+        <app-challange-card [challenge]="challenge" (clickSeeMore)="navigateToLowCarb($event)" *ngFor="let challenge of challenges"> </app-challange-card>
+    </div>
 </ion-content>

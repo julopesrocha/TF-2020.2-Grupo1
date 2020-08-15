@@ -1,13 +1,8 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-row class="ion-justify-content-start transparencia">
-      <ion-icon (click)="GoToHome()" size="large" name="chevron-back-outline" ></ion-icon>
-    </ion-row>
-  </ion-toolbar>
-
-</ion-header>
 
 <ion-content >
+    <ion-row class="ion-justify-content-start transparencia" class="toolbar">
+      <ion-icon (click)="GoToHome()" size="large" name="chevron-back-outline" class="back" ></ion-icon>
+    </ion-row>
 
   <ion-grid>
     <ion-row class="ion-justify-content-center">
@@ -44,8 +39,8 @@
                 <ion-label>Email</ion-label>
                 <ion-input type="email" formControlName="email" class="bordaInferior" [ngClass]="{ 'is-invalid': submitted && f.email.errors }"></ion-input>
                 <div  *ngIf="submitted && f.email.errors" class="invalid-feedback aviso">
-                    <div *ngIf="f.email.errors.required">Esse campo é obrigatório!</div>
-                    <div *ngIf="f.email.errors.email">Este email não é valido.</div>
+                    <div *ngIf="f.email.errors.required" class="errorMargin">Esse campo é obrigatório!</div>
+                    <div *ngIf="f.email.errors.email"class="errorMargin">Este email não é valido.</div>
                 </div>
               </div>
               <!-- <ion-label >Email</ion-label>
