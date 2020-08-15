@@ -33,8 +33,9 @@ route::POST('login', 'API\PassportController@login');
 Route::group(['middleware' =>'auth:api'], function(){
 
     // Usuário
+    Route::POST('getDetails', 'API\PassportController@getDetails');
     Route::GET('logout', 'API\PassportController@logout');
-    Route::GET('getDetails', 'API\PassportController@getDetails');
+    Route::PUT('editUserProfile', 'UserController@editUserProfile');
 
     // Receita
     Route::POST('postRecipe', 'RecipeController@postRecipe');

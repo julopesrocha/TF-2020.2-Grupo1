@@ -25,7 +25,15 @@ const routes: Routes = [
   {
     path: 'challenge-page',
     loadChildren: () => import('./pages/challenge-page/challenge-page.module').then( m => m.ChallengePagePageModule)
-  }
+  },
+  {
+    path: 'challenge-page',
+    loadChildren: () => import('./pages/challenge-page/challenge-page.module').then( m => m.ChallengePagePageModule)
+   },
+   {
+    path: 'cadastro-receita',
+    loadChildren: () => import('./pages/cadastro-receita/cadastro-receita.module').then( m => m.CadastroReceitaPageModule)
+    }
 
 
 ];
