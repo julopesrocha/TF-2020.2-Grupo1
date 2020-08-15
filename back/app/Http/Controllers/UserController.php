@@ -22,7 +22,7 @@ class UserController extends Controller
             } 
             else {
                 $user->follower()->attach($userFollowing->id);
-                return response()->json(['follwing'=>$userFollowing], 200);
+                return response()->json(['following'=>$userFollowing], 200);
             }
         }
         return response()->json(['error'=>'You can\'t follow yourself'], 422);
@@ -33,18 +33,4 @@ class UserController extends Controller
         $user->updateUser($request);
         return response()->json(['user'=>$user], 200);
     }
-
-    public function getFollowers(){
-        $user = Auth::user();
-        $userFollower = $user->follower()->get();
-        return response()->json($userFollower);
-    }
-    
-    public function getFollowing(){
-        $user = Auth::user();
-        $userFollowing = $user->following()->get();
-        return response()->json($userFollowing);
-
-    }
-
 }

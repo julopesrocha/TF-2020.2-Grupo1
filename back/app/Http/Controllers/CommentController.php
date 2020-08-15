@@ -17,23 +17,23 @@ class CommentController extends Controller
         $newComment->postComment($request);
         $newComment->setUser($user->id);
         $newComment->setRecipe($recipe_id);
-        return response()->json($newComment);
+        return response()->json(['success' => $newComment], 200);
     }
     
     public function updateComment(CommentRequest $request, $id){
         $user = Auth::user();
         $comment = Comment::findOrFail($id);
         $comment->updateComment($request);
-        return response()->json($comment);
+        return response()->json(['success' => $comment], 200);
     }
 
     public function getComment($id){
         $comment = Comment::findOrFail($id);
-        return response()->json($comment);
+        return response()->json(['success' => $comment], 200);
     }
 
     public function deleteComment($comment_id){
         Comment::destroy($comment_id);
-        return response()->json(['O seu comentário foi deletado com sucesso.']);
+        return response()->json(['success' => 'Your comment has been successfully deleted.'], 200);
     }
 }
