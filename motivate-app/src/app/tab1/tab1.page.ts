@@ -11,17 +11,5 @@ export class Tab1Page {
 
   constructor(public authservice: AuthService, private router: Router) {}
 
-  logout() {
-    this.authservice.logout().subscribe(
-        (res) => {
-            console.log(res);
-            localStorage.removeItem('userToken');
-            localStorage.removeItem('Usuario');
-            
-            this.router.navigate(['/tabs/home']);
-            console.log("Você saiu!!");
-        }
-    );
-}
 
 }
