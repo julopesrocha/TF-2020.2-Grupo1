@@ -19,13 +19,18 @@ const routes: Routes = [
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: 'cadastro-receita',
-    loadChildren: () => import('./pages/cadastro-receita/cadastro-receita.module').then( m => m.CadastroReceitaPageModule)
-  },
-  {
     path: 'challenge-page',
     loadChildren: () => import('./pages/challenge-page/challenge-page.module').then( m => m.ChallengePagePageModule)
-  }
+  },
+   {
+    path: 'cadastro-desafio',
+    loadChildren: () => import('./pages/cadastro-desafio/cadastro-desafio.module').then( m => m.CadastroDesafioPageModule)
+  },
+  {
+    path: 'cadastro-receita',
+    loadChildren: () => import('./pages/cadastro-receita/cadastro-receita.module').then( m => m.CadastroReceitaPageModule)
+    }
+
 
 ];
 @NgModule({

@@ -55,7 +55,7 @@ export class LoginPage implements OnInit {
             this.presentToast();
           }
         }
-        )
+        );
       }
 
 
