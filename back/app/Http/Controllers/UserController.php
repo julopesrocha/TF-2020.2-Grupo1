@@ -33,4 +33,18 @@ class UserController extends Controller
         $user->updateUser($request);
         return response()->json(['user'=>$user], 200);
     }
+
+    public function getFollowers(){
+        $user = Auth::user();
+        $userFollower = $user->follower()->get();
+        return response()->json($userFollower);
+    }
+    
+    public function getFollowing(){
+        $user = Auth::user();
+        $userFollowing = $user->following()->get();
+        return response()->json($userFollowing);
+
+    }
+
 }

@@ -82,11 +82,11 @@ class User extends Authenticatable
     public function commentsMadeByUser(){
         return $this->hasMany('App\Comment');    
     }
-
+    // Relação de seguir usuários
     public function follower(){
         return $this->belongsToMany('App\User', 'follows', 'follower_id',  'following_id');    
     }
-
+    // Relação de usuários sendo seguidos
     public function following(){
         return $this->belongsToMany('App\User', 'follows', 'following_id', 'follower_id');
     }

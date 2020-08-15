@@ -55,5 +55,6 @@ Route::group(['middleware' =>'auth:api'], function(){
 
     // Follow
     Route::POST('followUser/{user_id}', 'UserController@followUser');
-
+    Route::GET('getFollowers', 'UserController@getFollowers');
+    Route::GET('getFollowing', 'UserController@getFollowing');
 });

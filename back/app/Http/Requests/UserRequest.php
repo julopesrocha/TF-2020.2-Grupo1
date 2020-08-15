@@ -35,6 +35,7 @@ class UserRequest extends FormRequest
             'password' => 'min:6|max:15,same:confirm_password',
             'gender' => 'max:6',
             'date_of_birth' => '',
+            'aboutme' => '',
         ];  
 
     }
