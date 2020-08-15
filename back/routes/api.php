@@ -28,7 +28,7 @@ Route::GET('listChallenges', 'ChallengeController@listChallenges');
 
 //Somente autenticado
 Route::POST('register', 'API\PassportController@register');
-route::POST('login', 'API\PassportController@login');
+Route::POST('login', 'API\PassportController@login');
 
 Route::group(['middleware' =>'auth:api'], function(){
     
