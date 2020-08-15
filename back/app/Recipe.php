@@ -63,7 +63,7 @@ class Recipe extends Model
 
     // Relação com o usuário que curte uma receita
     public function likes(){
-        return $this->belongsToMany('App\User', 'likes', 'user_id', 'recipe_id');
+        return $this->belongsToMany('App\Recipe', 'likes', 'user_id', 'recipe_id');
     }
 
     public function likeUp(){

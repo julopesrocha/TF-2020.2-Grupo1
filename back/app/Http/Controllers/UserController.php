@@ -22,7 +22,7 @@ class UserController extends Controller
             } 
             else {
                 $user->follower()->attach($userFollowing->id);
-                return response()->json(['follwing'=>$userFollowing], 200);
+                return response()->json(['following'=> "You're following ". $userFollowing->name], 200);
             }
         }
         return response()->json(['error'=>'You can\'t follow yourself'], 422);
