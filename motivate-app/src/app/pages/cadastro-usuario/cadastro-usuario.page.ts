@@ -36,7 +36,7 @@ doSomething(date) {
       confirm_password:[null, [Validators.required]]
 
     }, { validator: MustMatch('password', 'confirm_password')}
-      
+
     );
    }
 
@@ -53,7 +53,7 @@ doSomething(date) {
     toast.present();
   }
 
-  VaipraHomeDeslog(){
+  GoToHome(){
     this.router.navigate(['/tabs/home']);
   }
 
@@ -74,7 +74,7 @@ doSomething(date) {
 
         if(err.error.email[0]=="Este e-mail já existe"){
 
-          this.presentToast();          
+          this.presentToast();
         }
       }
     );

@@ -1,10 +1,12 @@
 
-<ion-content>
+<ion-content *ngIf="challenge">
     <div class="toolbar">
         <ion-icon (click)="navigateTobackHome()" name="chevron-back-outline" size="large" style="float: left" class="back"></ion-icon>
         <ion-icon (click)="navigateTochallengeList()" name="close-outline" size="large" style="float: right" class="close"></ion-icon>
     </div>
-    <div class="title">Desafio low carb</div>
+    <div class="title">
+        {{challenge.title}}
+    </div>
     <div>
         <img  class="img" src="../../assets/low-carb.png">
     </div>
@@ -13,16 +15,7 @@
     <ion-card>
         <div class="description">
             <div class="text">
-                O desafio low carb tem o objetivo de reduzir o consumo de carboidratos na alimentação, da batata até pizza. Porém, a redução será aos poucos para criar o hábito de  comer menos carboidratos.
-            </div>
-            <div>
-                1º Semana: Substituir sobremesas que tenham carboidrato por frutas.
-            </div>
-            <div>
-                2º Semana: Reduzir a quantidade de carboidrato na janta.
-            </div>
-            <div>
-                3º Semana: Comer apenas um tipode carboidrato na janta.
+              {{challenge.description}}
             </div>
         </div>
     </ion-card>
@@ -30,14 +23,14 @@
     <div class="subtitles"> Saiba mais : </div>
     <ion-card>
         <div class="description">
-            Lore lore lore lore lore lore lore ipsum
+            {{challenge.about}}
         </div>
     </ion-card>
 <!-- Avisos-->
-    <div class="subtitles"> Avisos : </div>
+    <div class="subtitles"> Recomendações: </div>
     <ion-card>
         <div class="description">
-            Lore lore lore lore lore lore lore ipsum
+            {{challenge.recommendation}}
         </div>
     </ion-card>
 <!-- Receitas -->

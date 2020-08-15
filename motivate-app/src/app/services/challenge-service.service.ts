@@ -13,4 +13,8 @@ export class ChallengeServiceService {
   getListChallenges(): Observable<any>{
       return this.http.get(this.apiURL + 'listChallenges');
   }
+  getChallenge(id): Observable<any>{
+      return this.http.get(this.apiURL + 'getChallenge/' + id);
+  }
+
 }

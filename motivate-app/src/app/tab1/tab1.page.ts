@@ -14,7 +14,7 @@ export class Tab1Page {
     challenges = [];
 
   constructor(public authservice: AuthService, private router: Router, public challengeServiceService: ChallengeServiceService,) {
-      this.listChallenges();
+
   }
 
   listChallenges(){
@@ -29,14 +29,16 @@ export class Tab1Page {
      );
    }
 
-    navigateToLowCarb() {
-        this.router.navigate(['/challenge-page']);
+    navigateToLowCarb(id) {
+        this.router.navigate(['/challenge-page'], id);
     }
 
     navigateTobackHome(){
         this.router.navigate(['/tabs/home'])
     }
 
-    ngOnInit(){}
+    ngOnInit(){
+        this.listChallenges();
+    }
 
 }

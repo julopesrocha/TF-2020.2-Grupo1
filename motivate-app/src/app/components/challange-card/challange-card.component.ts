@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-challange-card',
@@ -7,7 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChallangeCardComponent implements OnInit {
 
-  constructor() { }
+@Input() challenge;
+@Output() clickSeeMore = new EventEmitter<number>();
+
+  constructor() {}
+
+      clickToSee(id) {
+          this.clickSeeMore.emit(id);
+        }
 
   ngOnInit() {}
 

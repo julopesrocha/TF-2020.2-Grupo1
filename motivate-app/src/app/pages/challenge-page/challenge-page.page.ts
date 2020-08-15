@@ -9,7 +9,28 @@ import { Router } from '@angular/router';
 })
 export class ChallengePagePage implements OnInit {
 
-  constructor(private router: Router) {}
+    challenge;
+    challengeId;
+
+  constructor(private router: Router, public challengeServiceService:ChallengeServiceService) {
+
+      this.challengeId = this.router.getCurrentNavigation().extras;
+  }
+
+  getChallenge(id){
+     this.challengeServiceService.getChallenge(id).subscribe(
+      (res)=>{
+        console.log(res);
+        this.challenge = res[0];
+
+      },
+      (err)=>{
+        console.log(err);
+      }
+    );
+ }
+
+
 
   navigateTochallengeList() {
       this.router.navigate(['/tabs/tabs1']);
@@ -19,7 +40,9 @@ export class ChallengePagePage implements OnInit {
       this.router.navigate(['/tabs/home'])
   }
 
-  ngOnInit() {};
+  ngOnInit() {
+      this.getChallenge(this.challengeId);
+  };
 
 
 }

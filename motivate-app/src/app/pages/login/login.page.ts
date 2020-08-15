@@ -17,10 +17,10 @@ export class LoginPage implements OnInit {
 
   constructor(public toastController: ToastController, public formbuilder: FormBuilder, private router: Router, public authservice: AuthService) {
     this.loginForm = this.formbuilder.group({
-      
+
       email:[null, [Validators.email, Validators.required]],
       password:[null, [Validators.required, Validators.minLength(6), Validators.maxLength(15)]],
-      
+
     })
    }
 
@@ -35,7 +35,7 @@ export class LoginPage implements OnInit {
   }
 
   submitForm(form){
-   
+
     console.log(form.value);
 
     this.authservice.login(this.loginForm.value).subscribe(
@@ -45,26 +45,26 @@ export class LoginPage implements OnInit {
         this.router.navigate(['/tabs/tab1'])
         console.log("entrei");
       },
-   
+
 
         (err)=> {
           console.log(err);
-  
+
           if(err.error.error=="Unauthorized"){
-  
-            this.presentToast();          
+
+            this.presentToast();
           }
         }
         )
       }
-    
 
 
-  VaiproCadastro(){
+
+  GoToRegister(){
     this.router.navigate(['/cadastro-usuario']);
   }
 
-  VaipraHomeDeslog(){
+  GoToHome(){
     this.router.navigate(['/tabs/home']);
   }
 

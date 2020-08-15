@@ -1,10 +1,10 @@
 <ion-header>
   <ion-toolbar>
     <ion-row class="ion-justify-content-start transparencia">
-      <ion-icon (click)="VaipraHomeDeslog()" size="large" name="chevron-back-outline" ></ion-icon>
+      <ion-icon (click)="GoToHome()" size="large" name="chevron-back-outline" ></ion-icon>
     </ion-row>
   </ion-toolbar>
-  
+
 </ion-header>
 
 <ion-content >
@@ -12,16 +12,16 @@
   <ion-grid>
     <ion-row class="ion-justify-content-center">
       <ion-col size="5">
-        
+
           <img src="/assets/logo.png" alt="">
-        
+
       </ion-col>
     </ion-row>
     <ion-row class="ion-justify-content-center">
       <ion-col size="5">
-        
+
           <img src="/assets/motivate.png" alt="">
-        
+
       </ion-col>
     </ion-row>
     <ion-row >
@@ -29,17 +29,17 @@
         <div class="ion-text-center">
           <h3 color="dark">Login</h3>
         </div>
-       
+
       </ion-col>
     </ion-row>
 
   </ion-grid>
 
- 
+
     <div class="divForm">
       <form [formGroup]="loginForm" (ngSubmit)="submitForm(loginForm)" class="background">
 
-          
+
               <div class="form-group">
                 <ion-label>Email</ion-label>
                 <ion-input type="email" formControlName="email" class="bordaInferior" [ngClass]="{ 'is-invalid': submitted && f.email.errors }"></ion-input>
@@ -50,22 +50,16 @@
               </div>
               <!-- <ion-label >Email</ion-label>
               <ion-input  class="bordaInferior" type="email" formControlName="email"></ion-input> -->
-
-              
               <ion-label >Senha</ion-label>
               <ion-input  class="bordaInferior" type="password" formControlName="password"></ion-input>
-             
-              
-           
-            
-            <ion-row class=ion-justify-content-center>
+            <ion-row class= "ion-justify-content-center">
               <ion-button type="submit" color="dark" class="botao" shape="round"  [disabled]="loginForm.invalid">Entrar</ion-button>
             </ion-row>
 
             <ion-row class="ion-justify-content-center ">
               <a (click)="VaiproCadastro()">Ainda não possui cadastro?</a>
           </ion-row>
-     
+
     </form>
   </div>
 
