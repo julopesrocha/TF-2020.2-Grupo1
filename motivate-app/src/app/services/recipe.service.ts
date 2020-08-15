@@ -19,6 +19,10 @@ export class RecipeService {
       return this.http.get(this.apiUrl + 'getRecipe/')
     }
 
+    public listRecipes(): Observable <any>{
+      return this.http.get(this.apiUrl)
+    }
+
     public updateRecipe(recipe_id, form): Observable<any>{
       return this.http.put(this.apiUrl + 'updateRecipe/' + recipe_id, form);
     }
