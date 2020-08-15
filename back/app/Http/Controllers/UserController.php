@@ -26,5 +26,18 @@ class UserController extends Controller
         }
         return response()->json(['ERRO: Você não pode seguir você mesmo']);
     }
+
+    public function getFollowers(){
+        $user = Auth::user();
+        $userFollower = $user->follower()->get();
+        return response()->json($userFollower);
+    }
     
+    public function getFollowing(){
+        $user = Auth::user();
+        $userFollowing = $user->following()->get();
+        return response()->json($userFollowing);
+
+    }
+
 }
