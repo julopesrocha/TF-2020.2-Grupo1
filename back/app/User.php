@@ -48,6 +48,8 @@ class User extends Authenticatable
         $this->gender = $request->gender;
         $this->date_of_birth = $request->date_of_birth;
         $this->save();
+
+        return $this;
     }
 
     public function updateUser(userRequest $request) {

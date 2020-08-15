@@ -65,6 +65,7 @@ doSomething(date) {
       (res)=> {
         console.log(res);
         localStorage.setItem('userToken', res.success.token);
+        // localStorage.setItem('username', res.success.token);
         this.router.navigate(['/tabs/tab1'])
 
       },
