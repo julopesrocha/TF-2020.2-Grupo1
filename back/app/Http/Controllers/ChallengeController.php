@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ChallengeRequest;
 use App\Recipe;
 use App\Challenge;
 
 class ChallengeController extends Controller
 {
     //Create
-    public function postChallenge(request $request) {
+    public function postChallenge(ChallengeRequest $request) {
         $newChallenge = new Challenge;
         $newChallenge->createChallenge($request);
         return response()->json(['challenge' => $newChallenge], 200);
@@ -27,7 +28,7 @@ class ChallengeController extends Controller
     }
 
     //Update
-    public function updateChallenge(Request $request, $id) {
+    public function updateChallenge(ChallengeRequest $request, $id) {
         $challenge = Challenge::findOrFail($id);
         $challenge->updateChallenge($request);
         return response()->json(['challenge' => $challenge], 200);
