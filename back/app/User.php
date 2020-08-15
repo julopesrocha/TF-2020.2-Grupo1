@@ -90,4 +90,10 @@ class User extends Authenticatable
     public function following(){
         return $this->belongsToMany('App\User', 'follows', 'following_id', 'follower_id');
     }
+
+    // Relação de curtir uma receita
+    public function likeMadeByUser(){
+        return $this->belongsToMany('App\Recipe', 'likes', 'recipe_id', 'user_id');
+    }
+
 }

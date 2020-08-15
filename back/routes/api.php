@@ -33,7 +33,6 @@ Route::POST('login', 'API\PassportController@login');
 Route::group(['middleware' =>'auth:api'], function(){
 
     // Usuário
-    
     Route::GET('logout', 'API\PassportController@logout');
     Route::GET('getDetails', 'API\PassportController@getDetails');
     Route::PUT('editUserProfile', 'UserController@editUserProfile');
@@ -53,8 +52,12 @@ Route::group(['middleware' =>'auth:api'], function(){
     Route::PUT('updateChallenge/{challenge_id}', 'ChallengeController@updateChallenge')->middleware('challengeAdmin');
     Route::DELETE('deleteChallenge/{challenge_id}', 'ChallengeController@deleteChallenge')->middleware('challengeAdmin');
 
-    // Follow
+    // Seguir
     Route::POST('followUser/{user_id}', 'UserController@followUser');
     Route::GET('getFollowers', 'UserController@getFollowers');
     Route::GET('getFollowing', 'UserController@getFollowing');
+
+    // Curtir
+    Route::POST('likeRecipe/{recipe_id}', 'RecipeController@likeRecipe');
+
 });

@@ -42,4 +42,20 @@ class RecipeController extends Controller
         Recipe::destroy($id);
         return response()->json(['Recipe deleted'], 200);
     }
+
+    public function likeRecipe($recipe_id){
+        $user = Auth::user();
+        $recipes = Recipe::findOrFail($recipe_id);
+        $status = DB::table('likes')->where('user_id', $user->id)->where('recipe_id', $recipes->id)->count()>0;
+        if ($status){
+            $user->likes()->detach($recipes);
+            $recipes->likeDown();
+            return response()->json(['dislike' => 'You no longer like this recipe']);
+        } else{
+            $user->likeUp()->attach($recipes);
+            $recipes->likeUp();
+            return response()->json(['like' => 'You liked this recipe']);
+        }
+    }
+
 }

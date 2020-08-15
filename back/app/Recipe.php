@@ -60,4 +60,20 @@ class Recipe extends Model
     public function challenge() {
         return $this->belongsTo('App/Challenge');
     }
+
+    // Relação com o usuário que curte uma receita
+    public function likes(){
+        return $this->belongsToMany('App\User', 'likes', 'user_id', 'recipe_id');
+    }
+
+    public function likeUp(){
+        $this->like++;
+        $this->save();
+    }
+
+    public function likeDown(){
+        $this->like--;
+        $this->save();
+    }
+
 }
