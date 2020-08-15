@@ -51,11 +51,11 @@ class RecipeController extends Controller
         if ($status){
             $user->likeMadeByUser()->detach($recipes);
             $recipes->likeDown();
-            return response()->json(['dislike' => "You no longer like the recipe ". $recipes->title]);
+            return response()->json(['dislike' => "You no longer like the recipe ". $recipes->title], 200);
         } else{
             $user->likeMadeByUser()->attach($recipes);
             $recipes->likeUp();
-            return response()->json(['like' => "You liked the recipe ". $recipes->title]);
+            return response()->json(['like' => "You liked the recipe ". $recipes->title], 200);
         }
     }
 
