@@ -33,7 +33,7 @@ const routes: Routes = [
   {
     path: 'cadastro-receita',
     loadChildren: () => import('./pages/cadastro-receita/cadastro-receita.module').then( m => m.CadastroReceitaPageModule)
-
+  }
 
 ];
 @NgModule({
