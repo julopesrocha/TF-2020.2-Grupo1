@@ -21,7 +21,7 @@ export class ChallengePagePage implements OnInit {
      this.challengeServiceService.getChallenge(id).subscribe(
       (res)=>{
         console.log(res);
-        this.challenge = res[0];
+        this.challenge = res.challenge;
 
       },
       (err)=>{

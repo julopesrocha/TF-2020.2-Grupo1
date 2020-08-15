@@ -21,7 +21,7 @@ export class Tab1Page {
      this.challengeServiceService.getListChallenges().subscribe(
        (res)=>{
          console.log(res);
-         this.challenges = res;
+         this.challenges = res.challengeList;
        },
        (err)=>{
          console.log(err);
