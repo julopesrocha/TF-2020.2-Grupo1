@@ -18,19 +18,19 @@ class UserController extends Controller
             $status = DB::table('follows')->where('following_id',$user_id)->where('follower_id',$user->id)->count()>0;
             if ($status){
                 $user->follower()->detach($user_id);
-                return response()->json(['Você parou de seguir '.$userFollowing->name]);
+                return response()->json(['No longer following '.$userFollowing->name], 200);
             } 
             else {
                 $user->follower()->attach($userFollowing->id);
-                return response()->json(['Você está seguindo '.$userFollowing->name]);
+                return response()->json(['follwing'=>$userFollowing], 200);
             }
         }
-        return response()->json(['error'=>'Você não pode seguir você mesmo'], 422);
+        return response()->json(['error'=>'You can\'t follow yourself'], 422);
     }
 
     public function editUserProfile(UserRequest $request) {
         $user = Auth::user();
         $user->updateUser($request);
-        return response()->json([$user], 200);
+        return response()->json(['user'=>$user], 200);
     }
 }

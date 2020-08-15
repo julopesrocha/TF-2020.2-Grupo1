@@ -40,6 +40,6 @@ class PassportController extends Controller
         $accessToken = Auth::user()->token();
         DB::table('oauth_refresh_tokens')->where('access_token_id',$accessToken->id)->update(['revoked'=>true]);
         $accessToken->revoke();
-        return response()->json(['Usuário deslogado'], 200);
+        return response()->json(['User has logged out'], 200);
     }
 }
