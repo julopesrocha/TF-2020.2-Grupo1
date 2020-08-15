@@ -8,17 +8,13 @@
         <div class="paddingTitle">
             <p>Desafios</p>
         </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> luciana_challangeList_front
         <div class="img">
             <img style="float: center" src="../assets/desafio.png" class="challengeAlign">
         </div>
     </div>
-    <ion-card id="cardBackground1">
+    <ion-card *ngFor="let challenge of challenges" id="cardBackground1">
         <div class="text">
-            <h6 style="300"> Desafio low carb </h6>
+            <h6 style="300"> {{challenge.title}}</h6>
             <ion-button (click)="navigateToLowCarb()" id="cardButton1"  shape="round"> Ver mais </ion-button>
         </div>
         <div class="image">
@@ -26,39 +22,35 @@
         </div>
     </ion-card>
 
-    <!-- Desafio redução de açúcar -->
+    <!-- Desafio redução de açúcar
     <ion-card id="cardBackground2">
         <div class="text">
-            <h6 style="300"> Desafio redução de açúcar </h6>
+            <h6 style="300"> {{challenge.name}} </h6>
             <ion-button id="cardButton2"  shape="round"> Ver mais </ion-button>
         </div>
         <div class="image">
             <img style="float: right" src="../../assets/sugarFree.jpg" alt="coração com escrita sugar free">
         </div>
     </ion-card>
-    <!-- Desafio veganismo -->
+    <!-- Desafio veganismo
     <ion-card id="cardBackground3">
         <div class="text">
-            <h6 style="300"> Desafio Veganismo </h6>
+            <h6 style="300"> {{challenge.name}}</h6>
             <ion-button id="cardButton3" shape="round"> Ver mais </ion-button>
         </div>
         <div class="image">
             <img style="float: right" id="cardButton3" src="../../assets/goVegan.jpg" alt="pirâmide alimentar">
         </div>
     </ion-card>
-    <!-- Desafio  -->
+    <!-- Desafio
     <ion-card id="cardBackground4">
         <div class="text">
-            <h6 style="300"> Desafio Veganismo </h6>
+            <h6 style="300"> {{challenge.name}} </h6>
             <ion-button id="cardButton4" shape="round"> Ver mais </ion-button>
         </div>
         <div class="image">
             <img style="float: right" src="../../assets/goVegan.jpg" alt="pirâmide alimentar">
         </div>
-    </ion-card>
+    </ion-card> -->
 
 </ion-content>
-<<<<<<< HEAD
->>>>>>> fcb0902407052305c82f9326aa6a95915278ba15
-=======
->>>>>>> luciana_challangeList_front
