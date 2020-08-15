@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-row class="ion-justify-content-start transparencia">
+      <ion-icon  size="large" name="chevron-back-outline" ></ion-icon>
+    </ion-row>
+  </ion-toolbar>
+  
+</ion-header>
+
+<ion-content >
+
+  <ion-grid>
+
+    <ion-row >
+      <ion-col>
+        <div class="ion-text-center">
+          <h3 >Crie um desafio</h3>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <img [src]="photo" >
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-justify-content-center">
+      <ion-col  size="2.4">
+
+        <ion-button (click)="takePicture()">
+          <ion-icon class="iconCamera" name="camera" ></ion-icon>
+        </ion-button>
+
+      </ion-col>
+    </ion-row>
+
+
+  </ion-grid>
+
+ 
+    <div class="divForm">
+      <form [formGroup]="challengeForm" (ngSubmit)="onSubmit(challengeForm)" class="background">
+
+            <div class="form-group">
+              <ion-label >Título</ion-label>
+              <ion-input type="text" formControlName="title" class="bordaInferior" ></ion-input>
+            </div>
+
+            <div class="form-group">
+              <ion-label>Descrição</ion-label>
+              <ion-textarea formControlName="description" ></ion-textarea>   
+              <ion-row>
+                <ion-col>
+                  <div class="ion-text-end">
+                    <p>máx. 500 caracteres</p>
+                  </div>  
+                </ion-col>
+            </ion-row>           
+            </div>
+
+
+            <div class="form-group">
+              <ion-label>Saiba Mais</ion-label>
+              <ion-textarea formControlName="about" ></ion-textarea>
+              <ion-row>
+                <ion-col>
+                  <div class="ion-text-end">
+                    <p>máx. 300 caracteres</p>
+                  </div>  
+                </ion-col>
+            </ion-row> 
+            </div>
+
+          <div class="form-group">
+              <ion-label>Recomendações</ion-label>
+              <ion-textarea formControlName="recomendation" ></ion-textarea>    
+              <ion-row>
+                <ion-col>
+                  <div class="ion-text-end">
+                    <p>máx. 500 caracteres</p>
+                  </div>  
+                </ion-col>
+            </ion-row> 
+          </div>
+        
+            <ion-row class=ion-justify-content-center>
+              <ion-button type="submit" class="botao" shape="round" [disabled]="challengeForm.invalid" >Criar</ion-button>
+            </ion-row>
+         
+        
+      
+    </form>
+  </div>
+    
+
+</ion-content>
