@@ -60,11 +60,11 @@ export class LoginPage implements OnInit {
     
 
 
-  VaiproCadastro(){
+  GoToRegister(){
     this.router.navigate(['/cadastro-usuario']);
   }
 
-  VaipraHomeDeslog(){
+  GoToHome(){
     this.router.navigate(['/tabs/home']);
   }
 

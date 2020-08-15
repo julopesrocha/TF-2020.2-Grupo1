@@ -53,7 +53,7 @@ doSomething(date) {
     toast.present();
   }
 
-  VaipraHomeDeslog(){
+  GoToHome(){
     this.router.navigate(['/tabs/home']);
   }
 

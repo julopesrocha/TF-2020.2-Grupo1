@@ -15,11 +15,11 @@ export class HomeDeslogPage implements OnInit {
 
   ngOnInit() {}
 
-  VaiproCadastro(){
+  GoToRegister(){
     this.router.navigate(['/cadastro-usuario']);
   }
 
-  VaiproLogin(){
+  GoToLogin(){
     this.router.navigate(['/login']);
   }
 
