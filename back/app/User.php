@@ -47,6 +47,7 @@ class User extends Authenticatable
         $this->photo = $request->photo;
         $this->gender = $request->gender;
         $this->date_of_birth = $request->date_of_birth;
+        $this->aboutme = $request->aboutme;
         $this->save();
 
         return $this;
@@ -71,6 +72,11 @@ class User extends Authenticatable
         if ($request->date_of_birth) {
             $this->date_of_birth = $request->date_of_birth;
         }
+
+        if ($request->aboutme){
+            $this->aboutme = $request->aboutme;
+        }
+
         $this->save();
     }
 
