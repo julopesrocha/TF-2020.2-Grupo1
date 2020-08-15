@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ChallengeServiceService } from '../services/challenge-service.service';
 import { Router } from '@angular/router';
+import {AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-tab1',
@@ -9,7 +10,20 @@ import { Router } from '@angular/router';
 })
 export class Tab1Page {
 
-    constructor(private router: Router) {}
+  constructor(public authservice: AuthService, private router: Router) {}
+
+  logout() {
+    this.authservice.logout().subscribe(
+        (res) => {
+            console.log(res);
+            localStorage.removeItem('userToken');
+            localStorage.removeItem('Usuario');
+
+            this.router.navigate(['/tabs/home']);
+            console.log("Você saiu!!");
+        }
+    );
+}
 
         navigateToLowCarb() {
             this.router.navigate(['/challenge-page']);

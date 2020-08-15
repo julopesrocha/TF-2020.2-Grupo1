@@ -11,6 +11,8 @@ export class HomeDeslogPage implements OnInit {
 
   constructor(private router: Router) {}
 
+  ngOnInit() {}
+
   VaiproCadastro(){
     this.router.navigate(['/cadastro-usuario']);
   }
@@ -18,8 +20,5 @@ export class HomeDeslogPage implements OnInit {
   VaiproLogin(){
     this.router.navigate(['/login']);
   }
-
-
-  ngOnInit() {}
 
 }
