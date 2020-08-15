@@ -17,15 +17,15 @@ class RecipeController extends Controller
         $newRecipe = new Recipe;
         $newRecipe->createRecipe($request);
         $newRecipe->setUser($user->id);
-        $challenge_id = Challenge::where('name',$request->challenge)->get()[0]->id;
+        $challenge_id = Challenge::where('title',$request->challenge)->get()[0]->id;
         $newRecipe->setChallenge($challenge_id);
-        return response()->json([$newRecipe], 200);
+        return response()->json(['recipe' => $newRecipe], 200);
     }
 
     // Read
     public function getRecipe($id) {
         $recipe = Recipe::findOrFail($id);
-        return response()->json([$recipe], 200);
+        return response()->json(['recipe' => $recipe], 200);
     }
 
     //Update
@@ -33,13 +33,13 @@ class RecipeController extends Controller
         $user = Auth::user();
         $recipe = Recipe::findOrFail($id);
         $recipe->updateRecipe($request);
-        return response()->json([$recipe], 200);
+        return response()->json(['recipe' => $recipe], 200);
     }
 
     //Delete
     public function deleteRecipe($id) {
         $user = Auth::user();
         Recipe::destroy($id);
-        return response()->json(['Receita deletada'], 200);
+        return response()->json(['Recipe deleted'], 200);
     }
 }
