@@ -98,6 +98,11 @@ class User extends Authenticatable
         $this->follower()->attach($user);
     }
 
+    public function unfollowUser($user_id){
+        $user = User::findOrFail($user_id);
+        $this->follower()->detach($user);
+    }
+
     // Relação de usuários sendo seguidos
     public function following(){
         return $this->belongsToMany('App\User', 'follows', 'following_id', 'follower_id');
