@@ -39,7 +39,7 @@
     
 
     <div class="divForm">
-      <form [formGroup]="recipeForm" (ngSubmit)="onSubmit(recipeForm) " class="background">
+      <form [formGroup]="recipeForm" (ngSubmit)="createRecipe(recipeForm) " class="background">
 
             <div class="form-group">
               <ion-label >Título</ion-label>
@@ -49,14 +49,14 @@
 
             <div class="form-group">
               <ion-label>Desafio</ion-label>
-              <ion-select interface="action-sheet" class="personalizar-select" id="status" formControlName="challenge">
+              <ion-select  interface="action-sheet" class="personalizar-select" id="status" formControlName="challenge">
 
-                <ion-select-option class="personalizar-option" value="sem_acucar">#SemAçucar</ion-select-option>
-                <ion-select-option class="personalizar-option" value="low_carb">#LowCarb</ion-select-option>
+                <ion-select-option  *ngFor ="let challenge of challenges" class="personalizar-option" value="{{challenge.title}}" >{{challenge.title}}</ion-select-option>
+                <!-- <ion-select-option class="personalizar-option" value="low_carb">#LowCarb</ion-select-option>
                 <ion-select-option class="personalizar-option" value="vegano">#Vegano</ion-select-option>
                 <ion-select-option class="personalizar-option" value="vegetariano">#Vegetariano</ion-select-option>
                 <ion-select-option class="personalizar-option" value="vegetariano">#Mind</ion-select-option>
-                <ion-select-option class="personalizar-option" value="vegetariano">#DASH</ion-select-option>
+                <ion-select-option class="personalizar-option" value="vegetariano">#DASH</ion-select-option> -->
               </ion-select>
             </div>
 
@@ -81,7 +81,7 @@
 
           <div class="form-group">
               <ion-label>Modo de preparo</ion-label>
-              <ion-textarea formControlName="preparation_mode" ></ion-textarea>    
+              <ion-textarea formControlName="preparation" ></ion-textarea>    
               <ion-row>
                 <ion-col>
                   <div class="ion-text-end">
@@ -96,7 +96,7 @@
 
 
             <ion-row class=ion-justify-content-center>
-              <ion-button type="submit" class="botao" shape="round" [disabled]="recipeForm.invalid" >Cadastrar</ion-button>
+              <ion-button type="submit" class="botao" shape="round" [disabled]="recipeForm.invalid"  >Cadastrar</ion-button>
             </ion-row>
          
         

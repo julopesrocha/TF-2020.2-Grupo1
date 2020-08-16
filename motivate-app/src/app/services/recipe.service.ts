@@ -11,24 +11,35 @@ export class RecipeService {
 
   constructor(public http: HttpClient) {  }
 
-    public createRecipe(challenge_id, form):Observable<any>{
-      return this.http.post(this.apiUrl + 'postRecipe/' + challenge_id, form);
+  httpHeaders: any ={
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'    
     }
+  }
+   
+
+    public createRecipe(form): Observable <any>{
+      this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('userToken');
+      return this.http.post(this.apiUrl + 'postRecipe', form, this.httpHeaders);
+    }  
+
 
     public showRecipe(recipe_id): Observable<any>{
-      return this.http.get(this.apiUrl + 'getRecipe/')
+      return this.http.get(this.apiUrl + 'getRecipe/');
     }
 
-    public listRecipes(): Observable <any>{
-      return this.http.get(this.apiUrl)
-    }
+    // public listRecipes(): Observable <any>{
+    //   return this.http.get(this.apiUrl)
+    // }
 
     public updateRecipe(recipe_id, form): Observable<any>{
       return this.http.put(this.apiUrl + 'updateRecipe/' + recipe_id, form);
     }
 
     public deleteRecipe(recipe_id): Observable<any>{
-      return this.http.delete(this.apiUrl + 'deleteRecipe/' + recipe_id);
+      this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('userToken');
+      return this.http.delete(this.apiUrl + 'deleteRecipe/' + recipe_id, this.httpHeaders);
     }
  
 }

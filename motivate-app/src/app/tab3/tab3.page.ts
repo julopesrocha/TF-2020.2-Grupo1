@@ -44,13 +44,10 @@ logout() {
   );
 }
 
-<<<<<<< HEAD
-=======
 // GoToCreateChallenge(){
 //   this.router.navigate(['cadastro_desafio']);
 // }
 
->>>>>>> gabriela_cadastroReceita_front
 
 
 

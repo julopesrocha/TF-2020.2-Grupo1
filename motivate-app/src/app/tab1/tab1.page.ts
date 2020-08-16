@@ -11,7 +11,6 @@ import { ChallengeServiceService } from '../services/challenge-service.service';
 })
 export class Tab1Page {
 
-<<<<<<< HEAD
     challenges = [];
 
   constructor(public authservice: AuthService, private router: Router, public challengeServiceService: ChallengeServiceService,) {
@@ -41,9 +40,5 @@ export class Tab1Page {
     ngOnInit(){
         this.listChallenges();
     }
-=======
-  constructor(public authservice: AuthService, private router: Router) {}
-
->>>>>>> gabriela_cadastroReceita_front
 
 }
