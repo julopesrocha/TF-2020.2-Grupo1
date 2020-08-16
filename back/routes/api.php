@@ -21,11 +21,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // Receita
 Route::GET('getRecipe/{recipe_id}', 'RecipeController@getRecipe');
 Route::GET('getLikes/{recipe_id}', 'RecipeController@getLikes');
+Route::GET('listRecipes', 'RecipeController@listRecipes');
+Route::GET('listRecipesOfUser/{user_id}', 'RecipeController@listRecipesOfUser');
+Route::GET('listRecipesOfChallenge/{challenge_id}', 'RecipeController@listRecipesOfChallenge');
 
 // Comentário
 Route::GET('getComment/{comment_id}', 'CommentController@getComment');
 
-//Desafio
+// Desafio
 Route::GET('getChallenge/{challenge_id}', 'ChallengeController@getChallenge');
 Route::GET('listChallenges', 'ChallengeController@listChallenges');
 
