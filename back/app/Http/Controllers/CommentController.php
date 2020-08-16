@@ -34,6 +34,6 @@ class CommentController extends Controller
 
     public function deleteComment($comment_id){
         Comment::destroy($comment_id);
-        return response()->json(['success' => 'Your comment has been successfully deleted.'], 200);
+        return response()->json(['Your comment has been successfully deleted.'], 200);
     }
 }

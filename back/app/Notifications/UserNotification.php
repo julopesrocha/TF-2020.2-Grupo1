@@ -44,7 +44,7 @@ class UserNotification extends Notification
             ->subject('Motivate - Confirmação de Email')
             ->greeting('Olá!')
             ->line('Este é um email enviado para a confirmação da sua conta, você não precisa respondê-lo.')
-            ->action('Confirmar email', url('/'))
+            ->action('Confirmar email', url('http://localhost:8100/tabs/home'))
             ->line('Obrigado por se cadastrar em nosso aplicativo.');
     }
 

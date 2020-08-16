@@ -8,6 +8,7 @@ use App\User;
 use App\Challenge;
 use Auth;
 use App\Http\Requests\RecipeRequest;
+use DB;
 
 class RecipeController extends Controller
 {
@@ -42,4 +43,20 @@ class RecipeController extends Controller
         Recipe::destroy($id);
         return response()->json(['Recipe deleted'], 200);
     }
+
+    public function likeRecipe($recipe_id){
+        $user = Auth::user();
+        $recipes = Recipe::findOrFail($recipe_id);
+        $status = DB::table('likes')->where('user_id', $user->id)->where('recipe_id', $recipes->id)->count()>0;
+        if ($status){
+            $user->likeMadeByUser()->detach($recipes);
+            $recipes->likeDown();
+            return response()->json(['dislike' => "You no longer like the recipe ". $recipes->title], 200);
+        } else{
+            $user->likeMadeByUser()->attach($recipes);
+            $recipes->likeUp();
+            return response()->json(['like' => "You liked the recipe ". $recipes->title], 200);
+        }
+    }
+
 }
