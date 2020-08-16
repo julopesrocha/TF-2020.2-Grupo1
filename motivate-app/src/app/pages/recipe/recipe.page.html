@@ -1,43 +1,46 @@
-<ion-content *ngIf="challenge">
-    <div class="toolbar">
-        <ion-icon (click)="navigateTobackHome()" name="chevron-back-outline" size="large" style="float: left" class="back"></ion-icon>
-        <ion-icon (click)="navigateTochallengeList()" name="close-outline" size="large" style="float: right" class="close"></ion-icon>
-    </div>
-    <div class="title">
-        <!--{{challenge.title}}-->
-    </div>
-    <div>
-        <img  class="img" src="../../assets/low-carb.png">
-    </div>
-    <div class="madeByUser">
-        oi
-    </div>
-    <div class="recipeOf">
-        Receita de <!--{{challenge.title}} --> Desafio low carb
-    </div>
-<!-- Legenda -->
-    <div class="subtitles"> Legenda: </div>
-        <div class="subtitle" class="spaceFormat">
-            <div class="text">
-                {{recipe.subtitle}}
-            </div>
+<ion-content>
+        <div class="toolbar">
+            <ion-icon (click)="navigateTobackHome()" name="chevron-back-outline" size="large" style="float: left" class="back"></ion-icon>
         </div>
-<!-- Ingredientes  -->
-    <div class="subtitles"> Ingredientes : </div>
-        <div class="ingredients" class="spaceFormat">
-            <div class="text">
-              <!--{{challenge.description}}--> oi
+            <img class="imgLogo" src="../../assets/logo-circle.png" alt="logo do motivate">
+        <div class="title">
+            Bolo de chocolate <!-- {{recipe.title}} -->
+        </div>
+        <div>
+            <img  class="img" src="../../assets/cake.png" alt="imagem do bolo de chocolate">
+            <img  class="faixa" src="../../assets/faixa-laranja.png" alt="faixa laranja do desafio low carb">
+        </div>
+        <div class="iconMargin" >
+            <ion-icon size="large" name="pencil-outline"></ion-icon>
+            <ion-icon (click)="deleteRecipe()" class="trashMargin" size="large" name="trash-outline"></ion-icon>
+        </div>
+    <!-- Descrição -->
+         <div class="textMargin"> Feito por João </div>
+         <div class="textMargin"> Receita do Desafio low carb</div>
+     <!-- Legendas-->
+         <div class="subtitleMargin"> Legenda: </div>
+             <div class="spaceFormat">
+                 <div class="text">
+                    Legenda <!--{{recipe.subtitle}}-->
+                 </div>
              </div>
-        </div>
-<!-- Modo de preparo -->
-    <div class="subtitles"> Modo de preparo : </div>
-        <div class="preparation" class="spaceFormat">
-            <div class="text">
-                <!--{{recipe.preparation}} --> oi
+     <!-- Ingredientes -->
+        <div class="subtitles"> Ingredientes : </div>
+            <div class="description" class="spaceFormat">
+                <div class="text">
+                    Ovo, farinha, etc.   <!--{{recipe.ingredients}} -->
+                 </div>
             </div>
+    <!--Modo de preparo -->
+        <div class="subtitles"> Modo de preparo : </div>
+            <div class="preparation" class="spaceFormat">
+                <div class="text">
+                    <!--{{recipe.preparation}}-->
+                </div>
+            </div>
+    <!-- Receitas -->
+        <div class="subtitles"> Comentários <ion-icon size="large" name="chatbubble-ellipses-outline"></ion-icon> </div>
+        <div class="commentsMergin">
+
         </div>
-<!-- Comentários -->
-    <div class="subtitles"> Comentários </div>
-    <div class="commentstMergin">
-    </div>
 </ion-content>

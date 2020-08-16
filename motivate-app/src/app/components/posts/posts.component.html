@@ -8,13 +8,13 @@
     </ion-chip>
 </ion-header>
 
-    <div shape="round" class="postFormat">
+    <div shape="round" class="postFormat" (click)="clickToSeeRecipe(recipe.id)">
         <h5 class="title"> Bolo de Chocolate </h5>
         <img class="img" src="../../assets/cake.png">
     <div  shape="round"  class="postInfo">
-        <div class="challengeOfPost">
+        <div class="challengeOfPost" (click)="clickToSee(challenge.id)" >
             Desafio low carb
-        <ion-icon name="heart" size="large" > </ion-icon>
+        <ion-icon name="heart" size="large"> </ion-icon>
         <ion-icon name="chatbubble" size="large"></ion-icon>
         </div>
     </div>
