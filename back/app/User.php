@@ -86,6 +86,12 @@ class User extends Authenticatable
     public function follower(){
         return $this->belongsToMany('App\User', 'follows', 'follower_id',  'following_id');    
     }
+
+    public function followUser($user_id) {
+        $user = User::findOrFail($user_id);
+        $this->follower()->attach($user);
+    }
+
     // Relação de usuários sendo seguidos
     public function following(){
         return $this->belongsToMany('App\User', 'follows', 'following_id', 'follower_id');
