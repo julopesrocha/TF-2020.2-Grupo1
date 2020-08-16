@@ -18,7 +18,11 @@ class RecipeController extends Controller
         $newRecipe = new Recipe;
         $newRecipe->createRecipe($request);
         $newRecipe->setUser($user->id);
-        $challenge_id = Challenge::where('title',$request->challenge)->get()[0]->id;
+        $searchResult = Challenge::where('title',$request->challenge)->get();
+        if (count($searchResult) == 0) {
+            return response()->json(['error' => 'Challenge not found'], 404);
+        }
+        $challenge_id = $searchResult[0]->id;
         $newRecipe->setChallenge($challenge_id);
         return response()->json(['recipe' => $newRecipe], 200);
     }
