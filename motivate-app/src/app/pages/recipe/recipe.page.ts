@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,11 +9,18 @@ import { Router } from '@angular/router';
 })
 export class RecipePage implements OnInit {
 
+    commentForm: FormGroup;
 //    recipe;
 //    recipeId;
 // public recipeService:RecipeService
-  constructor(private router: Router) {
+  constructor(private router: Router, public formbuilder:FormBuilder) {
+      this.commentForm = this.formbuilder.group({
+          comment:[null,[Validators.required,Validators.minLength(1),Validators.maxLength(200)]],
+      });
     //  this.recipeId = this.router.getCurrentNavigation().extras;
+  }
+  submitForm(commentForm){
+      console.log(commentForm.value);
   }
 
   //getRecipe(id){

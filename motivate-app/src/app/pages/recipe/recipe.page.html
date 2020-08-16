@@ -39,8 +39,16 @@
                 </div>
             </div>
     <!-- Receitas -->
-        <div class="subtitles"> Comentários <ion-icon size="large" name="chatbubble-ellipses-outline"></ion-icon> </div>
-        <div class="commentsMergin">
+            <div class="subtitles"> Comentários <ion-icon size="large" name="chatbubble-ellipses-outline"></ion-icon> </div>
+                <form [formGroup]="commentForm" (ngSubmit)="submitForm(commentForm)" >
+                    <div class="commentFormat">
+                        <ion-textarea placeholder="Faça seu comentário:" type="text" formControlName="comment"></ion-textarea>
+                    </div>
+                    <ion-button class="sendButton"type="submit" shape="round" [disabled]="commentForm.invalid">Enviar</ion-button>
+                </form>
 
+    <!--Sessão dos Comentários-->
+        <div class="commentsMergin">
+            <app-comment> </app-comment>
         </div>
 </ion-content>

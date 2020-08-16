@@ -92,6 +92,20 @@ ion-icon{
     margin: 6%;
     color: #192629;
 }
+.commentFormat{
+    background-color: #BBFF64;
+    border-radius: 10px;
+    margin: 5% 10% 2% 10% ;
+    padding-top: 6px;
+    padding-bottom: 3%;
+}
+.sendButton{
+    --background:#208579;
+    margin: 3% 10% 10% ;
+    display: flex;
+    justify-content: flex-end;
+}
+
 .commentstMergin{
     margin: 6% 6% 6% 10%;
 }
