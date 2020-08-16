@@ -1,3 +1,105 @@
-ion-toolbar{
-  --background:  #123C62;
+ion-content{
+  --background: #25232C;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+}
+
+ion-icon{
+  color: #123C62;
+}
+
+ion-label{
+  display:inline-block;
+  padding-top:5%;
+  color: #FFFFFF;
+  font-size: 1.1em;
+}
+
+
+ion-input{
+  --color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+
+ion-textarea{
+  margin-top: 2%;
+  --background: #C3EAE8;
+  border: 1px solid white;
+  height: 25vh;
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+ion-button{
+  --background: #123C62;
+}
+
+ion-select{
+  --color: green;
+}
+
+.divOption{
+  color: white;
+}
+
+h3{
+  color: #C3EAE8;
+}
+
+p{
+  color: white;
+}
+
+.colImagem{
+  --background: #C3EAE8;
+}
+
+
+
+.divForm{
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 5%;
+}
+
+.aviso{
+
+  font-family: 'Montserrat', sans-serif;
+
+}
+
+.divLogo{
+  width: 20vw;
+}
+.divMotivate{
+  width: 30vw;
+}
+
+
+.bordaInferior{
+  border-bottom: 0.095em solid #FFFFFF;
+}
+
+
+.transparencia{
+  --background: #ffffff00;
+}
+
+.tamanhoTexto{
+  font-size: 1em;
+}
+
+.botao{
+  margin-top: 10%;
+  width: 70vw;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.personalizar-select{
+  border: 1px solid white;
+
+}
+
+.iconCamera{
+  color: white;
 }

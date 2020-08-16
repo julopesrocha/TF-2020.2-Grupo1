@@ -59,7 +59,6 @@ export class LoginPage implements OnInit {
       }
 
 
-
   GoToRegister(){
     this.router.navigate(['/cadastro-usuario']);
   }

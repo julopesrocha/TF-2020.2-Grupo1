@@ -30,7 +30,7 @@ const routes: Routes = [
     path: 'cadastro-receita',
     loadChildren: () => import('./pages/cadastro-receita/cadastro-receita.module').then( m => m.CadastroReceitaPageModule)
     },
-  {
+   {
     path: 'recipe',
     loadChildren: () => import('./pages/recipe/recipe.module').then( m => m.RecipePageModule)
   }

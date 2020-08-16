@@ -44,6 +44,10 @@ logout() {
   );
 }
 
+// GoToCreateChallenge(){
+//   this.router.navigate(['cadastro_desafio']);
+// }
+
 
 
 
