@@ -20,6 +20,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // Receita
 Route::GET('getRecipe/{recipe_id}', 'RecipeController@getRecipe');
+Route::GET('listRecipes', 'RecipeController@listRecipes');
+
+// Comentário
 Route::GET('getComment/{comment_id}', 'CommentController@getComment');
 
 //Desafio

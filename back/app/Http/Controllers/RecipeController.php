@@ -33,6 +33,11 @@ class RecipeController extends Controller
         return response()->json(['recipe' => $recipe], 200);
     }
 
+    public function listRecipes() {
+        $recipeList = Recipe::all();
+        return response()->json(['recipeList' => $recipeList], 200);
+    }
+
     //Update
     public function updateRecipe(RecipeRequest $request, $id) {
         $user = Auth::user();
