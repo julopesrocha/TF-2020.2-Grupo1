@@ -10,11 +10,31 @@ export class ChallengeServiceService {
 
   constructor(public http: HttpClient) {}
 
+  httpHeaders: any ={
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    }
+  }
+
+  public createChallenge(form): Observable <any>{
+    this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('userToken');
+    return this.http.post(this.apiURL + 'postChallenge', form , this.httpHeaders);
+  }
+
+ deleteChallenge(id): Observable<any> {
+     this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('userToken');
+     return this.http.delete(this.apiURL + 'deleteChallenge/'+ id ,  this.httpHeaders);
+ }
+
   getListChallenges(): Observable<any>{
       return this.http.get(this.apiURL + 'listChallenges');
   }
   getChallenge(id): Observable<any>{
       return this.http.get(this.apiURL + 'getChallenge/' + id);
   }
+  //createChallenge(form): Observable<any>{
+    //  return this.http.post(this.apiURL + 'postChallenge', form);
+  //}
 
 }

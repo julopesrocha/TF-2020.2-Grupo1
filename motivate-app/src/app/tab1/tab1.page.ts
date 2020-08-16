@@ -17,17 +17,16 @@ export class Tab1Page {
 
   }
 
-  listChallenges(){
+    listChallenges(){
      this.challengeServiceService.getListChallenges().subscribe(
        (res)=>{
          console.log(res);
-         this.challenges = res.challengeList;
        },
        (err)=>{
          console.log(err);
        }
      );
-   }
+    }
 
     navigateToLowCarb(id) {
         this.router.navigate(['/challenge-page'], id);

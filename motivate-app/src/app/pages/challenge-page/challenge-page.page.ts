@@ -13,7 +13,6 @@ export class ChallengePagePage implements OnInit {
     challengeId;
 
   constructor(private router: Router, public challengeServiceService:ChallengeServiceService) {
-
       this.challengeId = this.router.getCurrentNavigation().extras;
   }
 
@@ -22,14 +21,23 @@ export class ChallengePagePage implements OnInit {
       (res)=>{
         console.log(res);
         this.challenge = res.challenge;
-
       },
       (err)=>{
         console.log(err);
       }
-    );
- }
+  )}
 
+
+  deleteChallenge(){
+     this.challengeServiceService.deleteChallenge(this.challengeId).subscribe(
+       (res)=>{
+         console.log(res);
+         this.router.navigate(["/tabs/tab1"]);
+       },(err) =>{
+         console.log(err);
+       }
+     );
+   }
 
 
   navigateTochallengeList() {
@@ -42,7 +50,7 @@ export class ChallengePagePage implements OnInit {
 
   ngOnInit() {
       this.getChallenge(this.challengeId);
-  };
+  }
 
 
 }
