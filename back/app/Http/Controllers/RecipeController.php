@@ -29,6 +29,12 @@ class RecipeController extends Controller
         return response()->json(['recipe' => $recipe], 200);
     }
 
+    public function getLikes($recipe_id){
+        $recipe = Recipe::findOrFail($recipe_id);
+        $likes = count($recipe->likes()->get());
+        return response()->json(['likes' => $likes], 200);
+    }
+
     //Update
     public function updateRecipe(RecipeRequest $request, $id) {
         $user = Auth::user();
@@ -44,6 +50,7 @@ class RecipeController extends Controller
         return response()->json(['Recipe deleted'], 200);
     }
 
+    // Relação com likes
     public function likeRecipe($recipe_id){
         $user = Auth::user();
         $recipes = Recipe::findOrFail($recipe_id);
@@ -58,5 +65,6 @@ class RecipeController extends Controller
             return response()->json(['like' => "You liked the recipe ". $recipes->title], 200);
         }
     }
+
 
 }
