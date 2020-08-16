@@ -31,5 +31,12 @@ class UserTableSeeder extends Seeder
         ]);
 
         factory(App\User::class, 20)->create();
+
+        for ($i = 1; $i <= 22; $i++){
+            for ($j = 1; $j < 6; $j++) {
+                $user = App\User::findOrFail($i);
+                $user->followUser(($i + $j) % 20 + 1);
+            }
+        }
     }
 }
