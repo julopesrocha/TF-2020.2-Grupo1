@@ -38,6 +38,11 @@ class RecipeController extends Controller
         return response()->json(['recipeList' => $recipeList], 200);
     }
 
+    public function listRecipesOfUser($user_id) {
+        $recipeList = Recipe::where('user_id', $user_id)->get();
+        return response()->json(['recipeList' => $recipeList], 200);
+    }
+
     //Update
     public function updateRecipe(RecipeRequest $request, $id) {
         $user = Auth::user();
