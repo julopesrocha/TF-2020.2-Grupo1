@@ -54,6 +54,19 @@ class RecipeController extends Controller
         return response()->json(['recipeList' => $recipeList], 200);
     }
 
+    public function getRecipesOfFollowing() {
+        $user = Auth::user();
+        $FollowingList = $user->follower()->with('recipes')->get();
+        $recipeList = [];
+        foreach ($FollowingList as $following) {
+            $recipesOfuser = $following->recipes;
+            foreach($recipesOfuser as $recipe) {
+                array_push($recipeList, $recipe);
+            }
+        }
+        return response()->json(['RecipeList' => $recipeList], 200);
+    }
+
     //Update
     public function updateRecipe(RecipeRequest $request, $id) {
         $user = Auth::user();
