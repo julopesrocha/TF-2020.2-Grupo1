@@ -14,6 +14,7 @@ class Recipe extends Model
         $this->ingredients = $request->ingredients;
         $this->preparation = $request->preparation;
         $this->subtitle = $request->subtitle;
+        $this->photo = $request->photo;
         $this->save();
     }
 
@@ -31,6 +32,11 @@ class Recipe extends Model
         if ($request->subtitle) {
             $this->subtitle = $request->subtitle;
         }
+
+        if ($request->photo) {
+            $this->photo = $request->photo;
+        }
+
         $this->save();
     }
 
