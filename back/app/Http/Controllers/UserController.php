@@ -42,18 +42,21 @@ class UserController extends Controller
         return response()->json(['error'=>'You can\'t follow yourself'], 422);
     }
 
+    // Retorna quem o usuário logado segue
     public function getFollowers(){
         $user = Auth::user();
         $userFollower = $user->follower()->get();
         return response()->json(['userFollower' => $userFollower], 200);
     }
 
-    public function getFollowersOfUser($user_id) {
+    // Retorna quem o usuário $user_id segue
+    public function getUserFollowing($user_id) {
         $user = User::findOrFail($user_id);
-        $userFollower = $user->following()->get();
-        return response()->json(['userFollower' => $userFollower], 200);
+        $userFollowing = $user->follower()->get();
+        return response()->json(['userFollowing' => $userFollowing], 200);
     }
-    
+
+    // Retorna quem segue o usuário logado
     public function getFollowing(){
         $user = Auth::user();
         $userFollowing = $user->following()->get();
@@ -61,10 +64,11 @@ class UserController extends Controller
 
     }
 
-    public function getUserFollowing($user_id) {
+    // Retorna quem segue o usuário $user_id
+    public function getFollowersOfUser($user_id) {
         $user = User::findOrFail($user_id);
-        $userFollowing = $user->follower()->get();
-        return response()->json(['userFollowing' => $userFollowing], 200);
+        $userFollower = $user->following()->get();
+        return response()->json(['userFollower' => $userFollower], 200);
     }
 
 }
