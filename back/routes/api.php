@@ -27,6 +27,7 @@ Route::GET('listRecipesOfChallenge/{challenge_id}', 'RecipeController@listRecipe
 
 // Comentário
 Route::GET('getComment/{comment_id}', 'CommentController@getComment');
+Route::GET('listComments/{recipe_id}', 'CommentController@listComments');
 
 // Desafio
 Route::GET('getChallenge/{challenge_id}', 'ChallengeController@getChallenge');
