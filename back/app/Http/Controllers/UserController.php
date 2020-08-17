@@ -11,6 +11,12 @@ use DB;
 
 class UserController extends Controller
 {
+    // Read
+    public function getUserProfile($user_id) {
+        $user = User::findOrFail($user_id);
+        return response()->json(['user'=>$user], 200);
+    }
+
     // Update
     public function editUserProfile(UserRequest $request) {
         $user = Auth::user();
