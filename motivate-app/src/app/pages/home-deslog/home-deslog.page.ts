@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ChallengeServiceService } from '../../services/challenge-service.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-home-deslog',
@@ -11,10 +12,30 @@ export class HomeDeslogPage implements OnInit {
 
     challenge;
     challengeId;
+    usuario: Object;
 
-  constructor(private router: Router, public challengeServiceService:ChallengeServiceService) {
+  constructor(private router: Router, public challengeServiceService:ChallengeServiceService, public authservice: AuthService) {
+
       this.challengeId = this.router.getCurrentNavigation().extras;
   }
+
+  details() {
+      this.authservice.showMyDetails().subscribe(
+          (res) => {
+              console.log(res);
+              console.log("Esse é você");
+              this.usuario = res[0];
+          },
+          (err) =>{
+            console.log(err);
+          }
+      );
+  }
+
+  userToken(){
+      if (this.userToken && this.userToken != undefined && this.userToken != null) {}
+  }
+
 
   getChallenge(id){
      this.challengeServiceService.getChallenge(id).subscribe(
@@ -35,10 +56,6 @@ export class HomeDeslogPage implements OnInit {
   GoToRecipe(){
       this.router.navigate(['/recipe'])
   }
-
-<<<<<<< HEAD
-
-=======
   GoToRegister(){
     this.router.navigate(['/cadastro-usuario']);
   }
@@ -46,6 +63,4 @@ export class HomeDeslogPage implements OnInit {
   GoToLogin(){
     this.router.navigate(['/login']);
   }
-
->>>>>>> d01de1a18f560fd70771bb8e6e1f708b10e5c773
 }

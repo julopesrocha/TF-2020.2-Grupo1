@@ -10,6 +10,12 @@
                 <ion-button (click)="GoToRegister()" shape="round" class="register" size="small"> Cadastrar </ion-button>
         </ion-row>
     </ion-grid>
+
+    <ion-grid *ngIf="userToken && userToken != undefined && userToken != null">
+        <ion-row class="button ion-justify-content-between" >
+                <h3 *ngIf="usuario"> Olá, {{usuario.name}} </h3>
+        </ion-row>
+    </ion-grid>
       <div class="postMargin">
          <app-posts> </app-posts>
       </div>

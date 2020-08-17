@@ -9,15 +9,12 @@ export class AuthService {
 
   apiUrl:string ='http://localhost:8000/api/';
 
- 
-
   constructor(public http: HttpClient) { }
 
   httpHeaders: any ={
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json'
-      
     }
   }
 
@@ -41,7 +38,7 @@ export class AuthService {
     // console.log(this.httpHeaders);
 
     return this.http.get(this.apiUrl + 'getDetails', this.httpHeaders);
-  }  
+  }
 
   // public createRecipe(form): Observable<any> {
   //   this.httpHeaders.headers['Authorization'] = "Bearer" + localStorage.getItem('userToken');
@@ -50,4 +47,3 @@ export class AuthService {
   //   return this.http.post(this.apiUrl + 'createRecipe', form, this.httpHeaders);
   //}
 }
-
