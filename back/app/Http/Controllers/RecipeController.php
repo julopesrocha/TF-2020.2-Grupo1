@@ -35,7 +35,7 @@ class RecipeController extends Controller
 
     public function getLikes($recipe_id){
         $recipe = Recipe::findOrFail($recipe_id);
-        $likes = count($recipe->likes()->get());
+        $likes = $recipe->likes()->count();
         return response()->json(['likes' => $likes], 200);
     }
 
@@ -88,15 +88,11 @@ class RecipeController extends Controller
         $recipes = Recipe::findOrFail($recipe_id);
         $status = DB::table('likes')->where('user_id', $user->id)->where('recipe_id', $recipes->id)->count()>0;
         if ($status){
-            $user->likeMadeByUser()->detach($recipes);
-            $recipes->likeDown();
+            $user->likeDown($recipe_id);
             return response()->json(['dislike' => "You no longer like the recipe ". $recipes->title], 200);
         } else{
-            $user->likeMadeByUser()->attach($recipes);
-            $recipes->likeUp();
+            $user->likeUp($recipe_id);
             return response()->json(['like' => "You liked the recipe ". $recipes->title], 200);
         }
     }
-
-
 }

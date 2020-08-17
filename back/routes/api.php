@@ -30,6 +30,7 @@ Route::GET('listRecipesOfChallenge/{challenge_id}', 'RecipeController@listRecipe
 
 // Comentário
 Route::GET('getComment/{comment_id}', 'CommentController@getComment');
+Route::GET('listComments/{recipe_id}', 'CommentController@listComments');
 
 // Desafio
 Route::GET('getChallenge/{challenge_id}', 'ChallengeController@getChallenge');
@@ -49,6 +50,7 @@ Route::group(['middleware' =>'auth:api'], function(){
     Route::GET('logout', 'API\PassportController@logout');
     Route::GET('getDetails', 'API\PassportController@getDetails');
     Route::PUT('editUserProfile', 'UserController@editUserProfile');
+    Route::DELETE('deleteUser/{user_id}', 'UserController@deleteUser')->middleware('deleteUser');
 
     // Receita
     Route::POST('postRecipe', 'RecipeController@postRecipe');
