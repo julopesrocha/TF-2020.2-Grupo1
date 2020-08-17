@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\CommentRequest;
 use App\Comment;
+use App\Recipe;
 use Auth;
 
 
@@ -32,8 +33,13 @@ class CommentController extends Controller
         return response()->json(['success' => $comment], 200);
     }
 
+    public function listComments($recipe_id){
+        $commentList = Comment::where('recipe_id', $recipe_id)->get();
+        return response()->json(['commentList' => $commentList], 200);
+    }
+
     public function deleteComment($comment_id){
         Comment::destroy($comment_id);
-        return response()->json(['success' => 'Your comment has been successfully deleted.'], 200);
+        return response()->json(['Your comment has been successfully deleted.'], 200);
     }
 }

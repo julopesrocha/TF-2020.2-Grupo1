@@ -1,56 +1,50 @@
 ion-content{
-    --background: #25232C;
+    --background: white;
     font-family: 'Montserrat', sans-serif;
-    color: white;
+    color: black;
 }
 
-ion-icon{
-    color: #123C62;
-}
 
 ion-label{
     display:inline-block;
     padding-top:5%;
-    color: #FFFFFF;
+    color: black;
     font-size: 1.1em;
-}
-
-ion-item ion-label{
-    font-family: 'Montserrat', sans-serif;
-    color: white;
 }
 
 
 ion-input{
-    --color: white;
+    --color: black;
     font-family: 'Montserrat', sans-serif;
 }
 
 ion-textarea{
     margin-top: 2%;
-    --background: #C3EAE8;
-    border: 1px solid white;
+    --background: white;
+    border: 1px solid green;
+    border-radius: 20px;
     height: 25vh;
     font-family: 'Montserrat', sans-serif;
 }
 
 
 ion-button{
-    --background: #123C62;
+    --background: green;
 }
 
-.divOption{
-    color: white;
-}
 
 h3{
-    color: #C3EAE8;
+    color: black;
+    font-weight: bold;
 }
 
 p{
-    color: white;
+    color: black;
 }
 
+.iconBack{
+    color: green;
+  }
 
 .divForm{
     width: 80%;
@@ -58,17 +52,9 @@ p{
     margin-top: 5%;
 }
 
-.aviso{
-
-    font-family: 'Montserrat', sans-serif;
-
-}
-
-
 .bordaInferior{
-    border-bottom: 0.095em solid #FFFFFF;
+    border-bottom: 0.095em solid green;
 }
-
 
 .transparencia{
     --background: #ffffff00;
@@ -87,3 +73,6 @@ p{
 .iconCamera{
     color: white;
 }
+.imgLogo{
+    margin: 0% 40% 1% 40%;
+  }

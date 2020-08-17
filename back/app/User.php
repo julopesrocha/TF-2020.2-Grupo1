@@ -47,6 +47,7 @@ class User extends Authenticatable
         $this->photo = $request->photo;
         $this->gender = $request->gender;
         $this->date_of_birth = $request->date_of_birth;
+        $this->aboutme = $request->aboutme;
         $this->save();
 
         return $this;
@@ -71,11 +72,16 @@ class User extends Authenticatable
         if ($request->date_of_birth) {
             $this->date_of_birth = $request->date_of_birth;
         }
+
+        if ($request->aboutme){
+            $this->aboutme = $request->aboutme;
+        }
+
         $this->save();
     }
 
     public function recipes() {
-        return $this->hasMany('App/Recipe');
+        return $this->hasMany('App\Recipe');
     }
 
     // Relação da postagem de comentários com as comments
@@ -86,8 +92,36 @@ class User extends Authenticatable
     public function follower(){
         return $this->belongsToMany('App\User', 'follows', 'follower_id',  'following_id');    
     }
+
+    public function followUser($user_id) {
+        $user = User::findOrFail($user_id);
+        $this->follower()->attach($user);
+    }
+
+    public function unfollowUser($user_id){
+        $user = User::findOrFail($user_id);
+        $this->follower()->detach($user);
+    }
+
     // Relação de usuários sendo seguidos
     public function following(){
         return $this->belongsToMany('App\User', 'follows', 'following_id', 'follower_id');
     }
+
+    // Relação de curtir uma receita
+    public function likeMadeByUser(){
+        return $this->belongsToMany('App\Recipe', 'likes', 'user_id', 'recipe_id');
+    }
+
+    public function likeUp($id){
+        $this->likeMadeByUser()->attach($id);
+        $this->save();
+    }
+
+    public function likeDown($id){
+        $this->likeMadeByUser()->detach($id);
+        $this->save();
+    }
+
+
 }

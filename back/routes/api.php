@@ -18,13 +18,27 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+//Usuário
+Route::GET('getUserProfile/{user_id}', 'UserController@getUserProfile');
+
 // Receita
 Route::GET('getRecipe/{recipe_id}', 'RecipeController@getRecipe');
-Route::GET('getComment/{comment_id}', 'CommentController@getComment');
+Route::GET('getLikes/{recipe_id}', 'RecipeController@getLikes');
+Route::GET('listRecipes', 'RecipeController@listRecipes');
+Route::GET('listRecipesOfUser/{user_id}', 'RecipeController@listRecipesOfUser');
+Route::GET('listRecipesOfChallenge/{challenge_id}', 'RecipeController@listRecipesOfChallenge');
 
-//Desafio
+// Comentário
+Route::GET('getComment/{comment_id}', 'CommentController@getComment');
+Route::GET('listComments/{recipe_id}', 'CommentController@listComments');
+
+// Desafio
 Route::GET('getChallenge/{challenge_id}', 'ChallengeController@getChallenge');
 Route::GET('listChallenges', 'ChallengeController@listChallenges');
+
+// Seguir
+Route::GET('getFollowersOfUser/{user_id}','UserController@getFollowersOfUser');
+Route::GET('getUserFollowing/{user_id}', 'UserController@getUserFollowing');
 
 //Somente autenticado
 Route::POST('register', 'API\PassportController@register');
@@ -33,15 +47,16 @@ Route::POST('login', 'API\PassportController@login');
 Route::group(['middleware' =>'auth:api'], function(){
 
     // Usuário
-    
     Route::GET('logout', 'API\PassportController@logout');
     Route::GET('getDetails', 'API\PassportController@getDetails');
     Route::PUT('editUserProfile', 'UserController@editUserProfile');
+    Route::DELETE('deleteUser/{user_id}', 'UserController@deleteUser')->middleware('deleteUser');
 
     // Receita
     Route::POST('postRecipe', 'RecipeController@postRecipe');
     Route::PUT('updateRecipe/{recipe_id}', 'RecipeController@updateRecipe');
     Route::DELETE('deleteRecipe/{recipe_id}', 'RecipeController@deleteRecipe');
+    Route::GET('getRecipesOfFollowing', 'RecipeController@getRecipesOfFollowing');
 
     // Comentário
     Route::POST('postComment/{recipe_id}', 'CommentController@postComment');
@@ -53,8 +68,12 @@ Route::group(['middleware' =>'auth:api'], function(){
     Route::PUT('updateChallenge/{challenge_id}', 'ChallengeController@updateChallenge')->middleware('challengeAdmin');
     Route::DELETE('deleteChallenge/{challenge_id}', 'ChallengeController@deleteChallenge')->middleware('challengeAdmin');
 
-    // Follow
+    // Seguir
     Route::POST('followUser/{user_id}', 'UserController@followUser');
     Route::GET('getFollowers', 'UserController@getFollowers');
     Route::GET('getFollowing', 'UserController@getFollowing');
+
+    // Curtir
+    Route::POST('likeRecipe/{recipe_id}', 'RecipeController@likeRecipe');
+
 });

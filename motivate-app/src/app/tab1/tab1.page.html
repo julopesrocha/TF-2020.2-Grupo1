@@ -13,6 +13,6 @@
         </div>
     </div>
     <div class="challengeCard">
-        <app-challange-card [challenge]="challenge" (clickSeeMore)="navigateToChallenge($event)" *ngFor="let challenge of challenges"> </app-challange-card>
+        <app-challange-card [challenge]="challenge" (clickSeeChallenge)="navigateToChallenge($event)" *ngFor="let challenge of challenges"> </app-challange-card>
     </div>
 </ion-content>

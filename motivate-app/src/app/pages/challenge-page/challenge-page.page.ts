@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ChallengeServiceService } from '../../services/challenge-service.service';
 import { Router } from '@angular/router';
+import {RecipeService} from '../../services/recipe.service';
 
 @Component({
   selector: 'app-challenge-page',
@@ -11,8 +12,9 @@ export class ChallengePagePage implements OnInit {
 
     challenge;
     challengeId;
+    recipes;
 
-  constructor(private router: Router, public challengeServiceService:ChallengeServiceService) {
+  constructor(public recipeService: RecipeService, private router: Router, public challengeServiceService:ChallengeServiceService) {
 
       this.challengeId = this.router.getCurrentNavigation().extras;
   }
@@ -30,7 +32,23 @@ export class ChallengePagePage implements OnInit {
     );
  }
 
+ listRecipes(challenge_id){
+  this.recipeService.listRecipesChallenge(challenge_id).subscribe(
+    (res)=>{
+      console.log(res);
+      this.recipes= res.recipeList;
+    },
+    (err)=>{
+      console.log(err);
+    }
+  );
+}
 
+
+
+  navigateToRecipe(recipe_id) {
+    this.router.navigate(['/recipe'], recipe_id);
+  }
 
   navigateTochallengeList() {
       this.router.navigate(['/tabs/tabs1']);
@@ -42,6 +60,7 @@ export class ChallengePagePage implements OnInit {
 
   ngOnInit() {
       this.getChallenge(this.challengeId);
+      this.listRecipes(this.challengeId);
   };
 
 

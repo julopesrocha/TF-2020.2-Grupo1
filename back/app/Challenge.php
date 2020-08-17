@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
+
 class Challenge extends Model
 {
     //Create
@@ -13,6 +14,7 @@ class Challenge extends Model
         $this->description = $request->description;
         $this->about = $request->about;
         $this->recommendation = $request->recommendation;
+        $this->photo = $request->photo;
         $this->save();
     }
 

@@ -19,7 +19,7 @@ class CreateChallengesTable extends Migration
             $table->string('description');
             $table->string('about');
             $table->string('recommendation')->nullable();
-            $table->string('photo')->nullable();
+            $table->mediumText('photo')->nullable();
             $table->timestamps();
         });
     }
