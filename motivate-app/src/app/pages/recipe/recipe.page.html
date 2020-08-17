@@ -49,6 +49,6 @@
 
     <!--Sessão dos Comentários-->
         <div class="commentsMergin">
-            <app-comment> </app-comment>
+            <app-comment [comentario]='comment' *ngFor='let comment of comments'> </app-comment>
         </div>
 </ion-content>

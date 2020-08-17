@@ -13,9 +13,7 @@ export class Tab1Page {
 
     challenges = [];
 
-  constructor(public authservice: AuthService, private router: Router, public challengeServiceService: ChallengeServiceService,) {
-
-  }
+  constructor(public authservice: AuthService, private router: Router, public challengeServiceService: ChallengeServiceService) {}
 
   listChallenges(){
      this.challengeServiceService.getListChallenges().subscribe(

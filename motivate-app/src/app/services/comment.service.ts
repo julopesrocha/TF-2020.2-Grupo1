@@ -11,7 +11,14 @@ export class CommentService {
 
   constructor(public http:HttpClient) { }
 
- // postRecipe(): Observable<any>{
-    //  return this.http.post(this.apiURL + 'postComment');
+ // postComment(republic_id): Observable<any>{
+    //  return this.http.post(this.apiURL + 'postComment/'+ republic_id);
  // }
+
+ // deleteComment(id):Observable<any>{
+//        return this.http.delete(this.apiURL + 'deleteComment/' + id);
+//}
+
+// listComments():Observable<any>{
+//       return this.http.get(this.apiURL + 'listComments');
 }
