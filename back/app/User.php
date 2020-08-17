@@ -81,7 +81,7 @@ class User extends Authenticatable
     }
 
     public function recipes() {
-        return $this->hasMany('App/Recipe');
+        return $this->hasMany('App\Recipe');
     }
 
     // Relação da postagem de comentários com as comments
