@@ -8,7 +8,23 @@ import {UserService} from '../../services/user.service';
 })
 export class ProfileOtherPage implements OnInit {
 
+  user;
+
   constructor(public userService: UserService) { }
+
+// SHOW USER
+
+//   getUser(id){
+//     this.userService.showUser(id).subscribe(
+//      (res)=>{
+//        console.log(res);
+//        this.user = res.user;
+//      },
+//      (err)=>{
+//        console.log(err);
+//      }
+//    );
+//  }
 
   ngOnInit() {
   }
