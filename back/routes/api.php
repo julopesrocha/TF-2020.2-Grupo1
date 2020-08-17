@@ -32,6 +32,8 @@ Route::GET('getComment/{comment_id}', 'CommentController@getComment');
 Route::GET('getChallenge/{challenge_id}', 'ChallengeController@getChallenge');
 Route::GET('listChallenges', 'ChallengeController@listChallenges');
 
+// Seguir
+Route::GET('getFollowersOfUser/{user_id}','UserController@getFollowersOfUser');
 
 //Somente autenticado
 Route::POST('register', 'API\PassportController@register');

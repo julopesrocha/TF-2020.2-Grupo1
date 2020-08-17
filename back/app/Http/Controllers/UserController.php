@@ -11,6 +11,14 @@ use DB;
 
 class UserController extends Controller
 {
+    // Update
+    public function editUserProfile(UserRequest $request) {
+        $user = Auth::user();
+        $user->updateUser($request);
+        return response()->json(['user'=>$user], 200);
+    }
+
+    // relação com seguidores
     public function followUser($user_id){
         $user = Auth::user();
         $userFollowing = User::findOrFail($user_id);
@@ -28,15 +36,15 @@ class UserController extends Controller
         return response()->json(['error'=>'You can\'t follow yourself'], 422);
     }
 
-    public function editUserProfile(UserRequest $request) {
-        $user = Auth::user();
-        $user->updateUser($request);
-        return response()->json(['user'=>$user], 200);
-    }
-
     public function getFollowers(){
         $user = Auth::user();
         $userFollower = $user->follower()->get();
+        return response()->json(['userFollower' => $userFollower], 200);
+    }
+
+    public function getFollowersOfUser($user_id) {
+        $user = User::findOrFail($user_id);
+        $userFollower = $user->following()->get();
         return response()->json(['userFollower' => $userFollower], 200);
     }
     
@@ -46,5 +54,5 @@ class UserController extends Controller
         return response()->json(['userFollowing' => $userFollowing], 200);
 
     }
-    
+
 }
