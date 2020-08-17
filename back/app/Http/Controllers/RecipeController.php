@@ -82,6 +82,4 @@ class RecipeController extends Controller
             return response()->json(['like' => "You liked the recipe ". $recipes->title], 200);
         }
     }
-
-
 }

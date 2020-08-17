@@ -43,6 +43,7 @@ Route::group(['middleware' =>'auth:api'], function(){
     Route::GET('logout', 'API\PassportController@logout');
     Route::GET('getDetails', 'API\PassportController@getDetails');
     Route::PUT('editUserProfile', 'UserController@editUserProfile');
+    Route::DELETE('deleteUser/{user_id}', 'UserController@deleteUser')->middleware('deleteUser');
 
     // Receita
     Route::POST('postRecipe', 'RecipeController@postRecipe');
