@@ -19,7 +19,6 @@ class CreateRecipesTable extends Migration
             $table->string('ingredients');
             $table->string('preparation');
             $table->string('subtitle');
-            $table->integer('like')->nullable()->default(0);
             $table->timestamps();
             $table->unsignedBigInteger('user_id')->nullable();
         });
