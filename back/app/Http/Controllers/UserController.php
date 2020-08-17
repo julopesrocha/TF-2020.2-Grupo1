@@ -55,4 +55,10 @@ class UserController extends Controller
 
     }
 
+    public function getUserFollowing($user_id) {
+        $user = User::findOrFail($user_id);
+        $userFollowing = $user->follower()->get();
+        return response()->json(['userFollowing' => $userFollowing], 200);
+    }
+
 }
