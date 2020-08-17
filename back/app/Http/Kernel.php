@@ -57,6 +57,7 @@ class Kernel extends HttpKernel
         'auth' => \App\Http\Middleware\Authenticate::class,
         'deleteComment' => \App\Http\Middleware\DeleteComment::class,
         'challengeAdmin' => \App\Http\Middleware\ChallengeAdmin::class,
+        'deleteUser' => \App\Http\Middleware\DeleteUser::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,

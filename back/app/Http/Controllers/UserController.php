@@ -67,4 +67,11 @@ class UserController extends Controller
         return response()->json(['userFollowing' => $userFollowing], 200);
     }
 
+    public function deleteUser($user_id){
+        $user = Auth::user();
+        User::destroy($user_id);
+        return response()->json(['User deleted'], 200);
+    }
+
+    
 }

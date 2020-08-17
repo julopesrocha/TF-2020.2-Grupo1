@@ -31,13 +31,14 @@ class CommentRequest extends FormRequest
     public function rules()
     {
         return [
-            'comment' => 'required|string|max:200',
+            'comment' => 'required|string|min:2|max:200',
         ];
     }
     
     public function messages()
     {
         return [
+            'comment.min' => 'Você precisa digitar no minimo 2 letras para comentar',
             'comment.max' => 'Esse comentário só pode ter 200 letras',
         ];
     }

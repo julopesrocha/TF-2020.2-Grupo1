@@ -110,7 +110,18 @@ class User extends Authenticatable
 
     // Relação de curtir uma receita
     public function likeMadeByUser(){
-        return $this->belongsToMany('App\User', 'likes', 'user_id', 'recipe_id');
+        return $this->belongsToMany('App\Recipe', 'likes', 'user_id', 'recipe_id');
     }
+
+    public function likeUp($id){
+        $this->likeMadeByUser()->attach($id);
+        $this->save();
+    }
+
+    public function likeDown($id){
+        $this->likeMadeByUser()->detach($id);
+        $this->save();
+    }
+
 
 }
