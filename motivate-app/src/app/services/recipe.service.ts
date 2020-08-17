@@ -26,12 +26,24 @@ export class RecipeService {
 
 
     public showRecipe(recipe_id): Observable<any>{
-      return this.http.get(this.apiUrl + 'getRecipe/');
+      return this.http.get(this.apiUrl + 'getRecipe/' + recipe_id);
     }
 
-    // public listRecipes(): Observable <any>{
-    //   return this.http.get(this.apiUrl)
-    // }
+    // lista as receitas de um desafio específico
+    public listRecipesChallenge(challenge_id): Observable <any>{
+      return this.http.get(this.apiUrl + 'listRecipesOfChallenge/' + challenge_id);
+    }
+
+      // lista as receitas de um usuário desafio
+    public listRecipesUser(user_id): Observable <any>{
+      return this.http.get(this.apiUrl + 'listRecipesOfUser/' + user_id);
+    }
+
+      // lista as receitas na home
+    public listRecipesHome(user_id): Observable <any>{
+      return this.http.get(this.apiUrl + 'listRecipes');
+    }
+
 
     public updateRecipe(recipe_id, form): Observable<any>{
       return this.http.put(this.apiUrl + 'updateRecipe/' + recipe_id, form);

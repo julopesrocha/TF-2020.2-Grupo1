@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import {RecipeService} from '../../services/recipe.service';
 
 @Component({
   selector: 'app-recipe',
@@ -10,41 +11,42 @@ import { Router } from '@angular/router';
 export class RecipePage implements OnInit {
 
     commentForm: FormGroup;
-//    recipe;
-//    recipeId;
-// public recipeService:RecipeService
-  constructor(private router: Router, public formbuilder:FormBuilder) {
+    recipe;
+    recipeId;
+
+
+  constructor(private router: Router, public formbuilder:FormBuilder, public recipeService: RecipeService) {
       this.commentForm = this.formbuilder.group({
           comment:[null,[Validators.required,Validators.minLength(1),Validators.maxLength(200)]],
       });
-    //  this.recipeId = this.router.getCurrentNavigation().extras;
+     this.recipeId = this.router.getCurrentNavigation().extras;
   }
   submitForm(commentForm){
       console.log(commentForm.value);
   }
 
-  //getRecipe(id){
-//     this.recipeService.getRecipe(id).subscribe(
-//      (res)=>{
-//        console.log(res);
-//        this.recipe = res.recipe;
-//      },
-//      (err)=>{
-//        console.log(err);
-//      }
-//    );
-//  }
+  getRecipe(id){
+    this.recipeService.showRecipe(id).subscribe(
+     (res)=>{
+       console.log(res);
+       this.recipe = res.recipe;
+     },
+     (err)=>{
+       console.log(err);
+     }
+   );
+ }
 
-//    deleteRecipe(){
-//         this.recipeService.deleteRecipe(this.recipeeId).subscribe(
-//           (res)=>{
-//             console.log(res);
-//             this.router.navigate(["/tabs/home]);
-//           },(err) =>{
-//             console.log(err);
-//           }
-//         );
-//       }
+   deleteRecipe(){
+        this.recipeService.deleteRecipe(this.recipeId).subscribe(
+          (res)=>{
+            console.log(res);
+            this.router.navigate(["/tabs/home"]);
+          },(err) =>{
+            console.log(err);
+          }
+        );
+      }
 
 
   navigateTobackHome(){
@@ -52,7 +54,7 @@ export class RecipePage implements OnInit {
   }
 
   ngOnInit() {
-//       this.getRecipe(this.recipeId);
+      this.getRecipe(this.recipeId);
   }
 
 }

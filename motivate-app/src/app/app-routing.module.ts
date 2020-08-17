@@ -26,10 +26,7 @@ const routes: Routes = [
     path: 'cadastro-desafio',
     loadChildren: () => import('./pages/cadastro-desafio/cadastro-desafio.module').then( m => m.CadastroDesafioPageModule)
   },
-  {
-    path: 'cadastro-receita',
-    loadChildren: () => import('./pages/cadastro-receita/cadastro-receita.module').then( m => m.CadastroReceitaPageModule)
-    },
+
    {
     path: 'recipe',
     loadChildren: () => import('./pages/recipe/recipe.module').then( m => m.RecipePageModule)

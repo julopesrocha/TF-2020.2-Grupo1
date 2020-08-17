@@ -1,10 +1,10 @@
-<ion-content>
+<ion-content *ngIf="recipe">
         <div class="toolbar">
             <ion-icon (click)="navigateTobackHome()" name="chevron-back-outline" size="large" style="float: left" class="back"></ion-icon>
         </div>
             <img class="imgLogo" src="../../assets/logo-circle.png" alt="logo do motivate">
         <div class="title">
-            Bolo de chocolate <!-- {{recipe.title}} -->
+            {{recipe.title}} 
         </div>
         <div>
             <img  class="img" src="../../assets/cake.png" alt="imagem do bolo de chocolate">
@@ -21,21 +21,21 @@
          <div class="subtitleMargin"> Legenda: </div>
              <div class="spaceFormat">
                  <div class="text">
-                    Legenda <!--{{recipe.subtitle}}-->
+                    {{recipe.subtitle}}
                  </div>
              </div>
      <!-- Ingredientes -->
         <div class="subtitles"> Ingredientes : </div>
             <div class="description" class="spaceFormat">
                 <div class="text">
-                    Ovo, farinha, etc.   <!--{{recipe.ingredients}} -->
+                   {{recipe.ingredients}} 
                  </div>
             </div>
     <!--Modo de preparo -->
         <div class="subtitles"> Modo de preparo : </div>
             <div class="preparation" class="spaceFormat">
                 <div class="text">
-                    <!--{{recipe.preparation}}-->
+                   {{recipe.preparation}}
                 </div>
             </div>
     <!-- Receitas -->
