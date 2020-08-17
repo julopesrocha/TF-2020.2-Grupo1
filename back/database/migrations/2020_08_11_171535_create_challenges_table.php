@@ -15,9 +15,10 @@ class CreateChallengesTable extends Migration
     {
         Schema::create('challenges', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('title')->unique();
             $table->string('description');
-            $table->string('tag')->nullable();
+            $table->string('about');
+            $table->string('recommendation')->nullable();
             $table->string('photo')->nullable();
             $table->timestamps();
         });

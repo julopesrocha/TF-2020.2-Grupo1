@@ -31,24 +31,24 @@ class RecipeRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'min:3|max:80',
+            'title' => 'min:3|max:80',
             'ingredients' => 'min:3|max:500',
             'preparation' => 'min:3|max:600',
-            'caption' => 'min:3|max:240',
+            'subtitle' => 'min:3|max:240',
         ];
     }
 
     public function messages(){
         return [
             // Mensagens personalizadas
-            'name.min' => 'O nome deve conter no mínimo 3 digitos',
-            'name.max' => 'O nome deve conter no máximo 80 digitos',
-            'ingredients.min' => 'A lita de ingredientes deve conter no mínimo 3 digitos',
-            'ingredients.max' => 'A lita de ingredientes conter no máximo 500 digitos',
+            'title.min' => 'O nome deve conter no mínimo 3 digitos',
+            'title.max' => 'O nome deve conter no máximo 80 digitos',
+            'ingredients.min' => 'A lista de ingredientes deve conter no mínimo 3 digitos',
+            'ingredients.max' => 'A lista de ingredientes conter no máximo 500 digitos',
             'preparation.min' => 'O modo de preparo deve conter no mínimo 3 digitos',
             'preparation.max' => 'O modo de preparo deve conter no máximo 600 digitos',
-            'caption.min' => 'A legenda deve conter no mínimo 3 digitos',
-            'caption.max' => 'A legenda deve conter no máximo 240 digitos',
+            'subtitle.min' => 'A legenda deve conter no mínimo 3 digitos',
+            'subtitle.max' => 'A legenda deve conter no máximo 240 digitos',
         ];
     }
 }

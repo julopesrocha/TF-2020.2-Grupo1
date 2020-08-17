@@ -19,7 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('photo')->nullable();
+            $table->mediumText('photo')->nullable();
+            $table->string('aboutme')->nullable();
             $table->string('gender');
             $table->string('date_of_birth');
             $table->boolean('privileged')->default(0);

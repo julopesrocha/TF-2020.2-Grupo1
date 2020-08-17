@@ -1,0 +1,78 @@
+ion-content{
+    --background: white;
+    font-family: 'Montserrat', sans-serif;
+    color: black;
+}
+
+
+ion-label{
+    display:inline-block;
+    padding-top:5%;
+    color: black;
+    font-size: 1.1em;
+}
+
+
+ion-input{
+    --color: black;
+    font-family: 'Montserrat', sans-serif;
+}
+
+ion-textarea{
+    margin-top: 2%;
+    --background: white;
+    border: 1px solid green;
+    border-radius: 20px;
+    height: 25vh;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+ion-button{
+    --background: green;
+}
+
+
+h3{
+    color: black;
+    font-weight: bold;
+}
+
+p{
+    color: black;
+}
+
+.iconBack{
+    color: green;
+  }
+
+.divForm{
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 5%;
+}
+
+.bordaInferior{
+    border-bottom: 0.095em solid green;
+}
+
+.transparencia{
+    --background: #ffffff00;
+}
+
+.tamanhoTexto{
+    font-size: 1em;
+}
+
+.botao{
+    margin-top: 10%;
+    width: 70vw;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.iconCamera{
+    color: white;
+}
+.imgLogo{
+    margin: 0% 40% 1% 40%;
+  }

@@ -1,29 +1,20 @@
-<ion-header>
-  <ion-toolbar>
-      <div class="toolbar">
-        <img src="../assets/logo.png" class="logo" alt="logo do motivate" >
-            <img src="../assets/motivatemotivate.png" class="motivate" alt="motivate com fonte poppins">
-        </div>
-  </ion-toolbar>
-</ion-header>
 
 <ion-content>
-<!-- Postagens -->
-    <ion-grid *ngIf="!username">
+    <div class="toolbar">
+      <img src="../../assets/wave-logo .png"  alt="logo do motivate" >
+      </div>
+
+    <ion-grid>
         <ion-row class="button ion-justify-content-between" >
-            <ion-button (click)="VaiproLogin()" shape="round" class="login" size="medium"> Login </ion-button>
-            <ion-button (click)="VaiproCadastro()" shape="round" class="register" size="medium"> Cadastrar </ion-button>
+                <ion-button (click)="GoToLogin()" shape="round" class="login" size="small"> Login </ion-button>
+                <ion-button (click)="GoToRegister()" shape="round" class="register" size="small"> Cadastrar </ion-button>
         </ion-row>
     </ion-grid>
-
-<!--
-            <div *ngIf="usuarioLogado">
-                Olá João
-            </div>
-         -->
-
-         <app-posts > </app-posts>
-         <app-posts > </app-posts>
-         <app-posts > </app-posts>
+      <div class="postMargin">
+         <app-posts> </app-posts>
+      </div>
+      <div class="postMargin">
+         <app-posts> </app-posts>
+      </div>
 
 </ion-content>

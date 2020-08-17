@@ -36,7 +36,7 @@ doSomething(date) {
       confirm_password:[null, [Validators.required]]
 
     }, { validator: MustMatch('password', 'confirm_password')}
-      
+
     );
    }
 
@@ -53,7 +53,7 @@ doSomething(date) {
     toast.present();
   }
 
-  VaipraHomeDeslog(){
+  GoToHome(){
     this.router.navigate(['/tabs/home']);
   }
 
@@ -65,7 +65,8 @@ doSomething(date) {
       (res)=> {
         console.log(res);
         localStorage.setItem('userToken', res.success.token);
-        this.router.navigate(['/tabs/tab1'])
+        // localStorage.setItem('username', res.success.token);
+        this.router.navigate(['/tabs/home'])
 
       },
 
@@ -74,7 +75,7 @@ doSomething(date) {
 
         if(err.error.email[0]=="Este e-mail já existe"){
 
-          this.presentToast();          
+          this.presentToast();
         }
       }
     );

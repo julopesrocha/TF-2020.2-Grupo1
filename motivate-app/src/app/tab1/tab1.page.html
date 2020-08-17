@@ -1,14 +1,18 @@
-<ion-header>
-  <ion-toolbar>
-      <div class="toolbar">
-        </div>
-  </ion-toolbar>
-</ion-header>
-
+<div class="backgroundTop">
+    <div class="toolbar">
+        <ion-icon (click)="navigateTobackHome()" name="chevron-back-outline" size="large" style="float: left" class="back"></ion-icon>
+    </div>
+</div>
 <ion-content>
-
- <ion-button (click)="logout()">
-   Deslogar
- </ion-button>
-
+    <div class="backgroundTop">
+        <div class="paddingTitle">
+            <p>Desafios</p>
+        </div>
+        <div class="img">
+            <img style="float: center" src="../assets/desafio.png" class="challengeAlign">
+        </div>
+    </div>
+    <div class="challengeCard">
+        <app-challange-card [challenge]="challenge" (clickSeeChallenge)="navigateToChallenge($event)" *ngFor="let challenge of challenges"> </app-challange-card>
+    </div>
 </ion-content>

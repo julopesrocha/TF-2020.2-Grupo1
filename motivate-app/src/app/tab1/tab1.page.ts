@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthService } from '../services/auth.service';
+import { ChallengeServiceService } from '../services/challenge-service.service';
+
 
 @Component({
   selector: 'app-tab1',
@@ -9,19 +11,37 @@ import {AuthService } from '../services/auth.service';
 })
 export class Tab1Page {
 
-  constructor(public authservice: AuthService, private router: Router) {}
+    challenges = [];
 
-  logout() {
-    this.authservice.logout().subscribe(
-        (res) => {
-            console.log(res);
-            localStorage.removeItem('userToken');
-            localStorage.removeItem('Usuario');
-            
-            this.router.navigate(['/tabs/home']);
-            console.log("Você saiu!!");
-        }
-    );
-}
+  constructor(public authservice: AuthService, private router: Router, public challengeServiceService: ChallengeServiceService,) {
+
+  }
+
+  listChallenges(){
+     this.challengeServiceService.getListChallenges().subscribe(
+       (res)=>{
+         console.log(res);
+         this.challenges = res.challengeList;
+       },
+       (err)=>{
+         console.log(err);
+       }
+     );
+   }
+
+   // Rota para a página de um challenge específico
+    navigateToChallenge(id) {
+        this.router.navigate(['/challenge-page'], id);
+    }
+
+    
+
+    navigateTobackHome(){
+        this.router.navigate(['/tabs/home'])
+    }
+
+    ngOnInit(){
+        this.listChallenges();
+    }
 
 }
