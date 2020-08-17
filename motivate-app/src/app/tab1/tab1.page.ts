@@ -29,9 +29,12 @@ export class Tab1Page {
      );
    }
 
-    navigateToLowCarb(id) {
+   // Rota para a página de um challenge específico
+    navigateToChallenge(id) {
         this.router.navigate(['/challenge-page'], id);
     }
+
+    
 
     navigateTobackHome(){
         this.router.navigate(['/tabs/home'])

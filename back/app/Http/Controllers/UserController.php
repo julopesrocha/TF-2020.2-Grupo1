@@ -17,11 +17,11 @@ class UserController extends Controller
         if ($user->id != $userFollowing->id){
             $status = DB::table('follows')->where('following_id',$user_id)->where('follower_id',$user->id)->count()>0;
             if ($status){
-                $user->follower()->detach($user_id);
+                $user->unfollowUser($user_id);
                 return response()->json(['No longer following '.$userFollowing->name], 200);
             } 
             else {
-                $user->follower()->attach($userFollowing->id);
+                $user->followUser($user_id);
                 return response()->json(['following'=> "You're following ". $userFollowing->name], 200);
             }
         }

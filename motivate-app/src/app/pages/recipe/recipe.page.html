@@ -1,0 +1,54 @@
+<ion-content *ngIf="recipe">
+        <div class="toolbar">
+            <ion-icon (click)="navigateTobackHome()" name="chevron-back-outline" size="large" style="float: left" class="back"></ion-icon>
+        </div>
+            <img class="imgLogo" src="../../assets/logo-circle.png" alt="logo do motivate">
+        <div class="title">
+            {{recipe.title}} 
+        </div>
+        <div>
+            <img  class="img" src="../../assets/cake.png" alt="imagem do bolo de chocolate">
+            <img  class="faixa" src="../../assets/faixa-laranja.png" alt="faixa laranja do desafio low carb">
+        </div>
+        <div class="iconMargin" >
+            <ion-icon size="large" name="pencil-outline"></ion-icon>
+            <ion-icon (click)="deleteRecipe()" class="trashMargin" size="large" name="trash-outline"></ion-icon>
+        </div>
+    <!-- Descrição -->
+         <div class="textMargin"> Feito por João </div>
+         <div class="textMargin"> Receita do Desafio low carb</div>
+     <!-- Legendas-->
+         <div class="subtitleMargin"> Legenda: </div>
+             <div class="spaceFormat">
+                 <div class="text">
+                    {{recipe.subtitle}}
+                 </div>
+             </div>
+     <!-- Ingredientes -->
+        <div class="subtitles"> Ingredientes : </div>
+            <div class="description" class="spaceFormat">
+                <div class="text">
+                   {{recipe.ingredients}} 
+                 </div>
+            </div>
+    <!--Modo de preparo -->
+        <div class="subtitles"> Modo de preparo : </div>
+            <div class="preparation" class="spaceFormat">
+                <div class="text">
+                   {{recipe.preparation}}
+                </div>
+            </div>
+    <!-- Receitas -->
+            <div class="subtitles"> Comentários <ion-icon size="large" name="chatbubble-ellipses-outline"></ion-icon> </div>
+                <form [formGroup]="commentForm" (ngSubmit)="submitForm(commentForm)" >
+                    <div class="commentFormat">
+                        <ion-textarea placeholder="Faça seu comentário:" type="text" formControlName="comment"></ion-textarea>
+                    </div>
+                    <ion-button class="sendButton"type="submit" shape="round" [disabled]="commentForm.invalid">Enviar</ion-button>
+                </form>
+
+    <!--Sessão dos Comentários-->
+        <div class="commentsMergin">
+            <app-comment> </app-comment>
+        </div>
+</ion-content>

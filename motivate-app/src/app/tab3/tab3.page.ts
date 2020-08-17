@@ -48,7 +48,9 @@ logout() {
 //   this.router.navigate(['cadastro_desafio']);
 // }
 
-
+GoToEditProfile(){
+  this.router.navigate(['edit-profile']);
+}
 
 
 }

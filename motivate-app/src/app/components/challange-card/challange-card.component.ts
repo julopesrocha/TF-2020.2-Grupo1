@@ -8,12 +8,12 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class ChallangeCardComponent implements OnInit {
 
 @Input() challenge;
-@Output() clickSeeMore = new EventEmitter<number>();
+@Output() clickSeeChallenge = new EventEmitter<number>();
 
   constructor() {}
 
       clickToSee(id) {
-          this.clickSeeMore.emit(id);
+          this.clickSeeChallenge.emit(id);
         }
 
   ngOnInit() {}
