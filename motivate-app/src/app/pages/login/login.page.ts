@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
+import {AuthService } from '../../services/auth.service';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -9,28 +11,60 @@ import {Router} from '@angular/router';
 })
 export class LoginPage implements OnInit {
 
-  registerForm: FormGroup;
+  loginForm: FormGroup;
   submitted=true;
 
-  submitForm(form){
-    console.log(form);
-    console.log(form.value);
-  }
 
-  constructor(public formbuilder: FormBuilder, private router: Router) {
-    this.registerForm = this.formbuilder.group({
-      
+  constructor(public toastController: ToastController, public formbuilder: FormBuilder, private router: Router, public authservice: AuthService) {
+    this.loginForm = this.formbuilder.group({
+
       email:[null, [Validators.email, Validators.required]],
-      password:[null, [Validators.required, Validators.minLength(8), Validators.maxLength(30)]],
-      
+      password:[null, [Validators.required, Validators.minLength(6), Validators.maxLength(15)]],
+
     })
    }
 
-   get f(){return this.registerForm.controls;}
+   get f(){return this.loginForm.controls;}
 
-   
-  VaiproCadastro(){
+   async presentToast(){
+    const toast = await this.toastController.create({
+      message: 'Email ou senha incorretos!',
+      duration: 6000
+    });
+    toast.present();
+  }
+
+  submitForm(form){
+
+    console.log(form.value);
+
+    this.authservice.login(this.loginForm.value).subscribe(
+      (res)=> {
+        console.log(res);
+        localStorage.setItem('userToken', res.success.token);
+        this.router.navigate(['/tabs/home'])
+        console.log("entrei");
+      },
+
+
+        (err)=> {
+          console.log(err);
+
+          if(err.error.error=="Unauthorized"){
+
+            this.presentToast();
+          }
+        }
+        );
+      }
+
+
+  GoToRegister(){
     this.router.navigate(['/cadastro-usuario']);
+  }
+
+  GoToHome(){
+    this.router.navigate(['/tabs/home']);
   }
 
   ngOnInit() {

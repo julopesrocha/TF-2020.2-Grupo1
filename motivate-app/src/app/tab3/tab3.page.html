@@ -1,6 +1,67 @@
-<ion-header>
-  <ion-toolbar>
-      <div class="toolbar">
-        </div>
-  </ion-toolbar>
-</ion-header>
+
+
+    <div class="toolbar">
+      <img src= "../../assets/wave.png"  alt="logo do motivate" >
+      </div>
+ 
+
+<ion-content>
+  
+  <ion-row class="ion-align-items-center"> 
+    <ion-col size="6">
+      <div class="ion-text-center">
+        <!-- <h2 *ngIf="usuario"> {{usuario.name}}</h2> -->
+        <h2 > Gabriela Mattos</h2>
+      </div>
+      
+    </ion-col>
+    <ion-col size="4" class="ion-margin-start">
+      <div class="divFoto">
+        <!-- <p> {{usuario.bio}} </p> -->
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        
+      </div>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="ion-justify-content-end">
+    <ion-col size="4" class="ion-margin-end">
+      <ion-button (click)="GoToEditProfile()" class="buttonEdit">
+        Editar Perfil
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="ion-justify-content-center ">
+    <ion-col size="10">
+      <p>Sobre mim:</p>
+      <div class="divBio">
+        <p>Adoro comida saudavel, ser fitness é demais!</p>
+      </div>
+    </ion-col>
+    
+  </ion-row>
+   
+    <!-- <p> {{usuario.bio}}</p> -->
+  
+
+  <!-- <ion-button (click)="logout()">
+    Deslogar
+  </ion-button> -->
+
+
+<!-- 
+  <ion-button (click)="GoToCreateChallenge()">
+    Criar desafio
+  </ion-button> -->
+
+  <!-- <div class="recipesListMergin">
+    <app-recipes-list [recipe]="recipe" (clickSeeRecipe)="navigateToRecipe($event)" *ngFor="let recipe of recipes"> </app-recipes-list>
+</div> -->
+
+</ion-content>

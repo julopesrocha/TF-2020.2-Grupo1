@@ -1,0 +1,45 @@
+ion-label{
+    color:white;
+}
+
+ion-header{
+    margin: 5px 40px 10px 40px;
+}
+ion-card{
+    margin: 5px 40px 10px 40px;
+    padding-top: 6px;
+    padding-bottom: 5px;
+    border-radius: 20px;
+
+}
+.font{
+    color:#0E416D;
+    text-align: center;
+    font-size: 15px;
+}
+
+.img{
+    width: 100%;
+}
+.title {
+    font-weight: bold;
+    font-family: 'Montserrat',sans-serif;
+    padding-bottom: 10px;
+    color:#072138;
+    text-align: center;
+    font-size: 19px;
+}
+
+ion-icon {
+    color: #0E416D;
+    margin: 3px 5px 3px 30px;
+}
+ion-row{
+    margin: 3px 5px 3px 5px;
+}
+
+
+ion-buttom{
+    padding-left: 20px;
+    --background: #2B577E;
+}

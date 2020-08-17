@@ -20,17 +20,30 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // Receita
 Route::GET('getRecipe/{recipe_id}', 'RecipeController@getRecipe');
+Route::GET('getLikes/{recipe_id}', 'RecipeController@getLikes');
+Route::GET('listRecipes', 'RecipeController@listRecipes');
+Route::GET('listRecipesOfUser/{user_id}', 'RecipeController@listRecipesOfUser');
+Route::GET('listRecipesOfChallenge/{challenge_id}', 'RecipeController@listRecipesOfChallenge');
+
+// Comentário
 Route::GET('getComment/{comment_id}', 'CommentController@getComment');
 
-// Somente autenticado
+// Desafio
+Route::GET('getChallenge/{challenge_id}', 'ChallengeController@getChallenge');
+Route::GET('listChallenges', 'ChallengeController@listChallenges');
+
+
+//Somente autenticado
 Route::POST('register', 'API\PassportController@register');
-route::POST('login', 'API\PassportController@login');
+Route::POST('login', 'API\PassportController@login');
 
 Route::group(['middleware' =>'auth:api'], function(){
-    
+
     // Usuário
-    Route::POST('getDetails', 'API\PassportController@getDetails');
     Route::GET('logout', 'API\PassportController@logout');
+    Route::GET('getDetails', 'API\PassportController@getDetails');
+    Route::PUT('editUserProfile', 'UserController@editUserProfile');
+    Route::DELETE('deleteUser/{user_id}', 'UserController@deleteUser')->middleware('deleteUser');
 
     // Receita
     Route::POST('postRecipe', 'RecipeController@postRecipe');
@@ -41,4 +54,18 @@ Route::group(['middleware' =>'auth:api'], function(){
     Route::POST('postComment/{recipe_id}', 'CommentController@postComment');
     Route::PUT('updateComment/{comment_id}', 'CommentController@updateComment');
     Route::DELETE('deleteComment/{comment_id}', 'CommentController@deleteComment')->middleware('deleteComment');
+
+    // Desafio
+    Route::POST('postChallenge', 'ChallengeController@postChallenge')->middleware('challengeAdmin');
+    Route::PUT('updateChallenge/{challenge_id}', 'ChallengeController@updateChallenge')->middleware('challengeAdmin');
+    Route::DELETE('deleteChallenge/{challenge_id}', 'ChallengeController@deleteChallenge')->middleware('challengeAdmin');
+
+    // Seguir
+    Route::POST('followUser/{user_id}', 'UserController@followUser');
+    Route::GET('getFollowers', 'UserController@getFollowers');
+    Route::GET('getFollowing', 'UserController@getFollowing');
+
+    // Curtir
+    Route::POST('likeRecipe/{recipe_id}', 'RecipeController@likeRecipe');
+
 });

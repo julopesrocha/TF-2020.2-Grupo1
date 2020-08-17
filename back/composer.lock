@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "96d88c61a44a435da8621b27ba75fbda",
+    "content-hash": "ea4adfd59106741d24ba17df041a3b78",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -429,16 +429,16 @@
         },
         {
             "name": "egulias/email-validator",
-            "version": "2.1.18",
+            "version": "2.1.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/egulias/EmailValidator.git",
-                "reference": "cfa3d44471c7f5bfb684ac2b0da7114283d78441"
+                "reference": "840d5603eb84cc81a6a0382adac3293e57c1c64c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/cfa3d44471c7f5bfb684ac2b0da7114283d78441",
-                "reference": "cfa3d44471c7f5bfb684ac2b0da7114283d78441",
+                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/840d5603eb84cc81a6a0382adac3293e57c1c64c",
+                "reference": "840d5603eb84cc81a6a0382adac3293e57c1c64c",
                 "shasum": ""
             },
             "require": {
@@ -483,7 +483,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2020-06-16T20:11:17+00:00"
+            "time": "2020-08-08T21:28:19+00:00"
         },
         {
             "name": "fideloper/proxy",
@@ -662,6 +662,56 @@
                 }
             ],
             "time": "2020-04-28T08:47:37+00:00"
+        },
+        {
+            "name": "fzaninotto/faker",
+            "version": "v1.9.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fzaninotto/Faker.git",
+                "reference": "fc10d778e4b84d5bd315dad194661e091d307c6f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/fc10d778e4b84d5bd315dad194661e091d307c6f",
+                "reference": "fc10d778e4b84d5bd315dad194661e091d307c6f",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3.3 || ^7.0"
+            },
+            "require-dev": {
+                "ext-intl": "*",
+                "phpunit/phpunit": "^4.8.35 || ^5.7",
+                "squizlabs/php_codesniffer": "^2.9.2"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.9-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Faker\\": "src/Faker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "François Zaninotto"
+                }
+            ],
+            "description": "Faker is a PHP library that generates fake data for you.",
+            "keywords": [
+                "data",
+                "faker",
+                "fixtures"
+            ],
+            "time": "2019-12-12T13:22:17+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -938,12 +988,6 @@
                 "psr-17",
                 "psr-7"
             ],
-            "funding": [
-                {
-                    "url": "https://funding.communitybridge.org/projects/laminas-project",
-                    "type": "community_bridge"
-                }
-            ],
             "time": "2020-07-07T15:34:31+00:00"
         },
         {
@@ -996,26 +1040,20 @@
                 "laminas",
                 "zf"
             ],
-            "funding": [
-                {
-                    "url": "https://funding.communitybridge.org/projects/laminas-project",
-                    "type": "community_bridge"
-                }
-            ],
             "time": "2020-05-20T16:45:56+00:00"
         },
         {
             "name": "laravel/framework",
-            "version": "v7.23.0",
+            "version": "v7.24.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "17cbce101f2fc78e61a6135861823563c7cfb50b"
+                "reference": "71bfb1f2f89e4e31fba539d43fe287143e635e68"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/17cbce101f2fc78e61a6135861823563c7cfb50b",
-                "reference": "17cbce101f2fc78e61a6135861823563c7cfb50b",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/71bfb1f2f89e4e31fba539d43fe287143e635e68",
+                "reference": "71bfb1f2f89e4e31fba539d43fe287143e635e68",
                 "shasum": ""
             },
             "require": {
@@ -1159,7 +1197,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2020-08-04T14:36:37+00:00"
+            "time": "2020-08-07T15:13:57+00:00"
         },
         {
             "name": "laravel/passport",
@@ -1351,16 +1389,6 @@
                 "JWS",
                 "jwt"
             ],
-            "funding": [
-                {
-                    "url": "https://github.com/lcobucci",
-                    "type": "github"
-                },
-                {
-                    "url": "https://www.patreon.com/lcobucci",
-                    "type": "patreon"
-                }
-            ],
             "time": "2020-05-22T08:21:12+00:00"
         },
         {
@@ -1510,28 +1538,29 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.70",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "585824702f534f8d3cf7fab7225e8466cc4b7493"
+                "reference": "481c0174b9c99b189959e2bb9d6f52188ed1f692"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/585824702f534f8d3cf7fab7225e8466cc4b7493",
-                "reference": "585824702f534f8d3cf7fab7225e8466cc4b7493",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/481c0174b9c99b189959e2bb9d6f52188ed1f692",
+                "reference": "481c0174b9c99b189959e2bb9d6f52188ed1f692",
                 "shasum": ""
             },
             "require": {
                 "ext-fileinfo": "*",
-                "php": ">=5.5.9"
+                "league/mime-type-detection": "^1.3",
+                "php": "^7.2.5 || ^8.0"
             },
             "conflict": {
                 "league/flysystem-sftp": "<1.0.6"
             },
             "require-dev": {
-                "phpspec/phpspec": "^3.4 || ^4.0 || ^5.0 || ^6.0",
-                "phpunit/phpunit": "^5.7.26"
+                "phpspec/prophecy": "^1.11.1",
+                "phpunit/phpunit": "^8.5.8"
             },
             "suggest": {
                 "ext-fileinfo": "Required for MimeType",
@@ -1590,13 +1619,48 @@
                 "sftp",
                 "storage"
             ],
-            "funding": [
+            "time": "2020-08-09T15:57:10+00:00"
+        },
+        {
+            "name": "league/mime-type-detection",
+            "version": "1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/mime-type-detection.git",
+                "reference": "fda190b62b962d96a069fcc414d781db66d65b69"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/mime-type-detection/zipball/fda190b62b962d96a069fcc414d781db66d65b69",
+                "reference": "fda190b62b962d96a069fcc414d781db66d65b69",
+                "shasum": ""
+            },
+            "require": {
+                "ext-fileinfo": "*",
+                "php": "^7.2 || ^8.0"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^0.12.36",
+                "phpunit/phpunit": "^8.5.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "League\\MimeTypeDetection\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
                 {
-                    "url": "https://offset.earth/frankdejonge",
-                    "type": "other"
+                    "name": "Frank de Jonge",
+                    "email": "info@frankdejonge.nl"
                 }
             ],
-            "time": "2020-07-26T07:20:36+00:00"
+            "description": "Mime-type detection for Flysystem",
+            "time": "2020-08-09T10:34:01+00:00"
         },
         {
             "name": "league/oauth2-server",
@@ -1672,12 +1736,6 @@
                 "resource",
                 "secure",
                 "server"
-            ],
-            "funding": [
-                {
-                    "url": "https://github.com/sephster",
-                    "type": "github"
-                }
             ],
             "time": "2020-07-01T11:33:50+00:00"
         },
@@ -1774,16 +1832,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.37.0",
+            "version": "2.38.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "1f61206de973d67f36ce50f041c792ddac663c3e"
+                "reference": "d8f6a6a91d1eb9304527b040500f61923e97674b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/1f61206de973d67f36ce50f041c792ddac663c3e",
-                "reference": "1f61206de973d67f36ce50f041c792ddac663c3e",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/d8f6a6a91d1eb9304527b040500f61923e97674b",
+                "reference": "d8f6a6a91d1eb9304527b040500f61923e97674b",
                 "shasum": ""
             },
             "require": {
@@ -1798,7 +1856,7 @@
                 "kylekatarnls/multi-tester": "^2.0",
                 "phpmd/phpmd": "^2.8",
                 "phpstan/extension-installer": "^1.0",
-                "phpstan/phpstan": "^0.12.30",
+                "phpstan/phpstan": "^0.12.35",
                 "phpunit/phpunit": "^7.5 || ^8.0",
                 "squizlabs/php_codesniffer": "^3.4"
             },
@@ -1849,30 +1907,20 @@
                 "datetime",
                 "time"
             ],
-            "funding": [
-                {
-                    "url": "https://opencollective.com/Carbon",
-                    "type": "open_collective"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/nesbot/carbon",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2020-07-28T06:04:54+00:00"
+            "time": "2020-08-04T19:12:46+00:00"
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.7.0",
+            "version": "v4.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "21dce06dfbf0365c6a7cc8fdbdc995926c6a9300"
+                "reference": "8c58eb4cd4f3883f82611abeac2efbc3dbed787e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/21dce06dfbf0365c6a7cc8fdbdc995926c6a9300",
-                "reference": "21dce06dfbf0365c6a7cc8fdbdc995926c6a9300",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/8c58eb4cd4f3883f82611abeac2efbc3dbed787e",
+                "reference": "8c58eb4cd4f3883f82611abeac2efbc3dbed787e",
                 "shasum": ""
             },
             "require": {
@@ -1880,8 +1928,8 @@
                 "php": ">=7.0"
             },
             "require-dev": {
-                "ircmaxell/php-yacc": "0.0.5",
-                "phpunit/phpunit": "^6.5 || ^7.0 || ^8.0"
+                "ircmaxell/php-yacc": "^0.0.6",
+                "phpunit/phpunit": "^6.5 || ^7.0 || ^8.0 || ^9.0"
             },
             "bin": [
                 "bin/php-parse"
@@ -1889,7 +1937,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.7-dev"
+                    "dev-master": "4.8-dev"
                 }
             },
             "autoload": {
@@ -1911,7 +1959,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2020-07-25T13:18:53+00:00"
+            "time": "2020-08-09T10:23:20+00:00"
         },
         {
             "name": "nyholm/psr7",
@@ -1973,16 +2021,6 @@
             "keywords": [
                 "psr-17",
                 "psr-7"
-            ],
-            "funding": [
-                {
-                    "url": "https://github.com/Zegnat",
-                    "type": "github"
-                },
-                {
-                    "url": "https://github.com/nyholm",
-                    "type": "github"
-                }
             ],
             "time": "2020-05-23T11:29:07+00:00"
         },
@@ -2296,20 +2334,6 @@
                 "twofish",
                 "x.509",
                 "x509"
-            ],
-            "funding": [
-                {
-                    "url": "https://github.com/terrafrost",
-                    "type": "github"
-                },
-                {
-                    "url": "https://www.patreon.com/phpseclib",
-                    "type": "patreon"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/phpseclib/phpseclib",
-                    "type": "tidelift"
-                }
             ],
             "time": "2020-07-08T09:08:33+00:00"
         },
@@ -4618,20 +4642,6 @@
                 "psr-17",
                 "psr-7"
             ],
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-06-25T08:21:47+00:00"
         },
         {
@@ -5473,16 +5483,16 @@
         },
         {
             "name": "facade/ignition",
-            "version": "2.3.5",
+            "version": "2.3.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facade/ignition.git",
-                "reference": "58dc4a8df3d41174c677a370b6779b694e4539e7"
+                "reference": "d7d05dba5a0bdbf018a2cb7be268f22f5d73eb81"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facade/ignition/zipball/58dc4a8df3d41174c677a370b6779b694e4539e7",
-                "reference": "58dc4a8df3d41174c677a370b6779b694e4539e7",
+                "url": "https://api.github.com/repos/facade/ignition/zipball/d7d05dba5a0bdbf018a2cb7be268f22f5d73eb81",
+                "reference": "d7d05dba5a0bdbf018a2cb7be268f22f5d73eb81",
                 "shasum": ""
             },
             "require": {
@@ -5541,7 +5551,7 @@
                 "laravel",
                 "page"
             ],
-            "time": "2020-08-01T21:20:01+00:00"
+            "time": "2020-08-10T13:50:38+00:00"
         },
         {
             "name": "facade/ignition-contracts",
@@ -5654,56 +5664,6 @@
             "time": "2020-06-14T09:00:00+00:00"
         },
         {
-            "name": "fzaninotto/faker",
-            "version": "v1.9.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/fzaninotto/Faker.git",
-                "reference": "fc10d778e4b84d5bd315dad194661e091d307c6f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/fc10d778e4b84d5bd315dad194661e091d307c6f",
-                "reference": "fc10d778e4b84d5bd315dad194661e091d307c6f",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.3.3 || ^7.0"
-            },
-            "require-dev": {
-                "ext-intl": "*",
-                "phpunit/phpunit": "^4.8.35 || ^5.7",
-                "squizlabs/php_codesniffer": "^2.9.2"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.9-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Faker\\": "src/Faker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "François Zaninotto"
-                }
-            ],
-            "description": "Faker is a PHP library that generates fake data for you.",
-            "keywords": [
-                "data",
-                "faker",
-                "fixtures"
-            ],
-            "time": "2019-12-12T13:22:17+00:00"
-        },
-        {
             "name": "hamcrest/hamcrest-php",
             "version": "v2.0.1",
             "source": {
@@ -5752,33 +5712,30 @@
         },
         {
             "name": "mockery/mockery",
-            "version": "1.4.1",
+            "version": "1.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mockery/mockery.git",
-                "reference": "1404386ca3410b04fe58b9517e85d702ab33b2c6"
+                "reference": "9b6f117dd7d36dc3858d8d8ddf9b3d584fcae283"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mockery/mockery/zipball/1404386ca3410b04fe58b9517e85d702ab33b2c6",
-                "reference": "1404386ca3410b04fe58b9517e85d702ab33b2c6",
+                "url": "https://api.github.com/repos/mockery/mockery/zipball/9b6f117dd7d36dc3858d8d8ddf9b3d584fcae283",
+                "reference": "9b6f117dd7d36dc3858d8d8ddf9b3d584fcae283",
                 "shasum": ""
             },
             "require": {
                 "hamcrest/hamcrest-php": "^2.0.1",
                 "lib-pcre": ">=7.0",
-                "php": "^7.3 || ^8.0"
-            },
-            "conflict": {
-                "phpunit/phpunit": "<8.0"
+                "php": ">=5.6.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^8.5 || ^9.0"
+                "phpunit/phpunit": "~5.7.10|~6.5|~7.0|~8.0|~9.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.4.x-dev"
+                    "dev-master": "1.3.x-dev"
                 }
             },
             "autoload": {
@@ -5816,7 +5773,7 @@
                 "test double",
                 "testing"
             ],
-            "time": "2020-07-09T08:31:54+00:00"
+            "time": "2020-07-09T08:23:05+00:00"
         },
         {
             "name": "myclabs/deep-copy",

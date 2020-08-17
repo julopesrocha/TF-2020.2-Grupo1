@@ -1,8 +1,106 @@
-
-
 <ion-header>
-  <ion-toolbar>
-      <div class="toolbar">
-        </div>
-  </ion-toolbar>
+  <ion-icon (click)="GoToHome()" class="iconBack" size="large" name="chevron-back-sharp"></ion-icon>
 </ion-header>
+
+<ion-content >
+
+  <div class="toolbar">
+    <ion-icon (click)="GoToHome()" name="chevron-back-outline" size="large" style="float: left" class="back"></ion-icon>
+  </div>
+    <img class="imgLogo" src="../../assets/logo-circle.png" alt="logo do motivate">
+
+  
+
+  <ion-grid>
+
+    <ion-row class="ion-align-items-center bordaInferior" >
+      <ion-col>
+        <div class="ion-text-center">
+          <h3 >Poste sua receita</h3>
+        </div>
+      </ion-col>
+
+      <ion-col>
+        <img src="../../assets/panqueca 1.png" alt="imagem de panqueca">
+      </ion-col>
+    </ion-row>
+
+    <p>Insira uma foto</p>>
+    <ion-row >
+      
+      <ion-col>
+        <img [src]="photo" >
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-justify-content-center">
+      <ion-col  size="2.4">
+
+        <ion-button (click)="takePicture()">
+          <ion-icon class="iconCamera" name="camera" ></ion-icon>
+        </ion-button>
+
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+    
+
+    <div class="divForm">
+      <form [formGroup]="recipeForm" (ngSubmit)="createRecipe(recipeForm) " class="background">
+
+            <div class="form-group">
+              <ion-label >Título</ion-label>
+              <ion-input type="text" formControlName="title" class="bordaInferior" ></ion-input>
+
+            </div>
+
+            <div class="form-group">
+              <ion-label>Desafio</ion-label>
+              <ion-select  interface="action-sheet" class="personalizar-select" id="status" formControlName="challenge">
+
+                <ion-select-option  *ngFor ="let challenge of challenges" class="personalizar-option" value="{{challenge.title}}" >{{challenge.title}}</ion-select-option>
+      
+              </ion-select>
+            </div>
+
+              <div class="form-group">
+                <ion-label>Adicione uma legenda</ion-label>
+                <ion-input type="text" formControlName="subtitle" class="bordaInferior" ></ion-input>
+                
+              </div>
+
+
+            <div class="form-group">
+              <ion-label>Ingredientes</ion-label>
+              <ion-textarea formControlName="ingredients" ></ion-textarea>
+              
+            </div>
+
+          <div class="form-group">
+              <ion-label>Modo de preparo</ion-label>
+              <ion-textarea formControlName="preparation" ></ion-textarea>    
+              <ion-row>
+                <ion-col>
+                  <div class="ion-text-end">
+                    <p>máx. 600 caracteres</p>
+                  </div>
+                  
+                </ion-col>
+                
+            </ion-row> 
+          </div>
+        
+
+
+            <ion-row class=ion-justify-content-center>
+              <ion-button type="submit" class="botao" shape="round" [disabled]="recipeForm.invalid"  >Criar</ion-button>
+            </ion-row>
+         
+        
+      
+    </form>
+  </div>
+    
+
+</ion-content>
