@@ -29,7 +29,7 @@ export class Tab1Page {
      );
    }
 
-    navigateToLowCarb(id) {
+    navigateToChallenge(id) {
         this.router.navigate(['/challenge-page'], id);
     }
 
