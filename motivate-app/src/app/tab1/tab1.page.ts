@@ -13,9 +13,7 @@ export class Tab1Page {
 
     challenges = [];
 
-  constructor(public authservice: AuthService, private router: Router, public challengeServiceService: ChallengeServiceService,) {
-
-  }
+  constructor(public authservice: AuthService, private router: Router, public challengeServiceService: ChallengeServiceService) {}
 
   listChallenges(){
      this.challengeServiceService.getListChallenges().subscribe(
@@ -34,7 +32,7 @@ export class Tab1Page {
         this.router.navigate(['/challenge-page'], id);
     }
 
-    
+
 
     navigateTobackHome(){
         this.router.navigate(['/tabs/home'])
