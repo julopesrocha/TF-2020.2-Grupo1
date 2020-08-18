@@ -53,7 +53,7 @@ class ChallengeTableSeeder extends Seeder
                         por isso, precisam ser quebradas em pedaços muito
                         menores para serem devidamente absorvidas pelo 
                         organismo.',
-            'recommendation' => 'Recoemndado para pessoas com excesso de peso',
+            'recommendation' => 'Recomendado para pessoas com excesso de peso',
         ]);
     }
 }
