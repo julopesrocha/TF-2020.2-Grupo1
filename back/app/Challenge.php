@@ -40,6 +40,6 @@ class Challenge extends Model
 
     // Relação com receitas
     public function recipes() {
-        return $this->hasMany('App/Recipe');
+        return $this->hasMany('App\Recipe');
     }
 }

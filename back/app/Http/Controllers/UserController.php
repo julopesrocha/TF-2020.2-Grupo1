@@ -24,7 +24,7 @@ class UserController extends Controller
         return response()->json(['user'=>$user], 200);
     }
 
-    // relação com seguidores
+    // Relação com seguidores
     public function followUser($user_id){
         $user = Auth::user();
         $userFollowing = User::findOrFail($user_id);
@@ -70,9 +70,10 @@ class UserController extends Controller
         $userFollower = $user->following()->get();
         return response()->json(['userFollower' => $userFollower], 200);
     }
-
+    // Deleta um usuário
     public function deleteUser($user_id){
         $user = Auth::user();
+        User::findOrFail($id);
         User::destroy($user_id);
         return response()->json(['User deleted'], 200);
     }

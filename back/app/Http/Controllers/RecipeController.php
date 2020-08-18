@@ -73,6 +73,7 @@ class RecipeController extends Controller
     //Delete
     public function deleteRecipe($id) {
         $user = Auth::user();
+        Recipe::findOrFail($id);
         Recipe::destroy($id);
         return response()->json(['Recipe deleted'], 200);
     }
