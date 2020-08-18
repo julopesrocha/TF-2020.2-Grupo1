@@ -8,6 +8,9 @@ use Auth;
 
 class Comment extends Model
 {
+    
+    protected $fillable = [];
+
     // Relação do comentário com o usuário
     public function user(){
         return $this->belongsTo('App\User');

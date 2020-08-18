@@ -13,9 +13,12 @@ export class LoginPage implements OnInit {
 
   loginForm: FormGroup;
   submitted=true;
+  usuario;
+
 
 
   constructor(public toastController: ToastController, public formbuilder: FormBuilder, private router: Router, public authservice: AuthService) {
+    this.details();
     this.loginForm = this.formbuilder.group({
 
       email:[null, [Validators.email, Validators.required]],
@@ -34,6 +37,20 @@ export class LoginPage implements OnInit {
     toast.present();
   }
 
+  details() {
+    this.authservice.showMyDetails().subscribe(
+        (res) => {
+            console.log(res);
+            console.log("Esse é você");
+            this.usuario = res[0];
+        },
+        (err) =>{
+          console.log(err);
+        }
+    );
+
+}
+
   submitForm(form){
 
     console.log(form.value);
@@ -42,7 +59,8 @@ export class LoginPage implements OnInit {
       (res)=> {
         console.log(res);
         localStorage.setItem('userToken', res.success.token);
-        this.router.navigate(['/tabs/home'])
+        // this.usuario =res[0];
+        this.router.navigate(['/tabs/home']).then(()=>window.location.reload());
         console.log("entrei");
       },
 
@@ -57,7 +75,6 @@ export class LoginPage implements OnInit {
         }
         );
       }
-
 
   GoToRegister(){
     this.router.navigate(['/cadastro-usuario']);
