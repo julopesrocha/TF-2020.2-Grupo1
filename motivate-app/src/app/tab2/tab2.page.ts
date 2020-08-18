@@ -86,6 +86,7 @@ createRecipe(form){
   let body = form.value;
   this.recipeService.createRecipe(body).subscribe(
   (res) => {console.log(res);
+    this.router.navigate(["/tabs/home"]);
   }, (err) => {console.log(err); }
   )
 }
