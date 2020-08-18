@@ -25,6 +25,8 @@ class Users extends JsonResource
             'date_of_birth' => $this->date_of_birth,
             'privileged' => $this->privileged,
             'created_at' => $this->created_at,
+            'followers' => $this->following()->get()->count(),
+            'following' => $this->follower()->get()->count(),
         ];
     }
 }
