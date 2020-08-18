@@ -40,7 +40,8 @@ class CommentController extends Controller
     // Lista todos os comentários relacionados a uma receita específica
     public function listComments($recipe_id){
         $commentList = Comment::where('recipe_id', $recipe_id)->get();
-        return response()->json(['commentList' => CommentResource::collection($commentList)], 200);
+        $sortedList = $commentList->sortByDesc('created_at');
+        return response()->json(['commentList' => CommentResource::collection($sortedList)], 200);
     }
 
     // Deleta um comentário 
