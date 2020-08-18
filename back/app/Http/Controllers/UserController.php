@@ -8,20 +8,21 @@ use App\Http\Requests\UserRequest;
 use Auth;
 use App\User;
 use DB;
+use App\Http\Resources\Users as UserResource;
 
 class UserController extends Controller
 {
     // Read
     public function getUserProfile($user_id) {
         $user = User::findOrFail($user_id);
-        return response()->json(['user'=>$user], 200);
+        return response()->json(['user'=>new UserResource($user)], 200);
     }
 
     // Update
     public function editUserProfile(UserRequest $request) {
         $user = Auth::user();
         $user->updateUser($request);
-        return response()->json(['user'=>$user], 200);
+        return response()->json(['user'=>new UserResource($user)], 200);
     }
 
     // Relação com seguidores
@@ -46,21 +47,21 @@ class UserController extends Controller
     public function getFollowers(){
         $user = Auth::user();
         $userFollower = $user->follower()->get();
-        return response()->json(['userFollower' => $userFollower], 200);
+        return response()->json(['userFollower' => UserResource::collection($userFollower)], 200);
     }
 
     // Retorna quem o usuário $user_id segue
     public function getUserFollowing($user_id) {
         $user = User::findOrFail($user_id);
         $userFollowing = $user->follower()->get();
-        return response()->json(['userFollowing' => $userFollowing], 200);
+        return response()->json(['userFollowing' => UserResource::collection($userFollowing)], 200);
     }
 
     // Retorna quem segue o usuário logado
     public function getFollowing(){
         $user = Auth::user();
         $userFollowing = $user->following()->get();
-        return response()->json(['userFollowing' => $userFollowing], 200);
+        return response()->json(['userFollowing' => UserResource::collection($userFollowing)], 200);
 
     }
 
@@ -68,7 +69,7 @@ class UserController extends Controller
     public function getFollowersOfUser($user_id) {
         $user = User::findOrFail($user_id);
         $userFollower = $user->following()->get();
-        return response()->json(['userFollower' => $userFollower], 200);
+        return response()->json(['userFollower' => UserResource::collection($userFollower)], 200);
     }
     // Deleta um usuário
     public function deleteUser($user_id){

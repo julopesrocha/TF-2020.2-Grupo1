@@ -25,6 +25,7 @@ class Recipes extends JsonResource
             'user_name' =>  User::findOrFail($this->user_id)->name,
             'user_photo' => User::findOrFail($this->user_id)->photo,
             'user_id' => $this->user_id,
+            'challenge_id' => $this->challenge_id,
             'likes' => $this->likes()->count(),
             'created_at' => $this->created_at,
         ];
