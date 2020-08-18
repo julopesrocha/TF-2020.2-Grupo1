@@ -4,18 +4,19 @@
         <ion-avatar>
             <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
         </ion-avatar>
-        <ion-label>Nathan</ion-label>
+        <ion-label>{{recipe.user_name}}</ion-label>
     </ion-chip>
 </ion-header>
 
     <div shape="round" class="postFormat" (click)="clickToSeeRecipe(recipe.id)">
-        <h5 class="title"> Bolo de Chocolate </h5>
+        <h5 class="title"> {{recipe.title}} </h5>
         <img class="img" src="../../assets/cake.png">
+        
     <div  shape="round"  class="postInfo">
         <div class="challengeOfPost" (click)="clickToSee(challenge.id)" >
-            Desafio low carb
+            <p>{{recipe.challenge}}</p>
         <ion-icon name="heart" size="large"> </ion-icon>
-        <ion-icon name="chatbubble" size="large"></ion-icon>
+        
         </div>
     </div>
 
