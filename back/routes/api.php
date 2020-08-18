@@ -69,9 +69,9 @@ Route::group(['middleware' =>'auth:api'], function(){
     Route::DELETE('deleteChallenge/{challenge_id}', 'ChallengeController@deleteChallenge')->middleware('challengeAdmin');
 
     // Seguir
-    Route::POST('followUser/{user_id}', 'UserController@followUser');
     Route::GET('getFollowers', 'UserController@getFollowers');
     Route::GET('getFollowing', 'UserController@getFollowing');
+    Route::POST('followUser/{user_id}', 'UserController@followUser');
 
     // Curtir
     Route::POST('likeRecipe/{recipe_id}', 'RecipeController@likeRecipe');
