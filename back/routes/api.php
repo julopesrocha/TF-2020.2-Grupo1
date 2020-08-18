@@ -53,10 +53,10 @@ Route::group(['middleware' =>'auth:api'], function(){
     Route::DELETE('deleteUser/{user_id}', 'UserController@deleteUser')->middleware('deleteUser');
 
     // Receita
+    Route::GET('getRecipesOfFollowing', 'RecipeController@getRecipesOfFollowing');
     Route::POST('postRecipe', 'RecipeController@postRecipe');
     Route::PUT('updateRecipe/{recipe_id}', 'RecipeController@updateRecipe');
     Route::DELETE('deleteRecipe/{recipe_id}', 'RecipeController@deleteRecipe');
-    Route::GET('getRecipesOfFollowing', 'RecipeController@getRecipesOfFollowing');
 
     // Comentário
     Route::POST('postComment/{recipe_id}', 'CommentController@postComment');
