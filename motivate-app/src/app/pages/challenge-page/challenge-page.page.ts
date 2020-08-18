@@ -32,11 +32,11 @@ export class ChallengePagePage implements OnInit {
 
 
 
-  navigateTochallengeList() {
+  GoTochallengeList() {
       this.router.navigate(['/tabs/tabs1']);
   }
 
-  navigateTobackHome(){
+  GoTobackHome(){
       this.router.navigate(['/tabs/home'])
   }
 
