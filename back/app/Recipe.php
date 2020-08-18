@@ -8,6 +8,9 @@ use App\Http\Requests\RecipeRequest;
 
 class Recipe extends Model
 {
+
+    protected $fillable = [];
+
     // Create
     public function createRecipe(RecipeRequest $request) {
         $this->title = $request->title;
