@@ -25,6 +25,14 @@ class UserController extends Controller
         return response()->json(['user'=>new UserResource($user)], 200);
     }
 
+    // Delete
+    public function deleteUser($user_id){
+        $user = Auth::user();
+        User::findOrFail($id);
+        User::destroy($user_id);
+        return response()->json(['User deleted'], 200);
+    }
+
     // Relação com seguidores
     public function followUser($user_id){
         $user = Auth::user();
@@ -47,21 +55,24 @@ class UserController extends Controller
     public function getFollowers(){
         $user = Auth::user();
         $userFollower = $user->follower()->get();
-        return response()->json(['userFollower' => UserResource::collection($userFollower)], 200);
+        $orderedList = $userFollower->sortBy('name', SORT_NATURAL|SORT_FLAG_CASE)->values()->all();
+        return response()->json(['userFollower' => UserResource::collection($orderedList)], 200);
     }
 
     // Retorna quem o usuário $user_id segue
     public function getUserFollowing($user_id) {
         $user = User::findOrFail($user_id);
         $userFollowing = $user->follower()->get();
-        return response()->json(['userFollowing' => UserResource::collection($userFollowing)], 200);
+        $orderedList = $userFollowing->sortBy('name', SORT_NATURAL|SORT_FLAG_CASE)->values()->all();
+        return response()->json(['userFollowing' => UserResource::collection($orderedList)], 200);
     }
 
     // Retorna quem segue o usuário logado
     public function getFollowing(){
         $user = Auth::user();
         $userFollowing = $user->following()->get();
-        return response()->json(['userFollowing' => UserResource::collection($userFollowing)], 200);
+        $orderedList = $userFollowing->sortBy('name', SORT_NATURAL|SORT_FLAG_CASE)->values()->all();
+        return response()->json(['userFollowing' => UserResource::collection($orderedList)], 200);
 
     }
 
@@ -69,15 +80,8 @@ class UserController extends Controller
     public function getFollowersOfUser($user_id) {
         $user = User::findOrFail($user_id);
         $userFollower = $user->following()->get();
-        return response()->json(['userFollower' => UserResource::collection($userFollower)], 200);
-    }
-    // Deleta um usuário
-    public function deleteUser($user_id){
-        $user = Auth::user();
-        User::findOrFail($id);
-        User::destroy($user_id);
-        return response()->json(['User deleted'], 200);
+        $orderedList = $userFollower->sortBy('name', SORT_NATURAL|SORT_FLAG_CASE)->values()->all();
+        return response()->json(['userFollower' => UserResource::collection($orderedList)], 200);
     }
 
-    
 }
