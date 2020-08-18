@@ -40,6 +40,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    // Função para registrar um novo usuário
     public function createUser(UserRequest $request) {
         $this->name = $request->name;
         $this->email = $request->email;
@@ -52,7 +53,8 @@ class User extends Authenticatable
 
         return $this;
     }
-
+    
+    // Função para atualizar o perfil de um usuário
     public function updateUser(userRequest $request) {
         if ($request->name) {
             $this->name = $request->name;
@@ -80,6 +82,7 @@ class User extends Authenticatable
         $this->save();
     }
 
+    // Relação com as receitas de um usuário
     public function recipes() {
         return $this->hasMany('App\Recipe');
     }
@@ -93,31 +96,36 @@ class User extends Authenticatable
         return $this->belongsToMany('App\User', 'follows', 'follower_id',  'following_id');    
     }
 
+    // Relação de usuários sendo seguidos
+    public function following(){
+        return $this->belongsToMany('App\User', 'follows', 'following_id', 'follower_id');
+    }
+
+    // Função de seguir um usuário 
     public function followUser($user_id) {
         $user = User::findOrFail($user_id);
         $this->follower()->attach($user);
     }
-
+    
+    // Função de parar de seguir um usuário
     public function unfollowUser($user_id){
         $user = User::findOrFail($user_id);
         $this->follower()->detach($user);
     }
 
-    // Relação de usuários sendo seguidos
-    public function following(){
-        return $this->belongsToMany('App\User', 'follows', 'following_id', 'follower_id');
-    }
 
     // Relação de curtir uma receita
     public function likeMadeByUser(){
         return $this->belongsToMany('App\Recipe', 'likes', 'user_id', 'recipe_id');
     }
 
+    // Função de curtir uma receita
     public function likeUp($id){
         $this->likeMadeByUser()->attach($id);
         $this->save();
     }
 
+    // Função de descurtir uma receita
     public function likeDown($id){
         $this->likeMadeByUser()->detach($id);
         $this->save();

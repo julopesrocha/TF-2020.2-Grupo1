@@ -37,6 +37,7 @@ class ChallengeController extends Controller
 
     //Delete
     public function deleteChallenge($id) {
+        Challenge::findOrFail($id);
         Challenge::destroy($id);
         return response()->json(['Challenge deleted'], 200);
     }

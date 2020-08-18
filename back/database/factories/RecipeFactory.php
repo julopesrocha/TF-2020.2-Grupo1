@@ -11,5 +11,6 @@ $factory->define(Recipe::class, function (Faker $faker) {
         'ingredients' => $faker->words($nb = 15, $asText = true),
         'preparation' => $faker->words($nb = 30, $asText = true),
         'subtitle' => $faker->words($nb = 8, $asText = true),
+        'created_at' => $faker->dateTime($max='now'),
     ];
 });

@@ -1,21 +1,20 @@
 
 <!-- Postagens -->
-<ion-content>
+<ion-content >
     <div class="toolbar">
       <img src="../../assets/wave-logo .png"  alt="logo do motivate" >
       </div>
 
-    <ion-grid>
+    <ion-grid >
         <ion-row class="button ion-justify-content-between" >
                 <ion-button (click)="GoToLogin()" shape="round" class="login" size="small"> Login </ion-button>
                 <ion-button (click)="GoToRegister()" shape="round" class="register" size="small"> Cadastrar </ion-button>
         </ion-row>
     </ion-grid>
+
       <div class="postMargin">
-         <app-posts> </app-posts>
+         <app-posts (clickSeeRecipe)="navigateToRecipe($event)" [recipe]="recipe" *ngFor="let recipe of recipes" > </app-posts>
       </div>
-      <div class="postMargin">
-         <app-posts> </app-posts>
-      </div>
+      
 
 </ion-content>
