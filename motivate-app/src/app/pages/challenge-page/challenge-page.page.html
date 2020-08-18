@@ -34,7 +34,7 @@
 <!-- Receitas -->
     <div class="subtitles"> Receitas low carb </div>
     <div class="recipesListMergin">
-
+        
         <app-recipes-list [recipe]="recipe" (clickSeeRecipe)="GoToRecipe($event)" *ngFor="let recipe of recipes"> </app-recipes-list>
     </div>
 </ion-content>

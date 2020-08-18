@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-follow-users',
@@ -9,16 +10,17 @@ import { Router } from '@angular/router';
 export class FollowUsersPage implements OnInit {
 
   clickFollow: boolean = true;
-  Follow: string;
+  followers;
+  following;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, public userservice:UserService ) { }
 
-  GoTobackHome(){
+  GoBackHome(){
       this.router.navigate(['/tabs/home'])
   }
 
   GoToProfile(){
-     this.router.navigate(['/tabs/tabs3'])
+     this.router.navigate(['/tabs/tab3'])
   }
 
 
@@ -26,6 +28,30 @@ export class FollowUsersPage implements OnInit {
       this.clickFollow = !this.clickFollow;
   }
 
+//  listFollowers(){
+//     this.userService.listFollowers().subscribe(
+//       (res)=>{
+//         console.log(res);
+//         this.followers = res.followersList;
+//       },
+//       (err)=>{
+//         console.log(err);
+//       }
+//     );
+ // }
+
+//   listFollowing(){
+//      this.userService.listFollowing().subscribe(
+//        (res)=>{
+//          console.log(res);
+//          this.following = res.followingList;
+//        },
+//        (err)=>{
+//          console.log(err);
+//        }
+//      );
+//    }
+
   ngOnInit() {}
-  
+
 }
