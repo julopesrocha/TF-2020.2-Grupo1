@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ChallengeServiceService } from '../../services/challenge-service.service';
 import { Router } from '@angular/router';
+import {RecipeService} from '../../services/recipe.service';
 
 @Component({
   selector: 'app-home-deslog',
@@ -11,10 +12,13 @@ export class HomeDeslogPage implements OnInit {
 
     challenge;
     challengeId;
+    recipes;
 
-  constructor(private router: Router, public challengeServiceService:ChallengeServiceService) {
+  constructor(private router: Router, public challengeServiceService:ChallengeServiceService, public recipeService: RecipeService) {
       this.challengeId = this.router.getCurrentNavigation().extras;
-  }
+  
+ 
+ }
 
   getChallenge(id){
      this.challengeServiceService.getChallenge(id).subscribe(
@@ -28,12 +32,30 @@ export class HomeDeslogPage implements OnInit {
       }
     );
   }
+
+  listRecipes(){
+    this.recipeService.listRecipesHome().subscribe(
+      (res)=>{
+        console.log(res);
+        this.recipes=res.recipeList;
+      },
+      (err)=>{
+        console.log(err);
+      }
+    );
+  }
   
-  ngOnInit() {}
+  ngOnInit() {
+    
+  }
 
 
   GoToRecipe(){
       this.router.navigate(['/recipe'])
+  }
+
+   navigateToRecipe(recipe_id) {
+    this.router.navigate(['/recipe'], recipe_id);
   }
 
   GoToRegister(){
@@ -42,6 +64,11 @@ export class HomeDeslogPage implements OnInit {
 
   GoToLogin(){
     this.router.navigate(['/login']);
+  }
+
+  ionViewWillEnter(){
+    console.log("gabi fez a receita");
+    this.listRecipes();
   }
 
 }

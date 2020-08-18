@@ -7,18 +7,16 @@ import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 })
 export class PostsComponent implements OnInit {
 
-@Input() challenge;
+@Input() recipe;
 @Output() clickSeeRecipe = new EventEmitter<number>();
-@Output() clickSeeChallenge = new EventEmitter<number>();
+
 
   constructor() {}
 
       clickToSeeRecipe(id) {
           this.clickSeeRecipe.emit(id);
         }
-        clickToSee(id) {
-            this.clickSeeChallenge.emit(id);
-          }
+       
 
   ngOnInit() {}
 
