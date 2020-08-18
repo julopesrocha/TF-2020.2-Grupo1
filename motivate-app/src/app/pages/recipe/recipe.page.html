@@ -4,7 +4,7 @@
         </div>
             <img class="imgLogo" src="../../assets/logo-circle.png" alt="logo do motivate">
         <div class="title">
-            {{recipe.title}} 
+            {{recipe.title}}
         </div>
         <div>
             <img  class="img" src="../../assets/cake.png" alt="imagem do bolo de chocolate">
@@ -28,7 +28,7 @@
         <div class="subtitles"> Ingredientes : </div>
             <div class="description" class="spaceFormat">
                 <div class="text">
-                   {{recipe.ingredients}} 
+                   {{recipe.ingredients}}
                  </div>
             </div>
     <!--Modo de preparo -->
@@ -40,7 +40,7 @@
             </div>
     <!-- Receitas -->
             <div class="subtitles"> Comentários <ion-icon size="large" name="chatbubble-ellipses-outline"></ion-icon> </div>
-                <form [formGroup]="commentForm" (ngSubmit)="submitForm(commentForm)" >
+                <form [formGroup]="commentForm" (ngSubmit)="postComment(commentForm)" >
                     <div class="commentFormat">
                         <ion-textarea placeholder="Faça seu comentário:" type="text" formControlName="comment"></ion-textarea>
                     </div>
@@ -49,6 +49,23 @@
 
     <!--Sessão dos Comentários-->
         <div class="commentsMergin">
-            <app-comment [comentario]='comment' *ngFor='let comment of comments'> </app-comment>
+            <div *ngFor='let comment of comments; let i = index'>
+                <div class="chipMargin">
+                    <ion-chip>
+                        <ion-label>{{comment.user_name}}</ion-label>
+                        <ion-avatar>
+                            <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+                        </ion-avatar>
+                  </ion-chip>
+                </div>
+
+                <div class="commentFormat">
+                    <div class="commentMargin">
+                        {{comment.comment}}
+                    </div>
+                </div>
+                    <ion-icon size="large" name="trash-outline" *ngIf="comment.user_id==user_id" (click)="deleteComment(comment.id, i)"> </ion-icon>
+            </div>
+            <!-- <app-comment   > </app-comment> -->
         </div>
 </ion-content>

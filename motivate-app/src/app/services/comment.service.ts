@@ -11,14 +11,26 @@ export class CommentService {
 
   constructor(public http:HttpClient) { }
 
- // postComment(republic_id): Observable<any>{
-    //  return this.http.post(this.apiURL + 'postComment/'+ republic_id);
- // }
+  httpHeaders: any ={
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
 
- // deleteComment(id):Observable<any>{
-//        return this.http.delete(this.apiURL + 'deleteComment/' + id);
-//}
+    }
+  }
 
-// listComments():Observable<any>{
-//       return this.http.get(this.apiURL + 'listComments');
+ postComment(form, recipe_id): Observable<any>{
+     this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('userToken');
+     return this.http.post(this.apiURL + 'postComment/'+ recipe_id, form, this.httpHeaders);
+ }
+
+ deleteComment(id):Observable<any>{
+     this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('userToken');
+     return this.http.delete(this.apiURL + 'deleteComment/' + id, this.httpHeaders);
+ }
+
+ listComments(recipe_id):Observable<any>{
+       return this.http.get(this.apiURL + 'listComments/'+ recipe_id);
+}
+
 }

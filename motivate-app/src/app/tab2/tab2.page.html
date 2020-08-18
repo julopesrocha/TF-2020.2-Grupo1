@@ -1,6 +1,3 @@
-<ion-header>
-  <ion-icon (click)="GoToHome()" class="iconBack" size="large" name="chevron-back-sharp"></ion-icon>
-</ion-header>
 
 <ion-content >
 
@@ -9,7 +6,7 @@
   </div>
     <img class="imgLogo" src="../../assets/logo-circle.png" alt="logo do motivate">
 
-  
+
 
   <ion-grid>
 
@@ -27,7 +24,7 @@
 
     <p>Insira uma foto</p>>
     <ion-row >
-      
+
       <ion-col>
         <img [src]="photo" >
       </ion-col>
@@ -44,7 +41,7 @@
     </ion-row>
 
   </ion-grid>
-    
+
 
     <div class="divForm">
       <form [formGroup]="recipeForm" (ngSubmit)="createRecipe(recipeForm) " class="background">
@@ -60,47 +57,47 @@
               <ion-select  interface="action-sheet" class="personalizar-select" id="status" formControlName="challenge">
 
                 <ion-select-option  *ngFor ="let challenge of challenges" class="personalizar-option" value="{{challenge.title}}" >{{challenge.title}}</ion-select-option>
-      
+
               </ion-select>
             </div>
 
               <div class="form-group">
                 <ion-label>Adicione uma legenda</ion-label>
                 <ion-input type="text" formControlName="subtitle" class="bordaInferior" ></ion-input>
-                
+
               </div>
 
 
             <div class="form-group">
               <ion-label>Ingredientes</ion-label>
               <ion-textarea formControlName="ingredients" ></ion-textarea>
-              
+
             </div>
 
           <div class="form-group">
               <ion-label>Modo de preparo</ion-label>
-              <ion-textarea formControlName="preparation" ></ion-textarea>    
+              <ion-textarea formControlName="preparation" ></ion-textarea>
               <ion-row>
                 <ion-col>
                   <div class="ion-text-end">
                     <p>máx. 600 caracteres</p>
                   </div>
-                  
+
                 </ion-col>
-                
-            </ion-row> 
+
+            </ion-row>
           </div>
-        
+
 
 
             <ion-row class=ion-justify-content-center>
               <ion-button type="submit" class="botao" shape="round" [disabled]="recipeForm.invalid"  >Criar</ion-button>
             </ion-row>
-         
-        
-      
+
+
+
     </form>
   </div>
-    
+
 
 </ion-content>

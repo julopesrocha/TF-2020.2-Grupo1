@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { RecipePageRoutingModule } from './recipe-routing.module';
 
 import { RecipePage } from './recipe.page';
-import { CommentComponent } from '../../components/comment/comment.component';
+
 
 @NgModule({
   imports: [
@@ -17,6 +17,6 @@ import { CommentComponent } from '../../components/comment/comment.component';
     RecipePageRoutingModule,
     ReactiveFormsModule,
   ],
-  declarations: [RecipePage, CommentComponent]
+  declarations: [RecipePage]
 })
 export class RecipePageModule {}

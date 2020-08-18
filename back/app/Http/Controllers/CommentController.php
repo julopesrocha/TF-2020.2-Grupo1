@@ -21,7 +21,7 @@ class CommentController extends Controller
         $newComment->setRecipe($recipe_id);
         return response()->json(['success' => new CommentResource($newComment)], 200);
     }
-    
+
     public function updateComment(CommentRequest $request, $id){
         $user = Auth::user();
         $comment = Comment::findOrFail($id);
@@ -40,6 +40,7 @@ class CommentController extends Controller
     }
 
     public function deleteComment($comment_id){
+        Comment::findOrFail($comment_id);
         Comment::destroy($comment_id);
         return response()->json(['Your comment has been successfully deleted.'], 200);
     }
