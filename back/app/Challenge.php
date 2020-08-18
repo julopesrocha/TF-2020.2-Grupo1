@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 
 class Challenge extends Model
 {
+
+    protected $fillable = [];
+
     //Create
     public function createChallenge(Request $request) {
         $this->title = $request->title;
@@ -40,6 +43,6 @@ class Challenge extends Model
 
     // Relação com receitas
     public function recipes() {
-        return $this->hasMany('App/Recipe');
+        return $this->hasMany('App\Recipe');
     }
 }

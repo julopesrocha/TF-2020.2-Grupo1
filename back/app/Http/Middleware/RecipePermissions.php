@@ -4,9 +4,9 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Auth;
-use App\Comment;
+use App\Recipe;
 
-class DeleteComment
+class RecipePermissions
 {
     /**
      * Handle an incoming request.
@@ -18,11 +18,12 @@ class DeleteComment
     public function handle($request, Closure $next)
     {
         $user = Auth::user();
-        $comment = Comment::with('user')->where('user_id', $user->id)->where('id', $request->comment_id)->first();
-        if ($comment || $user->privileged == 1)
+        $recipe = Recipe::with('user')->where('user_id', $user->id)->where('id', $request->recipe_id)->first();
+        if ($recipe || $user->privileged == 1)
             return $next($request);
         else{
-            return response()->json(['Você só pode deletar o seu próprio comentário.']);
+            return response()->json(["You don't have permission to this!"], 401);
         }
     }
 }
+

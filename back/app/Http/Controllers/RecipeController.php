@@ -36,17 +36,20 @@ class RecipeController extends Controller
 
     public function listRecipes() {
         $recipeList = Recipe::all();
-        return response()->json(['recipeList' => RecipeResource::collection($recipeList)], 200);
+        $sortedList = $recipeList->sortByDesc('created_at');
+        return response()->json(['recipeList' => RecipeResource::collection($sortedList)], 200);
     }
 
     public function listRecipesOfUser($user_id) {
         $recipeList = Recipe::where('user_id', $user_id)->get();
-        return response()->json(['recipeList' => RecipeResource::collection($recipeList)], 200);
+        $sortedList = $recipeList->sortByDesc('created_at');
+        return response()->json(['recipeList' => RecipeResource::collection($sortedList)], 200);
     }
 
     public function listRecipesOfChallenge($challenge_id) {
         $recipeList = Recipe::where('challenge_id', $challenge_id)->get();
-        return response()->json(['recipeList' => RecipeResource::collection($recipeList)], 200);
+        $sortedList = $recipeList->sortByDesc('created_at');
+        return response()->json(['recipeList' => RecipeResource::collection($sortedList)], 200);
     }
 
     public function getRecipesOfFollowing() {
@@ -59,7 +62,8 @@ class RecipeController extends Controller
                 array_push($recipeList, $recipe);
             }
         }
-        return response()->json(['RecipeList' => RecipeResource::collection($recipeList)], 200);
+        $sortedList = collect($recipeList)->sortByDesc('created_at');
+        return response()->json(['RecipeList' => RecipeResource::collection($sortedList)], 200);
     }
 
     //Update
@@ -73,6 +77,7 @@ class RecipeController extends Controller
     //Delete
     public function deleteRecipe($id) {
         $user = Auth::user();
+        Recipe::findOrFail($id);
         Recipe::destroy($id);
         return response()->json(['Recipe deleted'], 200);
     }
