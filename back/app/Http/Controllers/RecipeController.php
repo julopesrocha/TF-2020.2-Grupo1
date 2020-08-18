@@ -9,6 +9,7 @@ use App\Challenge;
 use Auth;
 use App\Http\Requests\RecipeRequest;
 use DB;
+use App\Http\Resources\Recipes as RecipeResource;
 
 class RecipeController extends Controller
 {
@@ -24,13 +25,13 @@ class RecipeController extends Controller
         }
         $challenge_id = $searchResult[0]->id;
         $newRecipe->setChallenge($challenge_id);
-        return response()->json(['recipe' => $newRecipe], 200);
+        return response()->json(['recipe' => new RecipeResource($newRecipe)], 200);
     }
 
     // Read
     public function getRecipe($id) {
         $recipe = Recipe::findOrFail($id);
-        return response()->json(['recipe' => $recipe], 200);
+        return response()->json(['recipe' => new RecipeResource($recipe)], 200);
     }
 
     public function getLikes($recipe_id){
@@ -41,17 +42,17 @@ class RecipeController extends Controller
 
     public function listRecipes() {
         $recipeList = Recipe::all();
-        return response()->json(['recipeList' => $recipeList], 200);
+        return response()->json(['recipeList' => RecipeResource::collection($recipeList)], 200);
     }
 
     public function listRecipesOfUser($user_id) {
         $recipeList = Recipe::where('user_id', $user_id)->get();
-        return response()->json(['recipeList' => $recipeList], 200);
+        return response()->json(['recipeList' => RecipeResource::collection($recipeList)], 200);
     }
 
     public function listRecipesOfChallenge($challenge_id) {
         $recipeList = Recipe::where('challenge_id', $challenge_id)->get();
-        return response()->json(['recipeList' => $recipeList], 200);
+        return response()->json(['recipeList' => RecipeResource::collection($recipeList)], 200);
     }
 
     public function getRecipesOfFollowing() {
@@ -64,7 +65,7 @@ class RecipeController extends Controller
                 array_push($recipeList, $recipe);
             }
         }
-        return response()->json(['RecipeList' => $recipeList], 200);
+        return response()->json(['RecipeList' => RecipeResource::collection($recipeList)], 200);
     }
 
     //Update
@@ -72,7 +73,7 @@ class RecipeController extends Controller
         $user = Auth::user();
         $recipe = Recipe::findOrFail($id);
         $recipe->updateRecipe($request);
-        return response()->json(['recipe' => $recipe], 200);
+        return response()->json(['recipe' => new RecipeResource($recipe)], 200);
     }
 
     //Delete
