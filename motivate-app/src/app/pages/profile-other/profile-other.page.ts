@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../../services/user.service';
+import {RecipeService} from '../../services/recipe.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-profile-other',
@@ -9,8 +11,28 @@ import {UserService} from '../../services/user.service';
 export class ProfileOtherPage implements OnInit {
 
   user;
+  followMode=false;
 
-  constructor(public userService: UserService) { }
+  constructor(private router: Router, public userService: UserService, public recipeService: RecipeService) { }
+
+  Follow(){ 
+    this.followMode = true;
+  }
+
+  Unfollow(){
+    this.followMode = false;
+  }
+
+
+  // followUser(){
+  //   this.userServive.followUser().subscribe(
+  //     (res)=>{
+  //       console.log("seguindo otário");
+  //       this.followMode =true;
+  //     }
+  //   )
+  // }
+
 
 // SHOW USER
 
@@ -25,6 +47,10 @@ export class ProfileOtherPage implements OnInit {
 //      }
 //    );
 //  }
+
+GoToHome(){
+  this.router.navigate(['/tabs/home']);
+}
 
   ngOnInit() {
   }

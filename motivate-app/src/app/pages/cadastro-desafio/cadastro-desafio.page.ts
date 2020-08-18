@@ -49,5 +49,9 @@ export class CadastroDesafioPage implements OnInit {
     (image && (image.dataUrl));
   }
 
+  GoBackToProfile(){
+    this.router.navigate(['/tabs/tab3']);
+  }
+
 
 }
