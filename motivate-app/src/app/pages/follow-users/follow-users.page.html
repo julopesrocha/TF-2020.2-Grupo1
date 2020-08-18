@@ -22,14 +22,8 @@
         <div class="name">
             <h5> Luciana Vitória </h5>
         </div>
-        <ion-button shape="round"> seguir </ion-button>
-    </ion-item>
-    <ion-item>
-        <img class="avatar" src="../../assets/boy-cake.jpg">
-        <div class="name">
-            <h5> Luciana Vitória </h5>
-        </div>
-        <ion-button shape="round"> seguir </ion-button>
+        <ion-button *ngIf="!this.clickFollow" (click)="this.alternar()" shape="round"> seguir </ion-button>
+        <ion-button *ngIf="this.clickFollow" (click)="this.alternar()" shape="round"> seguindo </ion-button>
     </ion-item>
         </ion-list>
 <!-- Seguidores  -->
@@ -40,14 +34,8 @@
         <div class="name">
             <h5> Luciana Vitória </h5>
         </div>
-        <ion-button shape="round"> seguindo </ion-button>
-    </ion-item>
-    <ion-item>
-        <img class="avatar" src="../../assets/boy-cake.jpg">
-        <div class="name">
-            <h5> Luciana Vitória </h5>
-        </div>
-        <ion-button shape="round"> seguindo </ion-button>
+        <ion-button *ngIf="!this.clickFollow" (click)="this.alternar()" shape="round"> seguir </ion-button>
+        <ion-button *ngIf="this.clickFollow" (click)="this.alternar()" shape="round"> seguindo </ion-button>
     </ion-item>
     </ion-list>
     </div>

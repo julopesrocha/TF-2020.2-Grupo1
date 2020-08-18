@@ -7,9 +7,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./follow-users.page.scss'],
 })
 export class FollowUsersPage implements OnInit {
-  follow: string;
-  clicarSeguir= true;
-  clicarSeguindo = true;
+
+  clickFollow: boolean = true;
+  Follow: string;
 
   constructor(private router: Router) { }
 
@@ -22,5 +22,10 @@ export class FollowUsersPage implements OnInit {
   }
 
 
+  alternar(){
+      this.clickFollow = !this.clickFollow;
+  }
+
   ngOnInit() {}
+  
 }
