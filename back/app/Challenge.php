@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 
 class Challenge extends Model
 {
+
+    protected $fillable = [];
+
     //Create
     public function createChallenge(Request $request) {
         $this->title = $request->title;

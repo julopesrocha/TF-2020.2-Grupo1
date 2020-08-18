@@ -1,6 +1,17 @@
 ion-content{
   --background: white;
   --color:black;
+  font-family: 'Montserrat', sans-serif;
+}
+
+ion-button{
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+}
+
+a{
+  color: green;
+  font-weight: bold;
 }
 
 .divBio{
@@ -13,11 +24,6 @@ ion-content{
   border-radius: 60px;;
 }
 
-.buttonEdit{
-  --background: rgb(8, 68, 8);
-
-}
 .toolbar{
-    background-color: white;
-    
+    background-color: white; 
 }

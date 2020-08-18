@@ -1,7 +1,12 @@
+<div class="backgroundTop">
+  <div class="toolbar">
+      <ion-icon (click)="GoToHome()" name="chevron-back-outline" size="large" style="float: left" class="iconColor"></ion-icon>
+  </div>
+</div>
 
 <ion-content>
-
   <div class="toolbar">
+    
     <img src= "../../assets/wave.png"  alt="logo do motivate" >
   </div>
 
@@ -26,6 +31,40 @@
           
         </div>
       </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-justify-content-center">
+        <ion-button *ngIf="!followMode" (click)="Follow()" size="small" shape="round" color="success">
+          Seguir
+        </ion-button>
+    </ion-row>
+
+    <!-- Colocar ngIf para o botão trocar dependendo da pessoa estar seguindo ou não -->
+
+    <ion-row class="ion-justify-content-center">
+      
+        <ion-button *ngIf="followMode" (click)="Unfollow()" size="small" shape="round" color="success">
+          Seguindo
+        </ion-button>
+    
+    </ion-row>
+
+    <ion-row class="ion-justify-content-evenly ion-margin-top">
+
+      <ion-col size="4" class="ion-no-padding">
+        <div class="ion-text-center">
+          <a>Seguidores</a>
+          <p>73</p>
+        </div> 
+      </ion-col>
+  
+      <ion-col size="4">
+        <div class="ion-text-center" >
+          <a>Seguindo</a>
+          <p>81</p>
+        </div>  
+      </ion-col>
+  
     </ion-row>
 
     <ion-row class="ion-justify-content-center ">

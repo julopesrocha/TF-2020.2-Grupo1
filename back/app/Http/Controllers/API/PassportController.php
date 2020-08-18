@@ -9,6 +9,7 @@ use App\Http\Requests\UserRequest;
 use Auth;
 use DB;
 use App\Notifications\UserNotification;
+use App\Http\Resources\Users as UserResource;
 
 class PassportController extends Controller
 {
@@ -17,14 +18,14 @@ class PassportController extends Controller
         $newUser->createUser($request);
         $success['token']=$newUser->createToken('MyApp')->accessToken;
         $newUser->notify(new UserNotification($newUser));
-        return response()->json(['success'=> $success, 'user'=>$newUser], 200);
+        return response()->json(['success'=> $success, 'user'=>new UserResource($newUser)], 200);
     }
 
     public function login() {
         if (Auth::attempt(['email'=>request('email'), 'password'=>request('password')])) {
             $user = Auth::user();
             $success['token']=$user->createToken('MyApp')->accessToken;
-            return response()->json(['success'=>$success, 'user'=>$user], 200);
+            return response()->json(['success'=>$success, 'user'=>new UserResource($user)], 200);
         }
         else {
             return response()->json(['error'=>'Unauthorized'], 401);
@@ -33,7 +34,7 @@ class PassportController extends Controller
 
     public function getDetails() {
         $user = Auth::user();
-        return response()->json([$user],200);
+        return response()->json([new UserResource($user)],200);
     }
 
     public function logout() {

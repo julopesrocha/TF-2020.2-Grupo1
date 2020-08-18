@@ -24,7 +24,8 @@ class ChallengeController extends Controller
 
     public function listChallenges() {
         $challengeList = Challenge::all();
-        return response()->json(['challengeList' => $challengeList], 200);
+        $orderedList = $challengeList->sortBy('title', SORT_NATURAL|SORT_FLAG_CASE)->values()->all();
+        return response()->json(['challengeList' => $orderedList], 200);
     }
 
     //Update

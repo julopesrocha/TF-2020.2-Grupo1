@@ -1,6 +1,11 @@
 ion-content{
+    margin-top: 0%;
     --color:black;
   }
+
+  .toolbar{
+    margin: 0%;
+}
   
   .divBio{
     border: 1px solid green;
@@ -12,3 +17,9 @@ ion-content{
     border-radius: 60px;;
   }
 
+  .backgroundTop{
+    background-color: #72F9A8;
+}
+.iconColor{
+  color: #0E6258;
+}
