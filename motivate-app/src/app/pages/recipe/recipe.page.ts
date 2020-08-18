@@ -14,6 +14,7 @@ export class RecipePage implements OnInit {
 
     user_id; //aqui
     recipe_user_id; //aqui
+    recipe_user_name;
     user; //aqui
 
     comments;
@@ -30,6 +31,7 @@ export class RecipePage implements OnInit {
   public recipeService: RecipeService, public commentService: CommentService, public authService: AuthService) {
 
       this.details();
+      
       this.recipeId = this.router.getCurrentNavigation().extras;
       this.commentForm = this.formbuilder.group({
           comment:[null,[Validators.required,Validators.minLength(2),Validators.maxLength(200)]],
@@ -54,8 +56,8 @@ export class RecipePage implements OnInit {
     this.authService.showMyDetails().subscribe(
         (res) => {
             console.log(res);
-            console.log("Esse é você");
             this.user_id = res[0].id;
+            console.log("Pegou o ID de quem ta logado");
         },
         (err) =>{
           console.log(err);
@@ -76,8 +78,6 @@ export class RecipePage implements OnInit {
        }
      );
    }
-
-
 
     postComment(form){
         console.log(form);
@@ -112,10 +112,11 @@ export class RecipePage implements OnInit {
          (res)=>{
            console.log(res);
            this.recipe = res.recipe;
-           this.user = res.user; //aqui
-           this.recipe_user_id = res.user.id; //aqui
+           this.recipe_user_id = res.recipe.user_id; //aqui
+           this.recipe_user_name=res.recipe.user_name;
+           console.log("Pegou o id do usuario da receita");
            console.log(this.recipe);
-           console.log('recicpe', this.user);
+           
          },
          (err)=>{
            console.log(err);

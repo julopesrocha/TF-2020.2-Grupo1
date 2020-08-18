@@ -10,12 +10,12 @@
             <img  class="img" src="../../assets/cake.png" alt="imagem do bolo de chocolate">
             <img  class="faixa" src="../../assets/faixa-laranja.png" alt="faixa laranja do desafio low carb">
         </div>
-        <div class="iconMargin" >
+        <div *ngIf = "user_id==recipe_user_id" class="iconMargin" >
             <ion-icon size="large" name="pencil-outline"></ion-icon>
             <ion-icon (click)="deleteRecipe()" class="trashMargin" size="large" name="trash-outline"></ion-icon>
         </div>
     <!-- Descrição -->
-         <div class="textMargin"> Feito por João </div>
+         <div class="textMargin"> Postada por: {{recipe_user_name}} </div>
          <div class="textMargin"> Receita do Desafio low carb</div>
      <!-- Legendas-->
          <div class="subtitleMargin"> Legenda: </div>

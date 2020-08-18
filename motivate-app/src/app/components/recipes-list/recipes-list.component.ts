@@ -8,13 +8,17 @@ import { Component, OnInit, Input,  Output, EventEmitter } from '@angular/core';
 export class RecipesListComponent implements OnInit {
 
   @Input() recipe;
+
   @Output() clickSeeRecipe = new EventEmitter<number>();
 
   constructor() { }
 
+
+
   clickToSee(id) {
     console.log(id);
     this.clickSeeRecipe.emit(id);
+   
   }
 
   ngOnInit() {}
