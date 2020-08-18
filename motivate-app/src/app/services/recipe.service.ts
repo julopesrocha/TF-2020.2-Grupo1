@@ -40,7 +40,7 @@ export class RecipeService {
     }
 
       // lista as receitas na home
-    public listRecipesHome(user_id): Observable <any>{
+    public listRecipesHome(): Observable <any>{
       return this.http.get(this.apiUrl + 'listRecipes');
     }
 

@@ -15,7 +15,7 @@ class CreateChallengesTable extends Migration
     {
         Schema::create('challenges', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->unique();
+            $table->string('title')->unique()->nullable();
             $table->string('description');
             $table->string('about');
             $table->string('recommendation')->nullable();
