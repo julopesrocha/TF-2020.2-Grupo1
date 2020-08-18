@@ -37,7 +37,12 @@ const routes: Routes = [
   {
     path: 'edit-profile',
     loadChildren: () => import('./pages/edit-profile/edit-profile.module').then( m => m.EditProfilePageModule)
-  }
+  },
+  {
+    path: 'follow-users',
+    loadChildren: () => import('./pages/follow-users/follow-users.module').then( m => m.FollowUsersPageModule)
+  },
+
 
 
 

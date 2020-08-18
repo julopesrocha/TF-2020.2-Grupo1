@@ -1,0 +1,83 @@
+ion-toolbar{
+  --background: white;
+}
+.toolbar{
+    display: flex;
+    justify-content:space-between;
+    flex-direction: row;
+    margin: 3% 3% 0% 3%;
+    background-color:white;
+}
+.back{
+    size: 30px;
+    margin-left: 2%;
+    margin-bottom: 0%;
+    color:#0E6258;
+}
+.close{
+    size: 30px;
+    margin-right: 2%;
+    margin-bottom: 0%;
+    color:#0E6258;
+}
+
+.spaceFormat{
+    border-style: solid;
+    border-radius: 10px;
+    border-color: #04C58B;
+    margin: 5% 10% 5% 10% ;
+    padding-top: 6px;
+    padding-bottom: 3%;
+}
+.imgLogo{
+    margin: 0% 40% 4% 40%;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.segmentColor{
+    --background: white;
+}
+.div {
+    color:white;
+}
+
+ion-button{
+    margin: 6% 6% 6% 6%;
+    display: inline-block;
+    border-radius: 100px;
+    width: 30%;
+    height: 30%;
+    --background: #208579;
+
+}
+
+ion-card{
+    height: 1000%;
+    width: 1000%;
+}
+
+img {
+    border-radius: 50%;
+    width: 40%;
+}
+.avatar{
+    display: flex;
+    justify-content: inline-flex;
+    flex-direction: column;
+    width: 15%;
+    margin: 6% 6% 6% 6%;
+}
+
+.name {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+ion-item{
+    --background: white;
+}
