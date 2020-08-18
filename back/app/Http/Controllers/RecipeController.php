@@ -34,12 +34,6 @@ class RecipeController extends Controller
         return response()->json(['recipe' => new RecipeResource($recipe)], 200);
     }
 
-    public function getLikes($recipe_id){
-        $recipe = Recipe::findOrFail($recipe_id);
-        $likes = $recipe->likes()->count();
-        return response()->json(['likes' => $likes], 200);
-    }
-
     public function listRecipes() {
         $recipeList = Recipe::all();
         return response()->json(['recipeList' => RecipeResource::collection($recipeList)], 200);

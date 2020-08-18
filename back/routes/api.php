@@ -23,7 +23,6 @@ Route::GET('getUserProfile/{user_id}', 'UserController@getUserProfile');
 
 // Receita
 Route::GET('getRecipe/{recipe_id}', 'RecipeController@getRecipe');
-Route::GET('getLikes/{recipe_id}', 'RecipeController@getLikes');
 Route::GET('listRecipes', 'RecipeController@listRecipes');
 Route::GET('listRecipesOfUser/{user_id}', 'RecipeController@listRecipesOfUser');
 Route::GET('listRecipesOfChallenge/{challenge_id}', 'RecipeController@listRecipesOfChallenge');
