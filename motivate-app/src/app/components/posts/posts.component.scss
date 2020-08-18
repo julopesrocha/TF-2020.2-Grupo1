@@ -1,41 +1,25 @@
 
 //Topo do post com info do usuario //
+ion-chip{
+    margin: 5px 40px 10px 40px;
+}
+
 ion-label{
     color:black;
     font-weight: bold;
 }
-
-ion-header{
-    margin: 5px 40px 10px 40px;
-}
 //CSS do post //
-div{
-    margin: 5px 40px 10px 40px;
-    padding-top: 6px;
-    padding-bottom: 5px;
-    border-radius: 20px;
-}
 
 .postFormat{
+    margin: 5% 10% 25% 10%;
+    padding-top: 3%;
+    padding-bottom: 3%;
     border-style: solid;
     border-radius: 20px;
     border-color: #04C58B;
 }
-.challengeOfPost{
-   margin: 0%;
-}
-
-.postInfo{
-    color:#0E416D;
-    text-align: center;
-    font-size: 15px;
-    margin: 1% 1% 1% 1%;
-}
-
-.img{
-    width: 100%;
-}
 .title {
+
     font-weight: bold;
     font-family: 'Montserrat',sans-serif;
     padding-bottom: 10px;
@@ -44,16 +28,37 @@ div{
     font-size: 19px;
 }
 
+.img {
+    width: 100%;
+}
+
+.subtitleMargin{
+    margin: 7%;
+}
+
+.postInfo {
+	max-width: 30%;
+	display: flex;
+}
+
+.challenge {
+	margin: 1%;
+	text-align: center;
+	font-size: 1.5em;
+    flex: 1;
+}
+
+h3{
+    width: 30vw;
+    margin: 0;
+}
+
+.like {
+	margin: 1%;
+	font-size: 1.5em;
+    flex: 1;
+}
+
 ion-icon {
     color: #04C58B;
-    margin: 3px 5px 3px 30px;
-}
-ion-row{
-    margin: 3px 5px 3px 5px;
-}
-
-
-ion-buttom{
-    padding-left: 20px;
-    --background: #2B577E;
 }
