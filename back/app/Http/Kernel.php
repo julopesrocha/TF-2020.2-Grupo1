@@ -55,9 +55,10 @@ class Kernel extends HttpKernel
      */
     protected $routeMiddleware = [
         'auth' => \App\Http\Middleware\Authenticate::class,
-        'deleteComment' => \App\Http\Middleware\DeleteComment::class,
-        'challengeAdmin' => \App\Http\Middleware\ChallengeAdmin::class,
-        'deleteUser' => \App\Http\Middleware\DeleteUser::class,
+        'commentPermissions' => \App\Http\Middleware\CommentPermissions::class,
+        'adminPermissions' => \App\Http\Middleware\AdminPermissions::class,
+        'userPermissions' => \App\Http\Middleware\UserPermissions::class,
+        'recipePermissions' => \App\Http\Middleware\RecipePermissions::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,

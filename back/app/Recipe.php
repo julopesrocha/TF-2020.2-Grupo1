@@ -51,7 +51,7 @@ class Recipe extends Model
     }
 
     public function user() {
-        return $this->belongsTo('App/User');
+        return $this->belongsTo('App\User');
     }
 
     // Relação da receita com o comentário
@@ -67,7 +67,7 @@ class Recipe extends Model
     }
 
     public function challenge() {
-        return $this->belongsTo('App/Challenge');
+        return $this->belongsTo('App\Challenge');
     }
 
     // Relação com o usuário que curte uma receita

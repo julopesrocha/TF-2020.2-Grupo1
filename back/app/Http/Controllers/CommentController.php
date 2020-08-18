@@ -13,6 +13,7 @@ use App\Http\Resources\Comments as CommentResource;
 
 class CommentController extends Controller
 {
+    // Cria um comentário
     public function postComment(CommentRequest $request, $recipe_id){
         $user = Auth::user();
         $newComment = new Comment;
@@ -22,6 +23,7 @@ class CommentController extends Controller
         return response()->json(['success' => new CommentResource($newComment)], 200);
     }
 
+    // Atualiza um comentário
     public function updateComment(CommentRequest $request, $id){
         $user = Auth::user();
         $comment = Comment::findOrFail($id);
@@ -29,16 +31,19 @@ class CommentController extends Controller
         return response()->json(['success' => new CommentResource($comment)], 200);
     }
 
+    // Procura por um comentário específico
     public function getComment($id){
         $comment = Comment::findOrFail($id);
         return response()->json(['success' => new CommentResource($comment)], 200);
     }
 
+    // Lista todos os comentários relacionados a uma receita específica
     public function listComments($recipe_id){
         $commentList = Comment::where('recipe_id', $recipe_id)->get();
         return response()->json(['commentList' => CommentResource::collection($commentList)], 200);
     }
 
+    // Deleta um comentário 
     public function deleteComment($comment_id){
         Comment::findOrFail($comment_id);
         Comment::destroy($comment_id);

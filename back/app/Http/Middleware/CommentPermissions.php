@@ -4,9 +4,9 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Auth;
-use App\User;
+use App\Comment;
 
-class DeleteUser
+class CommentPermissions
 {
     /**
      * Handle an incoming request.
@@ -18,11 +18,11 @@ class DeleteUser
     public function handle($request, Closure $next)
     {
         $user = Auth::user();
-        $check = User::findOrFail($request->user_id);
-        if ($user->id == $check->id || $user->privileged == 1)
+        $comment = Comment::with('user')->where('user_id', $user->id)->where('id', $request->comment_id)->first();
+        if ($comment || $user->privileged == 1)
             return $next($request);
         else{
-            return response()->json(["You only can delete your own account"], 200);
+            return response()->json(["You don't have permission to this!"], 401);
         }
     }
 }

@@ -4,9 +4,9 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Auth;
-use App\Challenge;
+use App\Recipe;
 
-class ChallengeAdmin
+class RecipePermissions
 {
     /**
      * Handle an incoming request.
@@ -18,11 +18,12 @@ class ChallengeAdmin
     public function handle($request, Closure $next)
     {
         $user = Auth::user();
-        if ($user->privileged){
+        $comment = Recipe::with('user')->where('user_id', $user->id)->where('id', $request->recipe_id)->first();
+        if ($comment || $user->privileged == 1)
             return $next($request);
-        }
         else{
-            return response()->json(['Só administradores podem criar desafios.']);
+            return response()->json(["You don't have permission to this!"], 401);
         }
     }
 }
+
