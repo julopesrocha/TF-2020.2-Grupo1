@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { CommentService } from '../../services/comment.service';
 import {RecipeService} from '../../services/recipe.service';
 import { AuthService } from '../../services/auth.service';
+import { ChallengeServiceService } from '../../services/challenge-service.service';
 
 @Component({
   selector: 'app-recipe',
@@ -15,12 +16,14 @@ export class RecipePage implements OnInit {
     user_id; //aqui
     recipe_user_id; //aqui
     recipe_user_name;
-    user; //aqui
+   
 
     comments;
     commentId;
     recipe;
     recipeId;
+
+    challenges = [];
 
     editMode:boolean = false; //aqui
 
@@ -28,7 +31,7 @@ export class RecipePage implements OnInit {
     updateForm: FormGroup; //aqui
 
   constructor(private router: Router, public formbuilder:FormBuilder,
-  public recipeService: RecipeService, public commentService: CommentService, public authService: AuthService) {
+  public recipeService: RecipeService, public commentService: CommentService, public authService: AuthService, public challengeServiceService: ChallengeServiceService) {
 
       this.details();
       
@@ -40,11 +43,11 @@ export class RecipePage implements OnInit {
       // aqui
       this.updateForm = this.formbuilder.group(
         {
-          title:[null, [Validators.required, Validators.maxLength(30), Validators.minLength(3)]],
-          challenge:[null, [Validators.required]],
+          title:[null, [Validators.maxLength(30), Validators.minLength(3)]],
+          challenge:[null],
           subtitle:[null],
-          ingredients:[null, [Validators.required, Validators.maxLength(500), Validators.minLength(3)]],
-          preparation: [null, [Validators.required, Validators.maxLength(600), Validators.minLength(3)]]
+          ingredients:[null, [Validators.maxLength(500), Validators.minLength(3)]],
+          preparation: [null, [ Validators.maxLength(600), Validators.minLength(3)]]
           
         }
       )
@@ -129,23 +132,38 @@ export class RecipePage implements OnInit {
        this.editMode = true;
      }
 
-     updatePost(form){
+     updateRecipe(form){
        this.recipeService.updateRecipe(this.recipeId, form.value).subscribe(
          (res)=>{
            this.editMode = false;
            console.log(res);
+           this.router.navigate(["/tabs/home"]);
          }, (err) => {
            console.log(err);
          }
        );
      }
-//
+
        deleteRecipe(){
             this.recipeService.deleteRecipe(this.recipeId).subscribe(
               (res)=>{
                 console.log(res);
                 this.router.navigate(["/tabs/home"]);
               },(err) =>{
+                console.log(err);
+              }
+            );
+          }
+
+          // funções do challenge
+
+          listChallenges(){
+            this.challengeServiceService.getListChallenges().subscribe(
+              (res)=>{
+                console.log(res);
+                this.challenges = res.challengeList;
+              },
+              (err)=>{
                 console.log(err);
               }
             );
@@ -158,6 +176,7 @@ export class RecipePage implements OnInit {
       ngOnInit() {
           this.getRecipe(this.recipeId);
           this.listComments();
+          this.listChallenges();
       }
 
     }
