@@ -41,14 +41,17 @@ class UserController extends Controller
             $status = DB::table('follows')->where('following_id',$user_id)->where('follower_id',$user->id)->count()>0;
             if ($status){
                 $user->unfollowUser($user_id);
-                return response()->json(['No longer following '.$userFollowing->name], 200);
+                return response()->json(['success' => 'No longer following '.$userFollowing->name,
+                                         'isFollowing' => false], 200);
             } 
             else {
                 $user->followUser($user_id);
-                return response()->json(['following'=> "You're following ". $userFollowing->name], 200);
+                return response()->json(['success'=> "You're following ". $userFollowing->name,
+                                         'isFollowing' => true], 200);
             }
         }
-        return response()->json(['error'=>'You can\'t follow yourself'], 422);
+        return response()->json(['error'=>'You can\'t follow yourself',
+                                 'isFollowing' => false], 422);
     }
 
     // Retorna quem o usuário logado segue
