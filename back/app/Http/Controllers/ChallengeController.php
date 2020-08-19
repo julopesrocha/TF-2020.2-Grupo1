@@ -9,33 +9,66 @@ use App\Challenge;
 
 class ChallengeController extends Controller
 {
-    //Create
+    /**
+     * Cria um novo desafio no DB
+     * 
+     * @param ChallengeRequest      $request
+     * 
+     * @return JsonResponse
+     */
     public function postChallenge(ChallengeRequest $request) {
         $newChallenge = new Challenge;
         $newChallenge->createChallenge($request);
         return response()->json(['challenge' => $newChallenge], 200);
     }
 
-    //Read
+    /**
+     * Retorna o desafio correspondente ao id fornecido
+     * 
+     * @param int       $id
+     * 
+     * @return JsonResponse
+     */
     public function getChallenge($id) {
         $challenge = Challenge::findOrFail($id);
         return response()->json(['challenge' => $challenge], 200);
     }
 
+    /**
+     * Retorna todas os desafios do BD
+     * 
+     * @return JsonResponse
+     */
     public function listChallenges() {
         $challengeList = Challenge::all();
-        $orderedList = $challengeList->sortBy('title', SORT_NATURAL|SORT_FLAG_CASE)->values()->all();
+        $orderedList = $challengeList->sortBy(
+                'title',
+                SORT_NATURAL|SORT_FLAG_CASE
+                )->values()->all();
         return response()->json(['challengeList' => $orderedList], 200);
     }
 
-    //Update
+    /**
+     * Atualiza os dados do desafio corresponente ao id
+     * 
+     * @param ChallengeRequest      $request
+     * @param int                   $id
+     * 
+     * @return JsonResponse
+     */
     public function updateChallenge(ChallengeRequest $request, $id) {
         $challenge = Challenge::findOrFail($id);
         $challenge->updateChallenge($request);
         return response()->json(['challenge' => $challenge], 200);
     }
 
-    //Delete
+    /**
+     * Deleta a receita correspondente ao id
+     * 
+     * @param int       $id
+     * 
+     * @return JsonResponse
+     */
     public function deleteChallenge($id) {
         Challenge::findOrFail($id);
         Challenge::destroy($id);
