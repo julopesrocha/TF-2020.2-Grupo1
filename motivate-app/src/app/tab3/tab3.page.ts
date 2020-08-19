@@ -63,6 +63,10 @@ toggleEdit(){
   this.editMode = true;
 }
 
+toggleNoEdit(){
+  this.editMode = false;
+}
+
 updateUser(form){
   this.userservice.updateUser(form.value).subscribe(
     (res)=>{
