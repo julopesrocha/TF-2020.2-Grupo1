@@ -40,7 +40,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    // Função para registrar um novo usuário
+    /**
+     * Adiciona uma nova conta de usuário no BD
+     * 
+     * @param UserRequest       $request
+     * 
+     */
     public function createUser(UserRequest $request) {
         $this->name = $request->name;
         $this->email = $request->email;
@@ -53,8 +58,19 @@ class User extends Authenticatable
 
         return $this;
     }
-    
-    // Função para atualizar o perfil de um usuário
+    /**
+     * Retorna um novo usuário
+     * 
+     * @return User
+     * 
+     */
+
+    /**
+     * Atualiza os atributos de um usuário existente
+     * 
+     * @param UserRequest       $request
+     * 
+     */    
     public function updateUser(userRequest $request) {
         if ($request->name) {
             $this->name = $request->name;
@@ -82,54 +98,100 @@ class User extends Authenticatable
         $this->save();
     }
 
-    // Relação com as receitas de um usuário
+    /**
+     * Relação do usuário com muitas receitas
+     * 
+     * @return Relations\HasMany
+     */
     public function recipes() {
         return $this->hasMany('App\Recipe');
     }
 
-    // Relação da postagem de comentários com as comments
+    /**
+     * Relação do usuário com comentários
+     * 
+     * @return Relations\HasMany
+     * 
+     */
     public function commentsMadeByUser(){
         return $this->hasMany('App\Comment');    
     }
-    // Relação de seguir usuários
+
+    /**
+     * Relação de seguir um usuário
+     * 
+     * @return Relations\BelongsToMany
+     * 
+     */
     public function follower(){
-        return $this->belongsToMany('App\User', 'follows', 'follower_id',  'following_id');    
+        return $this->belongsToMany('App\User', 'follows', 'follower_id',
+                                    'following_id');    
     }
 
-    // Relação de usuários sendo seguidos
+
+    /**
+     * Relação de ser seguido por um usuário
+     * 
+     * @return Relations\BelongsToMany
+     * 
+     */
     public function following(){
-        return $this->belongsToMany('App\User', 'follows', 'following_id', 'follower_id');
+        return $this->belongsToMany('App\User', 'follows', 'following_id', 
+                                    'follower_id');
     }
 
-    // Função de seguir um usuário 
+    /**
+     * Função para seguir um usuário
+     * 
+     * @param int       $user_id
+     *  
+     */ 
     public function followUser($user_id) {
         $user = User::findOrFail($user_id);
         $this->follower()->attach($user);
     }
     
-    // Função de parar de seguir um usuário
+    /**
+     * Função para parar de seguir um usuário
+     * 
+     * @param int       $user_id
+     * 
+     */
     public function unfollowUser($user_id){
         $user = User::findOrFail($user_id);
         $this->follower()->detach($user);
     }
 
-
-    // Relação de curtir uma receita
+    /**
+     * Relação de um post curtido por um usuário 
+     * 
+     * @return  Relations\BelongsToMany
+     * 
+     */
     public function likeMadeByUser(){
-        return $this->belongsToMany('App\Recipe', 'likes', 'user_id', 'recipe_id');
+        return $this->belongsToMany('App\Recipe', 'likes', 'user_id', 
+                                    'recipe_id');
     }
 
-    // Função de curtir uma receita
+    /**
+     * Função para aumentar a curtida de uma receita
+     * 
+     * @param int       $id
+     * 
+     */
     public function likeUp($id){
         $this->likeMadeByUser()->attach($id);
         $this->save();
     }
 
-    // Função de descurtir uma receita
+    /**
+     * Função para diminuir a curtida de uma receita
+     * 
+     * @param int       $id
+     * 
+     */
     public function likeDown($id){
         $this->likeMadeByUser()->detach($id);
         $this->save();
     }
-
-
 }
