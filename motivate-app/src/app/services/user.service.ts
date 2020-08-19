@@ -30,9 +30,10 @@ export class UserService {
  //     return this.http.get(this.apiUrl + 'getFollowing');
  //   }
  //
- //   public followUser(user_id): Observable <any>{
- //      return this.http.post(this.apiUrl + 'followUser/'+ user_id);
- //    }
+    public followUser(user_id): Observable <any>{
+        this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('userToken');
+        return this.http.post(this.apiUrl + 'followUser/'+ user_id);
+     }
 
   // public deleteUser(user_id): Observable<any>{
   //   this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('userToken');

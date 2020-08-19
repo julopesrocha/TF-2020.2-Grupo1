@@ -15,7 +15,7 @@ export class ProfileOtherPage implements OnInit {
 
   constructor(private router: Router, public userService: UserService, public recipeService: RecipeService) { }
 
-  Follow(){ 
+  Follow(){
     this.followMode = true;
   }
 
@@ -24,14 +24,13 @@ export class ProfileOtherPage implements OnInit {
   }
 
 
-  // followUser(){
-  //   this.userServive.followUser().subscribe(
-  //     (res)=>{
-  //       console.log("seguindo otário");
-  //       this.followMode =true;
-  //     }
-  //   )
-  // }
+  followUser(){
+      this.userServive.followUser().subscribe(
+          (res)=>{
+              console.log("seguindo");
+              this.followMode =true;
+       })
+   }
 
 
 // SHOW USER
@@ -48,11 +47,11 @@ export class ProfileOtherPage implements OnInit {
 //    );
 //  }
 
-GoToHome(){
-  this.router.navigate(['/tabs/home']);
-}
+    GoToHome(){
+      this.router.navigate(['/tabs/home']);
+    }
 
-  ngOnInit() {
-  }
+      ngOnInit() {
+      }
 
-}
+    }
