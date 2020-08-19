@@ -1,4 +1,4 @@
-<ion-chip size="medium">
+<ion-chip size="medium" (click)="clickToSeeProfile(recipe.user_id)" >
     <ion-avatar>
         <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
     </ion-avatar>
@@ -10,8 +10,9 @@
     <img class="img" src="../../assets/cake.png">
 <div class="subtitleMargin"> {{recipe.subtitle}}</div>
 <div class="postInfo">
-    <div class="challenge"> <h3> Desafio </h3> </div>
+    <div class="challenge"> <h3> {{recipe.challenge_name}} </h3> </div>
     <div class="like"> <ion-icon name="heart" size="large"> </ion-icon> </div>
+    <div class="like"> {{recipe.likes}} </div>
 </div>
 
 </div>

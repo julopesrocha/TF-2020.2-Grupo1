@@ -15,7 +15,6 @@ export class ChallengePagePage implements OnInit {
     recipes;
 
   constructor(public recipeService: RecipeService, private router: Router, public challengeServiceService:ChallengeServiceService) {
-
       this.challengeId = this.router.getCurrentNavigation().extras;
   }
 

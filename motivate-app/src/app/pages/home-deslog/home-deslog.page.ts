@@ -15,15 +15,15 @@ export class HomeDeslogPage implements OnInit {
     challengeId;
     recipes;
     usuario:Object;
-   
 
-  constructor(private router: Router, public challengeServiceService:ChallengeServiceService, public recipeService: RecipeService, public authService: AuthService) {
+
+  constructor(private router: Router, public challengeServiceService:ChallengeServiceService,
+      public recipeService: RecipeService, public authService: AuthService) {
       this.challengeId = this.router.getCurrentNavigation().extras;
       this.details();
-
  }
 
-   
+
 
   //  verifyLogin(){
   //    this.token=localStorage.getItem("userToken");
@@ -31,7 +31,7 @@ export class HomeDeslogPage implements OnInit {
   //      this.token =1;
   //    }
   //  }
- 
+
  details() {
   this.authService.showMyDetails().subscribe(
       (res) => {
@@ -70,17 +70,12 @@ export class HomeDeslogPage implements OnInit {
       }
     );
   }
-  
+
   ngOnInit() {
-    
+
   }
 
-
-  GoToRecipe(){
-      this.router.navigate(['/recipe'])
-  }
-
-   navigateToRecipe(recipe_id) {
+   GoToRecipe(recipe_id) {
     this.router.navigate(['/recipe'], recipe_id);
   }
 
@@ -90,6 +85,10 @@ export class HomeDeslogPage implements OnInit {
 
   GoToLogin(){
     this.router.navigate(['/login']);
+  }
+
+  GoToProfile(user_id) {
+    this.router.navigate(['/profile-other', user_id]);
   }
 
   ionViewWillEnter(){
