@@ -61,5 +61,28 @@ class RecipeTableSeeder extends Seeder
             'user_id' => 5,
             'challenge_id' => 1,
         ]);
+
+        $user = App\User::findOrFail(1);
+        $user->likeUp(1);
+        $user->likeUp(3);
+        $user->likeUp(5);
+
+        $user = App\User::findOrFail(2);
+        $user->likeUp(2);
+        $user->likeUp(3);
+
+        $user = App\User::findOrFail(3);
+        $user->likeUp(1);
+        $user->likeUp(2);
+        $user->likeUp(4);
+        $user->likeUp(5);
+
+        $user = App\User::findOrFail(4);
+        $user->likeUp(1);
+
+        $user = User::findOrFail(5);
+        $user->likeUp(1);
+        $user->likeUp(2);
+        $user->likeUp(3);
     }
 }
