@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import { ChallengeServiceService } from '../../services/challenge-service.service';
+import { Router } from '@angular/router';
+import {RecipeService} from '../../services/recipe.service';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-home-deslog',
@@ -7,20 +10,92 @@ import {Router} from '@angular/router';
   styleUrls: ['./home-deslog.page.scss'],
 })
 export class HomeDeslogPage implements OnInit {
+    token = localStorage.getItem("userToken");
+    challenge;
+    challengeId;
+    recipes;
+    usuario:Object;
+   
+
+  constructor(private router: Router, public challengeServiceService:ChallengeServiceService, public recipeService: RecipeService, public authService: AuthService) {
+      this.challengeId = this.router.getCurrentNavigation().extras;
+      this.details();
+
+ }
+
+   
+
+  //  verifyLogin(){
+  //    this.token=localStorage.getItem("userToken");
+  //    if(this.token!=null){
+  //      this.token =1;
+  //    }
+  //  }
+ 
+ details() {
+  this.authService.showMyDetails().subscribe(
+      (res) => {
+          console.log(res);
+          console.log("Esse é você");
+          this.usuario = res[0];
+      },
+      (err) =>{
+        console.log(err);
+      }
+  );
+
+}
+
+  getChallenge(id){
+     this.challengeServiceService.getChallenge(id).subscribe(
+      (res)=>{
+        console.log(res);
+        this.challenge = res.challenge;
+
+      },
+      (err)=>{
+        console.log(err);
+      }
+    );
+  }
+
+  listRecipes(){
+    this.recipeService.listRecipesHome().subscribe(
+      (res)=>{
+        console.log(res);
+        this.recipes=res.recipeList;
+      },
+      (err)=>{
+        console.log(err);
+      }
+    );
+  }
+  
+  ngOnInit() {
+    
+  }
 
 
+  GoToRecipe(){
+      this.router.navigate(['/recipe'])
+  }
 
-  constructor(private router: Router) {}
+   navigateToRecipe(recipe_id) {
+    this.router.navigate(['/recipe'], recipe_id);
+  }
 
-
-  ngOnInit() {}
-
-  VaiproCadastro(){
+  GoToRegister(){
     this.router.navigate(['/cadastro-usuario']);
   }
 
-  VaiproLogin(){
+  GoToLogin(){
     this.router.navigate(['/login']);
+  }
+
+  ionViewWillEnter(){
+    console.log("receita adicionada a lista.");
+    this.listRecipes();
+    // this.verifyLogin();
   }
 
 }

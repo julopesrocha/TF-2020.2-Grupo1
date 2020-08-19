@@ -1,3 +1,29 @@
-ion-toolbar{
-  --background:  #123C62;
+ion-content{
+  --background: white;
+  --color:black;
+  font-family: 'Montserrat', sans-serif;
+}
+
+ion-button{
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+}
+
+a{
+  color: green;
+  font-weight: bold;
+}
+
+.divBio{
+  border: 1px solid green;
+  border-radius: 10px;;
+}
+
+.divFoto{
+  border: 1px solid green;
+  border-radius: 60px;;
+}
+
+.toolbar{
+    background-color: white; 
 }

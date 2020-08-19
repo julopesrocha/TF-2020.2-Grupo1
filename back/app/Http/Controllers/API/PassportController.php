@@ -9,6 +9,7 @@ use App\Http\Requests\UserRequest;
 use Auth;
 use DB;
 use App\Notifications\UserNotification;
+use App\Http\Resources\Users as UserResource;
 
 class PassportController extends Controller
 {
@@ -53,7 +54,7 @@ class PassportController extends Controller
      */
     public function getDetails() {
         $user = Auth::user();
-        return response()->json([$user],200);
+        return response()->json([new UserResource($user)],200);
     }
 
     /**

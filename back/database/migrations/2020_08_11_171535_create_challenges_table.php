@@ -15,11 +15,11 @@ class CreateChallengesTable extends Migration
     {
         Schema::create('challenges', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->unique();
-            $table->string('description');
-            $table->string('about');
+            $table->string('title')->unique()->nullable();
+            $table->mediumText('description');
+            $table->mediumText('about');
             $table->string('recommendation')->nullable();
-            $table->string('photo')->nullable();
+            $table->mediumText('photo')->nullable();
             $table->timestamps();
         });
     }

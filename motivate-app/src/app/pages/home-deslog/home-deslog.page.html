@@ -1,23 +1,30 @@
-<ion-header>
-  <ion-toolbar>
-      <div class="toolbar">
-        <img src="../assets/logo.png" class="logo" alt="logo do motivate" >
-            <img src="../assets/motivatemotivate.png" class="motivate" alt="motivate com fonte poppins">
-        </div>
-  </ion-toolbar>
-</ion-header>
 
 <!-- Postagens -->
-<ion-content>
-    <ion-grid>
-        <ion-row class="button ion-justify-content-between" >
-                <ion-button (click)="VaiproLogin()" shape="round" class="login" size="medium"> Login </ion-button>
-                <ion-button (click)="VaiproCadastro()" shape="round" class="register" size="medium"> Cadastrar </ion-button>
+<ion-content >
+    <div class="toolbar">
+      <img src="../../assets/wave-logo .png"  alt="logo do motivate" >
+      </div>
+
+    <ion-grid >
+        <ion-row *ngIf="!token" class="button ion-justify-content-between" >
+                <ion-button (click)="GoToLogin()" shape="round" class="login" size="small"> Login </ion-button>
+                <ion-button (click)="GoToRegister()" shape="round" class="register" size="small"> Cadastrar </ion-button>
+        </ion-row>
+
+        <ion-row  *ngIf="token" class="button ion-justify-content-between" >
+          <h4 *ngIf="usuario">Olá, {{usuario.name}}</h4>
         </ion-row>
     </ion-grid>
+    
+    <!-- <ion-grid >
+      <ion-row class="button ion-justify-content-between" >
+              <h4 *ngIf="usuario">Olá, {{usuario.name}}</h4>
+      </ion-row>
+  </ion-grid> -->
 
-         <app-posts > </app-posts>
-         <app-posts > </app-posts>
-         <app-posts > </app-posts>
+      <div class="postMargin">
+         <app-posts (clickSeeRecipe)="navigateToRecipe($event)" [recipe]="recipe" *ngFor="let recipe of recipes" > </app-posts>
+      </div>
+      
 
 </ion-content>

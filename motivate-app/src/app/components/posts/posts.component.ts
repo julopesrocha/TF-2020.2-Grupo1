@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-posts',
@@ -7,14 +7,16 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class PostsComponent implements OnInit {
 
-
-    @Input() post: any;
-
-
+@Input() recipe;
+@Output() clickSeeRecipe = new EventEmitter<number>();
 
 
+  constructor() {}
 
-  constructor() { }
+      clickToSeeRecipe(id) {
+          this.clickSeeRecipe.emit(id);
+        }
+       
 
   ngOnInit() {}
 

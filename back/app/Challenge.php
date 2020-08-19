@@ -5,14 +5,19 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
+
 class Challenge extends Model
 {
+
+    protected $fillable = [];
+
     //Create
     public function createChallenge(Request $request) {
         $this->title = $request->title;
         $this->description = $request->description;
         $this->about = $request->about;
         $this->recommendation = $request->recommendation;
+        $this->photo = $request->photo;
         $this->save();
     }
 
@@ -38,6 +43,6 @@ class Challenge extends Model
 
     // Relação com receitas
     public function recipes() {
-        return $this->hasMany('App/Recipe');
+        return $this->hasMany('App\Recipe');
     }
 }

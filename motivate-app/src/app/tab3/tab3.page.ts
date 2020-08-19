@@ -37,14 +37,24 @@ logout() {
           console.log(res);
           localStorage.removeItem('userToken');
           localStorage.removeItem('Usuario');
-          
-          this.router.navigate(['/tabs/home']);
+          this.usuario= null; 
+          this.router.navigate(['/tabs/home']).then(()=>window.location.reload());
           console.log("Você saiu!!");
       }
   );
 }
 
+GoToCreateChallenge(){
+  this.router.navigate(['/cadastro-desafio']);
+}
 
+GoToCreateRecipe(){
+  this.router.navigate(['/tabs/tab2']);
+}
+
+GoToEditProfile(){
+  this.router.navigate(['edit-profile']);
+}
 
 
 }

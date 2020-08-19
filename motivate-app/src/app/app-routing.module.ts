@@ -19,13 +19,27 @@ const routes: Routes = [
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
+    path: 'challenge-page',
+    loadChildren: () => import('./pages/challenge-page/challenge-page.module').then( m => m.ChallengePagePageModule)
+  },
+   {
     path: 'cadastro-desafio',
     loadChildren: () => import('./pages/cadastro-desafio/cadastro-desafio.module').then( m => m.CadastroDesafioPageModule)
   },
+
+   {
+    path: 'recipe',
+    loadChildren: () => import('./pages/recipe/recipe.module').then( m => m.RecipePageModule)
+  },  {
+    path: 'profile-other',
+    loadChildren: () => import('./pages/profile-other/profile-other.module').then( m => m.ProfileOtherPageModule)
+  },
   {
-    path: 'cadastro-receita',
-    loadChildren: () => import('./pages/cadastro-receita/cadastro-receita.module').then( m => m.CadastroReceitaPageModule)
+    path: 'edit-profile',
+    loadChildren: () => import('./pages/edit-profile/edit-profile.module').then( m => m.EditProfilePageModule)
   }
+
+
 
 
 ];

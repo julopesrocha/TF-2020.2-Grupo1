@@ -4,18 +4,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { CadastroReceitaPageRoutingModule } from './cadastro-receita-routing.module';
+import { RecipePageRoutingModule } from './recipe-routing.module';
 
-import { CadastroReceitaPage } from './cadastro-receita.page';
+import { RecipePage } from './recipe.page';
+
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    RecipePageRoutingModule,
     ReactiveFormsModule,
-    CadastroReceitaPageRoutingModule
   ],
-  declarations: [CadastroReceitaPage]
+  declarations: [RecipePage]
 })
-export class CadastroReceitaPageModule {}
+export class RecipePageModule {}

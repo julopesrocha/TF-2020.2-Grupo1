@@ -1,34 +1,33 @@
 
 <ion-header>
-
     <ion-chip size="medium">
         <ion-avatar>
             <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
         </ion-avatar>
-            <ion-label>Nathan</ion-label>
+        <ion-label>{{recipe.user_name}}</ion-label>
     </ion-chip>
 </ion-header>
 
+    <div shape="round" class="postFormat" (click)="clickToSeeRecipe(recipe.id)">
+        <h5 class="title"> {{recipe.title}} </h5>
+        <img class="img" src="../../assets/cake.png">
+        
+    <div  shape="round"  class="postInfo">
+        <div class="challengeOfPost" (click)="clickToSee(challenge.id)" >
+            <p>{{recipe.challenge}}</p>
+        <ion-icon name="heart" size="large"> </ion-icon>
+        
+        </div>
+    </div>
 
-    <ion-card  shape="round" >
-        <h5 class="title"> Bolo de Chocolate </h5>
-            <img class="img" src="../../assets/cake.png">
-            <div  shape="round"  class="font">
-                <ion-grid>
-                    <ion-row>
-                        <div>
-                            <ion-grid>
-                                <ion-row>
-                                    #Low carb
-                                    <ion-icon name="heart" size="medium" > </ion-icon> 10
-                                        <ion-icon name="chatbubble" size="medium"></ion-icon> 3
+    </div>
 
-                                </ion-row>
-                            </ion-grid>
-                        </div>
 
-                    </ion-row>
-                </ion-grid>
-            </div>
-
-    </ion-card>
+<!--<div>
+        <ion-grid>
+            <ion-row> #Low carb
+                <ion-icon name="heart" size="medium" > </ion-icon> 10
+                <ion-icon name="chatbubble" size="medium"></ion-icon> 3
+            </ion-row>
+        </ion-grid>
+    </div>-->

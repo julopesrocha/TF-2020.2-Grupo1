@@ -6,7 +6,14 @@ const routes: Routes = [
   {
     path: '',
     component: Tab1Page,
-  }
+    children: [
+        {
+          path: 'desafioLowCarb',
+          loadChildren: () => import('../pages/challenge-page/challenge-page.module').then(m => m.ChallengePagePageModule)
+        },
+
+    ]
+}
 ];
 
 @NgModule({

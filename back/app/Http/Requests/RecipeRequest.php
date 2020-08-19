@@ -43,8 +43,8 @@ class RecipeRequest extends FormRequest
             // Mensagens personalizadas
             'title.min' => 'O nome deve conter no mínimo 3 digitos',
             'title.max' => 'O nome deve conter no máximo 80 digitos',
-            'ingredients.min' => 'A lita de ingredientes deve conter no mínimo 3 digitos',
-            'ingredients.max' => 'A lita de ingredientes conter no máximo 500 digitos',
+            'ingredients.min' => 'A lista de ingredientes deve conter no mínimo 3 digitos',
+            'ingredients.max' => 'A lista de ingredientes conter no máximo 500 digitos',
             'preparation.min' => 'O modo de preparo deve conter no mínimo 3 digitos',
             'preparation.max' => 'O modo de preparo deve conter no máximo 600 digitos',
             'subtitle.min' => 'A legenda deve conter no mínimo 3 digitos',

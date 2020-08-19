@@ -1,0 +1,40 @@
+
+<ion-content *ngIf="challenge">
+    <div class="toolbar">
+        <ion-icon (click)="navigateTobackHome()" name="chevron-back-outline" size="large" style="float: left" class="back"></ion-icon>
+        <ion-icon (click)="navigateTochallengeList()" name="close-outline" size="large" style="float: right" class="close"></ion-icon>
+    </div>
+    <div class="title">
+        {{challenge.title}}
+    </div>
+    <div>
+        <img  class="img" src="../../assets/low-carb.png">
+    </div>
+<!-- Descrição -->
+    <div class="subtitles"> Descrição : </div>
+        <div class="description" class="spaceFormat">
+            <div class="text">
+              {{challenge.description}}
+             </div>
+        </div>
+<!-- Saiba mais -->
+    <div class="subtitles"> Saiba mais : </div>
+        <div class="description" class="spaceFormat">
+            <div class="text">
+                {{challenge.about}}
+            </div>
+        </div>
+<!-- Avisos-->
+    <div class="subtitles"> Recomendações: </div>
+        <div class="description" class="spaceFormat">
+            <div class="text">
+                {{challenge.recommendation}}
+            </div>
+        </div>
+<!-- Receitas -->
+    <div class="subtitles"> Receitas low carb </div>
+    <div class="recipesListMergin">
+
+        <app-recipes-list [recipe]="recipe" (clickSeeRecipe)="navigateToRecipe($event)" *ngFor="let recipe of recipes"> </app-recipes-list>
+    </div>
+</ion-content>

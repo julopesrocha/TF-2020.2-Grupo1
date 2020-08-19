@@ -13,14 +13,17 @@ export class LoginPage implements OnInit {
 
   loginForm: FormGroup;
   submitted=true;
+  usuario;
+
 
 
   constructor(public toastController: ToastController, public formbuilder: FormBuilder, private router: Router, public authservice: AuthService) {
+    this.details();
     this.loginForm = this.formbuilder.group({
-      
+
       email:[null, [Validators.email, Validators.required]],
       password:[null, [Validators.required, Validators.minLength(6), Validators.maxLength(15)]],
-      
+
     })
    }
 
@@ -34,37 +37,50 @@ export class LoginPage implements OnInit {
     toast.present();
   }
 
+  details() {
+    this.authservice.showMyDetails().subscribe(
+        (res) => {
+            console.log(res);
+            console.log("Esse é você");
+            this.usuario = res[0];
+        },
+        (err) =>{
+          console.log(err);
+        }
+    );
+
+}
+
   submitForm(form){
-   
+
     console.log(form.value);
 
     this.authservice.login(this.loginForm.value).subscribe(
       (res)=> {
         console.log(res);
         localStorage.setItem('userToken', res.success.token);
-        this.router.navigate(['/tabs/tab1'])
+        // this.usuario =res[0];
+        this.router.navigate(['/tabs/home']).then(()=>window.location.reload());
         console.log("entrei");
       },
-   
+
 
         (err)=> {
           console.log(err);
-  
+
           if(err.error.error=="Unauthorized"){
-  
-            this.presentToast();          
+
+            this.presentToast();
           }
         }
         );
       }
-    
 
-
-  VaiproCadastro(){
+  GoToRegister(){
     this.router.navigate(['/cadastro-usuario']);
   }
 
-  VaipraHomeDeslog(){
+  GoToHome(){
     this.router.navigate(['/tabs/home']);
   }
 

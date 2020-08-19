@@ -1,28 +1,124 @@
-//CSS da Toolbar //
-
-ion-toolbar{
-  --background: #123C62;
+.backgroundTop{
+    background-color: #DFFF84;
 }
 
 .toolbar{
-   margin-top: 1%;
-   margin-bottom: 2%;
-   margin-left: 17%;
-   margin-right: 10%;
+    display: flex;
+    justify-content:space-between;
+    flex-direction: row;
+    margin: 3%;
 }
 
-.logo {
-    width: 20%;
-    height: 5vh;
-    margin: 10px 5px 10px;
+.back{
+    size: 30px;
+    margin-left: 2%;
+    color:#0E6258;
+}
 
+.paddingTitle{
     text-align: center;
+    font-weight: bold;
+    color: black;
+    font-size: 36px;
+    padding-top: 10%;
+    padding-left: 6%;
+    padding-right: 6%;
 }
-.motivate{
+
+.img{
+    margin-top: 6%;
+    margin-left: 8%;
+    margin-right: 10%;
+    display: inline-block;
+    justify-content: center;
+}
+.challengeCard{
+    margin-top: 10%;
+}
+
+.challengeAlign{
+    margin-top:0;
+    padding-top: 0;
+}
+.cardAlign{
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+ion-content{
+    --background: white;
+}
+
+
+
+
+#cardBackground1{
+    --background: #FFB489;
+}
+#cardBackground2{
+    --background: #FFF496;
+}
+#cardBackground3{
+    --background: #C3EAE8;
+}
+
+#cardBackground4{
+    --background: #C4C3EA;
+}
+
+#cardButton1{
+    --background: #FF5C00;
+}
+#cardButton2{
+    --background: #FFA800;
+}
+#cardButton3{
+    --background: #235685;
+}
+#cardButton4{
+    --background: #623A8A;
+}
+
+
+ion-card{
+    font-size: 18px;
+    text-align: left;
+    border-radius: 15px;
+    margin: 0 8% 8% 8% ;
+    display: flex;
+}
+ion-button{
+    margin: 5%;
+    display: inline-block;
+    --background:#235685;
+}
+
+h6{
+    margin: 5%;
+    font-weight: 500;
+    color: black;
+
+}
+
+img{
+    border-radius: 15px;
+    height: 100%;
+    width: 100%;
+
+}
+
+.text{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    width: 45%;
+    margin-top: 3%;
+    margin-left: 3%;
+    margin-bottom: 3%;
+}
+.image {
+    display: flex;
+    justify-content:flex-end;
     width: 50%;
-    height: 3vh;
-    margin: 5px 5px;
-    margin-bottom: 10px;
-    text-align: center;
-
+    margin-left: 4%;
 }
