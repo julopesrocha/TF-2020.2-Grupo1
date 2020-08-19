@@ -145,6 +145,9 @@ export class RecipePage implements OnInit {
      toggleEdit(){
        this.editMode = true;
      }
+     toggleNoEdit(){
+       this.editMode = false;
+     }
 
      updateRecipe(form){
        this.recipeService.updateRecipe(this.recipeId, form.value).subscribe(
@@ -189,6 +192,10 @@ export class RecipePage implements OnInit {
       navigateTobackHome(){
           this.router.navigate(['/tabs/home'])
       }
+
+      GoToRecipe(){
+        this.router.navigate(['/tabs/home']);
+    }
 
       ngOnInit() {
           this.getRecipe(this.recipeId);

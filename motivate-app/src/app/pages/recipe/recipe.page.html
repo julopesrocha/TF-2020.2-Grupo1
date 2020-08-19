@@ -42,65 +42,70 @@
             </div>
     </div>
 
+    <div class="divForm">
 
-    <form [formGroup]="updateForm" (ngSubmit)="updateRecipe(updateForm)" *ngIf="editMode">
-  
-        <div class="form-group">
-            <ion-label >Título</ion-label>
-            <ion-input type="text" formControlName="title" class="bordaInferior" ></ion-input>
+        <ion-row class="iconBack">
+            <ion-icon (click)="toggleNoEdit()" name="chevron-back-outline" size="large" style="float: left" class="back"></ion-icon>
+          </ion-row>
 
-          </div>
-
-          <div class="form-group">
-            <ion-label>Desafio</ion-label>
-            <ion-select  interface="action-sheet" class="personalizar-select" id="status" formControlName="challenge">
-
-              <ion-select-option  *ngFor ="let challenge of challenges" class="personalizar-option" value="{{challenge.title}}" >{{challenge.title}}</ion-select-option>
-
-            </ion-select>
-          </div>
-
+        <form [formGroup]="updateForm" (ngSubmit)="updateRecipe(updateForm)" *ngIf="editMode">
+    
             <div class="form-group">
-              <ion-label>Adicione uma legenda</ion-label>
-              <ion-input type="text" formControlName="subtitle" class="bordaInferior" ></ion-input>
+                <ion-label >Título</ion-label>
+                <ion-input value="{{recipe.title}}" type="text" formControlName="title" class="bordaInferior" ></ion-input>
 
             </div>
 
+            <div class="form-group">
+                <ion-label>Desafio</ion-label>
+                <ion-select  interface="action-sheet" class="personalizar-select" id="status" formControlName="challenge">
 
-          <div class="form-group">
-            <ion-label>Ingredientes</ion-label>
-            <ion-textarea formControlName="ingredients" ></ion-textarea>
+                <ion-select-option  *ngFor ="let challenge of challenges" class="personalizar-option" value="{{challenge.title}}" >{{challenge.title}}</ion-select-option>
 
-          </div>
+                </ion-select>
+            </div>
 
-        <div class="form-group">
-            <ion-label>Modo de preparo</ion-label>
-            <ion-textarea formControlName="preparation" ></ion-textarea>
-            <ion-row>
-              <ion-col>
-                <div class="ion-text-end">
-                  <p>máx. 600 caracteres</p>
+                <div class="form-group">
+                <ion-label>Adicione uma legenda</ion-label>
+                <ion-input type="text" formControlName="subtitle" class="bordaInferior" ></ion-input>
+
                 </div>
 
-              </ion-col>
 
-          </ion-row>
-        </div>
+            <div class="form-group">
+                <ion-label>Ingredientes</ion-label>
+                <ion-textarea formControlName="ingredients" ></ion-textarea>
+
+            </div>
+
+            <div class="form-group">
+                <ion-label>Modo de preparo</ion-label>
+                <ion-textarea formControlName="preparation" ></ion-textarea>
+                <ion-row>
+                <ion-col>
+                    <div class="ion-text-end">
+                    <p>máx. 600 caracteres</p>
+                    </div>
+
+                </ion-col>
+
+            </ion-row>
+            </div>
 
 
-          <ion-row class=ion-justify-content-center>
-            <ion-button type="submit" class="botao" shape="round">Editar</ion-button>
-          </ion-row>
+            <ion-row class=ion-justify-content-center>
+                <ion-button type="submit" class="botao" shape="round">Editar</ion-button>
+            </ion-row>
 
-    </form>
-
+        </form>
+    </div>
     <div *ngIf="!editMode">
 
     <!-- Receitas -->
             <div class="subtitles"> Comentários <ion-icon size="large" name="chatbubble-ellipses-outline"></ion-icon> </div>
                 <form [formGroup]="commentForm" (ngSubmit)="postComment(commentForm)" >
                     <div class="commentFormat">
-                        <ion-textarea placeholder="Faça seu comentário:" type="text" formControlName="comment"></ion-textarea>
+                        <ion-textarea class="textComment" placeholder="Faça seu comentário:" type="text" formControlName="comment"></ion-textarea>
                     </div>
                     <ion-button class="sendButton"type="submit" shape="round" [disabled]="commentForm.invalid">Enviar</ion-button>
                 </form>
@@ -118,7 +123,7 @@
                 </div>
 
                 <div class="commentFormat">
-                    <div class="commentMargin">
+                    <div class="text">
                         {{comment.comment}}
                     </div>
                 </div>
