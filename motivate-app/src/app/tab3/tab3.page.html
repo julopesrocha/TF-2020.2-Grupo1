@@ -78,14 +78,11 @@
   </div>
 
   <div class="divForm">
+    <form [formGroup]="updateProfileForm" (ngSubmit)="updateUser(updateProfileForm) " class="background" *ngIf="editMode">
 
     <ion-row class="iconBack">
       <ion-icon (click)="toggleNoEdit()" name="chevron-back-outline" size="large" style="float: left" class="back"></ion-icon>
     </ion-row>
-
-    <form [formGroup]="updateProfileForm" (ngSubmit)="updateUser(updateProfileForm) " class="background" *ngIf="editMode">
-
-
       <div class="form-group">
         <ion-label >Nome</ion-label>
         <ion-input value="{{this.usuario.name}}" type="text" formControlName="name" class="bordaInferior" ></ion-input>

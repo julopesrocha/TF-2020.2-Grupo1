@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {AuthService } from '../services/auth.service';
 import {UserService } from '../services/user.service';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 import { RecipeService } from '../services/recipe.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
@@ -19,7 +19,7 @@ export class Tab3Page {
  editMode:boolean = false;
  updateProfileForm: FormGroup;
 
-  constructor(public authservice: AuthService, private router: Router, public userservice: UserService, public formbuilder:FormBuilder) {
+  constructor(public authservice: AuthService, private router: Router, public userservice: UserService, public formbuilder:FormBuilder, public recipeService: RecipeService) {
 
     this.details();
 
@@ -29,7 +29,7 @@ export class Tab3Page {
         gender:[[Validators.required]],
         aboutme:[null]
       }
-    )
+  );
   }
 
   details() {
@@ -37,7 +37,7 @@ export class Tab3Page {
     this.authservice.showMyDetails().subscribe(
         (res) => {
             console.log(res);
-            console.log("Perfil -", res[0].name );
+            console.log("Perfil -", res[0].name);
             this.usuario = res[0];
             this.user_id = res[0].id;
             this.listRecipes(this.user_id);
@@ -69,7 +69,10 @@ listRecipes(user_id){
       this.recipes=res.recipeList;
     },
     (err)=>{
-
+      console.log(err);
+    }
+  );
+}
 toggleEdit(){
   this.editMode = true;
 }
