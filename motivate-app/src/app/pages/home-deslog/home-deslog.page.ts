@@ -19,19 +19,11 @@ export class HomeDeslogPage implements OnInit {
 
   constructor(private router: Router, public challengeServiceService:ChallengeServiceService, public recipeService: RecipeService, public authService: AuthService) {
       this.challengeId = this.router.getCurrentNavigation().extras;
+
       this.details();
 
  }
 
-   
-
-  //  verifyLogin(){
-  //    this.token=localStorage.getItem("userToken");
-  //    if(this.token!=null){
-  //      this.token =1;
-  //    }
-  //  }
- 
  details() {
   this.authService.showMyDetails().subscribe(
       (res) => {

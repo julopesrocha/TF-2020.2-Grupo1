@@ -27,3 +27,12 @@ a{
 .toolbar{
     background-color: white; 
 }
+
+ion-input{
+  --color: black;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.bordaInferior{
+  border-bottom: 0.095em solid green;
+}

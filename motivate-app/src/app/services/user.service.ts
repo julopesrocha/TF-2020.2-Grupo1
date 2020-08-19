@@ -18,6 +18,11 @@ export class UserService {
     }
   }
 
+  public updateUser(form): Observable<any>{
+    this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('userToken');
+    return this.http.put(this.apiUrl + 'editUserProfile', this.httpHeaders);
+  }
+
   // public showUser(user_id): Observable<any>{
   //   return this.http.get(this.apiUrl + 'getUser/' + user_id);
   // }

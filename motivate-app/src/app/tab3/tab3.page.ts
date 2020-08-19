@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {AuthService } from '../services/auth.service';
+import {UserService } from '../services/user.service';
 import {Router} from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 
 @Component({
@@ -10,11 +12,24 @@ import {Router} from '@angular/router';
 })
 export class Tab3Page {
 
- usuario:Object;  
+ usuario:Object;
+ 
+ editMode:boolean = false;
 
-  constructor(public authservice: AuthService, private router: Router) {
+ updateProfileForm: FormGroup; 
+
+  constructor(public authservice: AuthService, private router: Router, public userservice: UserService, public formbuilder:FormBuilder) {
 
     this.details();
+
+    this.updateProfileForm = this.formbuilder.group(
+      {
+        name:[[Validators.maxLength(20), Validators.minLength(2)]],
+        gender:[ [Validators.required]],
+        aboutme:[null]
+          
+      }
+    )
   }
 
   details() {
@@ -41,6 +56,22 @@ logout() {
           this.router.navigate(['/tabs/home']).then(()=>window.location.reload());
           console.log("Você saiu!!");
       }
+  );
+}
+
+toggleEdit(){
+  this.editMode = true;
+}
+
+updateUser(form){
+  this.userservice.updateUser(form.value).subscribe(
+    (res)=>{
+      this.editMode = false;
+      console.log(res);
+      this.router.navigate(["/tabs/home"]);
+    }, (err) => {
+      console.log(err);
+    }
   );
 }
 

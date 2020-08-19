@@ -1,4 +1,5 @@
 <ion-content>
+  <div *ngIf="!editMode">
     <div class="toolbar">
       <img src= "../../assets/wave.png"  alt="logo do motivate" >
       </div>
@@ -48,8 +49,7 @@
     <ion-col size="10">
       <p>Sobre mim:</p>
       <div class="divBio">
-        <p>Adoro me sentir bem com meu corpo e comer comidas saudaveis! #fitness</p>
-        <!-- <p>{{usuario.bio}}</p> -->
+        <p>{{usuario.bio}}</p>
       </div>
     </ion-col>
   </ion-row>
@@ -63,7 +63,7 @@
     </ion-col>
 
     <ion-col size="4" class="ion-margin-end">
-      <ion-button size="small" shape="round" color="success" (click)="GoToEditProfile()">
+      <ion-button size="small" shape="round" color="success" (click)="toggleEdit()">
         Editar Perfil
       </ion-button>
     </ion-col>
@@ -77,6 +77,52 @@
 
 
   </ion-fab>
+
+  </div>
+
+  <form [formGroup]="updateProfileForm" (ngSubmit)="updateUser(updateProfileForm) " class="background" *ngIf="editMode">
+
+    <div class="form-group">
+      <ion-label >Nome</ion-label>
+      <ion-input  type="text" formControlName="name" class="bordaInferior" ></ion-input>
+    </div>
+
+    <div class="form-group">
+      <ion-label >Biografia</ion-label>
+      <ion-input value="{{this.usuario.aboutme}}" type="text" formControlName="aboutme" class="bordaInferior"  ></ion-input>
+     
+    </div>
+
+      <ion-radio-group formControlName="gender">
+
+          <ion-label >Gênero</ion-label>
+
+          <div class="divRadio">
+            <ion-item class="transparencia">
+              <ion-label >Feminino</ion-label>
+              <ion-radio slot="start" value="female"></ion-radio>
+            </ion-item>
+
+            <ion-item class="transparencia">
+              <ion-label >Masculino</ion-label>
+              <ion-radio slot="start" value="male"></ion-radio>
+            </ion-item>
+
+            <ion-item class="transparencia">
+              <ion-label >Outros</ion-label>
+              <ion-radio slot="start" value="others"></ion-radio>
+            </ion-item>
+          </div>
+
+      </ion-radio-group>
+
+    <ion-row class=ion-justify-content-center>
+      <ion-button type="submit" color="dark" class="botao" shape="round" [disabled]="updateProfileForm.invalid"  >Cadastrar</ion-button>
+    </ion-row>
+
+
+
+</form>
 
   <!-- <div class="recipesListMergin">
     <app-recipes-list [recipe]="recipe" (clickSeeRecipe)="navigateToRecipe($event)" *ngFor="let recipe of recipes"> </app-recipes-list>
