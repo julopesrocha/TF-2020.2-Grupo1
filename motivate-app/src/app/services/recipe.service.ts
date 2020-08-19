@@ -46,7 +46,8 @@ export class RecipeService {
 
 
     public updateRecipe(recipe_id, form): Observable<any>{
-      return this.http.put(this.apiUrl + 'updateRecipe/' + recipe_id, form);
+      this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('userToken');
+      return this.http.put(this.apiUrl + 'updateRecipe/' + recipe_id, form, this.httpHeaders);
     }
 
     public deleteRecipe(recipe_id): Observable<any>{
