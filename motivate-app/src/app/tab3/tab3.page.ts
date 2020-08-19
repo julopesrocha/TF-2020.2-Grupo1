@@ -24,8 +24,8 @@ export class Tab3Page {
 
     this.updateProfileForm = this.formbuilder.group(
       {
-        name:[[Validators.maxLength(20), Validators.minLength(2)]],
-        gender:[ [Validators.required]],
+        name:[null, [Validators.maxLength(20), Validators.minLength(2)]],
+        gender:[[Validators.required]],
         aboutme:[null]
           
       }
@@ -36,7 +36,7 @@ export class Tab3Page {
     this.authservice.showMyDetails().subscribe(
         (res) => {
             console.log(res);
-            console.log("Esse é você");
+            console.log("Perfil -", res[0].name );
             this.usuario = res[0];
         },
         (err) =>{
@@ -68,7 +68,7 @@ updateUser(form){
     (res)=>{
       this.editMode = false;
       console.log(res);
-      this.router.navigate(["/tabs/home"]);
+      this.router.navigate(["/tabs/tab3"]).then(()=>window.location.reload());
     }, (err) => {
       console.log(err);
     }
@@ -83,8 +83,8 @@ GoToCreateRecipe(){
   this.router.navigate(['/tabs/tab2']);
 }
 
-GoToEditProfile(){
-  this.router.navigate(['edit-profile']);
+GoToProfile(){
+  this.router.navigate(['/tabs/tab3']);
 }
 
 

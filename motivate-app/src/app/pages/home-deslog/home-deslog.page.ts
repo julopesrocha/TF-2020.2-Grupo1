@@ -28,8 +28,9 @@ export class HomeDeslogPage implements OnInit {
   this.authService.showMyDetails().subscribe(
       (res) => {
           console.log(res);
-          console.log("Esse é você");
+         
           this.usuario = res[0];
+           console.log("Bem vindo(a),", res[0].name);
       },
       (err) =>{
         console.log(err);
@@ -85,7 +86,6 @@ export class HomeDeslogPage implements OnInit {
   }
 
   ionViewWillEnter(){
-    console.log("receita adicionada a lista.");
     this.listRecipes();
     // this.verifyLogin();
   }

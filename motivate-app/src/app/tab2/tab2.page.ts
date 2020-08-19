@@ -45,6 +45,7 @@ export class Tab2Page {
 
 ngOnInit() {
   this.listChallenges();
+  console.log("Poste uma receita.");
 }
 
 async takePicture(){

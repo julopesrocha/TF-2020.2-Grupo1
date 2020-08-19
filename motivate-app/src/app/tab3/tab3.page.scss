@@ -36,3 +36,20 @@ ion-input{
 .bordaInferior{
   border-bottom: 0.095em solid green;
 }
+
+.back{
+  size: 30px;
+  margin-left: 2%;
+  margin-bottom: 0%;
+  color:#0E6258;
+}
+
+ion-radio{
+  --color-checked: black;
+  --color:black;
+  border: none;
+}
+
+.iconBack{
+  margin-bottom: 5%;
+}

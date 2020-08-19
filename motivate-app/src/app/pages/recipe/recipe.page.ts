@@ -21,6 +21,7 @@ export class RecipePage implements OnInit {
     comments;
     commentId;
     recipe;
+    recipes;
     recipeId;
 
     challenges = [];
@@ -60,7 +61,6 @@ export class RecipePage implements OnInit {
         (res) => {
             console.log(res);
             this.user_id = res[0].id;
-            console.log("Pegou o ID de quem ta logado");
         },
         (err) =>{
           console.log(err);
@@ -117,7 +117,8 @@ export class RecipePage implements OnInit {
            this.recipe = res.recipe;
            this.recipe_user_id = res.recipe.user_id; 
            this.recipe_user_name=res.recipe.user_name;
-           console.log("Pegou o id do usuario da receita");
+           console.log(res.recipe.title);
+           console.log("Postada por ", res.recipe.user_name);
            console.log(this.recipe);
            
          },
@@ -126,6 +127,19 @@ export class RecipePage implements OnInit {
          }
        );
      }
+
+     listRecipes(){
+      this.recipeService.listRecipesHome().subscribe(
+        (res)=>{
+          console.log(res);
+          this.recipes=res.recipeList;
+        },
+        (err)=>{
+          console.log(err);
+        }
+      );
+    }
+    
 
  
      toggleEdit(){
@@ -137,7 +151,10 @@ export class RecipePage implements OnInit {
          (res)=>{
            this.editMode = false;
            console.log(res);
+           console.log("Recita editada com sucesso!");
+           this.listRecipes();
            this.router.navigate(["/tabs/home"]);
+           this.listRecipes();
          }, (err) => {
            console.log(err);
          }

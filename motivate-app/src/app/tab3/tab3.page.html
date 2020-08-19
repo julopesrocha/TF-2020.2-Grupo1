@@ -14,7 +14,6 @@
 
     <ion-col size="4" class="ion-margin-start">
       <div class="divFoto">
-        <!-- <p> {{usuario.bio}} </p> -->
         <br>
         <br>
         <br>
@@ -49,7 +48,7 @@
     <ion-col size="10">
       <p>Sobre mim:</p>
       <div class="divBio">
-        <p>{{usuario.bio}}</p>
+        <p>{{usuario.aboutme}}</p>
       </div>
     </ion-col>
   </ion-row>
@@ -82,9 +81,14 @@
 
   <form [formGroup]="updateProfileForm" (ngSubmit)="updateUser(updateProfileForm) " class="background" *ngIf="editMode">
 
+    <ion-row class="iconBack">
+      <ion-icon (click)="GoToProfile()" name="chevron-back-outline" size="large" style="float: left" class="back"></ion-icon>
+    </ion-row>
+    
+
     <div class="form-group">
       <ion-label >Nome</ion-label>
-      <ion-input  type="text" formControlName="name" class="bordaInferior" ></ion-input>
+      <ion-input value="{{this.usuario.name}}" type="text" formControlName="name" class="bordaInferior" ></ion-input>
     </div>
 
     <div class="form-group">
@@ -117,7 +121,10 @@
       </ion-radio-group>
 
     <ion-row class=ion-justify-content-center>
-      <ion-button type="submit" color="dark" class="botao" shape="round" [disabled]="updateProfileForm.invalid"  >Cadastrar</ion-button>
+      <ion-button type="submit" color="success" class="botao" shape="round" size="small" [disabled]="updateProfileForm.invalid"> Editar</ion-button>
+    </ion-row>
+    <ion-row class=ion-justify-content-center>
+      <ion-button type="submit" color="success" class="botao" shape="round" size="small"> Excluir Conta</ion-button>
     </ion-row>
 
 
