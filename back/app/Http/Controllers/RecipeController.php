@@ -24,9 +24,9 @@ class RecipeController extends Controller
     /**
      * Cria uma receita e a atribui ao usuário logado e ao desafio do campo
      * challenge na request
-     * 
+     *
      * @param RecipeRequest       $request
-     * 
+     *
      * @return JsonResponse
      */
     public function postRecipe(RecipeRequest $request){
@@ -49,9 +49,9 @@ class RecipeController extends Controller
 
     /**
      * Retorna a receita correspondente ao $id
-     * 
+     *
      * @param int       $id
-     * 
+     *
      * @return JsonResponse
      */
     public function getRecipe($id) {
@@ -61,7 +61,7 @@ class RecipeController extends Controller
 
     /**
      * Retorna todas as receitas do BD em ordem de criação.
-     * 
+     *
      * @return JsonResponse
      */
     public function listRecipes() {
@@ -74,9 +74,9 @@ class RecipeController extends Controller
 
     /**
      * Retorna as receitas de um usuário em ordem de criação
-     * 
+     *
      * @param int       $user_id
-     * 
+     *
      * @return JsonResponse
      */
     public function listRecipesOfUser($user_id) {
@@ -89,9 +89,9 @@ class RecipeController extends Controller
 
     /**
      * Retorna as receitas de um desafio em ordem de criação
-     * 
+     *
      * @param int       $challenge_id
-     * 
+     *
      * @return JsonResponse
      */
     public function listRecipesOfChallenge($challenge_id) {
@@ -105,7 +105,7 @@ class RecipeController extends Controller
     /**
      * Retorna as receitas dos usuários que o usuário logado segue
      * em ordem de criação
-     * 
+     *
      * @return JsonResponse
      */
     public function getRecipesOfFollowing() {
@@ -126,7 +126,7 @@ class RecipeController extends Controller
 
     /**
      * Atualiza os dados de uma receita
-     * 
+     *
      * @param RecipeRequest     $request
      * @param int               $id
      */
@@ -139,9 +139,9 @@ class RecipeController extends Controller
 
     /**
      * Deleta uma receita do BD
-     * 
+     *
      * @param int       $id
-     * 
+     *
      * @return JsonResponse
      */
     public function deleteRecipe($id) {
@@ -161,9 +161,9 @@ class RecipeController extends Controller
 
     /**
      * Faz o usuário logado curtir uma receita
-     * 
+     *
      * @param int       $recipe_id
-     * 
+     *
      * @return JsonResponse
      */
     public function likeRecipe($recipe_id){
@@ -189,9 +189,9 @@ class RecipeController extends Controller
 
     /**
      * retorna se o usuário logado gostou de uma receita
-     * 
+     *
      * @param int       $recipe_id
-     * 
+     *
      * @return JsonResponse
      */
     public function hasLiked($recipe_id) {
