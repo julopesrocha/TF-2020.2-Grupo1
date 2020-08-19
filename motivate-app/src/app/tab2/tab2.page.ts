@@ -40,12 +40,8 @@ export class Tab2Page {
 
  onSubmit(form){
    console.log(form.value);
-
-
-
  }
 
- 
 
 ngOnInit() {
   this.listChallenges();
@@ -103,47 +99,6 @@ deleteRecipe(id){
   
 }
 
-
-
-// //Lista as receitas relacionadas a um desafio especifico.
-
-// listRecipesChallenge(challenge_id){
-//   this.recipeService.showRecipe(challenge_id).subscribe(
-//     (res) => {
-//       console.log(res);
-//       this.recipes=res.recipes;
-//     }, (err)=> {
-//       console.log(err);
-//     }
-//   );
-// }
-
-// //Lista as receitas independente do desafio (home)
-
-// // listRecipes(){
-// //   this.recipeService.showRecipe().subscribe(
-// //     (res) => {
-// //       console.log(res);
-// //       this.recipes=res.recipes;
-// //     }, (err)=> {
-// //       console.log(err);
-// //     }
-// //   );
-// // }
-
-// //exclui receita específica.
-// deleteRecipe(id){
-//   this.recipeService.deleteRecipe(id).subscribe(
-//     (res)=>{
-//       console.log(res);
-//       console.log('Mais que cancelado:' +id);
-//       this.listRecipes(this.challenge_id);
-//     }, (err) =>{
-//       console.log(err);
-//     }
-//   );
-  
-// }
 
 
 }

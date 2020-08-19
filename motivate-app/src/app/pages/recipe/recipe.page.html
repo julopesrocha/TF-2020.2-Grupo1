@@ -1,4 +1,6 @@
-<ion-content *ngIf="recipe !editMode">
+<ion-content *ngIf="recipe"> 
+
+    <div *ngIf="!editMode">
         <div class="toolbar">
             <ion-icon (click)="navigateTobackHome()" name="chevron-back-outline" size="large" style="float: left" class="back"></ion-icon>
         </div>
@@ -11,7 +13,7 @@
             <img  class="faixa" src="../../assets/faixa-laranja.png" alt="faixa laranja do desafio low carb">
         </div>
         <div *ngIf = "user_id==recipe_user_id" class="iconMargin" >
-            <ion-icon size="large" name="pencil-outline"></ion-icon>
+            <ion-icon (click)="toggleEdit()" size="large" name="pencil-outline"></ion-icon>
             <ion-icon (click)="deleteRecipe()" class="trashMargin" size="large" name="trash-outline"></ion-icon>
         </div>
     <!-- Descrição -->
@@ -38,6 +40,62 @@
                    {{recipe.preparation}}
                 </div>
             </div>
+    </div>
+
+
+    <form [formGroup]="updateForm" (ngSubmit)="updateRecipe(updateForm)" *ngIf="editMode">
+  
+        <div class="form-group">
+            <ion-label >Título</ion-label>
+            <ion-input type="text" formControlName="title" class="bordaInferior" ></ion-input>
+
+          </div>
+
+          <div class="form-group">
+            <ion-label>Desafio</ion-label>
+            <ion-select  interface="action-sheet" class="personalizar-select" id="status" formControlName="challenge">
+
+              <ion-select-option  *ngFor ="let challenge of challenges" class="personalizar-option" value="{{challenge.title}}" >{{challenge.title}}</ion-select-option>
+
+            </ion-select>
+          </div>
+
+            <div class="form-group">
+              <ion-label>Adicione uma legenda</ion-label>
+              <ion-input type="text" formControlName="subtitle" class="bordaInferior" ></ion-input>
+
+            </div>
+
+
+          <div class="form-group">
+            <ion-label>Ingredientes</ion-label>
+            <ion-textarea formControlName="ingredients" ></ion-textarea>
+
+          </div>
+
+        <div class="form-group">
+            <ion-label>Modo de preparo</ion-label>
+            <ion-textarea formControlName="preparation" ></ion-textarea>
+            <ion-row>
+              <ion-col>
+                <div class="ion-text-end">
+                  <p>máx. 600 caracteres</p>
+                </div>
+
+              </ion-col>
+
+          </ion-row>
+        </div>
+
+
+          <ion-row class=ion-justify-content-center>
+            <ion-button type="submit" class="botao" shape="round">Editar</ion-button>
+          </ion-row>
+
+    </form>
+
+    <div *ngIf="!editMode">
+
     <!-- Receitas -->
             <div class="subtitles"> Comentários <ion-icon size="large" name="chatbubble-ellipses-outline"></ion-icon> </div>
                 <form [formGroup]="commentForm" (ngSubmit)="postComment(commentForm)" >
@@ -68,4 +126,5 @@
             </div>
             <!-- <app-comment   > </app-comment> -->
         </div>
+    </div>
 </ion-content>

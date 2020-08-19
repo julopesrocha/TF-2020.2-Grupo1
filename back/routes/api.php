@@ -70,9 +70,11 @@ Route::group(['middleware' =>'auth:api'], function(){
     // Seguir
     Route::GET('getFollowers', 'UserController@getFollowers');
     Route::GET('getFollowing', 'UserController@getFollowing');
+    Route::GET('isFollowing/{user_id}', 'UserController@isFollowing');
     Route::POST('followUser/{user_id}', 'UserController@followUser');
 
     // Curtir
     Route::POST('likeRecipe/{recipe_id}', 'RecipeController@likeRecipe');
+    Route::GET('hasLiked/{recipe_id}', 'RecipeController@hasLiked');
 
 });

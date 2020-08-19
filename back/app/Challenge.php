@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use App\Http\Requests\ChallengeRequest;
 
 
 class Challenge extends Model
@@ -11,8 +12,12 @@ class Challenge extends Model
 
     protected $fillable = [];
 
-    //Create
-    public function createChallenge(Request $request) {
+    /**
+     * Preenche as colunas de um novo desafio no BD
+     * 
+     * @param ChallengeRequest      $request
+     */
+    public function createChallenge(ChallengeRequest $request) {
         $this->title = $request->title;
         $this->description = $request->description;
         $this->about = $request->about;
@@ -21,8 +26,12 @@ class Challenge extends Model
         $this->save();
     }
 
-    // Update
-    public function updateChallenge(Request $request) {
+    /**
+     * Atualiza as colunas de um desafio no BD
+     * 
+     * @param ChallengeRequest      $request
+     */
+    public function updateChallenge(ChallengeRequest $request) {
         if ($request->title) {
             $this->title = $request->title;
         }
@@ -41,7 +50,11 @@ class Challenge extends Model
         $this->save();
     }
 
-    // Relação com receitas
+    /**
+     * Retorna relação com receitas
+     * 
+     * @return Relations\HasMAny
+     */
     public function recipes() {
         return $this->hasMany('App\Recipe');
     }

@@ -11,7 +11,11 @@ class Recipe extends Model
 
     protected $fillable = [];
 
-    // Create
+    /** 
+     * Preenche as colunas de uma nova receita no BD
+     *  
+     * @param RecipeRequest        $request
+     */ 
     public function createRecipe(RecipeRequest $request) {
         $this->title = $request->title;
         $this->ingredients = $request->ingredients;
@@ -21,7 +25,11 @@ class Recipe extends Model
         $this->save();
     }
 
-    // Update
+    /** 
+     * Atualiza as colunas de uma receita no BD
+     * 
+     * @param RecipeRequest        $request
+    */
     public function updateRecipe(RecipeRequest $request) {
         if ($request->title) {
             $this->title = $request->title;
@@ -43,34 +51,60 @@ class Recipe extends Model
         $this->save();
     }
 
-    // Relação com usuário (que publicou a receita)
+    /** 
+     * Cria relação com usuário (que publicou a receita)
+     *  
+     * @param int      $user_id
+     */
     public function setUser($user_id) {
         $user = User::findOrFail($user_id);
         $this->user_id = $user_id;
         $this->save();
     }
 
+    /**
+     * Retorna relações com usuários
+     * 
+     * @return Relations\BelongsTo
+     */
     public function user() {
         return $this->belongsTo('App\User');
     }
 
-    // Relação da receita com o comentário
+    /**
+     * Retorna relação da receita com o comentários
+     * 
+     * @return Relations\HasMany
+     */
     public function commentsInRecipe(){
         return $this->hasMany('App\Comment');
     }
     
-    // Relação com desafio que pertence
+    /**
+     * Cria relação com desafio que pertence
+     * 
+     * @param int       $id
+     */ 
     public function setChallenge($challenge_id) {
         $challenge = Challenge::findOrFail($challenge_id);
         $this->challenge_id = $challenge_id;
         $this->save();
     }
 
+    /**
+     * Retorna relação com desafio que pertence
+     * 
+     * @return Relations\BelongsTo
+     */
     public function challenge() {
         return $this->belongsTo('App\Challenge');
     }
 
-    // Relação com o usuário que curte uma receita
+    /**
+     * Retorna relação de curtir
+     * 
+     * @return Relations\BelongsToMany
+     */ 
     public function likes(){
         return $this->belongsToMany('App\User', 'likes', 'recipe_id', 'user_id');
     }
