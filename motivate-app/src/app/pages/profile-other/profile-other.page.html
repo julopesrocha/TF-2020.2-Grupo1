@@ -11,40 +11,28 @@
   </div>
 
 
-    <ion-row class="ion-align-items-center">
-      <ion-col size="6">
+  <ion-row class="ion-align-items-center ion-justify-content-evenly">
+    <ion-col size="4">
         <div class="ion-text-center">
-          <!-- <h2 > {{usuario.name}}</h2> -->
           <h2 >{{user.name}}</h2>
         </div>
-
+        <ion-row class="ion-margin-start">
+            <ion-button (click)="followUser()" size="small" shape="round" color="success">
+             {{followMode ? "Seguindo" : "Seguir"}}
+            </ion-button>
+        </ion-row>
       </ion-col>
+
       <ion-col size="4" class="ion-margin-start">
         <div class="divFoto">
-          <!-- <p> {{usuario.bio}} </p> -->
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-
+            <img src="../assets/userPhoto.png">
         </div>
       </ion-col>
-    </ion-row>
-    <!-- Colocar ngIf para o botão trocar dependendo da pessoa estar seguindo ou não -->
-
-    <ion-row class="ion-justify-content-center">
-
-        <ion-button (click)="followUser()" size="small" shape="round" color="success">
-         {{followMode ? "seguindo" : "seguir"}}
-        </ion-button>
-
     </ion-row>
 
     <ion-row class="ion-justify-content-evenly ion-margin-top">
 
-      <ion-col size="4" class="ion-no-padding">
+      <ion-col size="4">
         <div class="ion-text-center">
           <a>Seguidores</a>
           <p>{{user.followers}}</p>

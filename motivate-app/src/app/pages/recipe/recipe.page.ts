@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CommentService } from '../../services/comment.service';
-import {RecipeService} from '../../services/recipe.service';
+import { RecipeService } from '../../services/recipe.service';
 import { AuthService } from '../../services/auth.service';
 import { ChallengeServiceService } from '../../services/challenge-service.service';
 
@@ -16,12 +16,13 @@ export class RecipePage implements OnInit {
     user_id; //aqui
     recipe_user_id; //aqui
     recipe_user_name;
-   
+
 
     comments;
     commentId;
     recipe;
     recipeId;
+    likeMode;
 
     challenges = [];
 
@@ -34,7 +35,7 @@ export class RecipePage implements OnInit {
   public recipeService: RecipeService, public commentService: CommentService, public authService: AuthService, public challengeServiceService: ChallengeServiceService) {
 
       this.details();
-      
+
       this.recipeId = this.router.getCurrentNavigation().extras;
       this.commentForm = this.formbuilder.group({
           comment:[null,[Validators.required,Validators.minLength(2),Validators.maxLength(200)]],
@@ -48,7 +49,7 @@ export class RecipePage implements OnInit {
           subtitle:[null],
           ingredients:[null, [Validators.maxLength(500), Validators.minLength(3)]],
           preparation: [null, [ Validators.maxLength(600), Validators.minLength(3)]]
-          
+
         }
       )
       //
@@ -67,6 +68,32 @@ export class RecipePage implements OnInit {
         }
     );
     }
+
+// Função de like
+
+    likeRecipe(){
+        this.recipeService.like(this.recipeId).subscribe(
+            (res)=>{
+                console.log(res);
+                this.likeMode = res.hasLiked;
+                if(this.likeMode){
+                    this.recipe.likes ++;
+                }
+                else{
+                    this.recipe.likes --;
+                }
+            }
+        )
+    }
+
+      checkLike(){
+          this.recipeService.verifyLike(this.recipeId).subscribe(
+              (res)=>{
+                  console.log(res);
+                  this.likeMode = res.hasLiked;
+              }
+          )
+      }
 
       // Funções do Comentário
 
@@ -119,7 +146,7 @@ export class RecipePage implements OnInit {
            this.recipe_user_name=res.recipe.user_name;
            console.log("Pegou o id do usuario da receita");
            console.log(this.recipe);
-           
+
          },
          (err)=>{
            console.log(err);
@@ -177,6 +204,7 @@ export class RecipePage implements OnInit {
           this.getRecipe(this.recipeId);
           this.listComments();
           this.listChallenges();
+          this.checkLike();
       }
 
     }

@@ -30,19 +30,18 @@ export class UserService {
   //   return this.http.get(this.apiUrl + 'getSeguindo/' + user_id);
   // }
 
+    // seguir uma pessoa
     public follow(user_id): Observable <any> {
         this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('userToken');
         return this.http.post(this.apiUrl + 'followUser/' + user_id, null, this.httpHeaders);
     }
 
+    // verifica se esta seguindo
     public verifyFollow(user_id): Observable <any> {
         this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('userToken');
         return this.http.get(this.apiUrl + 'isFollowing/' + user_id, this.httpHeaders);
     }
 
-    public listRecipesUser(user_id): Observable <any>{
-        return this.http.get(this.apiUrl + 'listRecipesOfUser/' + user_id);
-    }
 
   // public deleteUser(user_id): Observable<any>{
   //   this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('userToken');

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ChallengeServiceService } from '../../services/challenge-service.service';
 import { Router } from '@angular/router';
-import {RecipeService} from '../../services/recipe.service';
-import {AuthService} from '../../services/auth.service';
+import { RecipeService } from '../../services/recipe.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-home-deslog',
@@ -10,12 +10,15 @@ import {AuthService} from '../../services/auth.service';
   styleUrls: ['./home-deslog.page.scss'],
 })
 export class HomeDeslogPage implements OnInit {
+
     token = localStorage.getItem("userToken");
     challenge;
     challengeId;
     recipes;
     usuario:Object;
-
+    recipe;
+    likeMode;
+    check;
 
   constructor(private router: Router, public challengeServiceService:ChallengeServiceService,
       public recipeService: RecipeService, public authService: AuthService) {
@@ -71,12 +74,8 @@ export class HomeDeslogPage implements OnInit {
     );
   }
 
-  ngOnInit() {
-
-  }
-
    GoToRecipe(recipe_id) {
-    this.router.navigate(['/recipe'], recipe_id);
+    this.router.navigate(['/tabs/recipe'], recipe_id);
   }
 
   GoToRegister(){
@@ -90,6 +89,8 @@ export class HomeDeslogPage implements OnInit {
   GoToProfile(user_id) {
     this.router.navigate(['/profile-other', user_id]);
   }
+
+  ngOnInit() {}
 
   ionViewWillEnter(){
     console.log("receita adicionada a lista.");

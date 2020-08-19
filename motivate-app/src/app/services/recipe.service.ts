@@ -14,15 +14,15 @@ export class RecipeService {
   httpHeaders: any ={
     headers: {
       'Content-Type': 'application/json',
-      'Accept': 'application/json'    
+      'Accept': 'application/json'
     }
   }
-   
+
 
     public createRecipe(form): Observable <any>{
       this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('userToken');
       return this.http.post(this.apiUrl + 'postRecipe', form, this.httpHeaders);
-    }  
+    }
 
 
     public showRecipe(recipe_id): Observable<any>{
@@ -34,7 +34,7 @@ export class RecipeService {
       return this.http.get(this.apiUrl + 'listRecipesOfChallenge/' + challenge_id);
     }
 
-      // lista as receitas de um usuário desafio
+      // lista as receitas de um usuário específico
     public listRecipesUser(user_id): Observable <any>{
       return this.http.get(this.apiUrl + 'listRecipesOfUser/' + user_id);
     }
@@ -42,6 +42,18 @@ export class RecipeService {
       // lista as receitas na home
     public listRecipesHome(): Observable <any>{
       return this.http.get(this.apiUrl + 'listRecipes');
+    }
+
+    // curtir uma receita
+    public like(recipe_id): Observable <any> {
+        this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('userToken');
+        return this.http.post(this.apiUrl + 'likeRecipe/' + recipe_id, null, this.httpHeaders);
+    }
+
+    // verificar se curtiu
+    public verifyLike(recipe_id): Observable <any> {
+        this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('userToken');
+        return this.http.get(this.apiUrl + 'hasLiked/' + recipe_id, this.httpHeaders);
     }
 
 
@@ -54,5 +66,5 @@ export class RecipeService {
       this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('userToken');
       return this.http.delete(this.apiUrl + 'deleteRecipe/' + recipe_id, this.httpHeaders);
     }
- 
+
 }

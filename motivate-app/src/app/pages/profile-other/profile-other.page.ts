@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from '../../services/user.service';
-import {RecipeService} from '../../services/recipe.service';
-import {Router, ActivatedRoute} from '@angular/router';
+import { UserService } from '../../services/user.service';
+import { RecipeService } from '../../services/recipe.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-profile-other',
@@ -10,6 +10,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 })
 export class ProfileOtherPage implements OnInit {
 
+    recipes;
     check;
     userId;
     user;
@@ -41,8 +42,8 @@ export class ProfileOtherPage implements OnInit {
      )
    }
 
-  getUser(id){
-    this.userService.showUser(id).subscribe(
+  getUser(user_id){
+    this.userService.showUser(user_id).subscribe(
      (res)=>{
        console.log(res);
        this.user = res.user;
@@ -52,6 +53,19 @@ export class ProfileOtherPage implements OnInit {
      }
    );
  }
+
+ listRecipes(user_id){
+   this.recipeService.listRecipesUser(user_id).subscribe(
+     (res)=>{
+       console.log(res);
+       this.recipes=res.recipeList;
+     },
+     (err)=>{
+       console.log(err);
+     }
+   );
+ }
+
 
 GoToHome(){
   this.router.navigate(['/tabs/home']);

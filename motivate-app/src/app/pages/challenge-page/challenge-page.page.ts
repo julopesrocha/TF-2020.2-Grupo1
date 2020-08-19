@@ -46,7 +46,7 @@ export class ChallengePagePage implements OnInit {
 
 
   navigateToRecipe(recipe_id) {
-    this.router.navigate(['/recipe'], recipe_id);
+    this.router.navigate(['/tabs/recipe'], recipe_id);
   }
 
   navigateTochallengeList() {
