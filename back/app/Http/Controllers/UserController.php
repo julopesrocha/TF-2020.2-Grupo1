@@ -84,4 +84,12 @@ class UserController extends Controller
         return response()->json(['userFollower' => UserResource::collection($orderedList)], 200);
     }
 
+    // Retorna se o usuário logado segue o $user_id
+    public function isFollowing($user_id) {
+        $user = Auth::user();
+        User::findOrFail($user_id);
+        $isFollowing = $user->follower()->get()->contains('id', $user_id);
+        return response()->json(['isFollowing' => $isFollowing], 200);
+    }
+
 }
