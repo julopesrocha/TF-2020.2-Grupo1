@@ -31,7 +31,7 @@ class RecipeRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'min:3|max:80',
+            'title' => 'min:3|max:40',
             'ingredients' => 'min:3|max:500',
             'preparation' => 'min:3|max:600',
             'subtitle' => 'min:3|max:240',
@@ -42,7 +42,7 @@ class RecipeRequest extends FormRequest
         return [
             // Mensagens personalizadas
             'title.min' => 'O nome deve conter no mínimo 3 digitos',
-            'title.max' => 'O nome deve conter no máximo 80 digitos',
+            'title.max' => 'O nome deve conter no máximo 40 digitos',
             'ingredients.min' => 'A lista de ingredientes deve conter no mínimo 3 digitos',
             'ingredients.max' => 'A lista de ingredientes conter no máximo 500 digitos',
             'preparation.min' => 'O modo de preparo deve conter no mínimo 3 digitos',

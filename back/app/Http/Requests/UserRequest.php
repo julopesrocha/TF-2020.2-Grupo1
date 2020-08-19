@@ -30,12 +30,12 @@ class UserRequest extends FormRequest
      */
     public function rules(){
         return [
-            'name' => 'string|min:2|max:20',
+            'name' => 'string|min:2|max:40',
             'email' => 'email|unique:users,email',
             'password' => 'min:6|max:15,same:confirm_password',
             'gender' => 'max:6',
-            'date_of_birth' => '',
-            'aboutme' => '',
+            'date_of_birth' => 'date|max:10',
+            'aboutme' => 'max:200',
         ];  
 
     }
