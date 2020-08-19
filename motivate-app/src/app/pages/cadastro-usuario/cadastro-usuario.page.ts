@@ -33,7 +33,8 @@ doSomething(date) {
       email:[null, [Validators.email, Validators.required]],
       gender:[null, [Validators.required]],
       password:[null, [Validators.required, Validators.minLength(6), Validators.maxLength(15)]],
-      confirm_password:[null, [Validators.required]]
+      confirm_password:[null, [Validators.required]],
+      aboutme:[],
 
     }, { validator: MustMatch('password', 'confirm_password')}
 

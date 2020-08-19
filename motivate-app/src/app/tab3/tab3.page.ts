@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {AuthService } from '../services/auth.service';
+import {UserService } from '../services/user.service';
 import {Router} from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 
 @Component({
@@ -10,18 +12,31 @@ import {Router} from '@angular/router';
 })
 export class Tab3Page {
 
- usuario:Object;  
+ usuario:Object;
+ 
+ editMode:boolean = false;
 
-  constructor(public authservice: AuthService, private router: Router) {
+ updateProfileForm: FormGroup; 
+
+  constructor(public authservice: AuthService, private router: Router, public userservice: UserService, public formbuilder:FormBuilder) {
 
     this.details();
+
+    this.updateProfileForm = this.formbuilder.group(
+      {
+        name:[null, [Validators.maxLength(20), Validators.minLength(2)]],
+        gender:[[Validators.required]],
+        aboutme:[null]
+          
+      }
+    )
   }
 
   details() {
     this.authservice.showMyDetails().subscribe(
         (res) => {
             console.log(res);
-            console.log("Esse é você");
+            console.log("Perfil -", res[0].name );
             this.usuario = res[0];
         },
         (err) =>{
@@ -44,6 +59,26 @@ logout() {
   );
 }
 
+toggleEdit(){
+  this.editMode = true;
+}
+
+toggleNoEdit(){
+  this.editMode = false;
+}
+
+updateUser(form){
+  this.userservice.updateUser(form.value).subscribe(
+    (res)=>{
+      this.editMode = false;
+      console.log(res);
+      this.router.navigate(["/tabs/tab3"]).then(()=>window.location.reload());
+    }, (err) => {
+      console.log(err);
+    }
+  );
+}
+
 GoToCreateChallenge(){
   this.router.navigate(['/cadastro-desafio']);
 }
@@ -52,8 +87,8 @@ GoToCreateRecipe(){
   this.router.navigate(['/tabs/tab2']);
 }
 
-GoToEditProfile(){
-  this.router.navigate(['edit-profile']);
+GoToProfile(){
+  this.router.navigate(['/tabs/tab3']);
 }
 
 

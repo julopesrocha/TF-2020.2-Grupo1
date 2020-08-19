@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import {AuthGuard} from '../app/guards/auth/auth.guard';
 
 const routes: Routes = [
+  
   {
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
@@ -20,23 +22,24 @@ const routes: Routes = [
   },
   {
     path: 'challenge-page',
-    loadChildren: () => import('./pages/challenge-page/challenge-page.module').then( m => m.ChallengePagePageModule)
+    loadChildren: () => import('./pages/challenge-page/challenge-page.module').then( m => m.ChallengePagePageModule), canActivate:[AuthGuard]
   },
    {
     path: 'cadastro-desafio',
-    loadChildren: () => import('./pages/cadastro-desafio/cadastro-desafio.module').then( m => m.CadastroDesafioPageModule)
+    loadChildren: () => import('./pages/cadastro-desafio/cadastro-desafio.module').then( m => m.CadastroDesafioPageModule), canActivate:[AuthGuard]
   },
 
    {
     path: 'recipe',
     loadChildren: () => import('./pages/recipe/recipe.module').then( m => m.RecipePageModule)
-  },  {
+  },
+  {
     path: 'profile-other',
     loadChildren: () => import('./pages/profile-other/profile-other.module').then( m => m.ProfileOtherPageModule)
   },
   {
     path: 'edit-profile',
-    loadChildren: () => import('./pages/edit-profile/edit-profile.module').then( m => m.EditProfilePageModule)
+    loadChildren: () => import('./pages/edit-profile/edit-profile.module').then( m => m.EditProfilePageModule), canActivate:[AuthGuard]
   }
 
 

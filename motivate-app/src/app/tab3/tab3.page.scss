@@ -27,3 +27,72 @@ a{
 .toolbar{
     background-color: white; 
 }
+
+ion-input{
+  --color: black;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.bordaInferior{
+  border-bottom: 0.095em solid green;
+}
+
+.back{
+  size: 30px;
+  margin-left: 2%;
+  margin-bottom: 0%;
+  color:#0E6258;
+}
+
+ion-radio{
+  --color-checked: black;
+  --color:black;
+  border: none;
+}
+
+.iconBack{
+  margin-bottom: 5%;
+}
+
+.divForm{
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 5%;
+  font-family: 'Montserrat', sans-serif;
+}
+
+ion-item ion-label{
+  font-family: 'Montserrat', sans-serif;
+  color: black;
+}
+
+
+.divRadio{
+  margin-top:5%;
+  width: 70vw;
+  border-radius: 8px;
+  border: 2px solid white;
+  margin-left: 15%;
+  color: black;
+}
+
+.form-group {
+  margin-bottom: 8%;
+}
+
+ion-label{
+  display:inline-block;
+  padding-top:5%;
+  color: #000000;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+ion-radio-group{
+  margin-bottom: 5%;
+}
+
+.buttonMargin{
+  margin-bottom: 5%;
+  margin-top: 10%;
+}

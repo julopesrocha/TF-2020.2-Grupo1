@@ -13,22 +13,23 @@ import { ChallengeServiceService } from '../../services/challenge-service.servic
 })
 export class RecipePage implements OnInit {
 
-    user_id; //aqui
-    recipe_user_id; //aqui
+    user_id; 
+    recipe_user_id; 
     recipe_user_name;
    
 
     comments;
     commentId;
     recipe;
+    recipes;
     recipeId;
 
     challenges = [];
 
-    editMode:boolean = false; //aqui
+    editMode:boolean = false;
 
-    commentForm: FormGroup; //aqui
-    updateForm: FormGroup; //aqui
+    commentForm: FormGroup; 
+    updateForm: FormGroup; 
 
   constructor(private router: Router, public formbuilder:FormBuilder,
   public recipeService: RecipeService, public commentService: CommentService, public authService: AuthService, public challengeServiceService: ChallengeServiceService) {
@@ -40,7 +41,7 @@ export class RecipePage implements OnInit {
           comment:[null,[Validators.required,Validators.minLength(2),Validators.maxLength(200)]],
       });
 
-      // aqui
+     
       this.updateForm = this.formbuilder.group(
         {
           title:[null, [Validators.maxLength(30), Validators.minLength(3)]],
@@ -60,7 +61,6 @@ export class RecipePage implements OnInit {
         (res) => {
             console.log(res);
             this.user_id = res[0].id;
-            console.log("Pegou o ID de quem ta logado");
         },
         (err) =>{
           console.log(err);
@@ -115,9 +115,10 @@ export class RecipePage implements OnInit {
          (res)=>{
            console.log(res);
            this.recipe = res.recipe;
-           this.recipe_user_id = res.recipe.user_id; //aqui
+           this.recipe_user_id = res.recipe.user_id; 
            this.recipe_user_name=res.recipe.user_name;
-           console.log("Pegou o id do usuario da receita");
+           console.log(res.recipe.title);
+           console.log("Postada por ", res.recipe.user_name);
            console.log(this.recipe);
            
          },
@@ -127,9 +128,25 @@ export class RecipePage implements OnInit {
        );
      }
 
-  // essa função
+     listRecipes(){
+      this.recipeService.listRecipesHome().subscribe(
+        (res)=>{
+          console.log(res);
+          this.recipes=res.recipeList;
+        },
+        (err)=>{
+          console.log(err);
+        }
+      );
+    }
+    
+
+ 
      toggleEdit(){
        this.editMode = true;
+     }
+     toggleNoEdit(){
+       this.editMode = false;
      }
 
      updateRecipe(form){
@@ -137,7 +154,10 @@ export class RecipePage implements OnInit {
          (res)=>{
            this.editMode = false;
            console.log(res);
+           console.log("Recita editada com sucesso!");
+           this.listRecipes();
            this.router.navigate(["/tabs/home"]);
+           this.listRecipes();
          }, (err) => {
            console.log(err);
          }
@@ -172,6 +192,10 @@ export class RecipePage implements OnInit {
       navigateTobackHome(){
           this.router.navigate(['/tabs/home'])
       }
+
+      GoToRecipe(){
+        this.router.navigate(['/tabs/home']);
+    }
 
       ngOnInit() {
           this.getRecipe(this.recipeId);

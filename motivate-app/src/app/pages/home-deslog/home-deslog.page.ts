@@ -19,25 +19,18 @@ export class HomeDeslogPage implements OnInit {
 
   constructor(private router: Router, public challengeServiceService:ChallengeServiceService, public recipeService: RecipeService, public authService: AuthService) {
       this.challengeId = this.router.getCurrentNavigation().extras;
+
       this.details();
 
  }
 
-   
-
-  //  verifyLogin(){
-  //    this.token=localStorage.getItem("userToken");
-  //    if(this.token!=null){
-  //      this.token =1;
-  //    }
-  //  }
- 
  details() {
   this.authService.showMyDetails().subscribe(
       (res) => {
           console.log(res);
-          console.log("Esse é você");
+         
           this.usuario = res[0];
+           console.log("Bem vindo(a),", res[0].name);
       },
       (err) =>{
         console.log(err);
@@ -93,7 +86,6 @@ export class HomeDeslogPage implements OnInit {
   }
 
   ionViewWillEnter(){
-    console.log("receita adicionada a lista.");
     this.listRecipes();
     // this.verifyLogin();
   }

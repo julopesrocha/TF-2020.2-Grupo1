@@ -98,7 +98,16 @@ ion-icon{
     margin: 5% 10% 2% 10% ;
     padding-top: 6px;
     padding-bottom: 3%;
+   
 }
+
+.textComment{
+    height: 5vh;
+    background-color: #BBFF64;
+    color: black;
+    border: none;
+}
+
 .sendButton{
     --background:#208579;
     margin: 3% 10% 10% ;
@@ -110,6 +119,9 @@ ion-icon{
     margin: 6% 6% 6% 10%;
 }
 .form-group{
+    color: black;
+}
+.text{
     color: black;
 }
 
@@ -124,9 +136,10 @@ ion-label{
   ion-input{
     --color: black;
     font-family: 'Montserrat', sans-serif;
+
   }
   
-  ion-textarea form{
+  ion-textarea{
     margin-top: 2%;
     --background: white;
     border: 1px solid green;
@@ -135,10 +148,19 @@ ion-label{
     font-family: 'Montserrat', sans-serif;
   }
 
+  
+
   .bordaInferior{
     border-bottom: 0.095em solid green;
   }
+
   .personalizar-select{
     border: 1px solid green;
   
+  }
+
+  .divForm{
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 5%;
   }
