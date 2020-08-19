@@ -89,10 +89,12 @@ class RecipeController extends Controller
         $status = DB::table('likes')->where('user_id', $user->id)->where('recipe_id', $recipes->id)->count()>0;
         if ($status){
             $user->likeDown($recipe_id);
-            return response()->json(['dislike' => "You no longer like the recipe ". $recipes->title], 200);
+            return response()->json(['dislike' => "You no longer like the recipe ". $recipes->title,
+                                     'hasLiked' => false], 200);
         } else{
             $user->likeUp($recipe_id);
-            return response()->json(['like' => "You liked the recipe ". $recipes->title], 200);
+            return response()->json(['like' => "You liked the recipe ". $recipes->title,
+                                     'hasLiked' => true], 200);
         }
     }
 }
