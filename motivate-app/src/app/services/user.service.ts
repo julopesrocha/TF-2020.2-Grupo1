@@ -28,14 +28,19 @@ export class UserService {
     return this.http.put(this.apiUrl + 'editUserProfile', form, this.httpHeaders);
   }
 
+ // // public listFollowers(): Observable <any>{
+ //     return this.http.get(this.apiUrl + 'getFollowers');
+ //   }
+ //
+ //  public listFollowing(): Observable <any>{
+ //     return this.http.get(this.apiUrl + 'getFollowing');
+ //   }
+ //
+    public followUser(user_id): Observable <any>{
+        this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('userToken');
+        return this.http.post(this.apiUrl + 'followUser/'+ user_id);
+     }
 
-  // public listSeguidores(user_id): Observable <any>{
-  //   return this.http.get(this.apiUrl + 'getSeguidores/' + user_id);
-  // }
-
-  // public listSeguindo(user_id): Observable <any>{
-  //   return this.http.get(this.apiUrl + 'getSeguindo/' + user_id);
-  // }
 
     // seguir uma pessoa
     public follow(user_id): Observable <any> {

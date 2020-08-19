@@ -45,15 +45,20 @@ export class ChallengePagePage implements OnInit {
 
 
 
+<<<<<<< HEAD
   navigateToRecipe(recipe_id) {
     this.router.navigate(['/tabs/recipe'], recipe_id);
+=======
+  GoToRecipe(recipe_id) {
+    this.router.navigate(['/recipe'], recipe_id);
+>>>>>>> 27a78677b648fade14ad4d9976b1c79fc116c637
   }
 
-  navigateTochallengeList() {
+  GoTochallengeList() {
       this.router.navigate(['/tabs/tabs1']);
   }
 
-  navigateTobackHome(){
+  GoTobackHome(){
       this.router.navigate(['/tabs/home'])
   }
 

@@ -16,6 +16,7 @@ export class ProfileOtherPage implements OnInit {
     user;
     followMode;
 
+
   constructor(private router: Router, public userService: UserService, public recipeService: RecipeService, private route: ActivatedRoute) { }
 
    followUser(){
@@ -67,9 +68,9 @@ export class ProfileOtherPage implements OnInit {
  }
 
 
-GoToHome(){
-  this.router.navigate(['/tabs/home']);
-}
+    GoToHome(){
+      this.router.navigate(['/tabs/home']);
+    }
 
   ngOnInit() {
       this.userId = this.route.snapshot.paramMap.get("id");
@@ -77,4 +78,4 @@ GoToHome(){
       this.getUser(this.userId);
   }
 
-}
+    }

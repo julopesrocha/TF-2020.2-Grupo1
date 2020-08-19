@@ -1,0 +1,42 @@
+<ion-content>
+    <div class="toolbar">
+        <ion-icon (click)="GoBackHome()" name="chevron-back-outline" size="large" style="float: left" class="back"></ion-icon>
+        <ion-icon (click)="GoToProfile()" name="close-outline" size="large" style="float: right" class="close"></ion-icon>
+    </div>
+        <img class="imgLogo" src="../../assets/logo-circle.png" alt="logo do motivate">
+
+    <ion-segment [(ngModel)]="follow" class="segmentColor">
+        <ion-segment-button value="following">
+            <ion-label>Seguidores</ion-label>
+        </ion-segment-button>
+<!-- Seguindo -->
+    <ion-segment-button value="followers">
+        <ion-label>Seguindo</ion-label>
+    </ion-segment-button>
+    </ion-segment>
+    <div [ngSwitch]= "follow" >
+        <ion-list *ngSwitchCase="'followers'">
+<!-- Avatar -->
+    <ion-item > <!--*ngFor="let follower of followers"-->
+        <img class="avatar" src="../../assets/boy-cake.jpg">
+        <div class="name">
+            <h5> Luciana Vitória </h5>
+        </div>
+        <ion-button *ngIf="!this.clickFollow" (click)="this.alternar()" shape="round"> seguir </ion-button>
+        <ion-button *ngIf="this.clickFollow" (click)="this.alternar()" shape="round"> seguindo </ion-button>
+    </ion-item>
+        </ion-list>
+<!-- Seguidores  -->
+    <ion-list *ngSwitchCase="'following'">
+<!-- Avatar -->
+    <ion-item > <!--*ngFor="let following of following"-->
+        <img class="avatar" src="../../assets/boy-cake.jpg">
+        <div class="name">
+            <h5> Luciana Vitória </h5>
+        </div>
+        <ion-button *ngIf="this.clickFollow" (click)="this.alternar()" shape="round"> seguir </ion-button>
+        <ion-button *ngIf="!this.clickFollow" (click)="this.alternar()" shape="round"> seguindo </ion-button>
+    </ion-item>
+    </ion-list>
+    </div>
+</ion-content>
