@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {AuthService } from '../services/auth.service';
 import {Router} from '@angular/router';
-
+import { RecipeService } from '../services/recipe.service';
 
 @Component({
   selector: 'app-tab3',
@@ -10,25 +10,28 @@ import {Router} from '@angular/router';
 })
 export class Tab3Page {
 
- usuario:Object;  
+ user_id;
+ recipes;
+ usuario:Object;
 
-  constructor(public authservice: AuthService, private router: Router) {
+  constructor(public authservice: AuthService, private router: Router, public recipeService: RecipeService ) {
 
-    this.details();
   }
 
   details() {
+      console.log("details");
     this.authservice.showMyDetails().subscribe(
         (res) => {
             console.log(res);
             console.log("Esse é você");
             this.usuario = res[0];
+            this.user_id = res[0].id;
+            this.listRecipes(this.user_id);
         },
         (err) =>{
           console.log(err);
         }
     );
-
 }
 
 logout() {
@@ -37,10 +40,23 @@ logout() {
           console.log(res);
           localStorage.removeItem('userToken');
           localStorage.removeItem('Usuario');
-          this.usuario= null; 
+          this.usuario= null;
           this.router.navigate(['/tabs/home']).then(()=>window.location.reload());
           console.log("Você saiu!!");
       }
+  );
+}
+
+listRecipes(user_id){
+    console.log(user_id);
+  this.recipeService.listRecipesUser(user_id).subscribe(
+    (res)=>{
+      console.log(res);
+      this.recipes=res.recipeList;
+    },
+    (err)=>{
+      console.log(err);
+    }
   );
 }
 
@@ -56,5 +72,12 @@ GoToEditProfile(){
   this.router.navigate(['edit-profile']);
 }
 
+navigateToRecipe(recipe_id) {
+  this.router.navigate(['/tabs/recipe'], recipe_id);
+}
+
+ngOnInit(){
+    this.details();
+}
 
 }

@@ -48,7 +48,7 @@ ion-toolbar{
 }
 
 .iconMargin{
-    margin-left: 70%;
+    margin-left: 10%;
     margin-right: 10%;
 }
 .trashMargin{
@@ -119,13 +119,13 @@ ion-label{
     color: black;
     font-size: 1.1em;
   }
-  
-  
+
+
   ion-input{
     --color: black;
     font-family: 'Montserrat', sans-serif;
   }
-  
+
   ion-textarea form{
     margin-top: 2%;
     --background: white;
@@ -140,5 +140,5 @@ ion-label{
   }
   .personalizar-select{
     border: 1px solid green;
-  
+
   }

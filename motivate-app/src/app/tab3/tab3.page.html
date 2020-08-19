@@ -1,25 +1,23 @@
-<ion-content>
+<ion-content *ngIf="usuario">
     <div class="toolbar">
       <img src= "../../assets/wave.png"  alt="logo do motivate" >
       </div>
 
   <ion-row class="ion-align-items-center ion-justify-content-evenly">
-
-    <ion-col size="5">
+    <ion-col size="4">
       <div class="ion-text-center">
-        <h4 *ngIf="usuario"> {{usuario.name}}</h4>
+        <h4> {{usuario.name}} </h4>
       </div>
+      <ion-row size="1" class="ion-margin-start">
+        <ion-button class="ion-text-center" size="small" shape="round" color="success" (click)="GoToEditProfile()">
+          Editar
+        </ion-button>
+      </ion-row>
     </ion-col>
 
     <ion-col size="4" class="ion-margin-start">
       <div class="divFoto">
-        <!-- <p> {{usuario.bio}} </p> -->
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+        <img src="../assets/userPhoto.png">
       </div>
     </ion-col>
 
@@ -27,59 +25,52 @@
 
   <ion-row class="ion-justify-content-evenly ion-margin-top">
 
-    <ion-col size="4" class="ion-no-padding">
+    <ion-col size="4">
       <div class="ion-text-center">
         <a>Seguidores</a>
-        <p>73</p>
-      </div> 
+        <p>{{usuario.followers}}</p>
+      </div>
     </ion-col>
 
     <ion-col size="4">
       <div class="ion-text-center" >
         <a>Seguindo</a>
-        <p>81</p>
-      </div>  
+        <p>{{usuario.following}}</p>
+      </div>
     </ion-col>
 
   </ion-row>
-  
+
 
   <ion-row class="ion-justify-content-center ">
-    <ion-col size="10">
+    <ion-col size="9">
       <p>Sobre mim:</p>
       <div class="divBio">
-        <p>Adoro me sentir bem com meu corpo e comer comidas saudaveis! #fitness</p>
-        <!-- <p>{{usuario.bio}}</p> -->
+        <p>{{usuario.aboutme}}</p>
       </div>
     </ion-col>
   </ion-row>
-
-  <ion-row class="ion-justify-content-evenly">
-
-    <ion-col size="4">
-      <ion-button size="small" shape="round" color="success" (click)="logout()">
-        Sair
-      </ion-button>
+      <ion-fab vertical="bottom" horizontal="start" edge slot="fixed">
+        <ion-fab-button (click)="GoToCreateChallenge()" color="success">
+          <ion-icon name="create-outline"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+  <ion-row class="ion-justify-content-center ">
+    <ion-col size="9">
+      <p>Minhas receitas:</p>
     </ion-col>
-
-    <ion-col size="4" class="ion-margin-end">
-      <ion-button size="small" shape="round" color="success" (click)="GoToEditProfile()">
-        Editar Perfil
-      </ion-button>
-    </ion-col>
-
   </ion-row>
+      <div class="recipesListMergin">
+        <app-recipes-list (clickSeeRecipe)="navigateToRecipe($event)" [recipe]="recipe" *ngFor="let recipe of recipes"> </app-recipes-list>
+      </div>
 
-  <ion-fab vertical="bottom" horizontal="start" edge slot="fixed">
-    <ion-fab-button (click)="GoToCreateChallenge()" color="success">
-      <ion-icon name="create-outline"></ion-icon>
-    </ion-fab-button>
+      <ion-row class="ion-justify-content-end">
+        <ion-col size="4">
+          <ion-button size="small" shape="round" color="success" (click)="logout()">
+            Sair
+          </ion-button>
+        </ion-col>
+      </ion-row>
 
-
-  </ion-fab>
-
-  <!-- <div class="recipesListMergin">
-    <app-recipes-list [recipe]="recipe" (clickSeeRecipe)="navigateToRecipe($event)" *ngFor="let recipe of recipes"> </app-recipes-list>
-</div> -->
 
 </ion-content>

@@ -12,7 +12,7 @@ export class ChallangeCardComponent implements OnInit {
 
   constructor() {}
 
-      clickToSee(id) {
+      clickToSee(id){
           this.clickSeeChallenge.emit(id);
         }
 

@@ -4,77 +4,58 @@
   </div>
 </div>
 
-<ion-content>
+<ion-content *ngIf="user">
   <div class="toolbar">
-    
+
     <img src= "../../assets/wave.png"  alt="logo do motivate" >
   </div>
 
 
-    <ion-row class="ion-align-items-center"> 
-      <ion-col size="6">
+  <ion-row class="ion-align-items-center ion-justify-content-evenly">
+    <ion-col size="4">
         <div class="ion-text-center">
-          <!-- <h2 *ngIf="usuario"> {{usuario.name}}</h2> -->
-          <h2 > Pedro Henrique</h2>
+          <h2 >{{user.name}}</h2>
         </div>
-        
+        <ion-row class="ion-margin-start">
+            <ion-button (click)="followUser()" size="small" shape="round" color="success">
+             {{followMode ? "Seguindo" : "Seguir"}}
+            </ion-button>
+        </ion-row>
       </ion-col>
+
       <ion-col size="4" class="ion-margin-start">
         <div class="divFoto">
-          <!-- <p> {{usuario.bio}} </p> -->
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          
+            <img src="../assets/userPhoto.png">
         </div>
       </ion-col>
-    </ion-row>
-
-    <ion-row class="ion-justify-content-center">
-        <ion-button *ngIf="!followMode" (click)="Follow()" size="small" shape="round" color="success">
-          Seguir
-        </ion-button>
-    </ion-row>
-
-    <!-- Colocar ngIf para o botão trocar dependendo da pessoa estar seguindo ou não -->
-
-    <ion-row class="ion-justify-content-center">
-      
-        <ion-button *ngIf="followMode" (click)="Unfollow()" size="small" shape="round" color="success">
-          Seguindo
-        </ion-button>
-    
     </ion-row>
 
     <ion-row class="ion-justify-content-evenly ion-margin-top">
 
-      <ion-col size="4" class="ion-no-padding">
+      <ion-col size="4">
         <div class="ion-text-center">
           <a>Seguidores</a>
-          <p>73</p>
-        </div> 
+          <p>{{user.followers}}</p>
+        </div>
       </ion-col>
-  
+
       <ion-col size="4">
         <div class="ion-text-center" >
           <a>Seguindo</a>
-          <p>81</p>
-        </div>  
+          <p>{{user.following}}</p>
+        </div>
       </ion-col>
-  
+
     </ion-row>
 
-    <ion-row class="ion-justify-content-center ">
+    <ion-row class="ion-justify-content-center">
       <ion-col size="10">
         <p>Sobre mim:</p>
         <div class="divBio">
-          <p>Adoro comida saudavel, ser fitness é demais!</p>
+          <p>{{user.aboutme}}</p>
         </div>
       </ion-col>
-      
+
     </ion-row>
 
     <!-- <div>

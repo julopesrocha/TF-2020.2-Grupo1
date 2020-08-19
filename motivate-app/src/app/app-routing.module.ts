@@ -31,7 +31,7 @@ const routes: Routes = [
     path: 'recipe',
     loadChildren: () => import('./pages/recipe/recipe.module').then( m => m.RecipePageModule)
   },  {
-    path: 'profile-other',
+    path: 'profile-other/:id',
     loadChildren: () => import('./pages/profile-other/profile-other.module').then( m => m.ProfileOtherPageModule)
   },
   {

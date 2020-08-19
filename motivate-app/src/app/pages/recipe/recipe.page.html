@@ -1,4 +1,4 @@
-<ion-content *ngIf="recipe"> 
+<ion-content *ngIf="recipe">
 
     <div *ngIf="!editMode">
         <div class="toolbar">
@@ -12,10 +12,13 @@
             <img  class="img" src="../../assets/cake.png" alt="imagem do bolo de chocolate">
             <img  class="faixa" src="../../assets/faixa-laranja.png" alt="faixa laranja do desafio low carb">
         </div>
-        <div *ngIf = "user_id==recipe_user_id" class="iconMargin" >
-            <ion-icon (click)="toggleEdit()" size="large" name="pencil-outline"></ion-icon>
-            <ion-icon (click)="deleteRecipe()" class="trashMargin" size="large" name="trash-outline"></ion-icon>
-        </div>
+        <ion-row class="iconMargin">
+            <div *ngIf = "user_id==recipe_user_id">
+                <ion-icon (click)="toggleEdit()" size="large" name="pencil-outline"></ion-icon>
+                <ion-icon (click)="deleteRecipe()" class="trashMargin" size="large" name="trash-outline"></ion-icon>
+            </div>
+            <ion-icon (click)="likeRecipe(recipe.id)" name="heart" size="large" color="success"></ion-icon> {{recipe.likes}}
+        </ion-row>
     <!-- Descrição -->
          <div class="textMargin"> Postada por: {{recipe_user_name}} </div>
          <div class="textMargin"> Receita do Desafio low carb</div>
@@ -44,7 +47,7 @@
 
 
     <form [formGroup]="updateForm" (ngSubmit)="updateRecipe(updateForm)" *ngIf="editMode">
-  
+
         <div class="form-group">
             <ion-label >Título</ion-label>
             <ion-input type="text" formControlName="title" class="bordaInferior" ></ion-input>

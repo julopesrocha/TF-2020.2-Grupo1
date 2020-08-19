@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from '../../services/user.service';
-import {RecipeService} from '../../services/recipe.service';
-import {Router} from '@angular/router';
+import { UserService } from '../../services/user.service';
+import { RecipeService } from '../../services/recipe.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-profile-other',
@@ -10,49 +10,71 @@ import {Router} from '@angular/router';
 })
 export class ProfileOtherPage implements OnInit {
 
-  user;
-  followMode=false;
+    recipes;
+    check;
+    userId;
+    user;
+    followMode;
 
-  constructor(private router: Router, public userService: UserService, public recipeService: RecipeService) { }
+  constructor(private router: Router, public userService: UserService, public recipeService: RecipeService, private route: ActivatedRoute) { }
 
-  Follow(){ 
-    this.followMode = true;
-  }
+   followUser(){
+     this.userService.follow(this.userId).subscribe(
+       (res)=>{
+           console.log(res);
+           this.followMode = res.isFollowing;
+           if(this.followMode){
+               this.user.followers ++;
+           }
+           else{
+               this.user.followers --;
+           }
+       }
+     )
+   }
 
-  Unfollow(){
-    this.followMode = false;
-  }
+   checkFollow(){
+     this.userService.verifyFollow(this.userId).subscribe(
+       (res)=>{
+           console.log(res);
+           this.followMode = res.isFollowing;
+       }
+     )
+   }
 
+  getUser(user_id){
+    this.userService.showUser(user_id).subscribe(
+     (res)=>{
+       console.log(res);
+       this.user = res.user;
+     },
+     (err)=>{
+       console.log(err);
+     }
+   );
+ }
 
-  // followUser(){
-  //   this.userServive.followUser().subscribe(
-  //     (res)=>{
-  //       console.log("seguindo otário");
-  //       this.followMode =true;
-  //     }
-  //   )
-  // }
+ listRecipes(user_id){
+   this.recipeService.listRecipesUser(user_id).subscribe(
+     (res)=>{
+       console.log(res);
+       this.recipes=res.recipeList;
+     },
+     (err)=>{
+       console.log(err);
+     }
+   );
+ }
 
-
-// SHOW USER
-
-//   getUser(id){
-//     this.userService.showUser(id).subscribe(
-//      (res)=>{
-//        console.log(res);
-//        this.user = res.user;
-//      },
-//      (err)=>{
-//        console.log(err);
-//      }
-//    );
-//  }
 
 GoToHome(){
   this.router.navigate(['/tabs/home']);
 }
 
   ngOnInit() {
+      this.userId = this.route.snapshot.paramMap.get("id");
+      this.checkFollow();
+      this.getUser(this.userId);
   }
 
 }
