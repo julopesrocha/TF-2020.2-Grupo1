@@ -97,4 +97,11 @@ class RecipeController extends Controller
                                      'hasLiked' => true], 200);
         }
     }
+
+    public function hasLiked($recipe_id) {
+        $user = Auth::user();
+        Recipe::findOrFail($recipe_id);
+        $hasLiked = $user->likeMadeByUser()->get()->contains('id', $recipe_id);
+        return response()->json(['hasLiked' => $hasLiked], 200);
+    }
 }
