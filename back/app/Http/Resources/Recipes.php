@@ -29,6 +29,7 @@ class Recipes extends JsonResource
             'challenge_title' => Challenge::findOrFail($this->challenge_id)->title,
             'challenge_photo' => Challenge::findOrFail($this->challenge_id)->photo,
             'challenge_id' => $this->challenge_id,
+            'comments' => $this->commentsInRecipe()->get()->count(),
             'likes' => $this->likes()->count(),
             'created_at' => $this->created_at,
         ];
