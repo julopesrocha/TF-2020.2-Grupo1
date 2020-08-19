@@ -55,10 +55,9 @@ class UserController extends Controller
      * @return JsonResponse
      * 
      */
-    public function deleteUser($user_id){
+    public function deleteUser(){
         $user = Auth::user();
-        User::findOrFail($id);
-        User::destroy($user_id);
+        User::destroy($user->id);
         return response()->json(['User deleted'], 200);
     }
 
