@@ -1,4 +1,5 @@
 <ion-content *ngIf="usuario">
+  <div *ngIf="!editMode">
     <div class="toolbar">
       <img src= "../../assets/wave.png"  alt="logo do motivate" >
       </div>
@@ -9,7 +10,7 @@
         <h4> {{usuario.name}} </h4>
       </div>
       <ion-row size="1" class="ion-margin-start">
-        <ion-button class="ion-text-center" size="small" shape="round" color="success" (click)="GoToEditProfile()">
+        <ion-button class="ion-text-center" size="small" shape="round" color="success" (click)="toggleEdit()">
           Editar
         </ion-button>
       </ion-row>
@@ -50,6 +51,7 @@
       </div>
     </ion-col>
   </ion-row>
+
       <ion-fab vertical="bottom" horizontal="start" edge slot="fixed">
         <ion-fab-button (click)="GoToCreateChallenge()" color="success">
           <ion-icon name="create-outline"></ion-icon>
@@ -60,6 +62,7 @@
       <p>Minhas receitas:</p>
     </ion-col>
   </ion-row>
+
       <div class="recipesListMergin">
         <app-recipes-list (clickSeeRecipe)="navigateToRecipe($event)" [recipe]="recipe" *ngFor="let recipe of recipes"> </app-recipes-list>
       </div>
@@ -71,6 +74,64 @@
           </ion-button>
         </ion-col>
       </ion-row>
+
+  </div>
+
+  <div class="divForm">
+
+    <ion-row class="iconBack">
+      <ion-icon (click)="toggleNoEdit()" name="chevron-back-outline" size="large" style="float: left" class="back"></ion-icon>
+    </ion-row>
+
+    <form [formGroup]="updateProfileForm" (ngSubmit)="updateUser(updateProfileForm) " class="background" *ngIf="editMode">
+
+
+      <div class="form-group">
+        <ion-label >Nome</ion-label>
+        <ion-input value="{{this.usuario.name}}" type="text" formControlName="name" class="bordaInferior" ></ion-input>
+      </div>
+
+      <div class="form-group">
+        <ion-label >Biografia</ion-label>
+        <ion-input value="{{this.usuario.aboutme}}" type="text" formControlName="aboutme" class="bordaInferior"  ></ion-input>
+
+      </div>
+
+        <ion-radio-group formControlName="gender">
+
+            <ion-label >Gênero</ion-label>
+
+            <div class="divRadio">
+              <ion-item class="transparencia">
+                <ion-label >Feminino</ion-label>
+                <ion-radio slot="start" value="female"></ion-radio>
+              </ion-item>
+
+              <ion-item class="transparencia">
+                <ion-label >Masculino</ion-label>
+                <ion-radio slot="start" value="male"></ion-radio>
+              </ion-item>
+
+              <ion-item class="transparencia">
+                <ion-label >Outros</ion-label>
+                <ion-radio slot="start" value="others"></ion-radio>
+              </ion-item>
+            </div>
+
+        </ion-radio-group>
+
+      <ion-row class="ion-justify-content-center buttonMargin">
+        <ion-button type="submit" color="success" class="botao" shape="round" size="small" [disabled]="updateProfileForm.invalid"> Editar</ion-button>
+      </ion-row>
+      <ion-row class="ion-justify-content-center">
+        <ion-button type="submit" color="success" class="botao" shape="round" size="small"> Excluir Conta</ion-button>
+      </ion-row>
+
+
+
+  </form>
+
+</div>
 
 
 </ion-content>
