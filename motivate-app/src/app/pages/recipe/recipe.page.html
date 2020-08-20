@@ -14,7 +14,7 @@
         </div>
         <div *ngIf = "user_id==recipe_user_id" class="iconMargin" >
             <ion-icon (click)="toggleEdit()" size="large" name="pencil-outline"></ion-icon>
-            <ion-icon (click)="deleteRecipe()" class="trashMargin" size="large" name="trash-outline"></ion-icon>
+            <ion-icon (click)="deleteRecipe(i)" class="trashMargin" size="large" name="trash-outline"></ion-icon>
         </div>
     <!-- Descrição -->
          <div class="textMargin"> Postada por: {{recipe_user_name}} </div>

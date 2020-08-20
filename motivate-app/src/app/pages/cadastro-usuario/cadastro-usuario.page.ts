@@ -46,9 +46,17 @@ doSomething(date) {
   ngOnInit() {
   }
 
-  async presentToast(){
+  async emailErrorToast(){
     const toast = await this.toastController.create({
       message: 'Esse email ja existe!',
+      duration: 6000
+    });
+    toast.present();
+  }
+
+  async cadastroEfetuadoToast(){
+    const toast = await this.toastController.create({
+      message: 'Cadastro efetuado com sucesso! :D',
       duration: 6000
     });
     toast.present();
@@ -66,8 +74,8 @@ doSomething(date) {
       (res)=> {
         console.log(res);
         localStorage.setItem('userToken', res.success.token);
-        // localStorage.setItem('username', res.success.token);
-        this.router.navigate(['/tabs/home'])
+        this.router.navigate(['/tabs/home']).then(()=>window.location.reload());
+        this.cadastroEfetuadoToast();
 
       },
 
@@ -76,7 +84,7 @@ doSomething(date) {
 
         if(err.error.email[0]=="Este e-mail já existe"){
 
-          this.presentToast();
+          this.emailErrorToast();
         }
       }
     );
