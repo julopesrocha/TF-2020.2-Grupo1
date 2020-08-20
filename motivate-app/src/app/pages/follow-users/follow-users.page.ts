@@ -73,6 +73,18 @@ export class FollowUsersPage implements OnInit {
         );
      }
 
+     listFollowersUser(user_id){
+        this.userService.listFollowersUser(user_id).subscribe(
+          (res)=>{
+            console.log(res);
+            this.followers = res.userFollower;
+          },
+          (err)=>{
+            console.log(err);
+          }
+        );
+     }
+
      // GoToListFollowers(){
      //    this.router.navigate(['/follow-users'])
      // }
@@ -89,6 +101,18 @@ export class FollowUsersPage implements OnInit {
            }
          );
        }
+
+       listFollowingUser(user_id){
+          this.userService.listFollowingUser(user_id).subscribe(
+            (res)=>{
+              console.log(res);
+              this.followings = res.userFollowing;
+            },
+            (err)=>{
+              console.log(err);
+            }
+          );
+        }
 
       ngOnInit() {
           this.listFollowers();

@@ -39,6 +39,15 @@ export class UserService {
        return this.http.get(this.apiUrl + 'getFollowing', this.httpHeaders);
     }
 
+    // lista de seguidores dos usuarios
+    public listFollowersUser(user_id): Observable <any>{
+        return this.http.get(this.apiUrl + 'getFollowersOfUser/' + user_id);
+    }
+
+    // lista de quem os usuarios estao seguindo
+    public listFollowingUser(user_id): Observable <any>{
+        return this.http.get(this.apiUrl + 'getUserFollowing/' + user_id);
+    }
 
     // seguir uma pessoa
     public follow(user_id): Observable <any> {
