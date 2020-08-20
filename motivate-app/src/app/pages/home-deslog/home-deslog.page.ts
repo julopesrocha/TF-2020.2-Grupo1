@@ -11,6 +11,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class HomeDeslogPage implements OnInit {
 
+    usuarioId;
     token = localStorage.getItem("userToken");
     challenge;
     challengeId;
@@ -20,21 +21,13 @@ export class HomeDeslogPage implements OnInit {
     likeMode;
     check;
 
-  constructor(private router: Router, public challengeServiceService:ChallengeServiceService,
-      public recipeService: RecipeService, public authService: AuthService) {
-      this.challengeId = this.router.getCurrentNavigation().extras;
+constructor(private router: Router, public challengeServiceService:ChallengeServiceService,
+  public recipeService: RecipeService, public authService: AuthService) {
+  this.challengeId = this.router.getCurrentNavigation().extras;
 
-      this.details();
- }
+  this.details();
+}
 
-
-
-  //  verifyLogin(){
-  //    this.token=localStorage.getItem("userToken");
-  //    if(this.token!=null){
-  //      this.token =1;
-  //    }
-  //  }
 
  details() {
   this.authService.showMyDetails().subscribe(
@@ -42,6 +35,7 @@ export class HomeDeslogPage implements OnInit {
           console.log(res);
 
           this.usuario = res[0];
+          this.usuarioId = res[0].id;
            console.log("Bem vindo(a),", res[0].name);
       },
       (err) =>{
@@ -89,7 +83,10 @@ export class HomeDeslogPage implements OnInit {
   }
 
   GoToProfile(user_id) {
-    this.router.navigate(['/profile-other', {userId:user_id}]);
+    if(this.usuarioId!=user_id){
+        this.router.navigate(['/profile-other', {userId:user_id}]);
+    }
+    console.log("Acesse seu perfil pela tabBar.");
   }
 
   ngOnInit() {}
