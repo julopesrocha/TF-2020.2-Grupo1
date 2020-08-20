@@ -5,6 +5,7 @@ import { CommentService } from '../../services/comment.service';
 import { RecipeService } from '../../services/recipe.service';
 import { AuthService } from '../../services/auth.service';
 import { ChallengeServiceService } from '../../services/challenge-service.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-recipe',
@@ -34,7 +35,7 @@ export class RecipePage implements OnInit {
     updateForm: FormGroup;
 
   constructor(private router: Router, public formbuilder:FormBuilder,
-  public recipeService: RecipeService, public commentService: CommentService, public authService: AuthService, public challengeServiceService: ChallengeServiceService) {
+  public recipeService: RecipeService, public commentService: CommentService, public authService: AuthService, public challengeServiceService: ChallengeServiceService, public alertController:AlertController) {
 
       this.details();
 
@@ -55,6 +56,56 @@ export class RecipePage implements OnInit {
         }
       )
   }
+
+  async deleteCommentAlertConfirm(id, index) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Cuidado!',
+      message: 'Você realmente deseja excluir esse comentário?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancelar',
+          cssClass: 'secondary',
+          handler: (Nao) => {
+          }
+        }, {
+          text: 'Confirmar',
+          handler: (Sim) => {
+            console.log('Comentário excluído.');
+            this.deleteComment(id, index);
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  async deleteRecipeAlertConfirm() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Cuidado!',
+      message: 'Você realmente deseja excluir essa receita?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancelar',
+          cssClass: 'secondary',
+          handler: (Nao) => {
+          }
+        }, {
+          text: 'Confirmar',
+          handler: (Sim) => {
+            console.log('Receita excluída.');
+            this.deleteRecipe();
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+    }
 
   details() {
     this.authService.showMyDetails().subscribe(
