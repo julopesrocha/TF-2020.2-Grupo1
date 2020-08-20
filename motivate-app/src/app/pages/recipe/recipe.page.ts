@@ -6,6 +6,7 @@ import {RecipeService} from '../../services/recipe.service';
 import { AuthService } from '../../services/auth.service';
 import { ChallengeServiceService } from '../../services/challenge-service.service';
 import { ToastController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-recipe',
@@ -21,8 +22,6 @@ export class RecipePage implements OnInit {
     recipe_user_id; 
     recipe_user_name;
 
-   
-
     comments;
     commentId;
     recipe;
@@ -32,11 +31,12 @@ export class RecipePage implements OnInit {
     challenges = [];
 
     editMode:boolean = false;
+    i;
 
     commentForm: FormGroup; 
     updateForm: FormGroup; 
 
-  constructor(public toastController: ToastController, private router: Router, public formbuilder:FormBuilder,
+  constructor(public alertController:AlertController, public toastController: ToastController, private router: Router, public formbuilder:FormBuilder,
   public recipeService: RecipeService, public commentService: CommentService, public authService: AuthService, public challengeServiceService: ChallengeServiceService) {
 
       this.details();
@@ -66,17 +66,24 @@ export class RecipePage implements OnInit {
   async receitaApagadaToast(){
     const toast = await this.toastController.create({
       message: 'Receita deletada com sucesso!',
-      duration: 6000
+      duration: 3000
     });
     toast.present();
+    toast.onDidDismiss().then(() => {
+      this.router.navigate(["/tabs/home"]).then(()=>window.location.reload());
+    });
   }
 
   async receitaEditadaToast(){
     const toast = await this.toastController.create({
       message: 'Receita editada com sucesso!',
-      duration: 6000
+      duration: 3000
     });
     toast.present();
+    toast.onDidDismiss().then(() => {
+      this.router.navigate(["/tabs/home"]).then(()=>window.location.reload());
+      this.editMode = false;
+    });
   }
 
   async comentarioEnviadoToast(){
@@ -107,6 +114,62 @@ export class RecipePage implements OnInit {
         }
     );
     }
+    //
+
+    // Alert's
+
+
+  async deleteCommentAlertConfirm(id, index) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Confirm!',
+      message: 'Você deseja excluir esse comentário?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancelar',
+          cssClass: 'secondary',
+          handler: (Nao) => {
+            console.log('Não excluir');
+          }
+        }, {
+          text: 'Confirmar',
+          handler: (Sim) => {
+            console.log('Confirm Okay');
+            this.deleteComment(id, index);
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  async deleteRecipeAlertConfirm() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Confirm!',
+      message: 'Você deseja excluir essa receita?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancelar',
+          cssClass: 'secondary',
+          handler: (Nao) => {
+            console.log('Não excluir');
+          }
+        }, {
+          text: 'Confirmar',
+          handler: (Sim) => {
+            console.log('Confirm Okay');
+            this.deleteRecipe();
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
 
       // Funções do Comentário
 
@@ -194,11 +257,9 @@ export class RecipePage implements OnInit {
      updateRecipe(form){
        this.recipeService.updateRecipe(this.recipeId, form.value).subscribe(
          (res)=>{
-           this.editMode = false;
+          //  this.editMode = false;
            console.log(res);
-           this.listRecipes();
            console.log("Recita editada com sucesso!");
-           this.router.navigate(["/tabs/home"]);
            this.receitaEditadaToast();
            
          }, (err) => {
@@ -208,20 +269,17 @@ export class RecipePage implements OnInit {
        
      }
 
-
-
-       deleteRecipe(index){
-            this.recipeService.deleteRecipe(this.recipeId).subscribe(
-              (res)=>{
-                console.log(res);
-                this.router.navigate(["/tabs/home"]);
-                this.listRecipes();
-                this.receitaApagadaToast();
-              },(err) =>{
-                console.log(err);
-              }
-            );
-          }
+      deleteRecipe(){
+          this.recipeService.deleteRecipe(this.recipeId).subscribe(
+            (res)=>{
+              console.log(res);     
+              this.receitaApagadaToast();
+              
+            },(err) =>{
+              console.log(err);
+            }
+          );
+        }
 
           // funções do challenge
 

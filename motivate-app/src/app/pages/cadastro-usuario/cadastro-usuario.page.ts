@@ -14,13 +14,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CadastroUsuarioPage implements OnInit {
 
-  /*import * as moment from 'moment';
-
-doSomething(date) {
-   console.log('date', moment(date).format('YYYY-MM-DD')); // 2019-04-22
-}*/
-
-
 
   registerForm: FormGroup;
   submitted=true;
@@ -34,7 +27,7 @@ doSomething(date) {
       gender:[null, [Validators.required]],
       password:[null, [Validators.required, Validators.minLength(6), Validators.maxLength(15)]],
       confirm_password:[null, [Validators.required]],
-      aboutme:[],
+      aboutme:[null],
 
     }, { validator: MustMatch('password', 'confirm_password')}
 
@@ -54,28 +47,32 @@ doSomething(date) {
     toast.present();
   }
 
-  async cadastroEfetuadoToast(){
-    const toast = await this.toastController.create({
-      message: 'Cadastro efetuado com sucesso! :D',
-      duration: 6000
-    });
-    toast.present();
-  }
+  // async cadastroEfetuadoToast(){
+  //   const toast = await this.toastController.create({
+  //     message: 'Cadastro efetuado com sucesso! :D',
+  //     duration: 4000
+  //   });
+  //   toast.present();
+  //   toast.onDidDismiss().then(() => {
+  //     this.router.navigate(["/tabs/home"]).then(()=>window.location.reload());
+      
+  //   });
+  // }
 
   GoToHome(){
     this.router.navigate(['/tabs/home']);
   }
 
   onSubmit(form) {
-    // console.log(form);
-     console.log(form.value);
+
+    console.log(form.value);
 
     this.authservice.register(this.registerForm.value).subscribe(
       (res)=> {
         console.log(res);
         localStorage.setItem('userToken', res.success.token);
         this.router.navigate(['/tabs/home']).then(()=>window.location.reload());
-        this.cadastroEfetuadoToast();
+        // this.cadastroEfetuadoToast();
 
       },
 
@@ -83,7 +80,6 @@ doSomething(date) {
         console.log(err);
 
         if(err.error.email[0]=="Este e-mail já existe"){
-
           this.emailErrorToast();
         }
       }

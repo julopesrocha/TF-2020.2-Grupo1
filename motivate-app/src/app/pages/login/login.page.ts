@@ -32,17 +32,21 @@ export class LoginPage implements OnInit {
    async entradaIncorretaToast(){
     const toast = await this.toastController.create({
       message: 'Email ou senha incorretos!',
-      duration: 6000
+      duration: 4000
     });
     toast.present();
   }
 
   async loginEfetuadoToast(){
     const toast = await this.toastController.create({
-      message: 'Você estrou! :D',
-      duration: 6000
+      message: 'Você entrou! :D',
+      duration: 4000
     });
     toast.present();
+    toast.onDidDismiss().then(() => {
+      this.router.navigate(["/tabs/home"]).then(()=>window.location.reload());
+      
+    });
   }
 
   details() {
@@ -67,7 +71,6 @@ export class LoginPage implements OnInit {
       (res)=> {
         console.log(res);
         localStorage.setItem('userToken', res.success.token);
-        this.router.navigate(['/tabs/home']).then(()=>window.location.reload());
         console.log("entrei");
         this.loginEfetuadoToast();
       },

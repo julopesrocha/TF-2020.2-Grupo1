@@ -5,33 +5,31 @@
 </div>
 
 <ion-content>
-  <div class="toolbar">
-    
+  <div class="toolbar"> 
     <img src= "../../assets/wave.png"  alt="logo do motivate" >
   </div>
 
-
-    <ion-row class="ion-align-items-center"> 
-      <ion-col size="6">
-        <div class="ion-text-center">
-          <!-- <h2 *ngIf="usuario"> {{usuario.name}}</h2> -->
-          <h2 > Pedro Henrique</h2>
-        </div>
+  <ion-row class="ion-align-items-center"> 
+    <ion-col size="6">
+      <div class="ion-text-center">
+        <!-- <h2 *ngIf="usuario"> {{usuario.name}}</h2> -->
+        <h2 > Pedro Henrique</h2>
+      </div>
+      
+    </ion-col>
+    <ion-col size="4" class="ion-margin-start">
+      <div class="divFoto">
+        <!-- <p> {{usuario.bio}} </p> -->
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
         
-      </ion-col>
-      <ion-col size="4" class="ion-margin-start">
-        <div class="divFoto">
-          <!-- <p> {{usuario.bio}} </p> -->
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          
-        </div>
-      </ion-col>
-    </ion-row>
+      </div>
+    </ion-col>
+  </ion-row>
 
     <ion-row class="ion-justify-content-center">
         <ion-button *ngIf="!followMode" (click)="Follow()" size="small" shape="round" color="success">

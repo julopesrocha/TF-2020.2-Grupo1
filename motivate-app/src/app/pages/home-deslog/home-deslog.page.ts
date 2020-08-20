@@ -3,6 +3,7 @@ import { ChallengeServiceService } from '../../services/challenge-service.servic
 import { Router } from '@angular/router';
 import {RecipeService} from '../../services/recipe.service';
 import {AuthService} from '../../services/auth.service';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home-deslog',
@@ -17,12 +18,16 @@ export class HomeDeslogPage implements OnInit {
     usuario:Object;
    
 
-  constructor(private router: Router, public challengeServiceService:ChallengeServiceService, public recipeService: RecipeService, public authService: AuthService) {
+  constructor(public toastController: ToastController, private router: Router, public challengeServiceService:ChallengeServiceService, public recipeService: RecipeService, public authService: AuthService) {
       this.challengeId = this.router.getCurrentNavigation().extras;
 
       this.details();
+      this.listRecipes();
+      console.log("aaaaaaaaaaaaaaaa");
 
  }
+
+
 
  details() {
   this.authService.showMyDetails().subscribe(
@@ -65,7 +70,7 @@ export class HomeDeslogPage implements OnInit {
   }
   
   ngOnInit() {
-    
+
   }
 
 
@@ -86,7 +91,7 @@ export class HomeDeslogPage implements OnInit {
   }
 
   ionViewWillEnter(){
-    this.listRecipes();
+
   }
 
 }

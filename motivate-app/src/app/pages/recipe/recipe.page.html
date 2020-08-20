@@ -21,7 +21,7 @@
                 </ion-col>
                 <ion-col size="3">
                     <div *ngIf = "user_id==recipe_user_id || usuario.privileged==1">
-                        <ion-icon  (click)="deleteRecipe()" class="trashMargin" size="large" name="trash-outline"></ion-icon>
+                        <ion-icon  (click)="deleteRecipeAlertConfirm()" class="trashMargin" size="large" name="trash-outline"></ion-icon>
                     </div>  
                 </ion-col>
             </ion-row>
@@ -143,7 +143,7 @@
                         {{comment.comment}}
                     </div>
                 </div>
-                    <ion-icon size="large" name="trash-outline" *ngIf="comment.user_id==user_id || usuario.privileged==1" (click)="deleteComment(comment.id, i)"> </ion-icon>
+                    <ion-icon size="large" name="trash-outline" *ngIf="comment.user_id==user_id || usuario.privileged==1" (click)="deleteCommentAlertConfirm(comment.id, i)"> </ion-icon>
             </div>
             <!-- <app-comment   > </app-comment> -->
         </div>
