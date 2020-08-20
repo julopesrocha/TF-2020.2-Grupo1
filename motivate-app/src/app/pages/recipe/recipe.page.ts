@@ -13,8 +13,8 @@ import { ChallengeServiceService } from '../../services/challenge-service.servic
 })
 export class RecipePage implements OnInit {
 
-    user_id; 
-    recipe_user_id; 
+    user_id;
+    recipe_user_id;
     recipe_user_name;
 
 
@@ -29,8 +29,8 @@ export class RecipePage implements OnInit {
 
     editMode:boolean = false;
 
-    commentForm: FormGroup; 
-    updateForm: FormGroup; 
+    commentForm: FormGroup;
+    updateForm: FormGroup;
 
   constructor(private router: Router, public formbuilder:FormBuilder,
   public recipeService: RecipeService, public commentService: CommentService, public authService: AuthService, public challengeServiceService: ChallengeServiceService) {
@@ -42,7 +42,7 @@ export class RecipePage implements OnInit {
           comment:[null,[Validators.required,Validators.minLength(2),Validators.maxLength(200)]],
       });
 
-     
+
       this.updateForm = this.formbuilder.group(
         {
           title:[null, [Validators.maxLength(30), Validators.minLength(3)]],
@@ -142,7 +142,7 @@ export class RecipePage implements OnInit {
          (res)=>{
            console.log(res);
            this.recipe = res.recipe;
-           this.recipe_user_id = res.recipe.user_id; 
+           this.recipe_user_id = res.recipe.user_id;
            this.recipe_user_name=res.recipe.user_name;
            console.log(res.recipe.title);
            console.log("Postada por ", res.recipe.user_name);
@@ -166,9 +166,9 @@ export class RecipePage implements OnInit {
         }
       );
     }
-    
 
- 
+
+
      toggleEdit(){
        this.editMode = true;
      }
@@ -217,7 +217,7 @@ export class RecipePage implements OnInit {
           }
 
       navigateTobackHome(){
-          this.router.navigate(['/tabs/home'])
+          this.router.navigate(['/tabs/home']).then(()=>window.location.reload());
       }
 
       GoToRecipe(){

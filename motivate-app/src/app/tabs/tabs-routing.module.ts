@@ -25,10 +25,6 @@ const routes: Routes = [
         loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule), canActivate:[AuthGuard]
       },
       {
-        path: 'recipe',
-        loadChildren: () => import('../pages/recipe/recipe.module').then(m => m.RecipePageModule)
-      },
-      {
         path: '',
         redirectTo: '/tabs/home',
         pathMatch: 'full'

@@ -11,7 +11,7 @@
         <h4> {{usuario.name}} </h4>
       </div>
       <ion-row size="1" class="ion-margin-start">
-        <ion-button class="ion-text-center" size="small" shape="round" color="success" (click)="GoToEditProfile()">
+        <ion-button class="ion-text-center" size="small" shape="round" color="success" (click)="toggleEdit()">
           Editar
         </ion-button>
       </ion-row>
@@ -30,14 +30,14 @@
     <ion-col size="4">
       <div class="ion-text-center">
         <a>Seguidores</a>
-        <p>{{usuario.followers}}</p>
+        <p (click)="GoToFollowList()">{{usuario.followers}}</p>
       </div>
     </ion-col>
 
     <ion-col size="4">
       <div class="ion-text-center" >
         <a>Seguindo</a>
-        <p>{{usuario.following}}</p>
+        <p (click)="GoToFollowList()">{{usuario.following}}</p>
       </div>
     </ion-col>
 
@@ -52,6 +52,7 @@
       </div>
     </ion-col>
   </ion-row>
+
       <ion-fab vertical="bottom" horizontal="start" edge slot="fixed">
         <ion-fab-button (click)="GoToCreateChallenge()" color="success">
           <ion-icon name="create-outline"></ion-icon>
@@ -62,6 +63,7 @@
       <p>Minhas receitas:</p>
     </ion-col>
   </ion-row>
+
       <div class="recipesListMergin">
         <app-recipes-list (clickSeeRecipe)="navigateToRecipe($event)" [recipe]="recipe" *ngFor="let recipe of recipes"> </app-recipes-list>
       </div>
@@ -77,6 +79,7 @@
   </div>
 
   <div class="divForm">
+    <form [formGroup]="updateProfileForm" (ngSubmit)="updateUser(updateProfileForm) " class="background" *ngIf="editMode">
 
     <ion-row class="iconBack">
       <ion-icon (click)="toggleNoEdit()" name="chevron-back-outline" size="large" style="float: left" class="back"></ion-icon>

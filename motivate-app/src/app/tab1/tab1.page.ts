@@ -29,13 +29,13 @@ export class Tab1Page {
    }
 
    // Rota para a página de um challenge específico
-    navigateToChallenge(id) {
+    GoToChallenge(id) {
         this.router.navigate(['/challenge-page'], id);
     }
 
 
 
-    navigateTobackHome(){
+    GoBackHome(){
         this.router.navigate(['/tabs/home'])
     }
 

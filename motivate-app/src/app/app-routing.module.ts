@@ -28,7 +28,6 @@ const routes: Routes = [
     path: 'cadastro-desafio',
     loadChildren: () => import('./pages/cadastro-desafio/cadastro-desafio.module').then( m => m.CadastroDesafioPageModule), canActivate:[AuthGuard]
   },
-
    {
     path: 'recipe',
     loadChildren: () => import('./pages/recipe/recipe.module').then( m => m.RecipePageModule)
@@ -40,7 +39,11 @@ const routes: Routes = [
   {
     path: 'edit-profile',
     loadChildren: () => import('./pages/edit-profile/edit-profile.module').then( m => m.EditProfilePageModule), canActivate:[AuthGuard]
-  }
+    },
+    {
+      path: 'follow-users',
+      loadChildren: () => import('./pages/follow-users/follow-users.module').then( m => m.FollowUsersPageModule), canActivate:[AuthGuard]
+    }
 
 
 

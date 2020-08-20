@@ -12,11 +12,11 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class Tab3Page {
 
- user_id;
- recipes;
- usuario:Object;
- editMode:boolean = false;
- updateProfileForm: FormGroup;
+     user_id;
+     recipes;
+     usuario:Object;
+     editMode:boolean = false;
+     updateProfileForm: FormGroup;
 
 constructor(public authservice: AuthService, private router: Router, public userservice: UserService, public formbuilder:FormBuilder, public recipeService: RecipeService) {
 
@@ -34,10 +34,10 @@ this.updateProfileForm = this.formbuilder.group(
 
   details() {
       console.log("details");
-    this.authservice.showMyDetails().subscribe(
+      this.authservice.showMyDetails().subscribe(
         (res) => {
             console.log(res);
-            console.log("Perfil -", res[0].name );
+            console.log("Perfil -", res[0].name);
             this.usuario = res[0];
             this.user_id = res[0].id;
             this.listRecipes(this.user_id);
@@ -49,15 +49,15 @@ this.updateProfileForm = this.formbuilder.group(
     }
 
     logout() {
-      this.authservice.logout().subscribe(
-          (res) => {
+        this.authservice.logout().subscribe(
+            (res) => {
               console.log(res);
               localStorage.removeItem('userToken');
               localStorage.removeItem('Usuario');
               this.usuario= null;
               this.router.navigate(['/tabs/home']).then(()=>window.location.reload());
               console.log("Você saiu!!");
-          }
+      }
       );
     }
 
@@ -74,13 +74,18 @@ this.updateProfileForm = this.formbuilder.group(
       );
     }
 
-    toggleEdit(){
-      this.editMode = true;
-    }
 
     toggleNoEdit(){
       this.editMode = false;
+          localStorage.removeItem('userToken');
+          localStorage.removeItem('Usuario');
+          this.usuario= null;
+          this.router.navigate(['/tabs/home']).then(()=>window.location.reload());
+          console.log("Você saiu!!");
+          }
+      );
     }
+
 
     updateUser(form){
       this.userservice.updateUser(form.value).subscribe(
@@ -107,7 +112,11 @@ this.updateProfileForm = this.formbuilder.group(
     }
 
     navigateToRecipe(recipe_id) {
-      this.router.navigate(['/tabs/recipe'], recipe_id);
+      this.router.navigate(['/recipe'], recipe_id);
+    }
+
+    GoToFollowList(){
+        this.router.navigate(['/follow-users']);
     }
 
     ngOnInit(){

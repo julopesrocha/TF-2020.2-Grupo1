@@ -1,6 +1,6 @@
 <div class="backgroundTop">
     <div class="toolbar">
-        <ion-icon (click)="navigateTobackHome()" name="chevron-back-outline" size="large" style="float: left" class="back"></ion-icon>
+        <ion-icon (click)="GoBackHome()" name="chevron-back-outline" size="large" style="float: left" class="back"></ion-icon>
     </div>
 </div>
 <ion-content>
@@ -13,6 +13,6 @@
         </div>
     </div>
     <div class="challengeCard">
-        <app-challange-card [challenge]="challenge" (clickSeeChallenge)="navigateToChallenge($event)" *ngFor="let challenge of challenges"> </app-challange-card>
+        <app-challange-card [challenge]="challenge" (clickSeeChallenge)="GoToChallenge($event)" *ngFor="let challenge of challenges"> </app-challange-card>
     </div>
 </ion-content>
