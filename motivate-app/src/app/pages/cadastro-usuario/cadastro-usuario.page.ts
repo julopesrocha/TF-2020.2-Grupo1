@@ -35,10 +35,9 @@ export class CadastroUsuarioPage implements OnInit {
 
    get f(){return this.registerForm.controls;}
 
-  ngOnInit() {
-  }
 
-  async presentToast(){
+
+  async emailErrorToast(){
     const toast = await this.toastController.create({
       message: 'Esse email ja existe!',
       duration: 6000
@@ -46,28 +45,41 @@ export class CadastroUsuarioPage implements OnInit {
     toast.present();
   }
 
-  GoToHome(){
-    this.router.navigate(['/tabs/home']);
+  async cadastroEfetuadoToast(){
+    const toast = await this.toastController.create({
+      message: 'Cadastro efetuado com sucesso! :D',
+      duration: 4000
+    });
+    toast.present();
+    toast.onDidDismiss().then(() => {
+      this.router.navigate(["/tabs/home"]).then(()=>window.location.reload());
+
+    });
   }
+
+
+
+
 
   onSubmit(form) {
     this.authservice.register(this.registerForm.value).subscribe(
       (res)=> {
         console.log(res);
         localStorage.setItem('userToken', res.success.token);
-        this.router.navigate(['/tabs/home']).then(()=>window.location.reload());
-
+        this.cadastroEfetuadoToast();
       },
-
       (err)=> {
         console.log(err);
-
-        if(err.error.email[0]=="Este e-mail já existe"){
-
-          this.presentToast();
+        if (err.error.email[0]=="Este e-mail já existe"){
+            this.emailErrorToast();
         }
       }
     );
-
 }
+
+    GoToHome(){
+      this.router.navigate(['/tabs/home']);
+    }
+
+    ngOnInit() {}
 }

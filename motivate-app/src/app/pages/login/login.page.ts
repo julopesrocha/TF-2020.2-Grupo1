@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
-import {AuthService } from '../../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { ToastController } from '@ionic/angular';
 
 @Component({
@@ -37,6 +37,18 @@ export class LoginPage implements OnInit {
     toast.present();
   }
 
+  async loginEfetuadoToast(){
+    const toast = await this.toastController.create({
+      message: 'Você entrou! :D',
+      duration: 4000
+    });
+    toast.present();
+    toast.onDidDismiss().then(() => {
+      this.router.navigate(["/tabs/home"]).then(()=>window.location.reload());
+
+    });
+  }
+
   details() {
     this.authservice.showMyDetails().subscribe(
         (res) => {
@@ -52,19 +64,14 @@ export class LoginPage implements OnInit {
 }
 
   submitForm(form){
-
     console.log(form.value);
-
     this.authservice.login(this.loginForm.value).subscribe(
       (res)=> {
         console.log(res);
         localStorage.setItem('userToken', res.success.token);
-        // this.usuario =res[0];
-        this.router.navigate(['/tabs/home']).then(()=>window.location.reload());
+        this.loginEfetuadoToast();
         console.log("entrei");
       },
-
-
         (err)=> {
           console.log(err);
 
