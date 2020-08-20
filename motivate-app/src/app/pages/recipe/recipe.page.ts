@@ -13,6 +13,7 @@ import { ChallengeServiceService } from '../../services/challenge-service.servic
 })
 export class RecipePage implements OnInit {
 
+    usuario;
     user_id;
     recipe_user_id;
     recipe_user_name;
@@ -60,6 +61,7 @@ export class RecipePage implements OnInit {
         (res) => {
             console.log(res);
             this.user_id = res[0].id;
+            this.usuario = res[0];
         },
         (err) =>{
           console.log(err);

@@ -1,4 +1,4 @@
-<ion-content *ngIf="recipe">
+<ion-content *ngIf="recipe && usuario">
 
     <div *ngIf="!editMode">
         <div class="toolbar">
@@ -13,10 +13,18 @@
             <img  class="faixa" src="../../assets/faixa-laranja.png" alt="faixa laranja do desafio low carb">
         </div>
         <ion-row class="iconMargin">
-            <div *ngIf = "user_id==recipe_user_id">
-                <ion-icon (click)="toggleEdit()" size="large" name="pencil-outline"></ion-icon>
-                <ion-icon (click)="deleteRecipe()" class="trashMargin" size="large" name="trash-outline"></ion-icon>
-            </div>
+            <ion-row class="ion-justify-content-evenly">
+                <ion-col size="3">
+                    <div *ngIf = "user_id==recipe_user_id">
+                        <ion-icon (click)="toggleEdit()" size="large" name="pencil-outline"></ion-icon>
+                    </div>
+                </ion-col>
+                <ion-col size="3">
+                    <div *ngIf = "user_id==recipe_user_id || usuario.privileged==1">
+                        <ion-icon  (click)="deleteRecipe()" class="trashMargin" size="large" name="trash-outline"></ion-icon>
+                    </div>
+                </ion-col>
+            </ion-row>
             <ion-icon (click)="likeRecipe(recipe.id)" name="heart" size="large" color="success"></ion-icon> {{recipe.likes}}
         </ion-row>
     <!-- Descrição -->
@@ -130,7 +138,7 @@
                         {{comment.comment}}
                     </div>
                 </div>
-                    <ion-icon size="large" name="trash-outline" *ngIf="comment.user_id==user_id" (click)="deleteComment(comment.id, i)"> </ion-icon>
+                    <ion-icon size="large" name="trash-outline" *ngIf="comment.user_id==user_id || usuario.privileged== 1" (click)="deleteComment(comment.id, i)"> </ion-icon>
             </div>
             <!-- <app-comment   > </app-comment> -->
         </div>

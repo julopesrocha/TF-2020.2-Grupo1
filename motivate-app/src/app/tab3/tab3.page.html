@@ -53,7 +53,7 @@
     </ion-col>
   </ion-row>
 
-      <ion-fab vertical="bottom" horizontal="start" edge slot="fixed">
+      <ion-fab *ngIf="usuario.privileged==1" vertical="bottom" horizontal="start" edge slot="fixed">
         <ion-fab-button (click)="GoToCreateChallenge()" color="success">
           <ion-icon name="create-outline"></ion-icon>
         </ion-fab-button>
