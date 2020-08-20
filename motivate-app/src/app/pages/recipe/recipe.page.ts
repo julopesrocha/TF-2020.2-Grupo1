@@ -14,9 +14,13 @@ import { ToastController } from '@ionic/angular';
 })
 export class RecipePage implements OnInit {
 
+    token = localStorage.getItem("userToken");
+
+    usuario;
     user_id; 
     recipe_user_id; 
     recipe_user_name;
+
    
 
     comments;
@@ -57,6 +61,8 @@ export class RecipePage implements OnInit {
 
   }
 
+  // Toast's
+
   async receitaApagadaToast(){
     const toast = await this.toastController.create({
       message: 'Receita deletada com sucesso!',
@@ -93,6 +99,7 @@ export class RecipePage implements OnInit {
     this.authService.showMyDetails().subscribe(
         (res) => {
             console.log(res);
+            this.usuario = res[0]; 
             this.user_id = res[0].id;
         },
         (err) =>{

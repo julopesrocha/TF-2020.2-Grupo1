@@ -14,7 +14,7 @@
         </div>
         <div *ngIf = "user_id==recipe_user_id" class="iconMargin" >
             <ion-icon (click)="toggleEdit()" size="large" name="pencil-outline"></ion-icon>
-            <ion-icon (click)="deleteRecipe(i)" class="trashMargin" size="large" name="trash-outline"></ion-icon>
+            <ion-icon *ngIf = "usuario.privilege ==1" (click)="deleteRecipe(i)" class="trashMargin" size="large" name="trash-outline"></ion-icon>
         </div>
     <!-- Descrição -->
          <div class="textMargin"> Postada por: {{recipe_user_name}} </div>
@@ -103,12 +103,14 @@
 
     <!-- Receitas -->
             <div class="subtitles"> Comentários <ion-icon size="large" name="chatbubble-ellipses-outline"></ion-icon> </div>
-                <form [formGroup]="commentForm" (ngSubmit)="postComment(commentForm)" >
+            <div *ngIf="token!=null" >
+                <form  [formGroup]="commentForm" (ngSubmit)="postComment(commentForm)" >
                     <div class="commentFormat">
                         <ion-textarea class="textComment" placeholder="Faça seu comentário:" type="text" formControlName="comment"></ion-textarea>
                     </div>
                     <ion-button class="sendButton"type="submit" shape="round" [disabled]="commentForm.invalid">Enviar</ion-button>
                 </form>
+            </div>
 
     <!--Sessão dos Comentários-->
         <div class="commentsMergin">
