@@ -122,7 +122,7 @@
         <ion-button type="submit" color="success" class="botao" shape="round" size="small" [disabled]="updateProfileForm.invalid"> Editar</ion-button>
       </ion-row>
       <ion-row class="ion-justify-content-center">
-        <ion-button type="submit" color="success" class="botao" shape="round" size="small"> Excluir Conta</ion-button>
+        <ion-button (click)="deleteUser()" color="success" class="botao" shape="round" size="small"> Excluir Conta</ion-button>
       </ion-row>
 
 

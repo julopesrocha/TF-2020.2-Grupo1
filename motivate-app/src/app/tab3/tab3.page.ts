@@ -96,6 +96,18 @@ this.updateProfileForm = this.formbuilder.group(
       );
     }
 
+    deleteUser(){
+      this.userservice.deleteUser(this.user_id).subscribe(
+        (res)=>{
+          console.log(res);
+          localStorage.removeItem('userToken');
+          this.router.navigate(["/tabs/home"]).then(()=>window.location.reload());
+        }, (err) => {
+          console.log(err);
+        }
+      );
+    }
+
     GoToCreateChallenge(){
       this.router.navigate(['/cadastro-desafio']);
     }

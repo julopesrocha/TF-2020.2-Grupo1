@@ -61,9 +61,11 @@ export class UserService {
         return this.http.get(this.apiUrl + 'isFollowing/' + user_id, this.httpHeaders);
     }
 
-    // public deleteUser(user_id): Observable<any>{
-    //     this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('userToken');
-    //     return this.http.delete(this.apiUrl + 'deleteUser/' + user_id, this.httpHeaders);
-    // }
+    //deletar usuario
+
+    public deleteUser(): Observable<any>{
+        this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('userToken');
+        return this.http.delete(this.apiUrl + 'deleteUser', this.httpHeaders);
+    }
 
 }
