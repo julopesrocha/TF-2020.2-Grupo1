@@ -47,11 +47,11 @@
 
     <div class="divForm">
 
-        <ion-row class="iconBack">
-            <ion-icon (click)="toggleNoEdit()" name="chevron-back-outline" size="large" style="float: left" class="back"></ion-icon>
-          </ion-row>
 
         <form [formGroup]="updateForm" (ngSubmit)="updateRecipe(updateForm)" *ngIf="editMode">
+              <ion-row class="iconBack">
+                <ion-icon (click)="toggleNoEdit()" name="chevron-back-outline" size="large" style="float: left" class="back"></ion-icon>
+              </ion-row>
 
             <div class="form-group">
                 <ion-label >Título</ion-label>
@@ -97,7 +97,7 @@
 
 
             <ion-row class=ion-justify-content-center>
-                <ion-button type="submit" class="botao" shape="round">Editar</ion-button>
+                <ion-button type="submit" class="botao" shape="round"> Editar </ion-button>
             </ion-row>
 
         </form>

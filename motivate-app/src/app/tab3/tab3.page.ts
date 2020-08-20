@@ -62,7 +62,7 @@ this.updateProfileForm = this.formbuilder.group(
     }
 
     listRecipes(user_id){
-        console.log(user_id);
+      console.log(user_id);
       this.recipeService.listRecipesUser(user_id).subscribe(
         (res)=>{
           console.log(res);
@@ -77,13 +77,10 @@ this.updateProfileForm = this.formbuilder.group(
 
     toggleNoEdit(){
       this.editMode = false;
-          localStorage.removeItem('userToken');
-          localStorage.removeItem('Usuario');
-          this.usuario= null;
-          this.router.navigate(['/tabs/home']).then(()=>window.location.reload());
-          console.log("Você saiu!!");
-          }
-      );
+    }
+
+    toggleEdit(){
+      this.editMode = true;
     }
 
 

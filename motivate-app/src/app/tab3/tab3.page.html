@@ -80,13 +80,9 @@
 
   <div class="divForm">
     <form [formGroup]="updateProfileForm" (ngSubmit)="updateUser(updateProfileForm) " class="background" *ngIf="editMode">
-
-    <ion-row class="iconBack">
-      <ion-icon (click)="toggleNoEdit()" name="chevron-back-outline" size="large" style="float: left" class="back"></ion-icon>
-    </ion-row>
-
-    <form [formGroup]="updateProfileForm" (ngSubmit)="updateUser(updateProfileForm) " class="background" *ngIf="editMode">
-
+        <ion-row class="iconBack">
+          <ion-icon (click)="toggleNoEdit()" name="chevron-back-outline" size="large" style="float: left" class="back"></ion-icon>
+        </ion-row>
 
       <div class="form-group">
         <ion-label >Nome</ion-label>

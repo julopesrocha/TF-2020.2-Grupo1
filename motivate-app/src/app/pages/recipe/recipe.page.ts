@@ -53,8 +53,6 @@ export class RecipePage implements OnInit {
 
         }
       )
-      //
-
   }
 
   details() {
