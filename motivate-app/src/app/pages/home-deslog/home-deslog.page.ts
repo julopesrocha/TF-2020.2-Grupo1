@@ -87,7 +87,6 @@ export class HomeDeslogPage implements OnInit {
 
   ionViewWillEnter(){
     this.listRecipes();
-    // this.verifyLogin();
   }
 
 }
