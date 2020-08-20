@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import {AuthService } from '../services/auth.service';
-import {Router} from '@angular/router';
+import { AuthService } from '../services/auth.service';
+import { UserService } from '../services/user.service';
+import { Router} from '@angular/router';
 import { RecipeService } from '../services/recipe.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-tab3',
@@ -13,9 +15,21 @@ export class Tab3Page {
  user_id;
  recipes;
  usuario:Object;
+ editMode:boolean = false;
+ updateProfileForm: FormGroup;
 
-  constructor(public authservice: AuthService, private router: Router, public recipeService: RecipeService ) {
+constructor(public authservice: AuthService, private router: Router, public userservice: UserService, public formbuilder:FormBuilder, public recipeService: RecipeService) {
 
+this.details();
+
+this.updateProfileForm = this.formbuilder.group(
+  {
+    name:[null, [Validators.maxLength(20), Validators.minLength(2)]],
+    gender:[[Validators.required]],
+    aboutme:[null]
+
+      }
+    )
   }
 
   details() {
@@ -23,7 +37,7 @@ export class Tab3Page {
     this.authservice.showMyDetails().subscribe(
         (res) => {
             console.log(res);
-            console.log("Esse é você");
+            console.log("Perfil -", res[0].name );
             this.usuario = res[0];
             this.user_id = res[0].id;
             this.listRecipes(this.user_id);
@@ -31,53 +45,73 @@ export class Tab3Page {
         (err) =>{
           console.log(err);
         }
-    );
-}
-
-logout() {
-  this.authservice.logout().subscribe(
-      (res) => {
-          console.log(res);
-          localStorage.removeItem('userToken');
-          localStorage.removeItem('Usuario');
-          this.usuario= null;
-          this.router.navigate(['/tabs/home']).then(()=>window.location.reload());
-          console.log("Você saiu!!");
-      }
-  );
-}
-
-listRecipes(user_id){
-    console.log(user_id);
-  this.recipeService.listRecipesUser(user_id).subscribe(
-    (res)=>{
-      console.log(res);
-      this.recipes=res.recipeList;
-    },
-    (err)=>{
-      console.log(err);
+      );
     }
-  );
-}
 
-GoToCreateChallenge(){
-  this.router.navigate(['/cadastro-desafio']);
-}
+    logout() {
+      this.authservice.logout().subscribe(
+          (res) => {
+              console.log(res);
+              localStorage.removeItem('userToken');
+              localStorage.removeItem('Usuario');
+              this.usuario= null;
+              this.router.navigate(['/tabs/home']).then(()=>window.location.reload());
+              console.log("Você saiu!!");
+          }
+      );
+    }
 
-GoToCreateRecipe(){
-  this.router.navigate(['/tabs/tab2']);
-}
+    listRecipes(user_id){
+        console.log(user_id);
+      this.recipeService.listRecipesUser(user_id).subscribe(
+        (res)=>{
+          console.log(res);
+          this.recipes=res.recipeList;
+        },
+        (err)=>{
+              console.log(err);
+        }
+      );
+    }
 
-GoToEditProfile(){
-  this.router.navigate(['edit-profile']);
-}
+    toggleEdit(){
+      this.editMode = true;
+    }
 
-navigateToRecipe(recipe_id) {
-  this.router.navigate(['/tabs/recipe'], recipe_id);
-}
+    toggleNoEdit(){
+      this.editMode = false;
+    }
 
-ngOnInit(){
-    this.details();
-}
+    updateUser(form){
+      this.userservice.updateUser(form.value).subscribe(
+        (res)=>{
+          this.editMode = false;
+          console.log(res);
+          this.router.navigate(["/tabs/tab3"]).then(()=>window.location.reload());
+        }, (err) => {
+          console.log(err);
+        }
+      );
+    }
 
-}
+    GoToCreateChallenge(){
+      this.router.navigate(['/cadastro-desafio']);
+    }
+
+    GoToCreateRecipe(){
+      this.router.navigate(['/tabs/tab2']);
+    }
+
+    GoToProfile(){
+      this.router.navigate(['/tabs/tab3']);
+    }
+
+    navigateToRecipe(recipe_id) {
+      this.router.navigate(['/tabs/recipe'], recipe_id);
+    }
+
+    ngOnInit(){
+        this.details();
+    }
+
+    }

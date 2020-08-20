@@ -13,41 +13,78 @@ use App\Http\Resources\Comments as CommentResource;
 
 class CommentController extends Controller
 {
-    // Cria um comentário
+    /**
+     * Cria um novo comentário e a atribui a uma nova receita
+     * 
+     * @param CommentRequest       $request
+     * @param int                   $recipe_id
+     * 
+     * @return JsonResponse
+     */
     public function postComment(CommentRequest $request, $recipe_id){
         $user = Auth::user();
         $newComment = new Comment;
         $newComment->postComment($request);
         $newComment->setUser($user->id);
         $newComment->setRecipe($recipe_id);
-        return response()->json(['success' => new CommentResource($newComment)], 200);
+        return response()->json(['success' => new CommentResource($newComment)],
+                                200);
     }
 
-    // Atualiza um comentário
+    /**
+     * Atualiza o atributo comentário do BD
+     * 
+     * @param CommentRequest        $request
+     * @param int       $id
+     * 
+     * @return JsonResponse
+     */
     public function updateComment(CommentRequest $request, $id){
         $user = Auth::user();
         $comment = Comment::findOrFail($id);
         $comment->updateComment($request);
-        return response()->json(['success' => new CommentResource($comment)], 200);
+        return response()->json([
+            'success' => new CommentResource($comment)], 200);
     }
 
-    // Procura por um comentário específico
+    /**
+     * Retorna o comentário correspondente ao ID fornecido
+     * 
+     * @param int       $id
+     * 
+     * @return JsonResponse
+     */
     public function getComment($id){
         $comment = Comment::findOrFail($id);
-        return response()->json(['success' => new CommentResource($comment)], 200);
+        return response()->json([
+            'success' => new CommentResource($comment)], 200);
     }
 
-    // Lista todos os comentários relacionados a uma receita específica
+    /** 
+     * Lista todos os comentários relacionados a uma receita específica
+     * 
+     * @param int      $recipe_id
+     * 
+     * @return JsonResponse
+     */
     public function listComments($recipe_id){
         $commentList = Comment::where('recipe_id', $recipe_id)->get();
         $sortedList = $commentList->sortByDesc('created_at');
-        return response()->json(['commentList' => CommentResource::collection($sortedList)], 200);
+        return response()->json([
+            'commentList' => CommentResource::collection($sortedList)], 200);
     }
 
-    // Deleta um comentário 
+    /**
+     * Deleta um comentário correspondente ao ID fornecido 
+     * 
+     * @param int       $comment_id
+     * 
+     * @return JsonResponse
+     */
     public function deleteComment($comment_id){
         Comment::findOrFail($comment_id);
         Comment::destroy($comment_id);
-        return response()->json(['Your comment has been successfully deleted.'], 200);
+        return response()->json([
+            'Your comment has been successfully deleted.'], 200);
     }
 }

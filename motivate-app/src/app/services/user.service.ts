@@ -18,9 +18,20 @@ export class UserService {
     }
   }
 
+<<<<<<< HEAD
   public showUser(user_id): Observable<any>{
     return this.http.get(this.apiUrl + 'getUserProfile/' + user_id);
   }
+=======
+  public updateUser(form): Observable<any>{
+    this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('userToken');
+    return this.http.put(this.apiUrl + 'editUserProfile', form, this.httpHeaders);
+  }
+
+  // public showUser(user_id): Observable<any>{
+  //   return this.http.get(this.apiUrl + 'getUser/' + user_id);
+  // }
+>>>>>>> e883d7b705f75e5130480d381602291b5a242e52
 
   // public listSeguidores(user_id): Observable <any>{
   //   return this.http.get(this.apiUrl + 'getSeguidores/' + user_id);

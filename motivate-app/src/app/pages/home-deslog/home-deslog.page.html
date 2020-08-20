@@ -16,6 +16,7 @@
         </ion-row>
     </ion-grid>
 
+
       <div class="postMargin">
          <app-posts (clickSeeRecipe)="GoToRecipe($event)" (clickSeeProfile)="GoToProfile($event)" [recipe]="recipe" *ngFor="let recipe of recipes" > </app-posts>
       </div>

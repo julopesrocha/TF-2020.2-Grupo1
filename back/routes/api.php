@@ -18,7 +18,15 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//Usuário
+/*
+--------------------------------------------------------------------------------
+
+                        Rotas sem autenticação
+
+--------------------------------------------------------------------------------
+ */
+
+// Usuário
 Route::GET('getUserProfile/{user_id}', 'UserController@getUserProfile');
 
 // Receita
@@ -39,9 +47,17 @@ Route::GET('listChallenges', 'ChallengeController@listChallenges');
 Route::GET('getFollowersOfUser/{user_id}','UserController@getFollowersOfUser');
 Route::GET('getUserFollowing/{user_id}', 'UserController@getUserFollowing');
 
-//Somente autenticado
+// Passport
 Route::POST('register', 'API\PassportController@register');
 Route::POST('login', 'API\PassportController@login');
+
+/*
+--------------------------------------------------------------------------------
+                        
+                        Rotas com autenticação
+
+--------------------------------------------------------------------------------
+ */
 
 Route::group(['middleware' =>'auth:api'], function(){
 
@@ -49,23 +65,30 @@ Route::group(['middleware' =>'auth:api'], function(){
     Route::GET('logout', 'API\PassportController@logout');
     Route::GET('getDetails', 'API\PassportController@getDetails');
     Route::PUT('editUserProfile', 'UserController@editUserProfile');
-    Route::DELETE('deleteUser/{user_id}', 'UserController@deleteUser')->middleware('userPermissions');
+    Route::DELETE('deleteUser', 'UserController@deleteUser');
 
     // Receita
     Route::GET('getRecipesOfFollowing', 'RecipeController@getRecipesOfFollowing');
     Route::POST('postRecipe', 'RecipeController@postRecipe');
-    Route::PUT('updateRecipe/{recipe_id}', 'RecipeController@updateRecipe')->middleware('recipePermissions');
-    Route::DELETE('deleteRecipe/{recipe_id}', 'RecipeController@deleteRecipe')->middleware('recipePermissions');
+    Route::PUT('updateRecipe/{recipe_id}', 'RecipeController@updateRecipe')
+            ->middleware('recipePermissions');
+    Route::DELETE('deleteRecipe/{recipe_id}', 'RecipeController@deleteRecipe')
+            ->middleware('recipePermissions');
 
     // Comentário
     Route::POST('postComment/{recipe_id}', 'CommentController@postComment');
-    Route::PUT('updateComment/{comment_id}', 'CommentController@updateComment')->middleware('commentPermissions');
-    Route::DELETE('deleteComment/{comment_id}', 'CommentController@deleteComment')->middleware('commentPermissions');
+    Route::PUT('updateComment/{comment_id}', 'CommentController@updateComment')
+            ->middleware('commentPermissions');
+    Route::DELETE('deleteComment/{comment_id}', 'CommentController@deleteComment')
+            ->middleware('commentPermissions');
 
     // Desafio
-    Route::POST('postChallenge', 'ChallengeController@postChallenge')->middleware('adminPermissions');
-    Route::PUT('updateChallenge/{challenge_id}', 'ChallengeController@updateChallenge')->middleware('adminPermissions');
-    Route::DELETE('deleteChallenge/{challenge_id}', 'ChallengeController@deleteChallenge')->middleware('adminPermissions');
+    Route::POST('postChallenge', 'ChallengeController@postChallenge')
+            ->middleware('adminPermissions');
+    Route::PUT('updateChallenge/{challenge_id}', 'ChallengeController@updateChallenge')
+            ->middleware('adminPermissions');
+    Route::DELETE('deleteChallenge/{challenge_id}', 'ChallengeController@deleteChallenge')
+            ->middleware('adminPermissions');
 
     // Seguir
     Route::GET('getFollowers', 'UserController@getFollowers');
@@ -74,7 +97,7 @@ Route::group(['middleware' =>'auth:api'], function(){
     Route::POST('followUser/{user_id}', 'UserController@followUser');
 
     // Curtir
-    Route::POST('likeRecipe/{recipe_id}', 'RecipeController@likeRecipe');
     Route::GET('hasLiked/{recipe_id}', 'RecipeController@hasLiked');
+    Route::POST('likeRecipe/{recipe_id}', 'RecipeController@likeRecipe');
 
 });

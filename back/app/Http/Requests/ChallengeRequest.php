@@ -31,7 +31,7 @@ class ChallengeRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'min:2|max:20|unique:challenges,title',
+            'title' => 'min:2|max:40|unique:challenges,title',
             'description' => 'min:2|max:500',
             'about' => 'min:2|max:300',
             'recommendation' => 'max:500',
@@ -42,7 +42,7 @@ class ChallengeRequest extends FormRequest
         return [
             // Mensagens personalizadas
             'title.min' => 'O título deve conter no mínimo 2 digitos',
-            'title.max' => 'O título deve conter no máximo 20 digitos',
+            'title.max' => 'O título deve conter no máximo 40 digitos',
             'title.unique' => 'Já existe um desafio com esse título',
             'description.min' => 'A descrição deve conter no mínimo 2 digitos',
             'description.max' => 'A descrição conter no máximo 500 digitos',
