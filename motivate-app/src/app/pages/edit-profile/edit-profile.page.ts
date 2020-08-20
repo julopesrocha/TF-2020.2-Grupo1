@@ -9,13 +9,13 @@ import {UserService} from '../../services/user.service';
 })
 export class EditProfilePage implements OnInit {
 
-  usuario:Object; 
+  usuario:Object;
 
-  constructor(public authservice: AuthService, public userService: UserService) { 
+  constructor(public authservice: AuthService, public userService: UserService) {
     this.details();
   }
 
-  
+
   details() {
     this.authservice.showMyDetails().subscribe(
         (res) => {
@@ -29,18 +29,6 @@ export class EditProfilePage implements OnInit {
     );
 
 }
-
-// deleteUser(id){
-//   this.userService.deleteUser(id).subscribe(
-//     (res)=>{
-//       console.log(res);
-//       console.log('usuário deletado.' +id);
-//     }, (err) =>{
-//       console.log(err);
-//     }
-//   );
-  
-// }
 
   ngOnInit() {
   }

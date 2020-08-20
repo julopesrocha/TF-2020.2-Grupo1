@@ -28,18 +28,18 @@ export class UserService {
     return this.http.put(this.apiUrl + 'editUserProfile', form, this.httpHeaders);
   }
 
- // // public listFollowers(): Observable <any>{
- //     return this.http.get(this.apiUrl + 'getFollowers');
- //   }
- //
- //  public listFollowing(): Observable <any>{
- //     return this.http.get(this.apiUrl + 'getFollowing');
- //   }
- //
-    public followUser(user_id): Observable <any>{
-        this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('userToken');
-        return this.http.post(this.apiUrl + 'followUser/'+ user_id);
-     }
+
+  //lista de seguidores
+  public listFollowers(): Observable <any>{
+      this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('userToken');
+      return this.http.get(this.apiUrl + 'getFollowers', this.httpHeaders);
+   }
+
+  //lista de quem você esta seguindo
+  public listFollowing(): Observable <any>{
+      this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('userToken');
+      return this.http.get(this.apiUrl + 'getFollowing', this.httpHeaders);
+   }
 
 
     // seguir uma pessoa

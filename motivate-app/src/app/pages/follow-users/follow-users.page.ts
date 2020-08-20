@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -11,9 +11,38 @@ export class FollowUsersPage implements OnInit {
 
   clickFollow: boolean = true;
   followers;
-  following;
+  followings;
+  // followMode;
+  // check;
 
-  constructor(private router: Router, public userservice:UserService ) { }
+  constructor(private router: Router, public userService:UserService, private route: ActivatedRoute ) { }
+
+  // async followUser(){
+  // await this.route.params.subscribe((params) => (this.userId = params.userId));
+  //   this.userService.follow(this.userId).subscribe(
+  //     (res)=>{
+  //         console.log(res);
+  //         this.followMode = res.isFollowing;
+  //         if(this.followMode){
+  //             this.user.followers ++;
+  //         }
+  //         else{
+  //             this.user.followers --;
+  //         }
+  //     }
+  //   )
+  // }
+  //
+  // async checkFollow(){
+  // await this.route.params.subscribe((params) => (this.userId = params.userId));
+  //   this.userService.verifyFollow(this.userId).subscribe(
+  //     (res)=>{
+  //         console.log(res);
+  //         this.followMode = res.isFollowing;
+  //     }
+  //   )
+  // }
+
 
   GoBackHome(){
       this.router.navigate(['/tabs/home'])
@@ -24,34 +53,47 @@ export class FollowUsersPage implements OnInit {
   }
 
 
-  alternar(){
-      this.clickFollow = !this.clickFollow;
-  }
+  // verifyPageFollow(){
+  //     if(this.followers == "followers"){
+  //         this.listFollowers();
+  //     }
+  //     else if(this.followings == "followings"){
+  //         this.listFollowing();
+  //     }
 
-//  listFollowers(){
-//     this.userService.listFollowers().subscribe(
-//       (res)=>{
-//         console.log(res);
-//         this.followers = res.followersList;
-//       },
-//       (err)=>{
-//         console.log(err);
-//       }
-//     );
- // }
+     listFollowers(){
+        this.userService.listFollowers().subscribe(
+          (res)=>{
+            console.log(res);
+            this.followers = res.userFollower;
+          },
+          (err)=>{
+            console.log(err);
+          }
+        );
+     }
 
-//   listFollowing(){
-//      this.userService.listFollowing().subscribe(
-//        (res)=>{
-//          console.log(res);
-//          this.following = res.followingList;
-//        },
-//        (err)=>{
-//          console.log(err);
-//        }
-//      );
-//    }
+     // GoToListFollowers(){
+     //    this.router.navigate(['/follow-users'])
+     // }
 
-  ngOnInit() {}
 
-}
+      listFollowing(){
+         this.userService.listFollowing().subscribe(
+           (res)=>{
+             console.log(res);
+             this.followings = res.userFollowing;
+           },
+           (err)=>{
+             console.log(err);
+           }
+         );
+       }
+
+      ngOnInit() {
+          this.listFollowers();
+          this.listFollowing();
+          // this.checkFollow();
+      }
+
+    }

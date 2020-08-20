@@ -69,7 +69,7 @@ export class HomeDeslogPage implements OnInit {
   }
 
    GoToRecipe(recipe_id) {
-    this.router.navigate(['/tabs/recipe'], recipe_id);
+    this.router.navigate(['/recipe'], recipe_id);
   }
 
   GoToRegister(){
@@ -81,7 +81,7 @@ export class HomeDeslogPage implements OnInit {
   }
 
   GoToProfile(user_id) {
-    this.router.navigate(['/profile-other', user_id]);
+    this.router.navigate(['/profile-other', {userId:user_id}]);
   }
 
   ngOnInit() {}

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {AuthService } from '../services/auth.service';
-import {UserService } from '../services/user.service';
+import { AuthService } from '../services/auth.service';
+import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 import { RecipeService } from '../services/recipe.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -106,7 +106,11 @@ GoToProfile(){
 }
 
 navigateToRecipe(recipe_id) {
-  this.router.navigate(['/tabs/recipe'], recipe_id);
+  this.router.navigate(['/recipe'], recipe_id);
+}
+
+GoToFollowList(){
+    this.router.navigate(['/follow-users']);
 }
 
 ngOnInit(){

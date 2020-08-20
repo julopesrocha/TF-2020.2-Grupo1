@@ -9,34 +9,34 @@
         <ion-segment-button value="following">
             <ion-label>Seguidores</ion-label>
         </ion-segment-button>
-<!-- Seguindo -->
+<!-- Seguidores -->
     <ion-segment-button value="followers">
         <ion-label>Seguindo</ion-label>
     </ion-segment-button>
     </ion-segment>
     <div [ngSwitch]= "follow" >
+    <div *ngIf="followers">
         <ion-list *ngSwitchCase="'followers'">
-<!-- Avatar -->
-    <ion-item > <!--*ngFor="let follower of followers"-->
-        <img class="avatar" src="../../assets/boy-cake.jpg">
-        <div class="name">
-            <h5> Luciana Vitória </h5>
-        </div>
-        <ion-button *ngIf="!this.clickFollow" (click)="this.alternar()" shape="round"> seguir </ion-button>
-        <ion-button *ngIf="this.clickFollow" (click)="this.alternar()" shape="round"> seguindo </ion-button>
-    </ion-item>
+        <ion-item *ngFor="let follower of followers">
+            <img class="avatar" src="../../assets/boy-cake.jpg">
+            <div class="name">
+                <h5> {{follower.name}} </h5>
+            </div>
+            <!-- <ion-button (click)="followUser()" shape="round">{{followMode ? "Seguir" : "Seguindo"}}</ion-button> -->
+        </ion-item>
         </ion-list>
-<!-- Seguidores  -->
+    </div>
+<!-- Seguindo  -->
+<div *ngIf="followings">
     <ion-list *ngSwitchCase="'following'">
-<!-- Avatar -->
-    <ion-item > <!--*ngFor="let following of following"-->
-        <img class="avatar" src="../../assets/boy-cake.jpg">
-        <div class="name">
-            <h5> Luciana Vitória </h5>
-        </div>
-        <ion-button *ngIf="this.clickFollow" (click)="this.alternar()" shape="round"> seguir </ion-button>
-        <ion-button *ngIf="!this.clickFollow" (click)="this.alternar()" shape="round"> seguindo </ion-button>
-    </ion-item>
+        <ion-item *ngFor="let following of followings">
+            <img class="avatar" src="../../assets/boy-cake.jpg">
+            <div class="name">
+                <h5> {{following.name}} </h5>
+            </div>
+                <!-- <ion-button (click)="followUser()" shape="round">{{followMode ? "Seguindo" : "Seguir"}}</ion-button> -->
+        </ion-item>
     </ion-list>
+</div>
     </div>
 </ion-content>

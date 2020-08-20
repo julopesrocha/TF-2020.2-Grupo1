@@ -17,9 +17,11 @@ export class ProfileOtherPage implements OnInit {
     followMode;
 
 
-  constructor(private router: Router, public userService: UserService, public recipeService: RecipeService, private route: ActivatedRoute) { }
+  constructor(private router: Router, public userService: UserService, public recipeService: RecipeService, private route: ActivatedRoute) {
+  }
 
-   followUser(){
+   async followUser(){
+   await this.route.params.subscribe((params) => (this.userId = params.userId));
      this.userService.follow(this.userId).subscribe(
        (res)=>{
            console.log(res);
@@ -34,7 +36,8 @@ export class ProfileOtherPage implements OnInit {
      )
    }
 
-   checkFollow(){
+   async checkFollow(){
+   await this.route.params.subscribe((params) => (this.userId = params.userId));
      this.userService.verifyFollow(this.userId).subscribe(
        (res)=>{
            console.log(res);
@@ -43,8 +46,9 @@ export class ProfileOtherPage implements OnInit {
      )
    }
 
-  getUser(user_id){
-    this.userService.showUser(user_id).subscribe(
+  async getUser(){
+  await this.route.params.subscribe((params) => (this.userId = params.userId));
+    this.userService.showUser(this.userId).subscribe(
      (res)=>{
        console.log(res);
        this.user = res.user;
@@ -67,15 +71,13 @@ export class ProfileOtherPage implements OnInit {
    );
  }
 
-
     GoToHome(){
       this.router.navigate(['/tabs/home']);
     }
 
   ngOnInit() {
-      this.userId = this.route.snapshot.paramMap.get("id");
       this.checkFollow();
-      this.getUser(this.userId);
+      this.getUser();
   }
 
     }

@@ -42,7 +42,7 @@ const routes: Routes = [
     },
     {
       path: 'follow-users',
-      loadChildren: () => import('./pages/follow-users/follow-users.module').then( m => m.FollowUsersePageModule), canActivate:[AuthGuard]
+      loadChildren: () => import('./pages/follow-users/follow-users.module').then( m => m.FollowUsersPageModule), canActivate:[AuthGuard]
     }
 
 
