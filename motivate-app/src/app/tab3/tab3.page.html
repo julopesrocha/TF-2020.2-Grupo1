@@ -67,6 +67,12 @@
       <div class="recipesListMergin">
         <app-recipes-list (clickSeeRecipe)="navigateToRecipe($event)" [recipe]="recipe" *ngFor="let recipe of recipes"> </app-recipes-list>
       </div>
+  <ion-fab *ngIf="usuario.privileged==1" vertical="bottom" horizontal="start" edge slot="fixed">
+    <ion-fab-button (click)="GoToCreateChallenge()" color="success">
+      <ion-icon name="create-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
 
       <ion-row class="ion-justify-content-end">
         <ion-col size="4">
@@ -79,10 +85,11 @@
   </div>
 
   <div class="divForm">
+
     <form [formGroup]="updateProfileForm" (ngSubmit)="updateUser(updateProfileForm) " class="background" *ngIf="editMode">
-        <ion-row class="iconBack">
-          <ion-icon (click)="toggleNoEdit()" name="chevron-back-outline" size="large" style="float: left" class="back"></ion-icon>
-        </ion-row>
+      <ion-row class="iconBack">
+        <ion-icon (click)="toggleNoEdit()" name="chevron-back-outline" size="large" style="float: left" class="back"></ion-icon>
+      </ion-row>
 
       <div class="form-group">
         <ion-label >Nome</ion-label>
@@ -91,8 +98,7 @@
 
       <div class="form-group">
         <ion-label >Biografia</ion-label>
-        <ion-input value="{{this.usuario.aboutme}}" type="text" formControlName="aboutme" class="bordaInferior"  ></ion-input>
-
+        <ion-input value="{{this.usuario.aboutme}}" type="text" formControlName="aboutme" class="bordaInferior"></ion-input>
       </div>
 
         <ion-radio-group formControlName="gender">
@@ -124,9 +130,6 @@
       <ion-row class="ion-justify-content-center">
         <ion-button type="submit" color="success" class="botao" shape="round" size="small"> Excluir Conta</ion-button>
       </ion-row>
-
-
-
   </form>
 
 </div>

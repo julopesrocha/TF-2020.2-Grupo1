@@ -29,12 +29,24 @@ export class LoginPage implements OnInit {
 
    get f(){return this.loginForm.controls;}
 
-   async presentToast(){
+   async entradaIncorretaToast(){
     const toast = await this.toastController.create({
       message: 'Email ou senha incorretos!',
-      duration: 6000
+      duration: 4000
     });
     toast.present();
+  }
+
+  async loginEfetuadoToast(){
+    const toast = await this.toastController.create({
+      message: 'Você entrou! :D',
+      duration: 4000
+    });
+    toast.present();
+    toast.onDidDismiss().then(() => {
+      this.router.navigate(["/tabs/home"]).then(()=>window.location.reload());
+      
+    });
   }
 
   details() {
@@ -59,9 +71,8 @@ export class LoginPage implements OnInit {
       (res)=> {
         console.log(res);
         localStorage.setItem('userToken', res.success.token);
-        // this.usuario =res[0];
-        this.router.navigate(['/tabs/home']).then(()=>window.location.reload());
         console.log("entrei");
+        this.loginEfetuadoToast();
       },
 
 
@@ -70,7 +81,7 @@ export class LoginPage implements OnInit {
 
           if(err.error.error=="Unauthorized"){
 
-            this.presentToast();
+            this.entradaIncorretaToast();
           }
         }
         );
