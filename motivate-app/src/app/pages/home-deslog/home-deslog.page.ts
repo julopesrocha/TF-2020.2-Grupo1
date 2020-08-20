@@ -11,12 +11,15 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['./home-deslog.page.scss'],
 })
 export class HomeDeslogPage implements OnInit {
+
     token = localStorage.getItem("userToken");
     challenge;
     challengeId;
     recipes;
     usuario:Object;
-   
+    recipe;
+    likeMode;
+    check;
 
   constructor(public toastController: ToastController, private router: Router, public challengeServiceService:ChallengeServiceService, public recipeService: RecipeService, public authService: AuthService) {
       this.challengeId = this.router.getCurrentNavigation().extras;
@@ -33,7 +36,7 @@ export class HomeDeslogPage implements OnInit {
   this.authService.showMyDetails().subscribe(
       (res) => {
           console.log(res);
-         
+
           this.usuario = res[0];
            console.log("Bem vindo(a),", res[0].name);
       },
@@ -68,17 +71,8 @@ export class HomeDeslogPage implements OnInit {
       }
     );
   }
-  
-  ngOnInit() {
 
-  }
-
-
-  GoToRecipe(){
-      this.router.navigate(['/recipe'])
-  }
-
-   navigateToRecipe(recipe_id) {
+   GoToRecipe(recipe_id) {
     this.router.navigate(['/recipe'], recipe_id);
   }
 
@@ -89,6 +83,12 @@ export class HomeDeslogPage implements OnInit {
   GoToLogin(){
     this.router.navigate(['/login']);
   }
+
+  GoToProfile(user_id) {
+    this.router.navigate(['/profile-other', {userId:user_id}]);
+  }
+
+  ngOnInit() {}
 
   ionViewWillEnter(){
 

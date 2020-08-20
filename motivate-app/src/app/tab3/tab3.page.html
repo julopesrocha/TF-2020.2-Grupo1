@@ -1,25 +1,25 @@
-<ion-content>
+
+<ion-content *ngIf="usuario">
   <div *ngIf="!editMode">
     <div class="toolbar">
       <img src= "../../assets/wave.png"  alt="logo do motivate" >
       </div>
 
   <ion-row class="ion-align-items-center ion-justify-content-evenly">
-
-    <ion-col size="5">
+    <ion-col size="4">
       <div class="ion-text-center">
-        <h4 *ngIf="usuario"> {{usuario.name}}</h4>
+        <h4> {{usuario.name}} </h4>
       </div>
+      <ion-row size="1" class="ion-margin-start">
+        <ion-button class="ion-text-center" size="small" shape="round" color="success" (click)="toggleEdit()">
+          Editar
+        </ion-button>
+      </ion-row>
     </ion-col>
 
     <ion-col size="4" class="ion-margin-start">
       <div class="divFoto">
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+        <img src="../assets/userPhoto.png">
       </div>
     </ion-col>
 
@@ -27,25 +27,25 @@
 
   <ion-row class="ion-justify-content-evenly ion-margin-top">
 
-    <ion-col size="4" class="ion-no-padding">
+    <ion-col size="4">
       <div class="ion-text-center">
         <a>Seguidores</a>
-        <p>73</p>
-      </div> 
+        <p (click)="GoToFollowList()">{{usuario.followers}}</p>
+      </div>
     </ion-col>
 
     <ion-col size="4">
       <div class="ion-text-center" >
         <a>Seguindo</a>
-        <p>81</p>
-      </div>  
+        <p (click)="GoToFollowList()">{{usuario.following}}</p>
+      </div>
     </ion-col>
 
   </ion-row>
-  
+
 
   <ion-row class="ion-justify-content-center ">
-    <ion-col size="10">
+    <ion-col size="9">
       <p>Sobre mim:</p>
       <div class="divBio">
         <p>{{usuario.aboutme}}</p>
@@ -53,20 +53,15 @@
     </ion-col>
   </ion-row>
 
-  <ion-row class="ion-justify-content-evenly">
-
-    <ion-col size="4">
-      <ion-button size="small" shape="round" color="success" (click)="logout()">
-        Sair
-      </ion-button>
+      <ion-fab vertical="bottom" horizontal="start" edge slot="fixed">
+        <ion-fab-button (click)="GoToCreateChallenge()" color="success">
+          <ion-icon name="create-outline"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+  <ion-row class="ion-justify-content-center ">
+    <ion-col size="9">
+      <p>Minhas receitas:</p>
     </ion-col>
-
-    <ion-col size="4" class="ion-margin-end">
-      <ion-button size="small" shape="round" color="success" (click)="toggleEdit()">
-        Editar Perfil
-      </ion-button>
-    </ion-col>
-
   </ion-row>
 
   <ion-fab *ngIf="usuario.privileged==1" vertical="bottom" horizontal="start" edge slot="fixed">
@@ -74,13 +69,21 @@
       <ion-icon name="create-outline"></ion-icon>
   </ion-fab-button>
 
+      <div class="recipesListMergin">
+        <app-recipes-list (clickSeeRecipe)="navigateToRecipe($event)" [recipe]="recipe" *ngFor="let recipe of recipes"> </app-recipes-list>
+      </div>
 
-  </ion-fab>
+      <ion-row class="ion-justify-content-end">
+        <ion-col size="4">
+          <ion-button size="small" shape="round" color="success" (click)="logout()">
+            Sair
+          </ion-button>
+        </ion-col>
+      </ion-row>
 
   </div>
 
   <div class="divForm">
-
    
 
     <form [formGroup]="updateProfileForm" (ngSubmit)="updateUser(updateProfileForm) " class="background" *ngIf="editMode">
@@ -96,7 +99,7 @@
       <div class="form-group">
         <ion-label >Biografia</ion-label>
         <ion-input value="{{this.usuario.aboutme}}" type="text" formControlName="aboutme" class="bordaInferior"  ></ion-input>
-      
+
       </div>
 
         <ion-radio-group formControlName="gender">

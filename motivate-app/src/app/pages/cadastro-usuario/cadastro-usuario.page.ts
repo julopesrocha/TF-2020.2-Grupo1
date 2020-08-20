@@ -21,7 +21,7 @@ export class CadastroUsuarioPage implements OnInit {
 
   constructor(public toastController: ToastController, public http: HttpClient, private router: Router, public formbuilder: FormBuilder, public authservice: AuthService, ) {
     this.registerForm = this.formbuilder.group({
-      name:[null, [Validators.required, Validators.maxLength(20), Validators.minLength(2)]],
+      name:[null, [Validators.required, Validators.maxLength(40), Validators.minLength(2)]],
       date_of_birth:[null, [Validators.required]],
       email:[null, [Validators.email, Validators.required]],
       gender:[null, [Validators.required]],

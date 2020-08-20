@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import {AuthService } from '../services/auth.service';
-import {UserService } from '../services/user.service';
-import {Router} from '@angular/router';
+import { AuthService } from '../services/auth.service';
+import { UserService } from '../services/user.service';
+import { Router} from '@angular/router';
+import { RecipeService } from '../services/recipe.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
-
 
 @Component({
   selector: 'app-tab3',
@@ -13,22 +13,22 @@ import { AlertController } from '@ionic/angular';
 })
 export class Tab3Page {
 
- usuario:Object;
- 
- editMode:boolean = false;
+     user_id;
+     recipes;
+     usuario:Object;
+     editMode:boolean = false;
+     updateProfileForm: FormGroup;
 
- updateProfileForm: FormGroup; 
+constructor(public alertController:AlertController, public authservice: AuthService, private router: Router, public userservice: UserService, public formbuilder:FormBuilder, public recipeService: RecipeService) {
 
-  constructor(public alertController:AlertController, public authservice: AuthService, private router: Router, public userservice: UserService, public formbuilder:FormBuilder) {
+this.details();
 
-    this.details();
+this.updateProfileForm = this.formbuilder.group(
+  {
+    name:[null, [Validators.maxLength(20), Validators.minLength(2)]],
+    gender:[[Validators.required]],
+    aboutme:[null]
 
-    this.updateProfileForm = this.formbuilder.group(
-      {
-        name:[null, [Validators.maxLength(20), Validators.minLength(2)]],
-        gender:[[Validators.required]],
-        aboutme:[null]
-          
       }
     )
   }
@@ -61,63 +61,91 @@ export class Tab3Page {
   }
 
   details() {
-    this.authservice.showMyDetails().subscribe(
+      console.log("details");
+      this.authservice.showMyDetails().subscribe(
         (res) => {
             console.log(res);
-            console.log("Perfil -", res[0].name );
+            console.log("Perfil -", res[0].name);
             this.usuario = res[0];
+            this.user_id = res[0].id;
+            this.listRecipes(this.user_id);
         },
         (err) =>{
           console.log(err);
         }
-    );
-
-}
-
-logout() {
-  this.authservice.logout().subscribe(
-      (res) => {
-          console.log(res);
-          localStorage.removeItem('userToken');
-          localStorage.removeItem('Usuario');
-          this.usuario= null; 
-          this.router.navigate(['/tabs/home']).then(()=>window.location.reload());
-          console.log("Você saiu!!");
-      }
-  );
-}
-
-toggleEdit(){
-  this.editMode = true;
-}
-
-toggleNoEdit(){
-  this.editMode = false;
-}
-
-updateUser(form){
-  this.userservice.updateUser(form.value).subscribe(
-    (res)=>{
-      this.editMode = false;
-      console.log(res);
-      this.router.navigate(["/tabs/tab3"]).then(()=>window.location.reload());
-    }, (err) => {
-      console.log(err);
+      );
     }
-  );
-}
 
-GoToCreateChallenge(){
-  this.router.navigate(['/cadastro-desafio']);
-}
+    logout() {
+        this.authservice.logout().subscribe(
+            (res) => {
+              console.log(res);
+              localStorage.removeItem('userToken');
+              localStorage.removeItem('Usuario');
+              this.usuario= null;
+              this.router.navigate(['/tabs/home']).then(()=>window.location.reload());
+              console.log("Você saiu!!");
+      }
+      );
+    }
 
-GoToCreateRecipe(){
-  this.router.navigate(['/tabs/tab2']);
-}
+    listRecipes(user_id){
+      console.log(user_id);
+      this.recipeService.listRecipesUser(user_id).subscribe(
+        (res)=>{
+          console.log(res);
+          this.recipes=res.recipeList;
+        },
+        (err)=>{
+              console.log(err);
+        }
+      );
+    }
 
-GoToProfile(){
-  this.router.navigate(['/tabs/tab3']);
-}
+
+    toggleNoEdit(){
+      this.editMode = false;
+    }
+
+    toggleEdit(){
+      this.editMode = true;
+    }
 
 
-}
+    updateUser(form){
+      this.userservice.updateUser(form.value).subscribe(
+        (res)=>{
+          this.editMode = false;
+          console.log(res);
+          this.router.navigate(["/tabs/tab3"]).then(()=>window.location.reload());
+        }, (err) => {
+          console.log(err);
+        }
+      );
+    }
+
+    GoToCreateChallenge(){
+      this.router.navigate(['/cadastro-desafio']);
+    }
+
+    GoToCreateRecipe(){
+      this.router.navigate(['/tabs/tab2']);
+    }
+
+    GoToProfile(){
+      this.router.navigate(['/tabs/tab3']);
+    }
+
+    navigateToRecipe(recipe_id) {
+      this.router.navigate(['/recipe'], recipe_id);
+    }
+
+    GoToFollowList(){
+        this.router.navigate(['/follow-users']);
+    }
+
+    ngOnInit(){
+        this.details();
+    }
+
+    }

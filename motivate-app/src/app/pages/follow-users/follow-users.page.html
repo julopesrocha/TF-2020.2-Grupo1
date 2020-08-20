@@ -1,0 +1,42 @@
+<ion-content>
+    <div class="toolbar">
+        <ion-icon (click)="GoBackHome()" name="chevron-back-outline" size="large" style="float: left" class="back"></ion-icon>
+        <ion-icon (click)="GoToProfile()" name="close-outline" size="large" style="float: right" class="close"></ion-icon>
+    </div>
+        <img class="imgLogo" src="../../assets/logo-circle.png" alt="logo do motivate">
+
+    <ion-segment [(ngModel)]="follow" class="segmentColor">
+        <ion-segment-button value="following">
+            <ion-label>Seguidores</ion-label>
+        </ion-segment-button>
+<!-- Seguidores -->
+    <ion-segment-button value="followers">
+        <ion-label>Seguindo</ion-label>
+    </ion-segment-button>
+    </ion-segment>
+    <div [ngSwitch]= "follow" >
+    <div *ngIf="followers">
+        <ion-list *ngSwitchCase="'followers'">
+        <ion-item *ngFor="let follower of followers">
+            <img class="avatar" src="../../assets/boy-cake.jpg">
+            <div class="name">
+                <h5> {{follower.name}} </h5>
+            </div>
+            <!-- <ion-button (click)="followUser()" shape="round">{{followMode ? "Seguir" : "Seguindo"}}</ion-button> -->
+        </ion-item>
+        </ion-list>
+    </div>
+<!-- Seguindo  -->
+<div *ngIf="followings">
+    <ion-list *ngSwitchCase="'following'">
+        <ion-item *ngFor="let following of followings">
+            <img class="avatar" src="../../assets/boy-cake.jpg">
+            <div class="name">
+                <h5> {{following.name}} </h5>
+            </div>
+                <!-- <ion-button (click)="followUser()" shape="round">{{followMode ? "Seguindo" : "Seguir"}}</ion-button> -->
+        </ion-item>
+    </ion-list>
+</div>
+    </div>
+</ion-content>

@@ -34,7 +34,7 @@ class UserRequest extends FormRequest
             'email' => 'email|unique:users,email',
             'password' => 'min:6|max:15,same:confirm_password',
             'gender' => 'max:6',
-            'date_of_birth' => 'date|max:10',
+            'date_of_birth' => 'max:10',
             'aboutme' => 'max:200',
         ];  
 

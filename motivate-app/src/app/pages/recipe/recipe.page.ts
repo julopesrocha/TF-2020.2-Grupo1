@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CommentService } from '../../services/comment.service';
-import {RecipeService} from '../../services/recipe.service';
+import { RecipeService } from '../../services/recipe.service';
 import { AuthService } from '../../services/auth.service';
 import { ChallengeServiceService } from '../../services/challenge-service.service';
 import { ToastController } from '@ionic/angular';
@@ -27,26 +27,27 @@ export class RecipePage implements OnInit {
     recipe;
     recipes;
     recipeId;
+    likeMode;
 
     challenges = [];
 
     editMode:boolean = false;
     i;
 
-    commentForm: FormGroup; 
-    updateForm: FormGroup; 
+    commentForm: FormGroup;
+    updateForm: FormGroup;
 
   constructor(public alertController:AlertController, public toastController: ToastController, private router: Router, public formbuilder:FormBuilder,
   public recipeService: RecipeService, public commentService: CommentService, public authService: AuthService, public challengeServiceService: ChallengeServiceService) {
 
       this.details();
-      
+
       this.recipeId = this.router.getCurrentNavigation().extras;
       this.commentForm = this.formbuilder.group({
           comment:[null,[Validators.required,Validators.minLength(2),Validators.maxLength(200)]],
       });
 
-     
+
       this.updateForm = this.formbuilder.group(
         {
           title:[null, [Validators.maxLength(30), Validators.minLength(3)]],
@@ -54,11 +55,9 @@ export class RecipePage implements OnInit {
           subtitle:[null],
           ingredients:[null, [Validators.maxLength(500), Validators.minLength(3)]],
           preparation: [null, [ Validators.maxLength(600), Validators.minLength(3)]]
-          
+
         }
       )
-      //
-
   }
 
   // Toast's
@@ -171,6 +170,32 @@ export class RecipePage implements OnInit {
     await alert.present();
   }
 
+// Função de like
+
+    likeRecipe(){
+        this.recipeService.like(this.recipeId).subscribe(
+            (res)=>{
+                console.log(res);
+                this.likeMode = res.hasLiked;
+                if(this.likeMode){
+                    this.recipe.likes ++;
+                }
+                else{
+                    this.recipe.likes --;
+                }
+            }
+        )
+    }
+
+      checkLike(){
+          this.recipeService.verifyLike(this.recipeId).subscribe(
+              (res)=>{
+                  console.log(res);
+                  this.likeMode = res.hasLiked;
+              }
+          )
+      }
+
       // Funções do Comentário
 
   listComments(){
@@ -220,12 +245,12 @@ export class RecipePage implements OnInit {
          (res)=>{
            console.log(res);
            this.recipe = res.recipe;
-           this.recipe_user_id = res.recipe.user_id; 
+           this.recipe_user_id = res.recipe.user_id;
            this.recipe_user_name=res.recipe.user_name;
            console.log(res.recipe.title);
            console.log("Postada por ", res.recipe.user_name);
            console.log(this.recipe);
-           
+
          },
          (err)=>{
            console.log(err);
@@ -244,9 +269,9 @@ export class RecipePage implements OnInit {
         }
       );
     }
-    
 
- 
+
+
      toggleEdit(){
        this.editMode = true;
      }
@@ -296,7 +321,7 @@ export class RecipePage implements OnInit {
           }
 
       navigateTobackHome(){
-          this.router.navigate(['/tabs/home'])
+          this.router.navigate(['/tabs/home']).then(()=>window.location.reload());
       }
 
       GoToRecipe(){
@@ -307,6 +332,7 @@ export class RecipePage implements OnInit {
           this.getRecipe(this.recipeId);
           this.listComments();
           this.listChallenges();
+          this.checkLike();
       }
 
     }
