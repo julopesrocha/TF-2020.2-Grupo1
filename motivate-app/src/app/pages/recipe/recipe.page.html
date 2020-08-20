@@ -1,4 +1,4 @@
-<ion-content *ngIf="recipe"> 
+<ion-content *ngIf="recipe && usuario"> 
 
     <div *ngIf="!editMode">
         <div class="toolbar">
@@ -12,9 +12,13 @@
             <img  class="img" src="../../assets/cake.png" alt="imagem do bolo de chocolate">
             <img  class="faixa" src="../../assets/faixa-laranja.png" alt="faixa laranja do desafio low carb">
         </div>
-        <div *ngIf = "user_id==recipe_user_id" class="iconMargin" >
-            <ion-icon (click)="toggleEdit()" size="large" name="pencil-outline"></ion-icon>
-            <ion-icon *ngIf = "usuario.privilege ==1" (click)="deleteRecipe(i)" class="trashMargin" size="large" name="trash-outline"></ion-icon>
+        <div class="iconMargin" >
+            <div *ngIf = "user_id==recipe_user_id">
+                <ion-icon (click)="toggleEdit()" size="large" name="pencil-outline"></ion-icon>
+            </div>
+            <div *ngIf = "user_id==recipe_user_id || usuario.privileged==1">
+                <ion-icon  (click)="deleteRecipe()" class="trashMargin" size="large" name="trash-outline"></ion-icon>
+            </div>      
         </div>
     <!-- Descrição -->
          <div class="textMargin"> Postada por: {{recipe_user_name}} </div>
