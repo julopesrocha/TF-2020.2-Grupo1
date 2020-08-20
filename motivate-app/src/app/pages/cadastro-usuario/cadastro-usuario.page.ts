@@ -21,8 +21,8 @@ export class CadastroUsuarioPage implements OnInit {
 
   constructor(public toastController: ToastController, public http: HttpClient, private router: Router, public formbuilder: FormBuilder, public authservice: AuthService, ) {
     this.registerForm = this.formbuilder.group({
-      name:[null, [Validators.required, Validators.maxLength(20), Validators.minLength(2)]],
-      date_of_birth:[null, [Validators.required]],
+      name:[null, [Validators.required, Validators.maxLength(40), Validators.minLength(2)]],
+      date_of_birth:[null, [Validators.required, Validators.maxLength(10)]],
       email:[null, [Validators.email, Validators.required]],
       gender:[null, [Validators.required]],
       password:[null, [Validators.required, Validators.minLength(6), Validators.maxLength(15)]],
@@ -55,7 +55,7 @@ export class CadastroUsuarioPage implements OnInit {
   //   toast.present();
   //   toast.onDidDismiss().then(() => {
   //     this.router.navigate(["/tabs/home"]).then(()=>window.location.reload());
-      
+
   //   });
   // }
 
