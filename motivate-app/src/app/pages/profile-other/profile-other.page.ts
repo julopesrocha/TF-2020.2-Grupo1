@@ -75,9 +75,6 @@ export class ProfileOtherPage implements OnInit {
       this.router.navigate(['/tabs/home']);
     }
 
-    GoToFollowList(){
-        this.router.navigate(['/follow-users']);
-    }
 
   ngOnInit() {
       this.checkFollow();

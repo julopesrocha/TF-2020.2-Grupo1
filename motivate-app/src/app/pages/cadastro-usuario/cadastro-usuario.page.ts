@@ -14,14 +14,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CadastroUsuarioPage implements OnInit {
 
-  /*import * as moment from 'moment';
-
-doSomething(date) {
-   console.log('date', moment(date).format('YYYY-MM-DD')); // 2019-04-22
-}*/
-
-
-
   registerForm: FormGroup;
   submitted=true;
 
@@ -59,15 +51,11 @@ doSomething(date) {
   }
 
   onSubmit(form) {
-    // console.log(form);
-     console.log(form.value);
-
     this.authservice.register(this.registerForm.value).subscribe(
       (res)=> {
         console.log(res);
         localStorage.setItem('userToken', res.success.token);
-        // localStorage.setItem('username', res.success.token);
-        this.router.navigate(['/tabs/home'])
+        this.router.navigate(['/tabs/home']).then(()=>window.location.reload());
 
       },
 

@@ -97,7 +97,7 @@ this.updateProfileForm = this.formbuilder.group(
     }
 
     deleteUser(){
-      this.userservice.deleteUser(this.user_id).subscribe(
+      this.userservice.deleteUser().subscribe(
         (res)=>{
           console.log(res);
           localStorage.removeItem('userToken');
