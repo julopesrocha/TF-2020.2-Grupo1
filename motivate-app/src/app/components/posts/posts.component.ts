@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import { Router } from '@angular/router';
+import { RecipeService } from '../../services/recipe.service';
 
 @Component({
   selector: 'app-posts',
@@ -7,16 +9,20 @@ import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 })
 export class PostsComponent implements OnInit {
 
-@Input() recipe;
-@Output() clickSeeRecipe = new EventEmitter<number>();
+    @Input() recipe;
+    @Output() clickSeeRecipe = new EventEmitter<number>();
+    @Output() clickSeeProfile = new EventEmitter<number>();
 
+constructor(private router: Router, public recipeService: RecipeService) {}
 
-  constructor() {}
+  clickToSeeRecipe(id) {
+      this.clickSeeRecipe.emit(id);
+    }
 
-      clickToSeeRecipe(id) {
-          this.clickSeeRecipe.emit(id);
-        }
-       
+  clickToSeeProfile(id){
+      this.clickSeeProfile.emit(id);
+  }
+
 
   ngOnInit() {}
 

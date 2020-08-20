@@ -15,11 +15,11 @@
           <h4 *ngIf="usuario">Olá, {{usuario.name}}</h4>
         </ion-row>
     </ion-grid>
-    
+
 
       <div class="postMargin">
-         <app-posts (clickSeeRecipe)="navigateToRecipe($event)" [recipe]="recipe" *ngFor="let recipe of recipes" > </app-posts>
+         <app-posts (clickSeeRecipe)="GoToRecipe($event)" (clickSeeProfile)="GoToProfile($event)" [recipe]="recipe" *ngFor="let recipe of recipes" > </app-posts>
       </div>
-      
+
 
 </ion-content>

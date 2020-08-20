@@ -11,33 +11,50 @@ export class UserService {
 
   constructor(public http: HttpClient) { }
 
-  httpHeaders: any ={
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'    
+    httpHeaders: any ={
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        }
     }
-  }
 
-  public updateUser(form): Observable<any>{
-    this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('userToken');
-    return this.http.put(this.apiUrl + 'editUserProfile', form, this.httpHeaders);
-  }
+    public showUser(user_id): Observable<any>{
+      return this.http.get(this.apiUrl + 'getUserProfile/' + user_id);
+    }
 
-  // public showUser(user_id): Observable<any>{
-  //   return this.http.get(this.apiUrl + 'getUser/' + user_id);
-  // }
+    public updateUser(form): Observable<any>{
+      this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('userToken');
+      return this.http.put(this.apiUrl + 'editUserProfile', form, this.httpHeaders);
+    }
 
-  // public listSeguidores(user_id): Observable <any>{
-  //   return this.http.get(this.apiUrl + 'getSeguidores/' + user_id);
-  // }
+    //lista de seguidores
+    public listFollowers(): Observable <any>{
+      this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('userToken');
+      return this.http.get(this.apiUrl + 'getFollowers', this.httpHeaders);
+   }
 
-  // public listSeguindo(user_id): Observable <any>{
-  //   return this.http.get(this.apiUrl + 'getSeguindo/' + user_id);
-  // }
+    //lista de quem você esta seguindo
+    public listFollowing(): Observable <any>{
+       this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('userToken');
+       return this.http.get(this.apiUrl + 'getFollowing', this.httpHeaders);
+    }
 
-  // public deleteUser(user_id): Observable<any>{
-  //   this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('userToken');
-  //   return this.http.delete(this.apiUrl + 'deleteUser/' + user_id, this.httpHeaders);
-  // }
-  
+
+    // seguir uma pessoa
+    public follow(user_id): Observable <any> {
+        this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('userToken');
+        return this.http.post(this.apiUrl + 'followUser/' + user_id, null, this.httpHeaders);
+    }
+
+    // verifica se esta seguindo
+    public verifyFollow(user_id): Observable <any> {
+        this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('userToken');
+        return this.http.get(this.apiUrl + 'isFollowing/' + user_id, this.httpHeaders);
+    }
+
+    // public deleteUser(user_id): Observable<any>{
+    //     this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('userToken');
+    //     return this.http.delete(this.apiUrl + 'deleteUser/' + user_id, this.httpHeaders);
+    // }
+
 }

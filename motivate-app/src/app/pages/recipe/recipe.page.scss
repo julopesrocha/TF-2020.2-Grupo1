@@ -48,7 +48,7 @@ ion-toolbar{
 }
 
 .iconMargin{
-    margin-left: 70%;
+    margin-left: 10%;
     margin-right: 10%;
 }
 .trashMargin{
@@ -98,7 +98,7 @@ ion-icon{
     margin: 5% 10% 2% 10% ;
     padding-top: 6px;
     padding-bottom: 3%;
-   
+
 }
 
 .textComment{
@@ -131,14 +131,14 @@ ion-label{
     color: black;
     font-size: 1.1em;
   }
-  
-  
+
+
   ion-input{
     --color: black;
     font-family: 'Montserrat', sans-serif;
 
   }
-  
+
   ion-textarea{
     margin-top: 2%;
     --background: white;
@@ -148,7 +148,7 @@ ion-label{
     font-family: 'Montserrat', sans-serif;
   }
 
-  
+
 
   .bordaInferior{
     border-bottom: 0.095em solid green;
@@ -156,7 +156,7 @@ ion-label{
 
   .personalizar-select{
     border: 1px solid green;
-  
+
   }
 
   .divForm{
