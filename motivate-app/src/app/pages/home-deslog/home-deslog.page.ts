@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ChallengeServiceService } from '../../services/challenge-service.service';
 import { Router } from '@angular/router';
-import { RecipeService } from '../../services/recipe.service';
-import { AuthService } from '../../services/auth.service';
+import {RecipeService} from '../../services/recipe.service';
+import {AuthService} from '../../services/auth.service';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home-deslog',
@@ -20,21 +21,16 @@ export class HomeDeslogPage implements OnInit {
     likeMode;
     check;
 
-  constructor(private router: Router, public challengeServiceService:ChallengeServiceService,
-      public recipeService: RecipeService, public authService: AuthService) {
+  constructor(public toastController: ToastController, private router: Router, public challengeServiceService:ChallengeServiceService, public recipeService: RecipeService, public authService: AuthService) {
       this.challengeId = this.router.getCurrentNavigation().extras;
 
       this.details();
+      this.listRecipes();
+      console.log("aaaaaaaaaaaaaaaa");
+
  }
 
 
-
-  //  verifyLogin(){
-  //    this.token=localStorage.getItem("userToken");
-  //    if(this.token!=null){
-  //      this.token =1;
-  //    }
-  //  }
 
  details() {
   this.authService.showMyDetails().subscribe(
@@ -75,7 +71,7 @@ export class HomeDeslogPage implements OnInit {
       }
     );
   }
-
+  
    GoToRecipe(recipe_id) {
     this.router.navigate(['/recipe'], recipe_id);
   }
@@ -95,8 +91,7 @@ export class HomeDeslogPage implements OnInit {
   ngOnInit() {}
 
   ionViewWillEnter(){
-    this.listRecipes();
-    // this.verifyLogin();
+
   }
 
 }

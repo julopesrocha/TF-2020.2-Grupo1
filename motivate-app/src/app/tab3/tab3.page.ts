@@ -4,6 +4,7 @@ import { UserService } from '../services/user.service';
 import { Router} from '@angular/router';
 import { RecipeService } from '../services/recipe.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab3',
@@ -18,9 +19,8 @@ export class Tab3Page {
      editMode:boolean = false;
      updateProfileForm: FormGroup;
 
-constructor(public authservice: AuthService, private router: Router, public userservice: UserService, public formbuilder:FormBuilder, public recipeService: RecipeService) {
 
-this.details();
+  constructor(public alertController:AlertController, public authservice: AuthService, private router: Router, public userservice: UserService, public recipeService: RecipeService, public formbuilder:FormBuilder) {
 
 this.updateProfileForm = this.formbuilder.group(
   {
@@ -30,6 +30,33 @@ this.updateProfileForm = this.formbuilder.group(
 
       }
     )
+  }
+
+  // Alert
+
+  async deleteAccountAlertConfirm() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Confirm!',
+      message: 'Você  deseja excluir sua conta?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancelar',
+          cssClass: 'secondary',
+          handler: (Nao) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Confirmar',
+          handler: (Sim) => {
+            console.log('Confirm Okay');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 
   details() {

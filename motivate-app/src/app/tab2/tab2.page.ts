@@ -5,6 +5,7 @@ import { Plugins, CameraResultType, CameraSource } from '@capacitor/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import {RecipeService} from '../services/recipe.service';
 import {ChallengeServiceService} from '../services/challenge-service.service';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab2',
@@ -24,7 +25,7 @@ export class Tab2Page {
 
   recipes = [];
 
-  constructor(public formbuilder: FormBuilder, private router: Router, private sanitizer:DomSanitizer, public recipeService: RecipeService, public challengeServiceService: ChallengeServiceService) {
+  constructor(public toastController: ToastController, public formbuilder: FormBuilder, private router: Router, private sanitizer:DomSanitizer, public recipeService: RecipeService, public challengeServiceService: ChallengeServiceService) {
   this.recipeForm = this.formbuilder.group({
     title:[null, [Validators.required, Validators.maxLength(30), Validators.minLength(3)]],
     challenge:[null, [Validators.required]],
@@ -45,8 +46,22 @@ export class Tab2Page {
 
 ngOnInit() {
   this.listChallenges();
-  console.log("Poste uma receita.");
+  
 }
+
+ionViewWillEnter(){
+  this.listChallenges();
+}
+
+async receitaPublicadaToast(){
+  const toast = await this.toastController.create({
+    message: 'Receita publicada com sucesso! :D',
+    duration: 6000
+  });
+  toast.present();
+}
+
+
 
 async takePicture(){
   const image = await
@@ -82,23 +97,27 @@ createRecipe(form){
   console.log(form);
   let body = form.value;
   this.recipeService.createRecipe(body).subscribe(
-  (res) => {console.log(res);
+  (res) => {
+
+    console.log(res);
     this.router.navigate(["/tabs/home"]);
+    this.receitaPublicadaToast();
   }, (err) => {console.log(err); }
-  )
+  );
 }
 
-deleteRecipe(id){
-  this.recipeService.deleteRecipe(id).subscribe(
+listRecipes(){
+  this.recipeService.listRecipesHome().subscribe(
     (res)=>{
       console.log(res);
-      console.log('Mais que cancelado:' +id);
-    }, (err) =>{
+      this.recipes=res.recipeList;
+    },
+    (err)=>{
       console.log(err);
     }
   );
-  
 }
+
 
 
 
