@@ -15,10 +15,10 @@ class CommentController extends Controller
 {
     /**
      * Cria um novo comentário e a atribui a uma nova receita
-     * 
+     *
      * @param CommentRequest       $request
      * @param int                   $recipe_id
-     * 
+     *
      * @return JsonResponse
      */
     public function postComment(CommentRequest $request, $recipe_id){
@@ -33,10 +33,10 @@ class CommentController extends Controller
 
     /**
      * Atualiza o atributo comentário do BD
-     * 
+     *
      * @param CommentRequest        $request
      * @param int       $id
-     * 
+     *
      * @return JsonResponse
      */
     public function updateComment(CommentRequest $request, $id){
@@ -49,9 +49,9 @@ class CommentController extends Controller
 
     /**
      * Retorna o comentário correspondente ao ID fornecido
-     * 
+     *
      * @param int       $id
-     * 
+     *
      * @return JsonResponse
      */
     public function getComment($id){
@@ -60,11 +60,11 @@ class CommentController extends Controller
             'success' => new CommentResource($comment)], 200);
     }
 
-    /** 
+    /**
      * Lista todos os comentários relacionados a uma receita específica
-     * 
+     *
      * @param int      $recipe_id
-     * 
+     *
      * @return JsonResponse
      */
     public function listComments($recipe_id){
@@ -75,16 +75,16 @@ class CommentController extends Controller
     }
 
     /**
-     * Deleta um comentário correspondente ao ID fornecido 
-     * 
+     * Deleta um comentário correspondente ao ID fornecido
+     *
      * @param int       $comment_id
-     * 
+     *
      * @return JsonResponse
      */
     public function deleteComment($comment_id){
         Comment::findOrFail($comment_id);
         Comment::destroy($comment_id);
         return response()->json([
-            'Your comment has been successfully deleted.'], 200);
+            'The comment has been successfully delete.'], 200);
     }
 }
