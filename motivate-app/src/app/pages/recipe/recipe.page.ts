@@ -16,14 +16,12 @@ export class RecipePage implements OnInit {
 
     token = localStorage.getItem("userToken");
 
-
-    oi = true;
     usuario;
     user_id;
     recipe_user_id;
     recipe_user_name;
 
-
+    photo: SafeResourceUrl;
     comments;
     commentId;
     recipe;

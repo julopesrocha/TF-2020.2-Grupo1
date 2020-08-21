@@ -1,11 +1,19 @@
-ion-card{
-    font-size: 18px;
-    text-align: left;
-    color: #04213C;
-    border-radius: 15px;
-    margin: 0 3% 8% 0 ;
+.spaceFormat{
+    border-style: solid;
+    border-radius: 10px;
+    border-color: #04C58B;
     display: flex;
+    width: 96%;
+    margin-top: 5%;
+    margin-bottom: 10%;
 }
+#card{
+    font-size: 18px;
+    font-weight: 200;
+    color:black;
+    text-align: left;
+}
+
 p{
     margin: 5%;
     display: inline-block;
@@ -17,7 +25,6 @@ h5{
     margin: 5%;
     font-weight: 300;
     font-weight: bold;
-
 }
 
 img{
@@ -41,10 +48,6 @@ img{
     justify-content:flex-end;
     width: 50%;
     margin-left: 4%;
-}
-
-#cardBackground {
-    --background: #C3EAE8;
 }
 
 .icon {

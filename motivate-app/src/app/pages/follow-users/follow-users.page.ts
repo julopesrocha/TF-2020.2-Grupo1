@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../../services/user.service';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-follow-users',
@@ -9,39 +10,11 @@ import { UserService } from '../../services/user.service';
 })
 export class FollowUsersPage implements OnInit {
 
-  clickFollow: boolean = true;
+  photo: SafeResourceUrl;
   followers;
   followings;
-  // followMode;
-  // check;
 
-  constructor(private router: Router, public userService:UserService, private route: ActivatedRoute ) { }
-
-  // async followUser(){
-  // await this.route.params.subscribe((params) => (this.userId = params.userId));
-  //   this.userService.follow(this.userId).subscribe(
-  //     (res)=>{
-  //         console.log(res);
-  //         this.followMode = res.isFollowing;
-  //         if(this.followMode){
-  //             this.user.followers ++;
-  //         }
-  //         else{
-  //             this.user.followers --;
-  //         }
-  //     }
-  //   )
-  // }
-  //
-  // async checkFollow(){
-  // await this.route.params.subscribe((params) => (this.userId = params.userId));
-  //   this.userService.verifyFollow(this.userId).subscribe(
-  //     (res)=>{
-  //         console.log(res);
-  //         this.followMode = res.isFollowing;
-  //     }
-  //   )
-  // }
+  constructor(private router: Router, public userService:UserService, private route: ActivatedRoute, public sanitizer:DomSanitizer ) { }
 
 
   GoBackHome(){
@@ -51,15 +24,6 @@ export class FollowUsersPage implements OnInit {
   GoToProfile(){
      this.router.navigate(['/tabs/tab3'])
   }
-
-
-  // verifyPageFollow(){
-  //     if(this.followers == "followers"){
-  //         this.listFollowers();
-  //     }
-  //     else if(this.followings == "followings"){
-  //         this.listFollowing();
-  //     }
 
      listFollowers(){
         this.userService.listFollowers().subscribe(
