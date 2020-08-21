@@ -1,4 +1,4 @@
-<ion-content *ngIf="recipe && usuario">
+<ion-content *ngIf="recipe">
 
     <div *ngIf="!editMode">
         <div class="toolbar">
@@ -19,7 +19,7 @@
                         <ion-icon (click)="toggleEdit()" size="large" name="pencil-outline"></ion-icon>
                     </div>
                 </ion-col>
-                <ion-col size="3">
+                <ion-col size="3"*ngIf="usuario">
                     <div *ngIf = "user_id==recipe_user_id || usuario.privileged==1">
                         <ion-icon  (click)="deleteRecipeAlertConfirm()" class="trashMargin" size="large" name="trash-outline"></ion-icon>
                     </div>
@@ -114,7 +114,7 @@
 
     <!-- Receitas -->
             <div class="subtitles"> Comentários <ion-icon size="large" name="chatbubble-ellipses-outline"></ion-icon> </div>
-                <form [formGroup]="commentForm" (ngSubmit)="postComment(commentForm)" >
+                <form *ngIf="token!=null" [formGroup]="commentForm" (ngSubmit)="postComment(commentForm)" >
                     <div class="commentFormat">
                         <ion-textarea class="textComment" placeholder="Faça seu comentário:" type="text" formControlName="comment"></ion-textarea>
                     </div>
@@ -138,7 +138,9 @@
                         {{comment.comment}}
                     </div>
                 </div>
-                    <ion-icon size="large" name="trash-outline" *ngIf="comment.user_id==user_id || usuario.privileged== 1" (click)="deleteCommentAlertConfirm(comment.id, i)"> </ion-icon>
+                    <div *ngIf="usuario">
+                        <ion-icon size="large" name="trash-outline" *ngIf="comment.user_id==user_id || usuario.privileged== 1" (click)="deleteCommentAlertConfirm(comment.id, i)"> </ion-icon>
+                    </div>
             </div>
             <!-- <app-comment   > </app-comment> -->
         </div>

@@ -14,6 +14,10 @@ import { AlertController, ToastController } from '@ionic/angular';
 })
 export class RecipePage implements OnInit {
 
+    token = localStorage.getItem("userToken");
+
+
+    oi = true;
     usuario;
     user_id;
     recipe_user_id;
@@ -25,7 +29,7 @@ export class RecipePage implements OnInit {
     recipe;
     recipes;
     recipeId;
-    likeMode;
+    likeMode:boolean = false;
 
     challenges = [];
 
@@ -34,10 +38,17 @@ export class RecipePage implements OnInit {
     commentForm: FormGroup;
     updateForm: FormGroup;
 
-  constructor(private router: Router, public formbuilder:FormBuilder,
-  public recipeService: RecipeService, public commentService: CommentService, public authService: AuthService, public challengeServiceService: ChallengeServiceService, public alertController:AlertController, public toastController: ToastController) {
+  constructor(
+      private router: Router,
+      public formbuilder:FormBuilder,
+      public recipeService: RecipeService,
+      public commentService: CommentService,
+      public authService: AuthService,
+      public challengeServiceService: ChallengeServiceService,
+      public alertController: AlertController,
+      public toastController: ToastController) {
 
-      this.details();
+
 
       this.recipeId = this.router.getCurrentNavigation().extras;
       this.commentForm = this.formbuilder.group({
@@ -319,7 +330,10 @@ export class RecipePage implements OnInit {
           this.getRecipe(this.recipeId);
           this.listComments();
           this.listChallenges();
-          this.checkLike();
+          if(localStorage.getItem('userToken')){
+              this.checkLike();
+              this.details();
+          }
       }
 
     }

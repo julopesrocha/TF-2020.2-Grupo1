@@ -93,7 +93,7 @@ constructor(private router: Router, public challengeServiceService:ChallengeServ
 
   ionViewWillEnter(){
     this.listRecipes();
-    // this.verifyLogin();
+
   }
 
 }
