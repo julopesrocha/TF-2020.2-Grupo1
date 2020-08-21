@@ -9,7 +9,12 @@
             {{recipe.title}}
         </div>
         <div>
-            <img  class="img" src="{{recipe.photo}}" alt="imagem do bolo de chocolate">
+            <div *ngIf="recipe.photo!=null"class="image">
+                <img style="float: right" src="{{recipe.photo}}" alt="foto da receita">
+            </div>
+            <div *ngIf="recipe.photo==null"class="image">
+                <img style="float: right" src="../assets/recipe-padrao.jpeg" alt="foto da receita padrão">
+            </div>
             <img  class="faixa" src="../../assets/faixa-laranja.png" alt="faixa laranja do desafio low carb">
         </div>
         <ion-row class="iconMargin">

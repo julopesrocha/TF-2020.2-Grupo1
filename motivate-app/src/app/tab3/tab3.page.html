@@ -18,8 +18,11 @@
     </ion-col>
 
     <ion-col size="4" class="ion-margin-start">
-      <div class="divFoto">
+      <div *ngIf="usuario.photo!=null" class="divFoto">
         <img src="{{usuario.photo}}">
+      </div>
+      <div *ngIf="usuario.photo==null" class="divFoto">
+        <img src="../../assets/userPhoto.png">
       </div>
     </ion-col>
 

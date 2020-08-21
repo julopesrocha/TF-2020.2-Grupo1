@@ -1,6 +1,11 @@
 <ion-chip size="medium" (click)="clickToSeeProfile(recipe.user_id)" >
     <ion-avatar>
-        <img src="{{recipe.user_photo}}">
+        <div *ngIf="recipe.user_photo!=null">
+            <img src="{{recipe.user_photo}}">
+        </div>
+        <div *ngIf="recipe.user_photo==null">
+            <img class="img" src="../assets/userPhoto.png">
+        </div>
     </ion-avatar>
     <ion-label>{{recipe.user_name}}</ion-label>
 </ion-chip>
@@ -8,7 +13,12 @@
 <div shape="round" class="postFormat">
     <div (click)="clickToSeeRecipe(recipe.id)">
         <h5 class="title"> {{recipe.title}} </h5>
-        <img class="img" src="{{recipe.photo}}">
+        <div *ngIf="recipe.photo!=null">
+            <img class="img" src="{{recipe.photo}}">
+        </div>
+        <div *ngIf="recipe.photo==null">
+            <img class="img" src="../assets/recipe-padrao.jpeg">
+        </div>
     </div>
 <div class="subtitleMargin"> {{recipe.subtitle}}</div>
 <div class="postInfo">
