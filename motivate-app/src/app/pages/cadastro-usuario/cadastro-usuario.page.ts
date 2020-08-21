@@ -28,6 +28,7 @@ export class CadastroUsuarioPage implements OnInit {
       password:[null, [Validators.required, Validators.minLength(6), Validators.maxLength(15)]],
       confirm_password:[null, [Validators.required]],
       aboutme:[null],
+      photo:[null],
 
     }, { validator: MustMatch('password', 'confirm_password')}
 
@@ -55,7 +56,7 @@ export class CadastroUsuarioPage implements OnInit {
     toast.present();
     toast.onDidDismiss().then(() => {
       this.router.navigate(["/tabs/home"]).then(()=>window.location.reload());
-      
+
     });
   }
 

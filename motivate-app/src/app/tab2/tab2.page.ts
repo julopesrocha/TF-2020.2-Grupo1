@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import {FormGroup, FormBuilder, Validators} from '@angular/forms';
-import {Router} from '@angular/router';
+import { FormGroup, FormBuilder, Validators} from '@angular/forms';
+import { Router } from '@angular/router';
 import { Plugins, CameraResultType, CameraSource } from '@capacitor/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import {RecipeService} from '../services/recipe.service';
-import {ChallengeServiceService} from '../services/challenge-service.service';
+import { RecipeService } from '../services/recipe.service';
+import { ChallengeServiceService } from '../services/challenge-service.service';
 
 @Component({
   selector: 'app-tab2',
@@ -32,10 +32,10 @@ export class Tab2Page {
     photo:[null],
     ingredients:[null, [Validators.required, Validators.maxLength(500), Validators.minLength(3)]],
     preparation: [null, [Validators.required, Validators.maxLength(600), Validators.minLength(3)]]
-    
+
 
   }
-    
+
   );
  }
 
@@ -101,10 +101,9 @@ deleteRecipe(id){
       console.log(err);
     }
   );
-  
-}
-
-
 
 }
 
+
+
+}

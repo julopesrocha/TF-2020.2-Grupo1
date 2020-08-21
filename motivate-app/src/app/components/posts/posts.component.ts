@@ -9,6 +9,7 @@ import { RecipeService } from '../../services/recipe.service';
 })
 export class PostsComponent implements OnInit {
 
+    @Input() usuario;
     @Input() recipe;
     @Output() clickSeeRecipe = new EventEmitter<number>();
     @Output() clickSeeProfile = new EventEmitter<number>();

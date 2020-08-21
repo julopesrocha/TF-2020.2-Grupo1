@@ -5,6 +5,8 @@ import { Router} from '@angular/router';
 import { RecipeService } from '../services/recipe.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
+import { Plugins, CameraResultType, CameraSource } from '@capacitor/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-tab3',
@@ -16,10 +18,12 @@ export class Tab3Page {
      user_id;
      recipes;
      usuario:Object;
+     photo: SafeResourceUrl;
      editMode:boolean = false;
      updateProfileForm: FormGroup;
 
-constructor(public authservice: AuthService, private router: Router, public userservice: UserService, public formbuilder:FormBuilder, public recipeService: RecipeService, public alertController:AlertController) {
+constructor(public authservice: AuthService, private router: Router, public userservice: UserService,
+public formbuilder:FormBuilder, public recipeService: RecipeService, public alertController:AlertController, public sanitizer:DomSanitizer) {
 
 this.details();
 
@@ -27,10 +31,25 @@ this.updateProfileForm = this.formbuilder.group(
   {
     name:[null, [Validators.maxLength(20), Validators.minLength(2)]],
     gender:[[Validators.required]],
-    aboutme:[null]
+    aboutme:[null],
+    photo:[null]
 
       }
     )
+  }
+
+  async takePicture(){
+    const photo = await
+    Plugins.Camera.getPhoto({
+      quality: 100,
+      allowEditing: true,
+      saveToGallery: true,
+      resultType: CameraResultType.DataUrl,
+      source: CameraSource.Camera
+    });
+    this.photo =
+    this.sanitizer.bypassSecurityTrustResourceUrl
+    (photo && (photo.dataUrl));
   }
 
   async deleteAccountAlertConfirm() {
@@ -111,6 +130,9 @@ this.updateProfileForm = this.formbuilder.group(
 
 
     updateUser(form){
+        if(this.photo) {
+            form.value.photo = this.photo['changingThisBreaksApplicationSecurity'];
+        }
       this.userservice.updateUser(form.value).subscribe(
         (res)=>{
           this.editMode = false;
