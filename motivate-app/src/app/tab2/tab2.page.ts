@@ -24,11 +24,12 @@ export class Tab2Page {
 
   recipes = [];
 
-  constructor(public formbuilder: FormBuilder, private router: Router, private sanitizer:DomSanitizer, public recipeService: RecipeService, public challengeServiceService: ChallengeServiceService) {
+  constructor(public formbuilder: FormBuilder, private router: Router, public sanitizer:DomSanitizer, public recipeService: RecipeService, public challengeServiceService: ChallengeServiceService) {
   this.recipeForm = this.formbuilder.group({
     title:[null, [Validators.required, Validators.maxLength(30), Validators.minLength(3)]],
     challenge:[null, [Validators.required]],
     subtitle:[null],
+    photo:[null],
     ingredients:[null, [Validators.required, Validators.maxLength(500), Validators.minLength(3)]],
     preparation: [null, [Validators.required, Validators.maxLength(600), Validators.minLength(3)]]
     
@@ -49,7 +50,7 @@ ngOnInit() {
 }
 
 async takePicture(){
-  const image = await
+  const photo = await
   Plugins.Camera.getPhoto({
     quality: 100,
     allowEditing: true,
@@ -59,7 +60,7 @@ async takePicture(){
   });
   this.photo =
   this.sanitizer.bypassSecurityTrustResourceUrl
-  (image && (image.dataUrl));
+  (photo && (photo.dataUrl));
 }
 
 GoToHome(){
@@ -81,6 +82,9 @@ listChallenges(){
 createRecipe(form){
   console.log(form);
   let body = form.value;
+  if(this.photo) {
+    form.value.photo = this.photo['changingThisBreaksApplicationSecurity'];
+  }
   this.recipeService.createRecipe(body).subscribe(
   (res) => {console.log(res);
     this.router.navigate(["/tabs/home"]);

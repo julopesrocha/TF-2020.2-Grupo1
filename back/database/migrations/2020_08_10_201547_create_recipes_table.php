@@ -19,7 +19,7 @@ class CreateRecipesTable extends Migration
             $table->mediumText('ingredients');
             $table->mediumText('preparation');
             $table->string('subtitle');
-            $table->mediumText('photo')->nullable();
+            $table->longText('photo')->nullable();
             $table->timestamps();
             $table->unsignedBigInteger('user_id')->nullable();
         });

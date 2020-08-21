@@ -23,6 +23,7 @@ class Recipe extends Model
         $this->subtitle = $request->subtitle;
         $this->photo = $request->photo;
         $this->save();
+
     }
 
     /** 
